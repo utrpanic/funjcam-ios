@@ -10,12 +10,22 @@
 		8AAE0230481940372BC42906 /* Pods_funjcam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302148B63C4DB51F309D0D4B /* Pods_funjcam.framework */; };
 		8C3CC99F2B5D6E7DE8BEB055 /* Pods_funjcamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48566E8E7B2F6E0D1353AA65 /* Pods_funjcamTests.framework */; };
 		8D18F1A21D3DF8800058F005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1A11D3DF8800058F005 /* AppDelegate.swift */; };
-		8D18F1A41D3DF8800058F005 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1A31D3DF8800058F005 /* ViewController.swift */; };
+		8D18F1A41D3DF8800058F005 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1A31D3DF8800058F005 /* MainViewController.swift */; };
 		8D18F1A71D3DF8800058F005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D18F1A51D3DF8800058F005 /* Main.storyboard */; };
 		8D18F1A91D3DF8800058F005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D18F1A81D3DF8800058F005 /* Assets.xcassets */; };
 		8D18F1AC1D3DF8800058F005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D18F1AA1D3DF8800058F005 /* LaunchScreen.storyboard */; };
 		8D18F1B71D3DF8800058F005 /* funjcamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1B61D3DF8800058F005 /* funjcamTests.swift */; };
 		8D18F1C21D3DF8800058F005 /* funjcamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1C11D3DF8800058F005 /* funjcamUITests.swift */; };
+		8D18F1D21D3DFABA0058F005 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1D11D3DFABA0058F005 /* Extension.swift */; };
+		8D18F1D41D3DFAF30058F005 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1D31D3DFAF30058F005 /* BaseViewController.swift */; };
+		8D18F1D71D3DFB230058F005 /* SearchedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1D61D3DFB230058F005 /* SearchedImage.swift */; };
+		8D18F1DA1D3DFB640058F005 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1D91D3DFB640058F005 /* ApiManager.swift */; };
+		8D18F1DD1D3DFBA10058F005 /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1DC1D3DFBA10058F005 /* LogManager.swift */; };
+		8D18F1E51D3E023D0058F005 /* SearchedImageGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1E31D3E023D0058F005 /* SearchedImageGridCell.swift */; };
+		8D18F1E61D3E023D0058F005 /* SearchedImageGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D18F1E41D3E023D0058F005 /* SearchedImageGridCell.xib */; };
+		8D18F1EA1D3E024A0058F005 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1E71D3E02490058F005 /* BookmarkViewController.swift */; };
+		8D18F1EB1D3E024A0058F005 /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1E81D3E024A0058F005 /* RecentViewController.swift */; };
+		8D18F1EC1D3E024A0058F005 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1E91D3E024A0058F005 /* SearchViewController.swift */; };
 		99A65C8D422445671B64828E /* Pods_funjcamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC8CD76EFF387EC6C76E058 /* Pods_funjcamUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +53,7 @@
 		8C39656370193851CBE3C7D2 /* Pods-funjcamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-funjcamTests/Pods-funjcamTests.release.xcconfig"; sourceTree = "<group>"; };
 		8D18F19E1D3DF8800058F005 /* funjcam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = funjcam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D18F1A11D3DF8800058F005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8D18F1A31D3DF8800058F005 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8D18F1A31D3DF8800058F005 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8D18F1A61D3DF8800058F005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8D18F1A81D3DF8800058F005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D18F1AB1D3DF8800058F005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +64,17 @@
 		8D18F1BD1D3DF8800058F005 /* funjcamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = funjcamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D18F1C11D3DF8800058F005 /* funjcamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = funjcamUITests.swift; sourceTree = "<group>"; };
 		8D18F1C31D3DF8800058F005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D18F1D01D3DFA750058F005 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		8D18F1D11D3DFABA0058F005 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		8D18F1D31D3DFAF30058F005 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8D18F1D61D3DFB230058F005 /* SearchedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchedImage.swift; sourceTree = "<group>"; };
+		8D18F1D91D3DFB640058F005 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		8D18F1DC1D3DFBA10058F005 /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		8D18F1E31D3E023D0058F005 /* SearchedImageGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchedImageGridCell.swift; sourceTree = "<group>"; };
+		8D18F1E41D3E023D0058F005 /* SearchedImageGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchedImageGridCell.xib; sourceTree = "<group>"; };
+		8D18F1E71D3E02490058F005 /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		8D18F1E81D3E024A0058F005 /* RecentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
+		8D18F1E91D3E024A0058F005 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		B4FDD10E79709842C6A3E013 /* Pods-funjcamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-funjcamTests/Pods-funjcamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BFC8CD76EFF387EC6C76E058 /* Pods_funjcamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_funjcamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F149F3CCFBE0B3B9568A126E /* Pods-funjcam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcam.release.xcconfig"; path = "Pods/Target Support Files/Pods-funjcam/Pods-funjcam.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,11 +158,19 @@
 		8D18F1A01D3DF8800058F005 /* funjcam */ = {
 			isa = PBXGroup;
 			children = (
+				8D18F1CF1D3DFA5E0058F005 /* Common */,
+				8D18F1D51D3DFB080058F005 /* Model */,
+				8D18F1D81D3DFB510058F005 /* Networking */,
+				8D18F1DE1D3E01D70058F005 /* View */,
+				8D18F1DB1D3DFB870058F005 /* Util */,
 				8D18F1A11D3DF8800058F005 /* AppDelegate.swift */,
-				8D18F1A31D3DF8800058F005 /* ViewController.swift */,
 				8D18F1A51D3DF8800058F005 /* Main.storyboard */,
-				8D18F1A81D3DF8800058F005 /* Assets.xcassets */,
+				8D18F1A31D3DF8800058F005 /* MainViewController.swift */,
+				8D18F1E91D3E024A0058F005 /* SearchViewController.swift */,
+				8D18F1E81D3E024A0058F005 /* RecentViewController.swift */,
+				8D18F1E71D3E02490058F005 /* BookmarkViewController.swift */,
 				8D18F1AA1D3DF8800058F005 /* LaunchScreen.storyboard */,
+				8D18F1A81D3DF8800058F005 /* Assets.xcassets */,
 				8D18F1AD1D3DF8800058F005 /* Info.plist */,
 			);
 			path = funjcam;
@@ -163,6 +192,49 @@
 				8D18F1C31D3DF8800058F005 /* Info.plist */,
 			);
 			path = funjcamUITests;
+			sourceTree = "<group>";
+		};
+		8D18F1CF1D3DFA5E0058F005 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8D18F1D01D3DFA750058F005 /* BridgingHeader.h */,
+				8D18F1D11D3DFABA0058F005 /* Extension.swift */,
+				8D18F1D31D3DFAF30058F005 /* BaseViewController.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		8D18F1D51D3DFB080058F005 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D18F1D61D3DFB230058F005 /* SearchedImage.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8D18F1D81D3DFB510058F005 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8D18F1D91D3DFB640058F005 /* ApiManager.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		8D18F1DB1D3DFB870058F005 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				8D18F1DC1D3DFBA10058F005 /* LogManager.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		8D18F1DE1D3E01D70058F005 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8D18F1E31D3E023D0058F005 /* SearchedImageGridCell.swift */,
+				8D18F1E41D3E023D0058F005 /* SearchedImageGridCell.xib */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +351,7 @@
 			files = (
 				8D18F1AC1D3DF8800058F005 /* LaunchScreen.storyboard in Resources */,
 				8D18F1A91D3DF8800058F005 /* Assets.xcassets in Resources */,
+				8D18F1E61D3E023D0058F005 /* SearchedImageGridCell.xib in Resources */,
 				8D18F1A71D3DF8800058F005 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -427,8 +500,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D18F1A41D3DF8800058F005 /* ViewController.swift in Sources */,
+				8D18F1D21D3DFABA0058F005 /* Extension.swift in Sources */,
+				8D18F1EC1D3E024A0058F005 /* SearchViewController.swift in Sources */,
+				8D18F1EB1D3E024A0058F005 /* RecentViewController.swift in Sources */,
+				8D18F1D41D3DFAF30058F005 /* BaseViewController.swift in Sources */,
+				8D18F1A41D3DF8800058F005 /* MainViewController.swift in Sources */,
+				8D18F1DD1D3DFBA10058F005 /* LogManager.swift in Sources */,
 				8D18F1A21D3DF8800058F005 /* AppDelegate.swift in Sources */,
+				8D18F1DA1D3DFB640058F005 /* ApiManager.swift in Sources */,
+				8D18F1E51D3E023D0058F005 /* SearchedImageGridCell.swift in Sources */,
+				8D18F1EA1D3E024A0058F005 /* BookmarkViewController.swift in Sources */,
+				8D18F1D71D3DFB230058F005 /* SearchedImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +659,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boxjeon.ios.funjcam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = funjcam/BridgingHeader.h;
 			};
 			name = Debug;
 		};
@@ -589,6 +672,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.boxjeon.ios.funjcam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = funjcam/BridgingHeader.h;
 			};
 			name = Release;
 		};
