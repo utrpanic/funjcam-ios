@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8AAE0230481940372BC42906 /* Pods_funjcam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302148B63C4DB51F309D0D4B /* Pods_funjcam.framework */; };
+		8C3CC99F2B5D6E7DE8BEB055 /* Pods_funjcamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48566E8E7B2F6E0D1353AA65 /* Pods_funjcamTests.framework */; };
 		8D18F1A21D3DF8800058F005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1A11D3DF8800058F005 /* AppDelegate.swift */; };
 		8D18F1A41D3DF8800058F005 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1A31D3DF8800058F005 /* ViewController.swift */; };
 		8D18F1A71D3DF8800058F005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D18F1A51D3DF8800058F005 /* Main.storyboard */; };
@@ -14,6 +16,7 @@
 		8D18F1AC1D3DF8800058F005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D18F1AA1D3DF8800058F005 /* LaunchScreen.storyboard */; };
 		8D18F1B71D3DF8800058F005 /* funjcamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1B61D3DF8800058F005 /* funjcamTests.swift */; };
 		8D18F1C21D3DF8800058F005 /* funjcamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1C11D3DF8800058F005 /* funjcamUITests.swift */; };
+		99A65C8D422445671B64828E /* Pods_funjcamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFC8CD76EFF387EC6C76E058 /* Pods_funjcamUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		302148B63C4DB51F309D0D4B /* Pods_funjcam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_funjcam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48566E8E7B2F6E0D1353AA65 /* Pods_funjcamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_funjcamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7716B7B5622D1884B406F1BB /* Pods-funjcamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-funjcamUITests/Pods-funjcamUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8C39656370193851CBE3C7D2 /* Pods-funjcamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-funjcamTests/Pods-funjcamTests.release.xcconfig"; sourceTree = "<group>"; };
 		8D18F19E1D3DF8800058F005 /* funjcam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = funjcam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D18F1A11D3DF8800058F005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D18F1A31D3DF8800058F005 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +54,11 @@
 		8D18F1BD1D3DF8800058F005 /* funjcamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = funjcamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D18F1C11D3DF8800058F005 /* funjcamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = funjcamUITests.swift; sourceTree = "<group>"; };
 		8D18F1C31D3DF8800058F005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4FDD10E79709842C6A3E013 /* Pods-funjcamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-funjcamTests/Pods-funjcamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BFC8CD76EFF387EC6C76E058 /* Pods_funjcamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_funjcamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F149F3CCFBE0B3B9568A126E /* Pods-funjcam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcam.release.xcconfig"; path = "Pods/Target Support Files/Pods-funjcam/Pods-funjcam.release.xcconfig"; sourceTree = "<group>"; };
+		F4322FB85A1C8BB920E5760B /* Pods-funjcamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-funjcamUITests/Pods-funjcamUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FBA530D50F768DD661364FA7 /* Pods-funjcam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-funjcam/Pods-funjcam.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AAE0230481940372BC42906 /* Pods_funjcam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3CC99F2B5D6E7DE8BEB055 /* Pods_funjcamTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99A65C8D422445671B64828E /* Pods_funjcamUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E5C8D4C0F50B7978ECCE864 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBA530D50F768DD661364FA7 /* Pods-funjcam.debug.xcconfig */,
+				F149F3CCFBE0B3B9568A126E /* Pods-funjcam.release.xcconfig */,
+				B4FDD10E79709842C6A3E013 /* Pods-funjcamTests.debug.xcconfig */,
+				8C39656370193851CBE3C7D2 /* Pods-funjcamTests.release.xcconfig */,
+				7716B7B5622D1884B406F1BB /* Pods-funjcamUITests.debug.xcconfig */,
+				F4322FB85A1C8BB920E5760B /* Pods-funjcamUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7659BE7B55A2B137A15E31FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				302148B63C4DB51F309D0D4B /* Pods_funjcam.framework */,
+				48566E8E7B2F6E0D1353AA65 /* Pods_funjcamTests.framework */,
+				BFC8CD76EFF387EC6C76E058 /* Pods_funjcamUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8D18F1951D3DF8800058F005 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +119,8 @@
 				8D18F1B51D3DF8800058F005 /* funjcamTests */,
 				8D18F1C01D3DF8800058F005 /* funjcamUITests */,
 				8D18F19F1D3DF8800058F005 /* Products */,
+				0E5C8D4C0F50B7978ECCE864 /* Pods */,
+				7659BE7B55A2B137A15E31FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D18F1C61D3DF8800058F005 /* Build configuration list for PBXNativeTarget "funjcam" */;
 			buildPhases = (
+				C65F5E3EB3C8481F4738E134 /* [CP] Check Pods Manifest.lock */,
 				8D18F19A1D3DF8800058F005 /* Sources */,
 				8D18F19B1D3DF8800058F005 /* Frameworks */,
 				8D18F19C1D3DF8800058F005 /* Resources */,
+				8B8ED294865CDBB9D5429A5B /* [CP] Embed Pods Frameworks */,
+				720EB2C96CABDC34E98B38BB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D18F1C91D3DF8800058F005 /* Build configuration list for PBXNativeTarget "funjcamTests" */;
 			buildPhases = (
+				A9C267D3664CDE0800979133 /* [CP] Check Pods Manifest.lock */,
 				8D18F1AE1D3DF8800058F005 /* Sources */,
 				8D18F1AF1D3DF8800058F005 /* Frameworks */,
 				8D18F1B01D3DF8800058F005 /* Resources */,
+				CB717055128D83CD6F24C56D /* [CP] Embed Pods Frameworks */,
+				C64BF04198532CAA59D13752 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +213,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D18F1CC1D3DF8800058F005 /* Build configuration list for PBXNativeTarget "funjcamUITests" */;
 			buildPhases = (
+				524F39525C036D7CF4D451DC /* [CP] Check Pods Manifest.lock */,
 				8D18F1B91D3DF8800058F005 /* Sources */,
 				8D18F1BA1D3DF8800058F005 /* Frameworks */,
 				8D18F1BB1D3DF8800058F005 /* Resources */,
+				6FB68FB2FCD4DDD819DCC645 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +298,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		524F39525C036D7CF4D451DC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6FB68FB2FCD4DDD819DCC645 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-funjcamUITests/Pods-funjcamUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		720EB2C96CABDC34E98B38BB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-funjcam/Pods-funjcam-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8B8ED294865CDBB9D5429A5B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-funjcam/Pods-funjcam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9C267D3664CDE0800979133 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C64BF04198532CAA59D13752 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-funjcamTests/Pods-funjcamTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C65F5E3EB3C8481F4738E134 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CB717055128D83CD6F24C56D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-funjcamTests/Pods-funjcamTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D18F19A1D3DF8800058F005 /* Sources */ = {
@@ -399,6 +570,7 @@
 		};
 		8D18F1C71D3DF8800058F005 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBA530D50F768DD661364FA7 /* Pods-funjcam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = funjcam/Info.plist;
@@ -410,6 +582,7 @@
 		};
 		8D18F1C81D3DF8800058F005 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F149F3CCFBE0B3B9568A126E /* Pods-funjcam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = funjcam/Info.plist;
@@ -421,6 +594,7 @@
 		};
 		8D18F1CA1D3DF8800058F005 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4FDD10E79709842C6A3E013 /* Pods-funjcamTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = funjcamTests/Info.plist;
@@ -433,6 +607,7 @@
 		};
 		8D18F1CB1D3DF8800058F005 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C39656370193851CBE3C7D2 /* Pods-funjcamTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = funjcamTests/Info.plist;
@@ -445,6 +620,7 @@
 		};
 		8D18F1CD1D3DF8800058F005 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7716B7B5622D1884B406F1BB /* Pods-funjcamUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = funjcamUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -456,6 +632,7 @@
 		};
 		8D18F1CE1D3DF8800058F005 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4322FB85A1C8BB920E5760B /* Pods-funjcamUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = funjcamUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -484,6 +661,7 @@
 				8D18F1C81D3DF8800058F005 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8D18F1C91D3DF8800058F005 /* Build configuration list for PBXNativeTarget "funjcamTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +670,7 @@
 				8D18F1CB1D3DF8800058F005 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8D18F1CC1D3DF8800058F005 /* Build configuration list for PBXNativeTarget "funjcamUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +679,7 @@
 				8D18F1CE1D3DF8800058F005 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
