@@ -6,8 +6,6 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-import UIKit
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

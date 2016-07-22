@@ -8,16 +8,37 @@
 
 class SearchViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var searchKeyword: String {
+        if !(self.textField.text?.isEmpty ?? false) {
+            return self.textField.text!
+        } else if !(self.textField.placeholder?.isEmpty ?? false) {
+            return self.textField.placeholder!
+        } else {
+            return ""
+        }
+    }
     var searchedImages: Array<SearchedImage>?
+    
+    class func viewController() -> SearchViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewControllerWithIdentifier("SearchViewController") as! SearchViewController
+        return viewController
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        self.setupTextField()
         
         self.setupCollectionView()
-        
-        self.requestData()
+    }
+    
+    func setupTextField() {
+        self.textField.placeholder = "그럼하지마"
+        self.textField.becomeFirstResponder()
     }
     
     func setupCollectionView() {
@@ -28,10 +49,22 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
     
     func requestData() {
-        ApiManager.shared.searchImage("태연", resultPage: .None) { (searchedImages) in
-            self.searchedImages = searchedImages
-            self.collectionView.reloadData()
+        ApiManager.shared.searchImage(keyword: self.searchKeyword, startIndex: (self.searchedImages?.count ?? 0) + 1, resultPage: .None) { [weak self] (searchedImages) in
+            if self?.searchedImages?.count ?? 0 == 0 {
+                self?.searchedImages = searchedImages
+            } else {
+                if let searchedImages = searchedImages {
+                    self?.searchedImages?.appendContentsOf(searchedImages)
+                }
+            }
+            self?.collectionView.reloadData()
         }
+    }
+    
+    @IBAction func onSearchTapped(sender: UITextField) {
+        self.searchedImages = nil
+        self.requestData()
+        self.view.endEditing(true)
     }
     
     // Mark: UICollectionViewDataSource
