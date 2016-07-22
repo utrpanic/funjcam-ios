@@ -8,6 +8,8 @@
 
 class SearchedImageGridCell: UICollectionViewCell {
     
+    class var defaultHeight: CGFloat { return 110 }
+    
     @IBOutlet weak var imageView: UIImageView!
     
     override func awakeFromNib() {

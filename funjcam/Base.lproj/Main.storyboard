@@ -26,8 +26,7 @@
         <!--Search-->
         <scene sceneID="BLL-4K-uyJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="POx-rj-wmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="ulD-89-oWJ" customClass="SearchViewController" customModule="funjcam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ulD-89-oWJ" customClass="SearchViewController" customModule="funjcam" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fe4-g6-iiI"/>
                         <viewControllerLayoutGuide type="bottom" id="Fcm-LP-6vq"/>
@@ -48,9 +47,9 @@
                                 </connections>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SNe-0l-Bu4">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cMl-vd-tH4">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="cMl-vd-tH4">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -66,7 +65,7 @@
                             <constraint firstItem="OVV-kY-ovN" firstAttribute="leading" secondItem="R0I-O4-SbA" secondAttribute="leading" constant="8" id="Mx7-IA-AYp"/>
                             <constraint firstItem="SNe-0l-Bu4" firstAttribute="leading" secondItem="R0I-O4-SbA" secondAttribute="leading" id="NV5-MJ-sP7"/>
                             <constraint firstItem="SNe-0l-Bu4" firstAttribute="top" secondItem="OVV-kY-ovN" secondAttribute="bottom" id="Qwx-IS-4OY"/>
-                            <constraint firstItem="Fcm-LP-6vq" firstAttribute="top" secondItem="SNe-0l-Bu4" secondAttribute="bottom" id="o9X-mG-SAm"/>
+                            <constraint firstAttribute="bottom" secondItem="SNe-0l-Bu4" secondAttribute="bottom" id="VGx-Nc-j25"/>
                             <constraint firstItem="OVV-kY-ovN" firstAttribute="top" secondItem="fe4-g6-iiI" secondAttribute="bottom" id="qNE-SP-Pnf"/>
                         </constraints>
                     </view>
@@ -76,6 +75,7 @@
                         <outlet property="textField" destination="OVV-kY-ovN" id="aAP-Nu-3J5"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="POx-rj-wmG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="435" y="-93"/>
         </scene>

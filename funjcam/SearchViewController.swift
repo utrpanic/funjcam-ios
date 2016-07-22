@@ -7,6 +7,13 @@
 //
 
 class SearchViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    enum Section: Int {
+        case Image
+        case More
+        case Empty
+        static let count = Section.Empty.rawValue + 1
+    }
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -46,6 +53,8 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
         self.collectionView.delegate = self
         
         self.collectionView.registerClassById(SearchedImageGridCell.id)
+        self.collectionView.registerClassById(MoreGridCell.id)
+        self.collectionView.registerClassById(EmptySearchGridCell.id)
     }
     
     func requestData() {
@@ -68,36 +77,83 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
     
     // Mark: UICollectionViewDataSource
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return Section.count
+    }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.searchedImages?.count ?? 0
+        switch Section(rawValue: section)! {
+        case .Image:
+            return self.searchedImages?.count ?? 0
+        case .More:
+            return 0
+        case .Empty:
+            return self.searchedImages?.count ?? 0 == 0 ? 1 : 0
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SearchedImageGridCell.id, forIndexPath: indexPath) as! SearchedImageGridCell
-        cell.configureCell(self.searchedImages?[indexPath.item])
-        return cell
+        switch Section(rawValue: indexPath.section)! {
+        case .Image:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SearchedImageGridCell.id, forIndexPath: indexPath) as! SearchedImageGridCell
+            cell.configureCell(self.searchedImages?[indexPath.item])
+            return cell
+        case .More:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(MoreGridCell.id, forIndexPath: indexPath) as! MoreGridCell
+            return cell
+        case .Empty:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(EmptySearchGridCell.id, forIndexPath: indexPath) as! EmptySearchGridCell
+            return cell
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSizeMake((collectionView.frame.width - 8 - 8 - 8) / 2, 96)
+        switch Section(rawValue: indexPath.section)! {
+        case .Image:
+            return CGSizeMake((collectionView.frame.width - 8 - 8 - 8) / 2, SearchedImageGridCell.defaultHeight)
+        case .More:
+            return CGSizeMake(collectionView.frame.width, MoreGridCell.defaultHeight)
+        case .Empty:
+            return collectionView.frame.size
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(8, 8, 8, 8)
+        switch Section(rawValue: section)! {
+        case .Image:
+            return self.searchedImages?.count ?? 0 > 0 ? UIEdgeInsetsMake(8, 8, 8, 8) : UIEdgeInsetsZero
+        default:
+            return UIEdgeInsetsZero
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 8
+        switch Section(rawValue: section)! {
+        case .Image:
+            return 8
+        default:
+            return 0
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 8
+        switch Section(rawValue: section)! {
+        case .Image:
+            return 8
+        default:
+            return 0
+        }
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if let imageToShare = (collectionView.cellForItemAtIndexPath(indexPath) as? SearchedImageGridCell)?.imageView.image {
-            let viewController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
-            self.presentViewController(viewController, animated: true, completion: nil)
+        switch Section(rawValue: indexPath.section)! {
+        case .Image:
+            if let imageToShare = (collectionView.cellForItemAtIndexPath(indexPath) as? SearchedImageGridCell)?.imageView.image {
+                let viewController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
+                self.presentViewController(viewController, animated: true, completion: nil)
+            }
+        default:
+            // do nothing.
+            break
         }
     }
 

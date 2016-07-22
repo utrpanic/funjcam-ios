@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		8AAE0230481940372BC42906 /* Pods_funjcam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302148B63C4DB51F309D0D4B /* Pods_funjcam.framework */; };
 		8C3CC99F2B5D6E7DE8BEB055 /* Pods_funjcamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48566E8E7B2F6E0D1353AA65 /* Pods_funjcamTests.framework */; };
+		8D0442541D42024800F8D6D4 /* EmptySearchGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0442531D42024800F8D6D4 /* EmptySearchGridCell.swift */; };
+		8D0442561D42025C00F8D6D4 /* MoreGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0442551D42025C00F8D6D4 /* MoreGridCell.swift */; };
+		8D0442581D42026A00F8D6D4 /* MoreGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0442571D42026A00F8D6D4 /* MoreGridCell.xib */; };
+		8D04425A1D42027900F8D6D4 /* EmptySearchGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0442591D42027900F8D6D4 /* EmptySearchGridCell.xib */; };
 		8D18F1A21D3DF8800058F005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1A11D3DF8800058F005 /* AppDelegate.swift */; };
 		8D18F1A41D3DF8800058F005 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1A31D3DF8800058F005 /* MainViewController.swift */; };
 		8D18F1A71D3DF8800058F005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D18F1A51D3DF8800058F005 /* Main.storyboard */; };
@@ -51,6 +55,10 @@
 		48566E8E7B2F6E0D1353AA65 /* Pods_funjcamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_funjcamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7716B7B5622D1884B406F1BB /* Pods-funjcamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-funjcamUITests/Pods-funjcamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C39656370193851CBE3C7D2 /* Pods-funjcamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-funjcamTests/Pods-funjcamTests.release.xcconfig"; sourceTree = "<group>"; };
+		8D0442531D42024800F8D6D4 /* EmptySearchGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptySearchGridCell.swift; sourceTree = "<group>"; };
+		8D0442551D42025C00F8D6D4 /* MoreGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreGridCell.swift; sourceTree = "<group>"; };
+		8D0442571D42026A00F8D6D4 /* MoreGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreGridCell.xib; sourceTree = "<group>"; };
+		8D0442591D42027900F8D6D4 /* EmptySearchGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptySearchGridCell.xib; sourceTree = "<group>"; };
 		8D18F19E1D3DF8800058F005 /* funjcam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = funjcam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D18F1A11D3DF8800058F005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D18F1A31D3DF8800058F005 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -231,8 +239,12 @@
 		8D18F1DE1D3E01D70058F005 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8D18F1E31D3E023D0058F005 /* SearchedImageGridCell.swift */,
 				8D18F1E41D3E023D0058F005 /* SearchedImageGridCell.xib */,
+				8D18F1E31D3E023D0058F005 /* SearchedImageGridCell.swift */,
+				8D0442571D42026A00F8D6D4 /* MoreGridCell.xib */,
+				8D0442551D42025C00F8D6D4 /* MoreGridCell.swift */,
+				8D0442591D42027900F8D6D4 /* EmptySearchGridCell.xib */,
+				8D0442531D42024800F8D6D4 /* EmptySearchGridCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -353,6 +365,8 @@
 				8D18F1A91D3DF8800058F005 /* Assets.xcassets in Resources */,
 				8D18F1E61D3E023D0058F005 /* SearchedImageGridCell.xib in Resources */,
 				8D18F1A71D3DF8800058F005 /* Main.storyboard in Resources */,
+				8D04425A1D42027900F8D6D4 /* EmptySearchGridCell.xib in Resources */,
+				8D0442581D42026A00F8D6D4 /* MoreGridCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +514,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0442561D42025C00F8D6D4 /* MoreGridCell.swift in Sources */,
 				8D18F1D21D3DFABA0058F005 /* Extension.swift in Sources */,
 				8D18F1EC1D3E024A0058F005 /* SearchViewController.swift in Sources */,
 				8D18F1EB1D3E024A0058F005 /* RecentViewController.swift in Sources */,
@@ -507,6 +522,7 @@
 				8D18F1A41D3DF8800058F005 /* MainViewController.swift in Sources */,
 				8D18F1DD1D3DFBA10058F005 /* LogManager.swift in Sources */,
 				8D18F1A21D3DF8800058F005 /* AppDelegate.swift in Sources */,
+				8D0442541D42024800F8D6D4 /* EmptySearchGridCell.swift in Sources */,
 				8D18F1DA1D3DFB640058F005 /* ApiManager.swift in Sources */,
 				8D18F1E51D3E023D0058F005 /* SearchedImageGridCell.swift in Sources */,
 				8D18F1EA1D3E024A0058F005 /* BookmarkViewController.swift in Sources */,
