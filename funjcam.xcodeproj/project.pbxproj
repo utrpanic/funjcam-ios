@@ -13,6 +13,8 @@
 		8D0442561D42025C00F8D6D4 /* MoreGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0442551D42025C00F8D6D4 /* MoreGridCell.swift */; };
 		8D0442581D42026A00F8D6D4 /* MoreGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0442571D42026A00F8D6D4 /* MoreGridCell.xib */; };
 		8D04425A1D42027900F8D6D4 /* EmptySearchGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D0442591D42027900F8D6D4 /* EmptySearchGridCell.xib */; };
+		8D0442691D4212B200F8D6D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D04426B1D4212B200F8D6D4 /* Localizable.strings */; };
+		8D04426E1D42145300F8D6D4 /* GlobalFuntion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D04426D1D42145300F8D6D4 /* GlobalFuntion.swift */; };
 		8D18F1A21D3DF8800058F005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1A11D3DF8800058F005 /* AppDelegate.swift */; };
 		8D18F1A41D3DF8800058F005 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D18F1A31D3DF8800058F005 /* MainViewController.swift */; };
 		8D18F1A71D3DF8800058F005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D18F1A51D3DF8800058F005 /* Main.storyboard */; };
@@ -59,6 +61,9 @@
 		8D0442551D42025C00F8D6D4 /* MoreGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreGridCell.swift; sourceTree = "<group>"; };
 		8D0442571D42026A00F8D6D4 /* MoreGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreGridCell.xib; sourceTree = "<group>"; };
 		8D0442591D42027900F8D6D4 /* EmptySearchGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptySearchGridCell.xib; sourceTree = "<group>"; };
+		8D04426A1D4212B200F8D6D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8D04426C1D4212C400F8D6D4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8D04426D1D42145300F8D6D4 /* GlobalFuntion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFuntion.swift; sourceTree = "<group>"; };
 		8D18F19E1D3DF8800058F005 /* funjcam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = funjcam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D18F1A11D3DF8800058F005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D18F1A31D3DF8800058F005 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -170,7 +175,6 @@
 				8D18F1D51D3DFB080058F005 /* Model */,
 				8D18F1D81D3DFB510058F005 /* Networking */,
 				8D18F1DE1D3E01D70058F005 /* View */,
-				8D18F1DB1D3DFB870058F005 /* Util */,
 				8D18F1A11D3DF8800058F005 /* AppDelegate.swift */,
 				8D18F1A51D3DF8800058F005 /* Main.storyboard */,
 				8D18F1A31D3DF8800058F005 /* MainViewController.swift */,
@@ -179,6 +183,7 @@
 				8D18F1E71D3E02490058F005 /* BookmarkViewController.swift */,
 				8D18F1AA1D3DF8800058F005 /* LaunchScreen.storyboard */,
 				8D18F1A81D3DF8800058F005 /* Assets.xcassets */,
+				8D04426B1D4212B200F8D6D4 /* Localizable.strings */,
 				8D18F1AD1D3DF8800058F005 /* Info.plist */,
 			);
 			path = funjcam;
@@ -208,6 +213,8 @@
 				8D18F1D01D3DFA750058F005 /* BridgingHeader.h */,
 				8D18F1D11D3DFABA0058F005 /* Extension.swift */,
 				8D18F1D31D3DFAF30058F005 /* BaseViewController.swift */,
+				8D18F1DC1D3DFBA10058F005 /* LogManager.swift */,
+				8D04426D1D42145300F8D6D4 /* GlobalFuntion.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -226,14 +233,6 @@
 				8D18F1D91D3DFB640058F005 /* ApiManager.swift */,
 			);
 			name = Networking;
-			sourceTree = "<group>";
-		};
-		8D18F1DB1D3DFB870058F005 /* Util */ = {
-			isa = PBXGroup;
-			children = (
-				8D18F1DC1D3DFBA10058F005 /* LogManager.swift */,
-			);
-			name = Util;
 			sourceTree = "<group>";
 		};
 		8D18F1DE1D3E01D70058F005 /* View */ = {
@@ -343,6 +342,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 8D18F1951D3DF8800058F005;
 			productRefGroup = 8D18F19F1D3DF8800058F005 /* Products */;
@@ -364,6 +364,7 @@
 				8D18F1AC1D3DF8800058F005 /* LaunchScreen.storyboard in Resources */,
 				8D18F1A91D3DF8800058F005 /* Assets.xcassets in Resources */,
 				8D18F1E61D3E023D0058F005 /* SearchedImageGridCell.xib in Resources */,
+				8D0442691D4212B200F8D6D4 /* Localizable.strings in Resources */,
 				8D18F1A71D3DF8800058F005 /* Main.storyboard in Resources */,
 				8D04425A1D42027900F8D6D4 /* EmptySearchGridCell.xib in Resources */,
 				8D0442581D42026A00F8D6D4 /* MoreGridCell.xib in Resources */,
@@ -520,6 +521,7 @@
 				8D18F1EB1D3E024A0058F005 /* RecentViewController.swift in Sources */,
 				8D18F1D41D3DFAF30058F005 /* BaseViewController.swift in Sources */,
 				8D18F1A41D3DF8800058F005 /* MainViewController.swift in Sources */,
+				8D04426E1D42145300F8D6D4 /* GlobalFuntion.swift in Sources */,
 				8D18F1DD1D3DFBA10058F005 /* LogManager.swift in Sources */,
 				8D18F1A21D3DF8800058F005 /* AppDelegate.swift in Sources */,
 				8D0442541D42024800F8D6D4 /* EmptySearchGridCell.swift in Sources */,
@@ -562,6 +564,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8D04426B1D4212B200F8D6D4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D04426A1D4212B200F8D6D4 /* Base */,
+				8D04426C1D4212C400F8D6D4 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		8D18F1A51D3DF8800058F005 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
