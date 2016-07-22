@@ -58,7 +58,8 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
     
     func requestData() {
-        ApiManager.shared.searchImage(keyword: self.searchKeyword, startIndex: (self.searchedImages?.count ?? 0) + 1, resultPage: .None) { [weak self] (searchedImages) in
+        ApiManager.shared.searchImage(keyword: self.searchKeyword, startIndex: (self.searchedImages?.count ?? 0) + 1, resultPage: .None) { [weak self] (searchedImages, nextPage) in
+            Log?.d("\(nextPage)")
             if self?.searchedImages?.count ?? 0 == 0 {
                 self?.searchedImages = searchedImages
             } else {

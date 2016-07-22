@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		074B8A961D428DE60094F36B /* NextPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B8A951D428DE60094F36B /* NextPage.swift */; };
 		8AAE0230481940372BC42906 /* Pods_funjcam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302148B63C4DB51F309D0D4B /* Pods_funjcam.framework */; };
 		8C3CC99F2B5D6E7DE8BEB055 /* Pods_funjcamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48566E8E7B2F6E0D1353AA65 /* Pods_funjcamTests.framework */; };
 		8D0442541D42024800F8D6D4 /* EmptySearchGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0442531D42024800F8D6D4 /* EmptySearchGridCell.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		074B8A951D428DE60094F36B /* NextPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextPage.swift; sourceTree = "<group>"; };
 		302148B63C4DB51F309D0D4B /* Pods_funjcam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_funjcam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48566E8E7B2F6E0D1353AA65 /* Pods_funjcamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_funjcamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7716B7B5622D1884B406F1BB /* Pods-funjcamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-funjcamUITests/Pods-funjcamUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				8D18F1D91D3DFB640058F005 /* ApiManager.swift */,
+				074B8A951D428DE60094F36B /* NextPage.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -518,6 +521,7 @@
 				8D0442561D42025C00F8D6D4 /* MoreGridCell.swift in Sources */,
 				8D18F1D21D3DFABA0058F005 /* Extension.swift in Sources */,
 				8D18F1EC1D3E024A0058F005 /* SearchViewController.swift in Sources */,
+				074B8A961D428DE60094F36B /* NextPage.swift in Sources */,
 				8D18F1EB1D3E024A0058F005 /* RecentViewController.swift in Sources */,
 				8D18F1D41D3DFAF30058F005 /* BaseViewController.swift in Sources */,
 				8D18F1A41D3DF8800058F005 /* MainViewController.swift in Sources */,

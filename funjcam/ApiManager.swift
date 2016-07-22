@@ -26,7 +26,7 @@ class ApiManager {
         "searchType": "image",
         ]
     
-    func searchImage(keyword keyword: String, startIndex: Int, resultPage: SearchResultPage, completion: (Array<SearchedImage>?) -> Void) {
+    func searchImage(keyword keyword: String, startIndex: Int, resultPage: SearchResultPage, completion: (Array<SearchedImage>?, NextPage?) -> Void) {
         var parameters = self.queryParameters
         parameters["num"] = 10 // 1~10만 허용.
         parameters["q"] = keyword
@@ -34,7 +34,10 @@ class ApiManager {
         Alamofire.request(.GET, self.googleCustomSearchUrl, parameters: parameters).responseJSON { (response) in
             Log?.d(response.result.value)
             if let json = response.result.value as? Dictionary<String, AnyObject> {
-                completion(Mapper<SearchedImage>().mapArray(json["items"]))
+                let searchedImages = Mapper<SearchedImage>().mapArray(json["items"])
+                Log?.d("\(json["queries"]?["nextPage"])")
+                let nextPage = Mapper<NextPage>().map((json["queries"] as? Dictionary<String, AnyObject>)?["nextPage"])
+                completion(searchedImages, nextPage)
             }
         }
     }
