@@ -10,7 +10,7 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     
     enum Section: Int {
         case Image
-        case More
+        case LoadMore
         case Empty
         static let count = Section.Empty.rawValue + 1
     }
@@ -27,7 +27,14 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
             return ""
         }
     }
-    var searchedImages: Array<SearchedImage>?
+    var searchedImages: Array<SearchedImage>? {
+        willSet {
+            if newValue == nil {
+                self.nextPageStartIndex = nil
+            }
+        }
+    }
+    var nextPageStartIndex: Int?
     
     class func viewController() -> SearchViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -53,12 +60,12 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
         self.collectionView.delegate = self
         
         self.collectionView.registerClassById(SearchedImageGridCell.id)
-        self.collectionView.registerClassById(MoreGridCell.id)
+        self.collectionView.registerClassById(LoadMoreGridCell.id)
         self.collectionView.registerClassById(EmptySearchGridCell.id)
     }
     
     func requestData() {
-        ApiManager.shared.searchImage(keyword: self.searchKeyword, startIndex: (self.searchedImages?.count ?? 0) + 1, resultPage: .None) { [weak self] (searchedImages) in
+        ApiManager.shared.searchImage(keyword: self.searchKeyword, startIndex: self.nextPageStartIndex) { [weak self] (searchedImages, nextPageStartIndex) in
             if self?.searchedImages?.count ?? 0 == 0 {
                 self?.searchedImages = searchedImages
             } else {
@@ -66,6 +73,7 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
                     self?.searchedImages?.appendContentsOf(searchedImages)
                 }
             }
+            self?.nextPageStartIndex = nextPageStartIndex
             self?.collectionView.reloadData()
         }
     }
@@ -84,8 +92,8 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
         switch Section(rawValue: section)! {
         case .Image:
             return self.searchedImages?.count ?? 0
-        case .More:
-            return 0
+        case .LoadMore:
+            return self.nextPageStartIndex != nil ? 1 : 0
         case .Empty:
             return self.searchedImages?.count ?? 0 == 0 ? 1 : 0
         }
@@ -97,8 +105,8 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(SearchedImageGridCell.id, forIndexPath: indexPath) as! SearchedImageGridCell
             cell.configureCell(self.searchedImages?[indexPath.item])
             return cell
-        case .More:
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(MoreGridCell.id, forIndexPath: indexPath) as! MoreGridCell
+        case .LoadMore:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(LoadMoreGridCell.id, forIndexPath: indexPath) as! LoadMoreGridCell
             return cell
         case .Empty:
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(EmptySearchGridCell.id, forIndexPath: indexPath) as! EmptySearchGridCell
@@ -106,12 +114,23 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
         }
     }
     
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        switch Section(rawValue: indexPath.section)! {
+        case .LoadMore:
+            if let _ = self.nextPageStartIndex {
+                self.requestData()
+            }
+        default:
+            break
+        }
+    }
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         switch Section(rawValue: indexPath.section)! {
         case .Image:
             return CGSizeMake((collectionView.frame.width - 8 - 8 - 8) / 2, SearchedImageGridCell.defaultHeight)
-        case .More:
-            return CGSizeMake(collectionView.frame.width, MoreGridCell.defaultHeight)
+        case .LoadMore:
+            return CGSizeMake(collectionView.frame.width, LoadMoreGridCell.defaultHeight)
         case .Empty:
             return collectionView.frame.size
         }

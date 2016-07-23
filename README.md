@@ -1,9 +1,11 @@
 # funjcam-ios
 
 ## Goals
-* Testing GoogleCustomSearch
-* Testing fastlane
-* Testing NimbusKit
+* Try GoogleCustomSearch
+* Try fastlane
+* Try NimbusKit
+* Try Realm
+* Try App Extension - Share
 
 ## Requirements
 * iOS 9.0+
