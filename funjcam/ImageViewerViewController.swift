@@ -10,6 +10,8 @@ class ImageViewerViewController: BaseViewController {
     
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var shareToKakaoTalkButton: UIButton!
+    @IBOutlet weak var shareButton: UIButton!
     
     var image: UIImage?
     
@@ -24,13 +26,32 @@ class ImageViewerViewController: BaseViewController {
         super.viewDidLoad()
         
         self.setupImageViewer()
+        
+        self.setupButtons()
     }
     
     func setupImageViewer() {
         self.imageView.image = image
     }
     
+    func setupButtons() {
+        self.closeButton.setTitle(LocalizedString("close"), forState: .Normal)
+        self.shareToKakaoTalkButton.setTitle(LocalizedString("kakao_talk"), forState: .Normal)
+        self.shareButton.setTitle(LocalizedString("share"), forState: .Normal)
+    }
+    
     @IBAction func onCloseTapped(sender: UIButton) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func onShareToKakaoTalkTapped(sender: UIButton) {
+    }
+    
+    @IBAction func onShareTapped(sender: UIButton) {
+        if let image = self.image {
+            let viewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            self.presentViewController(viewController, animated: true, completion: nil)
+        }
+    }
+    
 }

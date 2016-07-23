@@ -31,13 +31,45 @@
                                     <action selector="onCloseTapped:" destination="M3c-Gq-AL0" eventType="touchUpInside" id="tkY-bI-9IV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXA-L5-WAZ">
+                                <rect key="frame" x="460" y="556" width="68" height="44"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="PAy-Sz-uTb"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <state key="normal" title="카카오톡">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onShareToKakaoTalkTapped:" destination="M3c-Gq-AL0" eventType="touchUpInside" id="f5g-Lz-KEB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lQf-OQ-kqd">
+                                <rect key="frame" x="532" y="556" width="68" height="44"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="uPU-cd-4yz"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <state key="normal" title="공유하기">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onShareTapped:" destination="M3c-Gq-AL0" eventType="touchUpInside" id="QtO-6R-S0U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="F7H-kp-tIt" firstAttribute="top" secondItem="wsF-1D-nFC" secondAttribute="bottom" id="7Ue-zE-0BL"/>
+                            <constraint firstItem="zHN-TX-G1m" firstAttribute="top" secondItem="nXA-L5-WAZ" secondAttribute="bottom" id="9RV-Li-tZL"/>
+                            <constraint firstAttribute="trailing" secondItem="lQf-OQ-kqd" secondAttribute="trailing" id="A3F-fp-tO2"/>
                             <constraint firstItem="ITd-h5-vjM" firstAttribute="leading" secondItem="ZlZ-MJ-sCO" secondAttribute="leading" id="CFo-5F-QdU"/>
                             <constraint firstItem="zHN-TX-G1m" firstAttribute="top" secondItem="F7H-kp-tIt" secondAttribute="bottom" id="EJ2-F4-orb"/>
                             <constraint firstItem="ITd-h5-vjM" firstAttribute="top" secondItem="wsF-1D-nFC" secondAttribute="bottom" id="Ngf-6g-IjP"/>
+                            <constraint firstItem="lQf-OQ-kqd" firstAttribute="leading" secondItem="nXA-L5-WAZ" secondAttribute="trailing" constant="4" id="Sr2-Pn-tRd"/>
+                            <constraint firstItem="zHN-TX-G1m" firstAttribute="top" secondItem="lQf-OQ-kqd" secondAttribute="bottom" id="Tgz-ew-zHz"/>
                             <constraint firstItem="F7H-kp-tIt" firstAttribute="leading" secondItem="ZlZ-MJ-sCO" secondAttribute="leading" id="ot5-zK-2GV"/>
                             <constraint firstAttribute="trailing" secondItem="F7H-kp-tIt" secondAttribute="trailing" id="xaN-ee-9Wa"/>
                         </constraints>
@@ -45,6 +77,8 @@
                     <connections>
                         <outlet property="closeButton" destination="ITd-h5-vjM" id="ZXU-gw-lle"/>
                         <outlet property="imageView" destination="F7H-kp-tIt" id="6hb-TM-9wp"/>
+                        <outlet property="shareButton" destination="lQf-OQ-kqd" id="2C2-ml-KmI"/>
+                        <outlet property="shareToKakaoTalkButton" destination="nXA-L5-WAZ" id="TZS-kD-NW1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R9m-hA-6Kb" userLabel="First Responder" sceneMemberID="firstResponder"/>
