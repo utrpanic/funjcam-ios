@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="M3c-Gq-AL0">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Image Viewer View Controller-->
+        <scene sceneID="GCc-72-sqC">
+            <objects>
+                <viewController id="M3c-Gq-AL0" customClass="ImageViewerViewController" customModule="funjcam" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wsF-1D-nFC"/>
+                        <viewControllerLayoutGuide type="bottom" id="zHN-TX-G1m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZlZ-MJ-sCO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F7H-kp-tIt">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITd-h5-vjM">
+                                <rect key="frame" x="0.0" y="20" width="42" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="zwg-2C-FI6"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <state key="normal" title="닫기"/>
+                                <connections>
+                                    <action selector="onCloseTapped:" destination="M3c-Gq-AL0" eventType="touchUpInside" id="tkY-bI-9IV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="F7H-kp-tIt" firstAttribute="top" secondItem="wsF-1D-nFC" secondAttribute="bottom" id="7Ue-zE-0BL"/>
+                            <constraint firstItem="ITd-h5-vjM" firstAttribute="leading" secondItem="ZlZ-MJ-sCO" secondAttribute="leading" id="CFo-5F-QdU"/>
+                            <constraint firstItem="zHN-TX-G1m" firstAttribute="top" secondItem="F7H-kp-tIt" secondAttribute="bottom" id="EJ2-F4-orb"/>
+                            <constraint firstItem="ITd-h5-vjM" firstAttribute="top" secondItem="wsF-1D-nFC" secondAttribute="bottom" id="Ngf-6g-IjP"/>
+                            <constraint firstItem="F7H-kp-tIt" firstAttribute="leading" secondItem="ZlZ-MJ-sCO" secondAttribute="leading" id="ot5-zK-2GV"/>
+                            <constraint firstAttribute="trailing" secondItem="F7H-kp-tIt" secondAttribute="trailing" id="xaN-ee-9Wa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="ITd-h5-vjM" id="ZXU-gw-lle"/>
+                        <outlet property="imageView" destination="F7H-kp-tIt" id="6hb-TM-9wp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9m-hA-6Kb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="463" y="359"/>
+        </scene>
+    </scenes>
+</document>
