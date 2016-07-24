@@ -48,7 +48,12 @@ class ImageViewerViewController: BaseViewController {
     
     @IBAction func onShareToKakaoTalkTapped(sender: UIButton) {
         if let link = self.searchedImage?.link {
-            let linkObject = KakaoTalkLinkObject.createImage(link, width: 138, height: 80)
+            let linkObject: KakaoTalkLinkObject
+            if let width = self.searchedImage?.width, let height = self.searchedImage?.height {
+                linkObject = KakaoTalkLinkObject.createImage(link, width: Int32(width), height: Int32(height))
+            } else {
+                linkObject = KakaoTalkLinkObject.createImage(link, width: 80, height: 80)
+            }
             KOAppCall.openKakaoTalkAppLink([linkObject])
         }
     }

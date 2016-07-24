@@ -11,6 +11,11 @@ import ObjectMapper
 class SearchedImage: Mappable {
     var thumbnailLink: String?
     var link: String?
+    var width: Int?
+    var height: Int?
+    var byteSize: Int?
+    
+    var contextLink: String?
     
     required init?(_ map: Map) {
         
@@ -19,5 +24,9 @@ class SearchedImage: Mappable {
     func mapping(map: Map) {
         thumbnailLink   <- map["image.thumbnailLink"]
         link            <- map["link"]
+        width           <- map["image.width"]
+        height          <- map["image.height"]
+        byteSize        <- map["image.byteSize"]
+        contextLink     <- map["image.contextLink"]
     }
 }
