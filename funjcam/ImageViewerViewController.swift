@@ -14,11 +14,13 @@ class ImageViewerViewController: BaseViewController {
     @IBOutlet weak var shareButton: UIButton!
     
     var image: UIImage?
+    var searchedImage: SearchedImage?
     
-    class func viewController(image image: UIImage?) -> ImageViewerViewController {
+    class func viewController(image image: UIImage?, searchedImage: SearchedImage?) -> ImageViewerViewController {
         let storyboard = UIStoryboard(name: "ImageViewer", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController() as! ImageViewerViewController
         viewController.image = image
+        viewController.searchedImage = searchedImage
         return viewController
     }
     
@@ -45,6 +47,10 @@ class ImageViewerViewController: BaseViewController {
     }
     
     @IBAction func onShareToKakaoTalkTapped(sender: UIButton) {
+        if let link = self.searchedImage?.link {
+            let linkObject = KakaoTalkLinkObject.createImage(link, width: 138, height: 80)
+            KOAppCall.openKakaoTalkAppLink([linkObject])
+        }
     }
     
     @IBAction func onShareTapped(sender: UIButton) {
