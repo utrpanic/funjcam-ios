@@ -166,8 +166,8 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         switch Section(rawValue: indexPath.section)! {
         case .Image:
-            if let imageToShare = (collectionView.cellForItemAtIndexPath(indexPath) as? SearchedImageGridCell)?.imageView.image {
-                let viewController = UIActivityViewController(activityItems: [imageToShare], applicationActivities: nil)
+            if let image = (collectionView.cellForItemAtIndexPath(indexPath) as? SearchedImageGridCell)?.imageView.image {
+                let viewController = ImageViewerViewController.viewController(image: image, searchedImage: self.searchedImages?[indexPath.item])
                 self.presentViewController(viewController, animated: true, completion: nil)
             }
         default:
