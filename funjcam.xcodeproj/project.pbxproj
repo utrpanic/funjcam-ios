@@ -11,6 +11,7 @@
 		074B8A9F1D43097B0094F36B /* ImageViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 074B8A9E1D43097B0094F36B /* ImageViewer.storyboard */; };
 		074B8AA11D43098A0094F36B /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B8AA01D43098A0094F36B /* ImageViewerViewController.swift */; };
 		0769C09C1D44A28E00DA707C /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0769C09B1D44A28E00DA707C /* KakaoOpenSDK.framework */; };
+		0769C09F1D44EF4D00DA707C /* AlbumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0769C09E1D44EF4D00DA707C /* AlbumManager.swift */; };
 		8AAE0230481940372BC42906 /* Pods_funjcam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 302148B63C4DB51F309D0D4B /* Pods_funjcam.framework */; };
 		8C3CC99F2B5D6E7DE8BEB055 /* Pods_funjcamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48566E8E7B2F6E0D1353AA65 /* Pods_funjcamTests.framework */; };
 		8D0442541D42024800F8D6D4 /* EmptySearchGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0442531D42024800F8D6D4 /* EmptySearchGridCell.swift */; };
@@ -61,6 +62,7 @@
 		074B8A9E1D43097B0094F36B /* ImageViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImageViewer.storyboard; sourceTree = "<group>"; };
 		074B8AA01D43098A0094F36B /* ImageViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerViewController.swift; sourceTree = "<group>"; };
 		0769C09B1D44A28E00DA707C /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		0769C09E1D44EF4D00DA707C /* AlbumManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumManager.swift; sourceTree = "<group>"; };
 		302148B63C4DB51F309D0D4B /* Pods_funjcam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_funjcam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48566E8E7B2F6E0D1353AA65 /* Pods_funjcamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_funjcamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7716B7B5622D1884B406F1BB /* Pods-funjcamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-funjcamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-funjcamUITests/Pods-funjcamUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -141,6 +143,14 @@
 			name = ViewController;
 			sourceTree = "<group>";
 		};
+		0769C09D1D44EF3200DA707C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0769C09E1D44EF4D00DA707C /* AlbumManager.swift */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
 		0E5C8D4C0F50B7978ECCE864 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +203,7 @@
 				8D18F1CF1D3DFA5E0058F005 /* Common */,
 				8D18F1D51D3DFB080058F005 /* Model */,
 				8D18F1D81D3DFB510058F005 /* Networking */,
+				0769C09D1D44EF3200DA707C /* Manager */,
 				8D18F1DE1D3E01D70058F005 /* View */,
 				074B8A991D4309040094F36B /* ViewController */,
 				8D18F1A11D3DF8800058F005 /* AppDelegate.swift */,
@@ -552,6 +563,7 @@
 				8D18F1E51D3E023D0058F005 /* SearchedImageGridCell.swift in Sources */,
 				8D18F1EA1D3E024A0058F005 /* BookmarkViewController.swift in Sources */,
 				074B8AA11D43098A0094F36B /* ImageViewerViewController.swift in Sources */,
+				0769C09F1D44EF4D00DA707C /* AlbumManager.swift in Sources */,
 				8D18F1D71D3DFB230058F005 /* SearchedImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

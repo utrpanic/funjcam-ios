@@ -6,6 +6,7 @@
 * Try NimbusKit
 * Try Realm
 * Try App Extension - Share
+* Try App Extension - Today
 
 ## Requirements
 * iOS 9.0+
