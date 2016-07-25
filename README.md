@@ -19,7 +19,8 @@
 pod setup
 ```
 
-``` git clone https://github.com/BoxJeon/funjcam-ios
+``` 
+git clone https://github.com/BoxJeon/funjcam-ios
 cd funjcam-ios
 pod install
 ```
