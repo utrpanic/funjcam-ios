@@ -8,6 +8,13 @@
 
 import SDWebImage
 
+extension String {
+    
+    var urlEncoded: String? {
+        return self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+    }
+}
+
 extension UICollectionView {
     func registerClassById(id: String) {
         self.registerNib(UINib(nibName: id, bundle: nil), forCellWithReuseIdentifier: id)
@@ -20,7 +27,7 @@ extension UICollectionViewCell {
 
 extension UIImageView {
     func setImage(url url: String?, placeholder: UIImage?) {
-        if let url = url {
+        if let url = url?.urlEncoded {
             self.sd_setImageWithURL(NSURL(string: url)!)
         } else {
             self.image = placeholder
