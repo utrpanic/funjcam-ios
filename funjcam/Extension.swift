@@ -9,7 +9,6 @@
 import SDWebImage
 
 extension String {
-    
     var urlEncoded: String? {
         return self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
     }
