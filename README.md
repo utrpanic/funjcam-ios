@@ -6,6 +6,7 @@
 * Try NimbusKit
 * Try Realm
 * Try App Extension - Share
+* Try App Extension - Today
 
 ## Requirements
 * iOS 9.0+
@@ -18,7 +19,8 @@
 pod setup
 ```
 
-``` git clone https://github.com/BoxJeon/funjcam-ios
+``` 
+git clone https://github.com/BoxJeon/funjcam-ios
 cd funjcam-ios
 pod install
 ```

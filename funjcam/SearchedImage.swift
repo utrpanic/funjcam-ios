@@ -6,9 +6,10 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
+import RealmSwift
 import ObjectMapper
 
-class SearchedImage: Mappable {
+class SearchedImage: Object, Mappable {
     var thumbnailLink: String?
     var link: String?
     var width: Int?
@@ -17,8 +18,8 @@ class SearchedImage: Mappable {
     
     var contextLink: String?
     
-    required init?(_ map: Map) {
-        
+    required convenience init?(_ map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {
