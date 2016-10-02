@@ -13,7 +13,7 @@ class ResponseSearchImage: Mappable {
     var nextPages: Array<NextPage>?
     var nextPageStartIndex: Int? { return self.nextPages?.first?.startIndex }
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     
@@ -26,7 +26,7 @@ class ResponseSearchImage: Mappable {
 class NextPage: Mappable {
     var startIndex: Int?
     
-    required init?(_ map: Map) {
+    required init?(map: Map) {
         
     }
     

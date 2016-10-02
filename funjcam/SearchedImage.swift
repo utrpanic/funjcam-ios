@@ -18,7 +18,7 @@ class SearchedImage: Object, Mappable {
     
     var contextLink: String?
     
-    required convenience init?(_ map: Map) {
+    required convenience init?(map: Map) {
         self.init()
     }
     

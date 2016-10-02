@@ -16,7 +16,7 @@ class ImageViewerViewController: BaseViewController {
     var image: UIImage?
     var searchedImage: SearchedImage?
     
-    class func viewController(image image: UIImage?, searchedImage: SearchedImage?) -> ImageViewerViewController {
+    class func viewController(image: UIImage?, searchedImage: SearchedImage?) -> ImageViewerViewController {
         let storyboard = UIStoryboard(name: "ImageViewer", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController() as! ImageViewerViewController
         viewController.image = image
@@ -37,16 +37,16 @@ class ImageViewerViewController: BaseViewController {
     }
     
     func setupButtons() {
-        self.closeButton.setTitle(LocalizedString("close"), forState: .Normal)
-        self.shareToKakaoTalkButton.setTitle(LocalizedString("kakao_talk"), forState: .Normal)
-        self.shareButton.setTitle(LocalizedString("share"), forState: .Normal)
+        self.closeButton.setTitle(LocalizedString("close"), for: UIControlState())
+        self.shareToKakaoTalkButton.setTitle(LocalizedString("kakao_talk"), for: UIControlState())
+        self.shareButton.setTitle(LocalizedString("share"), for: UIControlState())
     }
     
-    @IBAction func onCloseTapped(sender: UIButton) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func onCloseTapped(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func onShareToKakaoTalkTapped(sender: UIButton) {
+    @IBAction func onShareToKakaoTalkTapped(_ sender: UIButton) {
         if let link = self.searchedImage?.link {
             let linkObject: KakaoTalkLinkObject
             if let width = self.searchedImage?.width, let height = self.searchedImage?.height {
@@ -58,10 +58,10 @@ class ImageViewerViewController: BaseViewController {
         }
     }
     
-    @IBAction func onShareTapped(sender: UIButton) {
+    @IBAction func onShareTapped(_ sender: UIButton) {
         if let image = self.image {
             let viewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-            self.presentViewController(viewController, animated: true, completion: nil)
+            self.present(viewController, animated: true, completion: nil)
         }
     }
     

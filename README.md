@@ -9,8 +9,9 @@
 * Try App Extension - Today
 
 ## Requirements
-* iOS 9.0+
-* xcode 7.3+
+* iOS 10
+* xcode 8
+* Swift 3
 * CocoaPods 1.0.1
 
 ## Installation

@@ -11,6 +11,6 @@ import RealmSwift
 class SearchKeyword: Object {
     
     var value: String?
-    var date: NSDate?
+    var date: Date?
     
 }

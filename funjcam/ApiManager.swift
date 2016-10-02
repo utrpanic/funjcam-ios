@@ -13,24 +13,25 @@ class ApiManager {
     
     static let shared = ApiManager()
     
-    private let googleCustomSearchUrl = "https://www.googleapis.com/customsearch/v1"
-    private let queryParameters: Dictionary<String, AnyObject> = [
-        "key": "AIzaSyCTdQn7PY1xP5d_Otz8O8aTvbCSslU7lBQ",
-        "cx": "015032654831495313052:qzljc0expde",
-        "searchType": "image",
+    fileprivate let googleCustomSearchUrl = "https://www.googleapis.com/customsearch/v1"
+    fileprivate let queryParameters: Dictionary<String, AnyObject> = [
+        "key": "AIzaSyCTdQn7PY1xP5d_Otz8O8aTvbCSslU7lBQ" as AnyObject,
+        "cx": "015032654831495313052:qzljc0expde" as AnyObject,
+        "searchType": "image" as AnyObject,
         ]
     
-    func searchImage(keyword keyword: String, startIndex: Int?, completion: (Array<SearchedImage>?, Int?) -> Void) {
+    func searchImage(keyword: String, startIndex: Int?, completion: @escaping (Array<SearchedImage>?, Int?) -> Void) {
         var parameters = self.queryParameters
-        parameters["num"] = 10 // 1~10만 허용.
-        parameters["q"] = keyword
+        parameters["num"] = 10 as AnyObject? // 1~10만 허용.
+        parameters["q"] = keyword as AnyObject?
         if let startIndex = startIndex {
-            parameters["start"] = startIndex
+            parameters["start"] = startIndex as AnyObject?
         }
-        Alamofire.request(.GET, self.googleCustomSearchUrl, parameters: parameters).responseJSON { (response) in
+        
+        Alamofire.request(self.googleCustomSearchUrl, parameters: parameters).responseJSON { (response) in
             Log?.d(response.result.value)
             if let json = response.result.value as? Dictionary<String, AnyObject> {
-                let responseSearchImage = Mapper<ResponseSearchImage>().map(json)
+                let responseSearchImage = Mapper<ResponseSearchImage>().map(JSON: json)
                 completion(responseSearchImage?.searchedImages, responseSearchImage?.nextPageStartIndex)
             }
         }
