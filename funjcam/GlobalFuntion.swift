@@ -6,7 +6,7 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-public func LocalizedString(key: String, args: CVarArgType...) -> String {
+public func LocalizedString(_ key: String, args: CVarArg...) -> String {
     let format = NSLocalizedString(key, comment: "")
     if args.count == 0 {
         return format

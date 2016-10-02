@@ -10,9 +10,9 @@ import Photos
 
 class AlbumManager {
     
-    static let albumName = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleNameKey as String) as! String
+    static let albumName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as! String
     
-    func save(image image: UIImage?) {
+    func save(image: UIImage?) {
 //        var albumPlaceholder: PHObjectPlaceholder?
 //        PHPhotoLibrary.sharedPhotoLibrary().performChanges({
 //            // Request creating an album with parameter name

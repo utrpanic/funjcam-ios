@@ -15,11 +15,11 @@ let Log: LogManager? = {
 }()
 
 class LogManager {
-    func d<T>(value: T, file: NSString = #file, line: Int = #line) {
+    func d<T>(_ value: T, file: NSString = #file, line: Int = #line) {
         print("\(file.lastPathComponent)[\(line)]: \(value)", terminator: "\n")
     }
     
-    func printError(error: NSError?) {
+    func printError(_ error: NSError?) {
         if let error = error {
             self.d("error code: \(error.code)")
             self.d("error description: \(error.localizedDescription)")
