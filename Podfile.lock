@@ -5,10 +5,8 @@ PODS:
   - Crashlytics (3.8.2):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.9)
+  - ModelMapper (6.0.0)
   - ObjectMapper (2.0.0)
-  - R.swift (3.0.0):
-    - R.swift.Library (~> 3.0.0)
-  - R.swift.Library (3.0.1)
   - Realm (2.0.1):
     - Realm/Headers (= 2.0.1)
   - Realm/Headers (2.0.1)
@@ -23,8 +21,8 @@ DEPENDENCIES:
   - AlamofireImage
   - Crashlytics
   - Fabric
+  - ModelMapper
   - ObjectMapper
-  - R.swift
   - RealmSwift
   - SDWebImage
 
@@ -33,13 +31,12 @@ SPEC CHECKSUMS:
   AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
   Crashlytics: 27acca95a01b042a8294291dd6dff27f8f6af6d7
   Fabric: bc5bec42cef4bcf1ee3ce0e218fc518e4b44dfbb
+  ModelMapper: 3596a82f26c43491f6a8d3a00bcdba6ba0e62a93
   ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
-  R.swift: 5a8b4a4ea565b0f20c39d8ce1445f3d3a9064768
-  R.swift.Library: 0869d8d546517aa79db078fd8262724391a38db8
   Realm: 0557ee0e4ab4f0936c90e370056d1ed6265f93d6
   RealmSwift: 64e00af79bdcd7d2a7a23fdc1cb3faf22b80ae4c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 2b7f2edaa8d4a90206350ab668fb939869d70e5e
+PODFILE CHECKSUM: 6f7c5a12020ea6da6064879d83854cbd5f4d1c4b
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.1.1
