@@ -1,0 +1,883 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		078387941E26E6DF007D298A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387931E26E6DF007D298A /* AppDelegate.swift */; };
+		078387961E26E6DF007D298A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387951E26E6DF007D298A /* MainViewController.swift */; };
+		0783879B1E26E6E0007D298A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0783879A1E26E6E0007D298A /* Assets.xcassets */; };
+		0783879E1E26E6E0007D298A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0783879C1E26E6E0007D298A /* LaunchScreen.storyboard */; };
+		078387A91E26E6E0007D298A /* FunJCamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387A81E26E6E0007D298A /* FunJCamTests.swift */; };
+		078387B41E26E6E0007D298A /* FunJCamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387B31E26E6E0007D298A /* FunJCamUITests.swift */; };
+		078387C81E26EB0C007D298A /* FunJCamExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387C71E26EB0C007D298A /* FunJCamExtension.swift */; };
+		078387CA1E26EB2A007D298A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387C91E26EB2A007D298A /* BaseViewController.swift */; };
+		078387CC1E26EB44007D298A /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CB1E26EB44007D298A /* LogManager.swift */; };
+		078387CE1E26EB9A007D298A /* FunJCamTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CD1E26EB9A007D298A /* FunJCamTheme.swift */; };
+		078387D11E26F40F007D298A /* SearchedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CF1E26F40F007D298A /* SearchedImage.swift */; };
+		078387D21E26F40F007D298A /* SearchKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D01E26F40F007D298A /* SearchKeyword.swift */; };
+		078387D61E26F449007D298A /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D41E26F449007D298A /* ApiManager.swift */; };
+		078387D71E26F449007D298A /* ResponseSearchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D51E26F449007D298A /* ResponseSearchImage.swift */; };
+		078387D91E26F47D007D298A /* AlbumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D81E26F47D007D298A /* AlbumManager.swift */; };
+		078387E01E26F4C4007D298A /* EmptySearchGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387DA1E26F4C4007D298A /* EmptySearchGridCell.swift */; };
+		078387E11E26F4C4007D298A /* EmptySearchGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 078387DB1E26F4C4007D298A /* EmptySearchGridCell.xib */; };
+		078387E21E26F4C4007D298A /* LoadMoreGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387DC1E26F4C4007D298A /* LoadMoreGridCell.swift */; };
+		078387E31E26F4C4007D298A /* LoadMoreGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 078387DD1E26F4C4007D298A /* LoadMoreGridCell.xib */; };
+		078387E41E26F4C4007D298A /* SearchedImageGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387DE1E26F4C4007D298A /* SearchedImageGridCell.swift */; };
+		078387E51E26F4C4007D298A /* SearchedImageGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 078387DF1E26F4C4007D298A /* SearchedImageGridCell.xib */; };
+		078387EB1E26F4EA007D298A /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E61E26F4EA007D298A /* BookmarkViewController.swift */; };
+		078387EC1E26F4EA007D298A /* ImageViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 078387E71E26F4EA007D298A /* ImageViewer.storyboard */; };
+		078387ED1E26F4EA007D298A /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E81E26F4EA007D298A /* ImageViewerViewController.swift */; };
+		078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E91E26F4EA007D298A /* RecentViewController.swift */; };
+		078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387EA1E26F4EA007D298A /* SearchViewController.swift */; };
+		078387F41E26F5C4007D298A /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078387F31E26F5C4007D298A /* KakaoOpenSDK.framework */; };
+		1D910E0B6849500AE219D39A /* Pods_FunJCamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */; };
+		7F96CA141E3D9F9EF3C038DF /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */; };
+		C7C978AD2E8C7504C2C3E94C /* Pods_FunJCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		078387A51E26E6E0007D298A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 078387881E26E6DF007D298A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0783878F1E26E6DF007D298A;
+			remoteInfo = FunJCam;
+		};
+		078387B01E26E6E0007D298A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 078387881E26E6DF007D298A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0783878F1E26E6DF007D298A;
+			remoteInfo = FunJCam;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		078387901E26E6DF007D298A /* FunJCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunJCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		078387931E26E6DF007D298A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		078387951E26E6DF007D298A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0783879A1E26E6E0007D298A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0783879D1E26E6E0007D298A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0783879F1E26E6E0007D298A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		078387A41E26E6E0007D298A /* FunJCamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunJCamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		078387A81E26E6E0007D298A /* FunJCamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunJCamTests.swift; sourceTree = "<group>"; };
+		078387AA1E26E6E0007D298A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		078387AF1E26E6E0007D298A /* FunJCamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunJCamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		078387B31E26E6E0007D298A /* FunJCamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunJCamUITests.swift; sourceTree = "<group>"; };
+		078387B51E26E6E0007D298A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		078387C11E26E9EC007D298A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		078387C71E26EB0C007D298A /* FunJCamExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunJCamExtension.swift; sourceTree = "<group>"; };
+		078387C91E26EB2A007D298A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		078387CB1E26EB44007D298A /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
+		078387CD1E26EB9A007D298A /* FunJCamTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunJCamTheme.swift; sourceTree = "<group>"; };
+		078387CF1E26F40F007D298A /* SearchedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchedImage.swift; sourceTree = "<group>"; };
+		078387D01E26F40F007D298A /* SearchKeyword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchKeyword.swift; sourceTree = "<group>"; };
+		078387D41E26F449007D298A /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		078387D51E26F449007D298A /* ResponseSearchImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseSearchImage.swift; sourceTree = "<group>"; };
+		078387D81E26F47D007D298A /* AlbumManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumManager.swift; sourceTree = "<group>"; };
+		078387DA1E26F4C4007D298A /* EmptySearchGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptySearchGridCell.swift; sourceTree = "<group>"; };
+		078387DB1E26F4C4007D298A /* EmptySearchGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptySearchGridCell.xib; sourceTree = "<group>"; };
+		078387DC1E26F4C4007D298A /* LoadMoreGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreGridCell.swift; sourceTree = "<group>"; };
+		078387DD1E26F4C4007D298A /* LoadMoreGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadMoreGridCell.xib; sourceTree = "<group>"; };
+		078387DE1E26F4C4007D298A /* SearchedImageGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchedImageGridCell.swift; sourceTree = "<group>"; };
+		078387DF1E26F4C4007D298A /* SearchedImageGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchedImageGridCell.xib; sourceTree = "<group>"; };
+		078387E61E26F4EA007D298A /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		078387E71E26F4EA007D298A /* ImageViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImageViewer.storyboard; sourceTree = "<group>"; };
+		078387E81E26F4EA007D298A /* ImageViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerViewController.swift; sourceTree = "<group>"; };
+		078387E91E26F4EA007D298A /* RecentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
+		078387EA1E26F4EA007D298A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		078387F11E26F59D007D298A /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "../funjcam-ios-dev/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
+		078387F31E26F5C4007D298A /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		2387BC0DA03A80C1EA67BFF5 /* Pods-FunJCamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.release.xcconfig"; sourceTree = "<group>"; };
+		86D67C45D8745692BC8CFB26 /* Pods-FunJCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam.debug.xcconfig"; sourceTree = "<group>"; };
+		98E4E7D60FE00EADD0F5A9B5 /* Pods-FunJCamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AB46ACB3618E367ADCAE21C6 /* Pods-FunJCamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10D95822DB514A0797EB79A /* Pods-FunJCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCam.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam.release.xcconfig"; sourceTree = "<group>"; };
+		FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0783878D1E26E6DF007D298A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				078387F41E26F5C4007D298A /* KakaoOpenSDK.framework in Frameworks */,
+				C7C978AD2E8C7504C2C3E94C /* Pods_FunJCam.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078387A11E26E6E0007D298A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D910E0B6849500AE219D39A /* Pods_FunJCamTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078387AC1E26E6E0007D298A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F96CA141E3D9F9EF3C038DF /* Pods_FunJCamUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		078387871E26E6DF007D298A = {
+			isa = PBXGroup;
+			children = (
+				078387921E26E6DF007D298A /* FunJCam */,
+				078387A71E26E6E0007D298A /* FunJCamTests */,
+				078387B21E26E6E0007D298A /* FunJCamUITests */,
+				078387911E26E6DF007D298A /* Products */,
+				B25CAE28AE499EDB19F7ADD1 /* Pods */,
+				833125CE2FF1EE9A2A5FA1BD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		078387911E26E6DF007D298A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				078387901E26E6DF007D298A /* FunJCam.app */,
+				078387A41E26E6E0007D298A /* FunJCamTests.xctest */,
+				078387AF1E26E6E0007D298A /* FunJCamUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		078387921E26E6DF007D298A /* FunJCam */ = {
+			isa = PBXGroup;
+			children = (
+				078387C21E26EA29007D298A /* Common */,
+				078387C31E26EA2F007D298A /* Model */,
+				078387D31E26F423007D298A /* Networking */,
+				078387C41E26EA39007D298A /* Manager */,
+				078387C51E26EA42007D298A /* View */,
+				078387C61E26EA5B007D298A /* ViewController */,
+				078387C11E26E9EC007D298A /* BridgingHeader.h */,
+				078387931E26E6DF007D298A /* AppDelegate.swift */,
+				0783879C1E26E6E0007D298A /* LaunchScreen.storyboard */,
+				078387951E26E6DF007D298A /* MainViewController.swift */,
+				0783879A1E26E6E0007D298A /* Assets.xcassets */,
+				0783879F1E26E6E0007D298A /* Info.plist */,
+			);
+			path = FunJCam;
+			sourceTree = "<group>";
+		};
+		078387A71E26E6E0007D298A /* FunJCamTests */ = {
+			isa = PBXGroup;
+			children = (
+				078387A81E26E6E0007D298A /* FunJCamTests.swift */,
+				078387AA1E26E6E0007D298A /* Info.plist */,
+			);
+			path = FunJCamTests;
+			sourceTree = "<group>";
+		};
+		078387B21E26E6E0007D298A /* FunJCamUITests */ = {
+			isa = PBXGroup;
+			children = (
+				078387B31E26E6E0007D298A /* FunJCamUITests.swift */,
+				078387B51E26E6E0007D298A /* Info.plist */,
+			);
+			path = FunJCamUITests;
+			sourceTree = "<group>";
+		};
+		078387C21E26EA29007D298A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				078387C71E26EB0C007D298A /* FunJCamExtension.swift */,
+				078387CD1E26EB9A007D298A /* FunJCamTheme.swift */,
+				078387C91E26EB2A007D298A /* BaseViewController.swift */,
+				078387CB1E26EB44007D298A /* LogManager.swift */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		078387C31E26EA2F007D298A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				078387CF1E26F40F007D298A /* SearchedImage.swift */,
+				078387D01E26F40F007D298A /* SearchKeyword.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		078387C41E26EA39007D298A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				078387D81E26F47D007D298A /* AlbumManager.swift */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		078387C51E26EA42007D298A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				078387DA1E26F4C4007D298A /* EmptySearchGridCell.swift */,
+				078387DB1E26F4C4007D298A /* EmptySearchGridCell.xib */,
+				078387DC1E26F4C4007D298A /* LoadMoreGridCell.swift */,
+				078387DD1E26F4C4007D298A /* LoadMoreGridCell.xib */,
+				078387DE1E26F4C4007D298A /* SearchedImageGridCell.swift */,
+				078387DF1E26F4C4007D298A /* SearchedImageGridCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		078387C61E26EA5B007D298A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				078387EA1E26F4EA007D298A /* SearchViewController.swift */,
+				078387E91E26F4EA007D298A /* RecentViewController.swift */,
+				078387E61E26F4EA007D298A /* BookmarkViewController.swift */,
+				078387E71E26F4EA007D298A /* ImageViewer.storyboard */,
+				078387E81E26F4EA007D298A /* ImageViewerViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		078387D31E26F423007D298A /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				078387D41E26F449007D298A /* ApiManager.swift */,
+				078387D51E26F449007D298A /* ResponseSearchImage.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		833125CE2FF1EE9A2A5FA1BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				078387F31E26F5C4007D298A /* KakaoOpenSDK.framework */,
+				078387F11E26F59D007D298A /* KakaoOpenSDK.framework */,
+				4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */,
+				FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */,
+				D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B25CAE28AE499EDB19F7ADD1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				86D67C45D8745692BC8CFB26 /* Pods-FunJCam.debug.xcconfig */,
+				E10D95822DB514A0797EB79A /* Pods-FunJCam.release.xcconfig */,
+				AB46ACB3618E367ADCAE21C6 /* Pods-FunJCamTests.debug.xcconfig */,
+				80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */,
+				2387BC0DA03A80C1EA67BFF5 /* Pods-FunJCamUITests.debug.xcconfig */,
+				98E4E7D60FE00EADD0F5A9B5 /* Pods-FunJCamUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0783878F1E26E6DF007D298A /* FunJCam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 078387B81E26E6E0007D298A /* Build configuration list for PBXNativeTarget "FunJCam" */;
+			buildPhases = (
+				85AFBEA1D118B9A05AFCB960 /* [CP] Check Pods Manifest.lock */,
+				0783878C1E26E6DF007D298A /* Sources */,
+				0783878D1E26E6DF007D298A /* Frameworks */,
+				0783878E1E26E6DF007D298A /* Resources */,
+				5E2B80A86725B25E78801204 /* [CP] Embed Pods Frameworks */,
+				FAA7B09CE87413B1B689DC54 /* [CP] Copy Pods Resources */,
+				078387F01E26F547007D298A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FunJCam;
+			productName = FunJCam;
+			productReference = 078387901E26E6DF007D298A /* FunJCam.app */;
+			productType = "com.apple.product-type.application";
+		};
+		078387A31E26E6E0007D298A /* FunJCamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 078387BB1E26E6E0007D298A /* Build configuration list for PBXNativeTarget "FunJCamTests" */;
+			buildPhases = (
+				FDDDA595D869A24FD389B9C4 /* [CP] Check Pods Manifest.lock */,
+				078387A01E26E6E0007D298A /* Sources */,
+				078387A11E26E6E0007D298A /* Frameworks */,
+				078387A21E26E6E0007D298A /* Resources */,
+				2FB0378163BBB8E9ADA75FF0 /* [CP] Embed Pods Frameworks */,
+				18C012605FC1DB70B9276DC9 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				078387A61E26E6E0007D298A /* PBXTargetDependency */,
+			);
+			name = FunJCamTests;
+			productName = FunJCamTests;
+			productReference = 078387A41E26E6E0007D298A /* FunJCamTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		078387AE1E26E6E0007D298A /* FunJCamUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 078387BE1E26E6E0007D298A /* Build configuration list for PBXNativeTarget "FunJCamUITests" */;
+			buildPhases = (
+				2F2C547CBED9E4652F2BA845 /* [CP] Check Pods Manifest.lock */,
+				078387AB1E26E6E0007D298A /* Sources */,
+				078387AC1E26E6E0007D298A /* Frameworks */,
+				078387AD1E26E6E0007D298A /* Resources */,
+				0A9DA5CEEE1E3ACBD1F46F62 /* [CP] Embed Pods Frameworks */,
+				1B0D254B3D54539798F2AC4A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				078387B11E26E6E0007D298A /* PBXTargetDependency */,
+			);
+			name = FunJCamUITests;
+			productName = FunJCamUITests;
+			productReference = 078387AF1E26E6E0007D298A /* FunJCamUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		078387881E26E6DF007D298A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = the42apps;
+				TargetAttributes = {
+					0783878F1E26E6DF007D298A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L94QTT73WH;
+						ProvisioningStyle = Automatic;
+					};
+					078387A31E26E6E0007D298A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L94QTT73WH;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0783878F1E26E6DF007D298A;
+					};
+					078387AE1E26E6E0007D298A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = L94QTT73WH;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0783878F1E26E6DF007D298A;
+					};
+				};
+			};
+			buildConfigurationList = 0783878B1E26E6DF007D298A /* Build configuration list for PBXProject "FunJCam" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 078387871E26E6DF007D298A;
+			productRefGroup = 078387911E26E6DF007D298A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0783878F1E26E6DF007D298A /* FunJCam */,
+				078387A31E26E6E0007D298A /* FunJCamTests */,
+				078387AE1E26E6E0007D298A /* FunJCamUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0783878E1E26E6DF007D298A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				078387EC1E26F4EA007D298A /* ImageViewer.storyboard in Resources */,
+				078387E11E26F4C4007D298A /* EmptySearchGridCell.xib in Resources */,
+				078387E51E26F4C4007D298A /* SearchedImageGridCell.xib in Resources */,
+				0783879E1E26E6E0007D298A /* LaunchScreen.storyboard in Resources */,
+				078387E31E26F4C4007D298A /* LoadMoreGridCell.xib in Resources */,
+				0783879B1E26E6E0007D298A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078387A21E26E6E0007D298A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078387AD1E26E6E0007D298A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		078387F01E26F547007D298A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" d73917378fef2ba00af0129f92f114727173791c a4c91f2089c7b3495d46e3937a08c77a6e073f84cf97cb72d057dab8448aad3a";
+		};
+		0A9DA5CEEE1E3ACBD1F46F62 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		18C012605FC1DB70B9276DC9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1B0D254B3D54539798F2AC4A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2F2C547CBED9E4652F2BA845 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2FB0378163BBB8E9ADA75FF0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E2B80A86725B25E78801204 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85AFBEA1D118B9A05AFCB960 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FAA7B09CE87413B1B689DC54 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FDDDA595D869A24FD389B9C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0783878C1E26E6DF007D298A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				078387E21E26F4C4007D298A /* LoadMoreGridCell.swift in Sources */,
+				078387D91E26F47D007D298A /* AlbumManager.swift in Sources */,
+				078387E41E26F4C4007D298A /* SearchedImageGridCell.swift in Sources */,
+				078387D11E26F40F007D298A /* SearchedImage.swift in Sources */,
+				078387EB1E26F4EA007D298A /* BookmarkViewController.swift in Sources */,
+				078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */,
+				078387D61E26F449007D298A /* ApiManager.swift in Sources */,
+				078387D71E26F449007D298A /* ResponseSearchImage.swift in Sources */,
+				078387D21E26F40F007D298A /* SearchKeyword.swift in Sources */,
+				078387961E26E6DF007D298A /* MainViewController.swift in Sources */,
+				078387CC1E26EB44007D298A /* LogManager.swift in Sources */,
+				078387E01E26F4C4007D298A /* EmptySearchGridCell.swift in Sources */,
+				078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */,
+				078387CE1E26EB9A007D298A /* FunJCamTheme.swift in Sources */,
+				078387CA1E26EB2A007D298A /* BaseViewController.swift in Sources */,
+				078387C81E26EB0C007D298A /* FunJCamExtension.swift in Sources */,
+				078387ED1E26F4EA007D298A /* ImageViewerViewController.swift in Sources */,
+				078387941E26E6DF007D298A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078387A01E26E6E0007D298A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				078387A91E26E6E0007D298A /* FunJCamTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		078387AB1E26E6E0007D298A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				078387B41E26E6E0007D298A /* FunJCamUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		078387A61E26E6E0007D298A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0783878F1E26E6DF007D298A /* FunJCam */;
+			targetProxy = 078387A51E26E6E0007D298A /* PBXContainerItemProxy */;
+		};
+		078387B11E26E6E0007D298A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0783878F1E26E6DF007D298A /* FunJCam */;
+			targetProxy = 078387B01E26E6E0007D298A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0783879C1E26E6E0007D298A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0783879D1E26E6E0007D298A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		078387B61E26E6E0007D298A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		078387B71E26E6E0007D298A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		078387B91E26E6E0007D298A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86D67C45D8745692BC8CFB26 /* Pods-FunJCam.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = FunJCam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = FunJCam/BridgingHeader.h;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		078387BA1E26E6E0007D298A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E10D95822DB514A0797EB79A /* Pods-FunJCam.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = FunJCam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = FunJCam/BridgingHeader.h;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		078387BC1E26E6E0007D298A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB46ACB3618E367ADCAE21C6 /* Pods-FunJCamTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				INFOPLIST_FILE = FunJCamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
+			};
+			name = Debug;
+		};
+		078387BD1E26E6E0007D298A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				INFOPLIST_FILE = FunJCamTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
+			};
+			name = Release;
+		};
+		078387BF1E26E6E0007D298A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2387BC0DA03A80C1EA67BFF5 /* Pods-FunJCamUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				INFOPLIST_FILE = FunJCamUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = FunJCam;
+			};
+			name = Debug;
+		};
+		078387C01E26E6E0007D298A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98E4E7D60FE00EADD0F5A9B5 /* Pods-FunJCamUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				INFOPLIST_FILE = FunJCamUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = FunJCam;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0783878B1E26E6DF007D298A /* Build configuration list for PBXProject "FunJCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				078387B61E26E6E0007D298A /* Debug */,
+				078387B71E26E6E0007D298A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		078387B81E26E6E0007D298A /* Build configuration list for PBXNativeTarget "FunJCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				078387B91E26E6E0007D298A /* Debug */,
+				078387BA1E26E6E0007D298A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		078387BB1E26E6E0007D298A /* Build configuration list for PBXNativeTarget "FunJCamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				078387BC1E26E6E0007D298A /* Debug */,
+				078387BD1E26E6E0007D298A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		078387BE1E26E6E0007D298A /* Build configuration list for PBXNativeTarget "FunJCamUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				078387BF1E26E6E0007D298A /* Debug */,
+				078387C01E26E6E0007D298A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 078387881E26E6DF007D298A /* Project object */;
+}

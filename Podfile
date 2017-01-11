@@ -4,6 +4,7 @@ use_frameworks!
 target 'funjcam' do
     source 'https://github.com/CocoaPods/Specs.git'
     pod 'Alamofire'
+    pod 'AlamofireImage'
     pod 'Crashlytics'
     pod 'Fabric'
     pod 'ModelMapper'

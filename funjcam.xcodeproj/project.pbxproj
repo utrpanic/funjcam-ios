@@ -296,6 +296,7 @@
 				8D18F19C1D3DF8800058F005 /* Resources */,
 				8B8ED294865CDBB9D5429A5B /* [CP] Embed Pods Frameworks */,
 				720EB2C96CABDC34E98B38BB /* [CP] Copy Pods Resources */,
+				078480091E1EB02C004FC6FD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -355,12 +356,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = boxjeon;
 				TargetAttributes = {
 					8D18F19D1D3DF8800058F005 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = L94QTT73WH;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 					};
 					8D18F1B11D3DF8800058F005 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -428,6 +431,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		078480091E1EB02C004FC6FD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" d73917378fef2ba00af0129f92f114727173791c a4c91f2089c7b3495d46e3937a08c77a6e073f84cf97cb72d057dab8448aad3a";
+		};
 		524F39525C036D7CF4D451DC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -751,14 +767,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = L94QTT73WH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = funjcam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.boxjeon.ios.funjcam;
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.funjcam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "079dad04-c7da-43d3-90e9-fee7431682d6";
+				PROVISIONING_PROFILE_SPECIFIER = "funjcam-development";
 				SWIFT_OBJC_BRIDGING_HEADER = funjcam/BridgingHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
@@ -770,14 +789,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = L94QTT73WH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = funjcam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.boxjeon.ios.funjcam;
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.funjcam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "10200d0f-feef-4e64-8d99-45911990d2ec";
+				PROVISIONING_PROFILE_SPECIFIER = "funjcam-ad-hoc";
 				SWIFT_OBJC_BRIDGING_HEADER = funjcam/BridgingHeader.h;
 				SWIFT_VERSION = 3.0;
 			};
