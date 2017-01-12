@@ -32,7 +32,7 @@ class ImageViewerViewController: BaseViewController {
     }
     
     func setupImageViewer() {
-        self.imageView.image = image
+        self.imageView.setImage(url: searchedImage?.link, placeholder: self.image, completion: nil)
     }
     
     func setupButtons() {

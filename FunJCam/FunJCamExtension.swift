@@ -70,7 +70,7 @@ extension UIImageView {
             if let image = response.result.value {
                 completion?(image)
             } else {
-                Log.d("Load image fail. from \(url)")
+                Log.d("Load image fail. [\(response.response?.statusCode ?? -1)] \(url)")
                 completion?(nil)
             }
         }

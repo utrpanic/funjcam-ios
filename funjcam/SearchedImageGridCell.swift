@@ -8,7 +8,7 @@
 
 class SearchedImageGridCell: UICollectionViewCell {
     
-    class var defaultHeight: CGFloat { return 110 }
+    class var defaultHeight: CGFloat { return 100 }
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -24,6 +24,6 @@ class SearchedImageGridCell: UICollectionViewCell {
     }
     
     func configureCell(_ searchedImage: SearchedImage?) {
-        self.imageView.setImage(url: searchedImage?.link, placeholder: nil, completion: nil)
+        self.imageView.setImage(url: searchedImage?.thumbnailLink, placeholder: nil, completion: nil)
     }
 }
