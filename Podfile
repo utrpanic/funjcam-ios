@@ -3,14 +3,8 @@ use_frameworks!
 
 target 'FunJCam' do
     source 'https://github.com/CocoaPods/Specs.git'
-    pod 'Alamofire'
-    pod 'AlamofireImage'
     pod 'Crashlytics'
     pod 'Fabric'
-    pod 'ModelMapper'
-    pod 'ObjectMapper'
-    pod 'RealmSwift'
-
 end
 
 target 'FunJCamTests' do

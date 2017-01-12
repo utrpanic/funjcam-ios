@@ -1,0 +1,5 @@
+github "Alamofire/Alamofire"
+github "Alamofire/AlamofireImage"
+github "Hearst-DD/ObjectMapper"
+github "lyft/mapper"
+github "realm/realm-cocoa"

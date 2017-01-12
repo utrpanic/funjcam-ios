@@ -33,6 +33,12 @@
 		078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E91E26F4EA007D298A /* RecentViewController.swift */; };
 		078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387EA1E26F4EA007D298A /* SearchViewController.swift */; };
 		078387F41E26F5C4007D298A /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078387F31E26F5C4007D298A /* KakaoOpenSDK.framework */; };
+		07B3A0C71E27D5FF00B7439E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0C51E27D5FF00B7439E /* Alamofire.framework */; };
+		07B3A0C81E27D5FF00B7439E /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0C61E27D5FF00B7439E /* AlamofireImage.framework */; };
+		07B3A0CC1E27DA7200B7439E /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0CA1E27DA7200B7439E /* Realm.framework */; };
+		07B3A0CD1E27DA7200B7439E /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0CB1E27DA7200B7439E /* RealmSwift.framework */; };
+		07B3A0D01E27DD8D00B7439E /* Mapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0CE1E27DD8D00B7439E /* Mapper.framework */; };
+		07B3A0D11E27DD8D00B7439E /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0CF1E27DD8D00B7439E /* ObjectMapper.framework */; };
 		1D910E0B6849500AE219D39A /* Pods_FunJCamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */; };
 		7F96CA141E3D9F9EF3C038DF /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */; };
 		8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D69890B1E27186C002F0BAE /* Main.storyboard */; };
@@ -91,6 +97,12 @@
 		078387EA1E26F4EA007D298A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		078387F11E26F59D007D298A /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "../funjcam-ios-dev/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
 		078387F31E26F5C4007D298A /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
+		07B3A0C51E27D5FF00B7439E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		07B3A0C61E27D5FF00B7439E /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		07B3A0CA1E27DA7200B7439E /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		07B3A0CB1E27DA7200B7439E /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		07B3A0CE1E27DD8D00B7439E /* Mapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapper.framework; path = Carthage/Build/iOS/Mapper.framework; sourceTree = "<group>"; };
+		07B3A0CF1E27DD8D00B7439E /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		2387BC0DA03A80C1EA67BFF5 /* Pods-FunJCamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,7 +120,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B3A0C71E27D5FF00B7439E /* Alamofire.framework in Frameworks */,
+				07B3A0C81E27D5FF00B7439E /* AlamofireImage.framework in Frameworks */,
 				078387F41E26F5C4007D298A /* KakaoOpenSDK.framework in Frameworks */,
+				07B3A0D01E27DD8D00B7439E /* Mapper.framework in Frameworks */,
+				07B3A0D11E27DD8D00B7439E /* ObjectMapper.framework in Frameworks */,
+				07B3A0CC1E27DA7200B7439E /* Realm.framework in Frameworks */,
+				07B3A0CD1E27DA7200B7439E /* RealmSwift.framework in Frameworks */,
 				C7C978AD2E8C7504C2C3E94C /* Pods_FunJCam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +274,12 @@
 		833125CE2FF1EE9A2A5FA1BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07B3A0CE1E27DD8D00B7439E /* Mapper.framework */,
+				07B3A0CF1E27DD8D00B7439E /* ObjectMapper.framework */,
+				07B3A0CA1E27DA7200B7439E /* Realm.framework */,
+				07B3A0CB1E27DA7200B7439E /* RealmSwift.framework */,
+				07B3A0C51E27D5FF00B7439E /* Alamofire.framework */,
+				07B3A0C61E27D5FF00B7439E /* AlamofireImage.framework */,
 				078387F31E26F5C4007D298A /* KakaoOpenSDK.framework */,
 				078387F11E26F59D007D298A /* KakaoOpenSDK.framework */,
 				4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */,
@@ -292,6 +316,7 @@
 				5E2B80A86725B25E78801204 /* [CP] Embed Pods Frameworks */,
 				FAA7B09CE87413B1B689DC54 /* [CP] Copy Pods Resources */,
 				078387F01E26F547007D298A /* ShellScript */,
+				07B3A0C91E27D79800B7439E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -436,6 +461,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" d73917378fef2ba00af0129f92f114727173791c a4c91f2089c7b3495d46e3937a08c77a6e073f84cf97cb72d057dab8448aad3a";
+		};
+		07B3A0C91E27D79800B7439E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Mapper.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
 		0A9DA5CEEE1E3ACBD1F46F62 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -746,6 +790,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FunJCam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -766,6 +811,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = FunJCam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
