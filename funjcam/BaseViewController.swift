@@ -13,4 +13,9 @@ class BaseViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(true)
+    }
+    
 }

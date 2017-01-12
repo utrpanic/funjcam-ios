@@ -6,6 +6,8 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
+import Crashlytics
+
 class ImageViewerViewController: BaseViewController {
     
     @IBOutlet weak var closeButton: UIButton!
@@ -32,7 +34,11 @@ class ImageViewerViewController: BaseViewController {
     }
     
     func setupImageViewer() {
-        self.imageView.setImage(url: searchedImage?.link, placeholder: self.image, completion: nil)
+        self.imageView.setImage(url: self.searchedImage?.link, placeholder: self.image, completion: { [weak self] (image) -> Void in
+            if let url = self?.searchedImage?.link, image == nil {
+                Answers.logCustomEvent(withName: "Image Download Failure", customAttributes: ["host": URL(string: url)?.host ?? "unknown"])
+            }
+        })
     }
     
     func setupButtons() {
