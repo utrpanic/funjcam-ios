@@ -12,17 +12,15 @@
 * iOS 10
 * xcode 8
 * Swift 3
-* CocoaPods 1.0.1
+* CocoaPods 1.1.1
+* Carthage 0.18.1
 
 ## Installation
-```
-[sudo] gem install cocoapods
-pod setup
-```
-
 ``` 
 git clone https://github.com/BoxJeon/funjcam-ios
 cd funjcam-ios
 pod install
+carthage bootstrap --platform iOS
 ```
-* open funjcam.xcworkspace
+
+* open FunJCam.xcworkspace
