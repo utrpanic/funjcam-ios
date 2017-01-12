@@ -1,6 +1,6 @@
 //
 //  ApiManager.swift
-//  funjcam
+//  FunJCam
 //
 //  Created by gurren-l on 2016. 7. 19..
 //  Copyright © 2016년 boxjeon. All rights reserved.
@@ -29,7 +29,7 @@ class ApiManager {
         }
         
         Alamofire.request(self.googleCustomSearchUrl, parameters: parameters).responseJSON { (response) in
-            Log?.d(response.result.value)
+            Log.d(response.result.value)
             if let json = response.result.value as? Dictionary<String, AnyObject> {
                 let responseSearchImage = Mapper<ResponseSearchImage>().map(JSON: json)
                 completion(responseSearchImage?.searchedImages, responseSearchImage?.nextPageStartIndex)

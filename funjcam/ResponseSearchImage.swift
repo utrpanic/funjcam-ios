@@ -1,6 +1,6 @@
 //
 //  ResponseSearchImage.swift
-//  funjcam
+//  FunJCam
 //
 //  Created by boxjeon on 2016. 7. 23..
 //  Copyright © 2016년 boxjeon. All rights reserved.

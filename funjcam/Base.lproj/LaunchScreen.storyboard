@@ -21,17 +21,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짤방카메라" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBx-8a-7te">
-                                <rect key="frame" x="118" y="314.5" width="138.5" height="38.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="짤" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPh-Dc-Mg1">
+                                <rect key="frame" x="160" y="295.5" width="55.5" height="76.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="64"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.18823529411764706" green="0.24705882352941178" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="bBx-8a-7te" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="H4W-AK-i2f"/>
-                            <constraint firstItem="bBx-8a-7te" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="oJf-9X-X7T"/>
+                            <constraint firstItem="DPh-Dc-Mg1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="l9R-Xt-2rV"/>
+                            <constraint firstItem="DPh-Dc-Mg1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="s7o-Fz-c2c"/>
                         </constraints>
                     </view>
                 </viewController>

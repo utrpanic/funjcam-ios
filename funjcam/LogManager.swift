@@ -1,28 +1,21 @@
 //
 //  LogManager.swift
-//  funjcam
+//  FunJCam
 //
-//  Created by gurren-l on 2016. 7. 19..
-//  Copyright © 2016년 boxjeon. All rights reserved.
+//  Created by boxjeon on 2017. 1. 12..
+//  Copyright © 2017년 the42apps. All rights reserved.
 //
 
-let Log: LogManager? = {
-    #if DEBUG
-        return LogManager()
-    #else
-        return nil
-    #endif
-}()
+let Log = LogManager()
 
 class LogManager {
+    
     func d<T>(_ value: T, file: NSString = #file, line: Int = #line) {
         print("\(file.lastPathComponent)[\(line)]: \(value)", terminator: "\n")
     }
     
-    func printError(_ error: NSError?) {
-        if let error = error {
-            self.d("error code: \(error.code)")
-            self.d("error description: \(error.localizedDescription)")
-        }
+    func e<T>(_ value: T, file: NSString = #file, line: Int = #line) {
+        print("\(file.lastPathComponent)[\(line)]: Error - \(value)", terminator: "\n")
     }
+    
 }

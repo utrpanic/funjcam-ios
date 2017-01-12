@@ -1,7 +1,7 @@
 platform :ios, '10.0'
 use_frameworks!
 
-target 'funjcam' do
+target 'FunJCam' do
     source 'https://github.com/CocoaPods/Specs.git'
     pod 'Alamofire'
     pod 'AlamofireImage'
@@ -10,15 +10,13 @@ target 'funjcam' do
     pod 'ModelMapper'
     pod 'ObjectMapper'
     pod 'RealmSwift'
-    pod 'SDWebImage'
 
 end
 
-target 'funjcamTests' do
+target 'FunJCamTests' do
 
 end
 
-target 'funjcamUITests' do
+target 'FunJCamUITests' do
 
 end
-

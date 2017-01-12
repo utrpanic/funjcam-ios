@@ -7,10 +7,20 @@
 //
 
 class RecentViewController: BaseViewController {
+    
+    class func create() -> RecentViewController {
+        let viewController = self.create(storyboardName: "Main") as! RecentViewController
+        return viewController
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
     }
 
 }

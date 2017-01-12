@@ -1,6 +1,6 @@
 //
 //  SearchKeyword.swift
-//  funjcam
+//  FunJCam
 //
 //  Created by gurren-l on 2016. 7. 26..
 //  Copyright © 2016년 boxjeon. All rights reserved.

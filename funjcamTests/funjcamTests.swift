@@ -1,15 +1,15 @@
 //
-//  funjcamTests.swift
-//  funjcamTests
+//  FunJCamTests.swift
+//  FunJCamTests
 //
-//  Created by gurren-l on 2016. 7. 19..
-//  Copyright © 2016년 boxjeon. All rights reserved.
+//  Created by boxjeon on 2017. 1. 12..
+//  Copyright © 2017년 the42apps. All rights reserved.
 //
 
 import XCTest
-@testable import funjcam
+@testable import FunJCam
 
-class funjcamTests: XCTestCase {
+class FunJCamTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

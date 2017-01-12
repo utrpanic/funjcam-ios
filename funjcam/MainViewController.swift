@@ -1,16 +1,63 @@
 //
 //  MainViewController.swift
-//  funjcam
+//  FunJCam
 //
-//  Created by gurren-l on 2016. 7. 19..
-//  Copyright © 2016년 boxjeon. All rights reserved.
+//  Created by boxjeon on 2017. 1. 12..
+//  Copyright © 2017년 the42apps. All rights reserved.
 //
 
-class MainViewController: UITabBarController {
+enum MainTab: Int {
+    case search
+    case recent
+    case bookmark
+    
+    static let `default`: MainTab = .search
+    static let allValues: Array<MainTab> = [.search, .recent, .bookmark]
+    
+    var viewController: UIViewController {
+        let viewController: UIViewController
+        switch self {
+        case .search:
+            viewController = SearchViewController.create()
+        case .recent:
+            viewController = RecentViewController.create()
+        case .bookmark:
+            viewController = BookmarkViewController.create()
+        }
+        let navigationController = UINavigationController(rootViewController: viewController)
+        let tabBarItem = self.tabBarItem
+        navigationController.tabBarItem = tabBarItem
+        viewController.navigationItem.title = tabBarItem.title
+        return navigationController
+    }
+    
+    var tabBarItem: UITabBarItem {
+        // TODO: Language
+        let tabBarItem: UITabBarItem
+        switch self {
+        case .search:
+            tabBarItem = UITabBarItem(title: "Search", image: nil, selectedImage: nil)
+        case .recent:
+            tabBarItem = UITabBarItem(title: "Recent", image: nil, selectedImage: nil)
+        case .bookmark:
+            tabBarItem = UITabBarItem(title: "Bookmark", image: nil, selectedImage: nil)
+        }
+        tabBarItem.tag = self.rawValue
+        return tabBarItem
+    }
+}
 
+class MainViewController: UITabBarController, UITabBarControllerDelegate {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setupChildViewControllers()
     }
-
+    
+    func setupChildViewControllers() {
+        self.viewControllers = MainTab.allValues.map({ $0.viewController })
+        self.delegate = self
+        self.selectedIndex = MainTab.default.rawValue
+    }
+    
 }
