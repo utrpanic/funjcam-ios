@@ -12,4 +12,6 @@
 @import Foundation;
 @import UIKit;
 
+#import <KakaoOpenSDK/KakaoOpenSDK.h>
+
 #endif /* BridgingHeader_h */

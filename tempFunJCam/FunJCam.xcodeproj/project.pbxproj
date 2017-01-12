@@ -29,13 +29,13 @@
 		078387E41E26F4C4007D298A /* SearchedImageGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387DE1E26F4C4007D298A /* SearchedImageGridCell.swift */; };
 		078387E51E26F4C4007D298A /* SearchedImageGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 078387DF1E26F4C4007D298A /* SearchedImageGridCell.xib */; };
 		078387EB1E26F4EA007D298A /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E61E26F4EA007D298A /* BookmarkViewController.swift */; };
-		078387EC1E26F4EA007D298A /* ImageViewer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 078387E71E26F4EA007D298A /* ImageViewer.storyboard */; };
 		078387ED1E26F4EA007D298A /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E81E26F4EA007D298A /* ImageViewerViewController.swift */; };
 		078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E91E26F4EA007D298A /* RecentViewController.swift */; };
 		078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387EA1E26F4EA007D298A /* SearchViewController.swift */; };
 		078387F41E26F5C4007D298A /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078387F31E26F5C4007D298A /* KakaoOpenSDK.framework */; };
 		1D910E0B6849500AE219D39A /* Pods_FunJCamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */; };
 		7F96CA141E3D9F9EF3C038DF /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */; };
+		8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D69890B1E27186C002F0BAE /* Main.storyboard */; };
 		C7C978AD2E8C7504C2C3E94C /* Pods_FunJCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +86,6 @@
 		078387DE1E26F4C4007D298A /* SearchedImageGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchedImageGridCell.swift; sourceTree = "<group>"; };
 		078387DF1E26F4C4007D298A /* SearchedImageGridCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchedImageGridCell.xib; sourceTree = "<group>"; };
 		078387E61E26F4EA007D298A /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
-		078387E71E26F4EA007D298A /* ImageViewer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImageViewer.storyboard; sourceTree = "<group>"; };
 		078387E81E26F4EA007D298A /* ImageViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerViewController.swift; sourceTree = "<group>"; };
 		078387E91E26F4EA007D298A /* RecentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
 		078387EA1E26F4EA007D298A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +95,7 @@
 		4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.release.xcconfig"; sourceTree = "<group>"; };
 		86D67C45D8745692BC8CFB26 /* Pods-FunJCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam.debug.xcconfig"; sourceTree = "<group>"; };
+		8D69890B1E27186C002F0BAE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		98E4E7D60FE00EADD0F5A9B5 /* Pods-FunJCamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AB46ACB3618E367ADCAE21C6 /* Pods-FunJCamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,10 +235,10 @@
 		078387C61E26EA5B007D298A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8D69890B1E27186C002F0BAE /* Main.storyboard */,
 				078387EA1E26F4EA007D298A /* SearchViewController.swift */,
 				078387E91E26F4EA007D298A /* RecentViewController.swift */,
 				078387E61E26F4EA007D298A /* BookmarkViewController.swift */,
-				078387E71E26F4EA007D298A /* ImageViewer.storyboard */,
 				078387E81E26F4EA007D298A /* ImageViewerViewController.swift */,
 			);
 			name = ViewController;
@@ -398,10 +398,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				078387EC1E26F4EA007D298A /* ImageViewer.storyboard in Resources */,
 				078387E11E26F4C4007D298A /* EmptySearchGridCell.xib in Resources */,
 				078387E51E26F4C4007D298A /* SearchedImageGridCell.xib in Resources */,
 				0783879E1E26E6E0007D298A /* LaunchScreen.storyboard in Resources */,
+				8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */,
 				078387E31E26F4C4007D298A /* LoadMoreGridCell.xib in Resources */,
 				0783879B1E26E6E0007D298A /* Assets.xcassets in Resources */,
 			);

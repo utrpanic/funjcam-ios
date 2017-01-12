@@ -8,6 +8,11 @@
 
 class BookmarkViewController: BaseViewController {
     
+    class func create() -> BookmarkViewController {
+        let viewController = self.create(storyboardName: "Main") as! BookmarkViewController
+        return viewController
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

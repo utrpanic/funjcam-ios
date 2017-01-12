@@ -6,6 +6,28 @@
 	<string>en</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>7b843a8e765c58de2c6ae39054b7e763</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao7b843a8e765c58de2c6ae39054b7e763</string>
+			</array>
+		</dict>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakao7b843a8e765c58de2c6ae39054b7e763</string>
+		<string>kakaokompassauth</string>
+		<string>kakaolink</string>
+	</array>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>

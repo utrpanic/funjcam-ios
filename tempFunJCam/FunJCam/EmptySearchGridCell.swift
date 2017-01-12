@@ -12,6 +12,7 @@ class EmptySearchGridCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.emptyLabel.text = LocalizedString("search:no_result")
+        self.emptyLabel.text = "No Result"
     }
+    
 }

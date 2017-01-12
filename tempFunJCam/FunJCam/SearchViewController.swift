@@ -36,9 +36,8 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
     var nextPageStartIndex: Int?
     
-    class func viewController() -> SearchViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+    class func create() -> SearchViewController {
+        let viewController = self.create(storyboardName: "Main") as! SearchViewController
         return viewController
     }
     
@@ -59,9 +58,9 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
-        self.collectionView.registerClassById(SearchedImageGridCell.id)
-        self.collectionView.registerClassById(LoadMoreGridCell.id)
-        self.collectionView.registerClassById(EmptySearchGridCell.id)
+        self.collectionView.registerNib(type: SearchedImageGridCell.self)
+        self.collectionView.registerNib(type: LoadMoreGridCell.self)
+        self.collectionView.registerNib(type: EmptySearchGridCell.self)
     }
     
     func requestData() {
@@ -167,7 +166,7 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
         switch Section(rawValue: (indexPath as NSIndexPath).section)! {
         case .image:
             if let image = (collectionView.cellForItem(at: indexPath) as? SearchedImageGridCell)?.imageView.image {
-                let viewController = ImageViewerViewController.viewController(image: image, searchedImage: self.searchedImages?[(indexPath as NSIndexPath).item])
+                let viewController = ImageViewerViewController.create(image: image, searchedImage: self.searchedImages?[(indexPath as NSIndexPath).item])
                 self.present(viewController, animated: true, completion: nil)
             }
         default:

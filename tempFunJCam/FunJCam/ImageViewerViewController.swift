@@ -16,9 +16,8 @@ class ImageViewerViewController: BaseViewController {
     var image: UIImage?
     var searchedImage: SearchedImage?
     
-    class func viewController(image: UIImage?, searchedImage: SearchedImage?) -> ImageViewerViewController {
-        let storyboard = UIStoryboard(name: "ImageViewer", bundle: nil)
-        let viewController = storyboard.instantiateInitialViewController() as! ImageViewerViewController
+    class func create(image: UIImage?, searchedImage: SearchedImage?) -> ImageViewerViewController {
+        let viewController = self.create(storyboardName: "Main") as! ImageViewerViewController
         viewController.image = image
         viewController.searchedImage = searchedImage
         return viewController
@@ -37,9 +36,10 @@ class ImageViewerViewController: BaseViewController {
     }
     
     func setupButtons() {
-        self.closeButton.setTitle(LocalizedString("close"), for: UIControlState())
-        self.shareToKakaoTalkButton.setTitle(LocalizedString("kakao_talk"), for: UIControlState())
-        self.shareButton.setTitle(LocalizedString("share"), for: UIControlState())
+        // TODO: Language
+        self.closeButton.setTitle("Close", for: .normal)
+        self.shareToKakaoTalkButton.setTitle("KakaoTalk", for: .normal)
+        self.shareButton.setTitle("Share", for: .normal)
     }
     
     @IBAction func onCloseTapped(_ sender: UIButton) {
