@@ -6,31 +6,29 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-import ObjectMapper
+import Mapper
 
 class ResponseSearchImage: Mappable {
     var searchedImages: Array<SearchedImage>?
     var nextPages: Array<NextPage>?
     var nextPageStartIndex: Int? { return self.nextPages?.first?.startIndex }
     
-    required init?(map: Map) {
-        
+    class func create(json: Dictionary<String, Any>) -> ResponseSearchImage? {
+        return ResponseSearchImage.from(json as NSDictionary)
     }
     
-    func mapping(map: Map) {
-        searchedImages  <- map["items"]
-        nextPages       <- map["queries.nextPage"]
+    required init(map: Mapper) {
+        searchedImages = map.optionalFrom("items")
+        nextPages = map.optionalFrom("queries.nextPage")
     }
+
 }
 
 class NextPage: Mappable {
     var startIndex: Int?
     
-    required init?(map: Map) {
-        
+    required init(map: Mapper) {
+        startIndex = map.optionalFrom("startIndex")
     }
-    
-    func mapping(map: Map) {
-        startIndex  <- map["startIndex"]
-    }
+
 }
