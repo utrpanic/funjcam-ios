@@ -7,9 +7,9 @@
 //
 
 import RealmSwift
-import ObjectMapper
+import Mapper
 
-class SearchedImage: Object, Mappable {
+class SearchedImage: Mappable {
     var thumbnailLink: String?
     var link: String?
     var width: Int?
@@ -18,16 +18,13 @@ class SearchedImage: Object, Mappable {
     
     var contextLink: String?
     
-    required convenience init?(map: Map) {
-        self.init()
+    required init(map: Mapper) throws {
+        thumbnailLink = map.optionalFrom("image.thumbnailLink")
+        link = map.optionalFrom("link")
+        width = map.optionalFrom("image.width")
+        height = map.optionalFrom("image.height")
+        byteSize = map.optionalFrom("image.byteSize")
+        contextLink = map.optionalFrom("image.contextLink")
     }
     
-    func mapping(map: Map) {
-        thumbnailLink   <- map["image.thumbnailLink"]
-        link            <- map["link"]
-        width           <- map["image.width"]
-        height          <- map["image.height"]
-        byteSize        <- map["image.byteSize"]
-        contextLink     <- map["image.contextLink"]
-    }
 }

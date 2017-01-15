@@ -38,7 +38,6 @@
 		07B3A0CC1E27DA7200B7439E /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0CA1E27DA7200B7439E /* Realm.framework */; };
 		07B3A0CD1E27DA7200B7439E /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0CB1E27DA7200B7439E /* RealmSwift.framework */; };
 		07B3A0D01E27DD8D00B7439E /* Mapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0CE1E27DD8D00B7439E /* Mapper.framework */; };
-		07B3A0D11E27DD8D00B7439E /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0CF1E27DD8D00B7439E /* ObjectMapper.framework */; };
 		1D910E0B6849500AE219D39A /* Pods_FunJCamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */; };
 		7F96CA141E3D9F9EF3C038DF /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */; };
 		8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D69890B1E27186C002F0BAE /* Main.storyboard */; };
@@ -124,7 +123,6 @@
 				07B3A0C81E27D5FF00B7439E /* AlamofireImage.framework in Frameworks */,
 				078387F41E26F5C4007D298A /* KakaoOpenSDK.framework in Frameworks */,
 				07B3A0D01E27DD8D00B7439E /* Mapper.framework in Frameworks */,
-				07B3A0D11E27DD8D00B7439E /* ObjectMapper.framework in Frameworks */,
 				07B3A0CC1E27DA7200B7439E /* Realm.framework in Frameworks */,
 				07B3A0CD1E27DA7200B7439E /* RealmSwift.framework in Frameworks */,
 				C7C978AD2E8C7504C2C3E94C /* Pods_FunJCam.framework in Frameworks */,
@@ -472,7 +470,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/ObjectMapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Mapper.framework",
 			);
 			outputPaths = (
