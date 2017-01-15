@@ -1,5 +1,4 @@
 github "Alamofire/Alamofire" "4.2.0"
-github "Hearst-DD/ObjectMapper" "2.2.2"
 github "lyft/mapper" "6.0.0"
-github "realm/realm-cocoa" "v2.1.2"
+github "realm/realm-cocoa" "v2.2.0"
 github "Alamofire/AlamofireImage" "3.2.0"
