@@ -10,7 +10,7 @@ class FJTheme {
     
     class func setup() {
         UIView.appearance().tintColor = FJColor.primary
-        UITextField.appearance().tintColor = FJColor.accent
+        UIButton.appearance().tintColor = FJColor.accent
     }
     
 }

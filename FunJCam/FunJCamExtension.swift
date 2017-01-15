@@ -6,8 +6,7 @@
 //  Copyright © 2017년 the42apps. All rights reserved.
 //
 
-import Alamofire
-import AlamofireImage
+import WebImage
 
 extension String {
     
@@ -63,17 +62,27 @@ extension UIImageView {
     
     func setImage(url: String?, placeholder: UIImage?, completion: ((UIImage?) -> Void)?) {
         self.image = placeholder
-        guard let url = url, url.trimmed.length > 0 else {
+        self.sd_cancelCurrentImageLoad()
+        self.alpha = 0
+        guard let url = URL(string: url ?? ""), url.absoluteString.trimmed.length > 0 else {
             return
         }
-        self.af_setImage(withURL: URL(string: url)!, placeholderImage: placeholder, filter: nil, progress: nil, progressQueue: DispatchQueue.main, imageTransition: .crossDissolve(0.2), runImageTransitionIfCached: false) { (response) in
-            if let image = response.result.value {
+        self.sd_setImage(with: url, placeholderImage: placeholder, options: [], completed: { (image, error, type, url) in
+            if type == .none {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.alpha = 1
+                })
+            } else {
+                self.alpha = 1
+            }
+            
+            if let image = image {
                 completion?(image)
             } else {
-                Log.d("Load image fail. [\(response.response?.statusCode ?? -1)] \(url)")
+                Log.d("Load image fail. [\((error as? NSError)?.code ?? -1)] \(url)")
                 completion?(nil)
             }
-        }
+        })
     }
     
 }

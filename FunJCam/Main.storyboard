@@ -12,7 +12,7 @@
         <!--Search-->
         <scene sceneID="la5-k6-vZQ">
             <objects>
-                <viewController storyboardIdentifier="SearchViewController" id="5ru-tX-aNT" customClass="SearchViewController" customModule="FunJCam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" automaticallyAdjustsScrollViewInsets="NO" id="5ru-tX-aNT" customClass="SearchViewController" customModule="FunJCam" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TyI-v7-ddG"/>
                         <viewControllerLayoutGuide type="bottom" id="hwD-1x-66d"/>
@@ -21,17 +21,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aj5-CZ-UOq">
-                                <rect key="frame" x="8" y="20" width="359" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKu-g4-Ss0">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aj5-CZ-UOq">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="qpv-c4-VO5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                        <connections>
+                                            <action selector="didSearchTap:" destination="5ru-tX-aNT" eventType="primaryActionTriggered" id="uxp-9V-ruw"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7KJ-59-cCW">
+                                        <rect key="frame" x="335" y="0.0" width="40" height="44"/>
+                                        <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                        <state key="normal" title="GIF"/>
+                                        <connections>
+                                            <action selector="didGifTap:" destination="5ru-tX-aNT" eventType="touchUpInside" id="5Oz-U3-euQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="qpv-c4-VO5"/>
+                                    <constraint firstItem="aj5-CZ-UOq" firstAttribute="top" secondItem="wKu-g4-Ss0" secondAttribute="top" id="4XB-kB-kgH"/>
+                                    <constraint firstAttribute="bottom" secondItem="7KJ-59-cCW" secondAttribute="bottom" id="JpG-VP-sje"/>
+                                    <constraint firstItem="aj5-CZ-UOq" firstAttribute="leading" secondItem="wKu-g4-Ss0" secondAttribute="leading" id="OGm-9D-Voy"/>
+                                    <constraint firstItem="7KJ-59-cCW" firstAttribute="top" secondItem="wKu-g4-Ss0" secondAttribute="top" id="TB4-er-rOL"/>
+                                    <constraint firstAttribute="trailing" secondItem="7KJ-59-cCW" secondAttribute="trailing" id="VtS-T9-eCq"/>
+                                    <constraint firstItem="7KJ-59-cCW" firstAttribute="leading" secondItem="aj5-CZ-UOq" secondAttribute="trailing" id="WOE-Pl-Tpf"/>
+                                    <constraint firstAttribute="bottom" secondItem="aj5-CZ-UOq" secondAttribute="bottom" id="gHq-Ry-RwZ"/>
+                                    <constraint firstAttribute="height" constant="44" id="oDV-Yk-mRz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                                <connections>
-                                    <action selector="onSearchTapped:" destination="5ru-tX-aNT" eventType="primaryActionTriggered" id="2eU-pc-ZQo"/>
-                                </connections>
-                            </textField>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jtG-Xi-Pk6">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -46,18 +70,19 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="aj5-CZ-UOq" firstAttribute="leading" secondItem="LmT-aZ-pAR" secondAttribute="leading" constant="8" id="9Rw-VM-i1n"/>
                             <constraint firstItem="hwD-1x-66d" firstAttribute="top" secondItem="jtG-Xi-Pk6" secondAttribute="bottom" id="B4z-bL-nkD"/>
                             <constraint firstItem="jtG-Xi-Pk6" firstAttribute="leading" secondItem="LmT-aZ-pAR" secondAttribute="leading" id="BdC-Yu-i3P"/>
+                            <constraint firstItem="jtG-Xi-Pk6" firstAttribute="top" secondItem="wKu-g4-Ss0" secondAttribute="bottom" id="WGf-QV-owP"/>
+                            <constraint firstItem="wKu-g4-Ss0" firstAttribute="leading" secondItem="LmT-aZ-pAR" secondAttribute="leading" id="Xp1-h5-Kom"/>
                             <constraint firstAttribute="trailing" secondItem="jtG-Xi-Pk6" secondAttribute="trailing" id="cHZ-tW-YuD"/>
-                            <constraint firstItem="jtG-Xi-Pk6" firstAttribute="top" secondItem="aj5-CZ-UOq" secondAttribute="bottom" id="cnB-O4-L2o"/>
-                            <constraint firstItem="aj5-CZ-UOq" firstAttribute="top" secondItem="TyI-v7-ddG" secondAttribute="bottom" id="jxH-e2-VNk"/>
-                            <constraint firstAttribute="trailing" secondItem="aj5-CZ-UOq" secondAttribute="trailing" constant="8" id="tYI-Bd-p72"/>
+                            <constraint firstItem="wKu-g4-Ss0" firstAttribute="top" secondItem="TyI-v7-ddG" secondAttribute="bottom" id="oGe-4y-h8D"/>
+                            <constraint firstAttribute="trailing" secondItem="wKu-g4-Ss0" secondAttribute="trailing" id="vEI-X9-jyD"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" id="WHz-fl-gFL"/>
                     <connections>
                         <outlet property="collectionView" destination="jtG-Xi-Pk6" id="egf-hy-vKq"/>
+                        <outlet property="gifButton" destination="7KJ-59-cCW" id="toD-lX-INf"/>
                         <outlet property="textField" destination="aj5-CZ-UOq" id="aRP-m1-86Q"/>
                     </connections>
                 </viewController>

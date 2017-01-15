@@ -16,6 +16,7 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
 
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var gifButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var searchKeyword: String {
@@ -82,12 +83,15 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
         }
     }
     
-    @IBAction func onSearchTapped(_ sender: UITextField) {
+    @IBAction func didSearchTap(_ sender: UITextField) {
         self.searchedImages = nil
         self.requestData()
         self.view.endEditing(true)
     }
     
+    @IBAction func didGifTap(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
     // Mark: UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return Section.count

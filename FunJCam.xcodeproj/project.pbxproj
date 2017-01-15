@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		075D532C1E2B9EEA00D1F35A /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075D532B1E2B9EEA00D1F35A /* WebImage.framework */; };
 		078387941E26E6DF007D298A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387931E26E6DF007D298A /* AppDelegate.swift */; };
 		078387961E26E6DF007D298A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387951E26E6DF007D298A /* MainViewController.swift */; };
 		0783879B1E26E6E0007D298A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0783879A1E26E6E0007D298A /* Assets.xcassets */; };
@@ -34,7 +35,6 @@
 		078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387EA1E26F4EA007D298A /* SearchViewController.swift */; };
 		078387F41E26F5C4007D298A /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078387F31E26F5C4007D298A /* KakaoOpenSDK.framework */; };
 		07B3A0C71E27D5FF00B7439E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0C51E27D5FF00B7439E /* Alamofire.framework */; };
-		07B3A0C81E27D5FF00B7439E /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0C61E27D5FF00B7439E /* AlamofireImage.framework */; };
 		07B3A0CC1E27DA7200B7439E /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0CA1E27DA7200B7439E /* Realm.framework */; };
 		07B3A0CD1E27DA7200B7439E /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0CB1E27DA7200B7439E /* RealmSwift.framework */; };
 		07B3A0D01E27DD8D00B7439E /* Mapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B3A0CE1E27DD8D00B7439E /* Mapper.framework */; };
@@ -62,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		075D532B1E2B9EEA00D1F35A /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
+		075D532D1E2BA0A000D1F35A /* FLAnimatedImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FLAnimatedImage.framework; path = Carthage/Build/iOS/FLAnimatedImage.framework; sourceTree = "<group>"; };
 		078387901E26E6DF007D298A /* FunJCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunJCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		078387931E26E6DF007D298A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		078387951E26E6DF007D298A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -119,8 +121,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				075D532C1E2B9EEA00D1F35A /* WebImage.framework in Frameworks */,
 				07B3A0C71E27D5FF00B7439E /* Alamofire.framework in Frameworks */,
-				07B3A0C81E27D5FF00B7439E /* AlamofireImage.framework in Frameworks */,
 				078387F41E26F5C4007D298A /* KakaoOpenSDK.framework in Frameworks */,
 				07B3A0D01E27DD8D00B7439E /* Mapper.framework in Frameworks */,
 				07B3A0CC1E27DA7200B7439E /* Realm.framework in Frameworks */,
@@ -272,6 +274,8 @@
 		833125CE2FF1EE9A2A5FA1BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				075D532D1E2BA0A000D1F35A /* FLAnimatedImage.framework */,
+				075D532B1E2B9EEA00D1F35A /* WebImage.framework */,
 				07B3A0CE1E27DD8D00B7439E /* Mapper.framework */,
 				07B3A0CF1E27DD8D00B7439E /* ObjectMapper.framework */,
 				07B3A0CA1E27DA7200B7439E /* Realm.framework */,
@@ -467,10 +471,10 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Mapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 			);
 			outputPaths = (
 			);
