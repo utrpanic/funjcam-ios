@@ -64,7 +64,7 @@ extension UIImageView {
         self.image = placeholder
         self.sd_cancelCurrentImageLoad()
         self.alpha = 0
-        guard let url = URL(string: url ?? ""), url.absoluteString.trimmed.length > 0 else {
+        guard let url = URL(string: url?.urlEncoded ?? ""), url.absoluteString.trimmed.length > 0 else {
             return
         }
         self.sd_setImage(with: url, placeholderImage: placeholder, options: [], completed: { (image, error, type, url) in
