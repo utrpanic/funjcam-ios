@@ -12,7 +12,7 @@
 * iOS 10
 * xcode 8
 * Swift 3
-* CocoaPods 1.1.1
+* CocoaPods 1.2.0
 * Carthage 0.18.1
 
 ## Installation
