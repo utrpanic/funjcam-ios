@@ -1,4 +1,1 @@
-github "Alamofire/Alamofire"
-github "lyft/mapper"
 github "realm/realm-cocoa"
-github "rs/SDWebImage"

@@ -1,4 +1,1 @@
-github "Alamofire/Alamofire" "4.3.0"
-github "rs/SDWebImage" "3.8.2"
-github "lyft/mapper" "6.0.0"
-github "realm/realm-cocoa" "v2.3.0"
+github "realm/realm-cocoa" "v2.7.0"
