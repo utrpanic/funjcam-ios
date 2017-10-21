@@ -6,7 +6,7 @@
 //  Copyright © 2017년 the42apps. All rights reserved.
 //
 
-import WebImage
+import SDWebImage
 
 extension String {
     

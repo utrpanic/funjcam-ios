@@ -1,4 +1,4 @@
-platform :ios, '10.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target 'FunJCam' do
@@ -7,6 +7,7 @@ target 'FunJCam' do
     pod 'Crashlytics'
     pod 'Fabric'
     pod 'ModelMapper'
+    pod 'RealmSwift'
     pod 'SDWebImage'
 end
 
