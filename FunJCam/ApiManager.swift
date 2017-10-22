@@ -9,6 +9,7 @@
 import Alamofire
 
 typealias RawJSON = Dictionary<String, Any>
+typealias ApiCompletion<T> = (Code, T?) -> Void
 typealias ApiSuccess<T> = (T) -> Void
 typealias ApiFailure = (Code) -> Void
 
