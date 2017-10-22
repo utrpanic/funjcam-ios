@@ -37,8 +37,8 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
     var nextPageStartIndex: Int?
     
-    class func create() -> SearchViewController {
-        let viewController = self.create(storyboardName: "Main") as! SearchViewController
+    static func create() -> Self {
+        let viewController = self.create(storyboardName: "Main")!
         return viewController
     }
     
@@ -64,9 +64,9 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
-        self.collectionView.registerNib(type: SearchedImageGridCell.self)
-        self.collectionView.registerNib(type: LoadMoreGridCell.self)
-        self.collectionView.registerNib(type: EmptySearchGridCell.self)
+        self.collectionView.registerNib(SearchedImageGridCell.self)
+        self.collectionView.registerNib(LoadMoreGridCell.self)
+        self.collectionView.registerNib(EmptySearchGridCell.self)
     }
     
     func requestData() {
@@ -110,14 +110,14 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch Section(rawValue: (indexPath as NSIndexPath).section)! {
         case .image:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchedImageGridCell.id, for: indexPath) as! SearchedImageGridCell
+            let cell = collectionView.dequeueReusableCell(SearchedImageGridCell.self, for: indexPath)
             cell.configureCell(self.searchedImages?[(indexPath as NSIndexPath).item])
             return cell
         case .loadMore:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LoadMoreGridCell.id, for: indexPath) as! LoadMoreGridCell
+            let cell = collectionView.dequeueReusableCell(LoadMoreGridCell.self, for: indexPath)
             return cell
         case .empty:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySearchGridCell.id, for: indexPath) as! EmptySearchGridCell
+            let cell = collectionView.dequeueReusableCell(EmptySearchGridCell.self, for: indexPath)
             return cell
         }
     }

@@ -7,7 +7,10 @@
 //
 
 import Alamofire
-import Mapper
+
+typealias RawJSON = Dictionary<String, Any>
+typealias ApiSuccess<T> = (T) -> Void
+typealias ApiFailure = (Code) -> Void
 
 class ApiManager {
     
@@ -20,6 +23,30 @@ class ApiManager {
         "searchType": "image" as AnyObject,
         ]
     
+    private func getObject<T: Decodable>(url: String, headers: HTTPHeaders? = nil, parameters: Dictionary<String, Any>?, success: ApiSuccess<T>?, failure: ApiFailure?) {
+        let method: HTTPMethod = .get
+        Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding.default)
+            .responseData(completionHandler: { (response) in
+                switch response.result {
+                case .success(let data):
+                    do {
+                        let result = try JSONDecoder().decode(T.self, from: data)
+                        Log.d("[\(method.rawValue) success] \(url)")
+                        success?(result)
+                        return
+                    } catch {
+                        let code = Code.jsonError(message: error.localizedDescription)
+                        Log.d("[\(method.rawValue) failure(\(code))] \(url)")
+                        failure?(code)
+                    }
+                case .failure(_):
+                    let code = Code(value: response.response?.statusCode)
+                    Log.d("[\(method.rawValue) failure(\(code))] \(url)")
+                    failure?(code)
+                }
+            })
+    }
+    
     func searchImage(keyword: String, startIndex: Int?, completion: @escaping (Array<SearchedImage>?, Int?) -> Void) {
         var parameters = self.queryParameters
         parameters["num"] = 10 as AnyObject? // 1~10만 허용.
@@ -27,14 +54,34 @@ class ApiManager {
         if let startIndex = startIndex {
             parameters["start"] = startIndex as AnyObject?
         }
-        
-        Alamofire.request(self.googleCustomSearchUrl, parameters: parameters).responseJSON { (response) in
-            Log.d(response.result.value)
-            if let json = response.result.value as? Dictionary<String, AnyObject> {
-                let responseSearchImage = ResponseSearchImage.create(json: json)
-                completion(responseSearchImage?.searchedImages, responseSearchImage?.nextPageStartIndex)
-            }
-        }
+        self.getObject(url: self.googleCustomSearchUrl, parameters: parameters)
+//        Alamofire.request(self.googleCustomSearchUrl, parameters: parameters).responseData(completionHandler: { (response) in
+//            switch response.result {
+//            case .success(let data):
+//                do {
+//                    let result = try JSONDecoder().decode(T.self, from: data)
+//                    Log.d("[\(method.rawValue) success] \(url)")
+//                    success?(result)
+//                    return
+//                } catch {
+//                    let code = Code.jsonError(message: error.localizedDescription)
+//                    Log.d("[\(method.rawValue) failure(\(code))] \(url)")
+//                    failure?(code)
+//                }
+//            case .failure(_):
+//                let code = Code(value: response.response?.statusCode)
+//                Log.d("[\(method.rawValue) failure(\(code))] \(url)")
+//                failure?(code)
+//            }
+//        })
+//
+//        Alamofire.request(self.googleCustomSearchUrl, parameters: parameters).responseJSON { (response) in
+//            Log.d(response.result.value)
+//            if let json = response.result.value as? Dictionary<String, AnyObject> {
+//                let responseSearchImage = ResponseSearchImage.create(json: json)
+//                completion(responseSearchImage?.searchedImages, responseSearchImage?.nextPageStartIndex)
+//            }
+//        }
     }
 }
 //https://developers.google.com/custom-search/json-api/v1/reference/cse/list

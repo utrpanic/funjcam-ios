@@ -6,29 +6,41 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-import Mapper
-
-class ResponseSearchImage: Mappable {
+class ResponseSearchImage: Decodable {
     var searchedImages: Array<SearchedImage>?
     var nextPages: Array<NextPage>?
     var nextPageStartIndex: Int? { return self.nextPages?.first?.startIndex }
     
-    class func create(json: Dictionary<String, Any>) -> ResponseSearchImage? {
-        return ResponseSearchImage.from(json as NSDictionary)
+//    class func create(json: Dictionary<String, Any>) -> ResponseSearchImage? {
+//        return ResponseSearchImage.from(json as NSDictionary)
+//    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case items
+        case nextPage = "queries.nextPage"
     }
     
-    required init(map: Mapper) {
-        searchedImages = map.optionalFrom("items")
-        nextPages = map.optionalFrom("queries.nextPage")
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.searchedImages = try values.decodeIfPresent(Array<SearchedImage>.self, forKey: .items)
+        self.nextPages = try values.decodeIfPresent(Array<NextPage>.self, forKey: .nextPage)
     }
 
 }
 
-class NextPage: Mappable {
-    var startIndex: Int?
+class NextPage: Decodable {
     
-    required init(map: Mapper) {
-        startIndex = map.optionalFrom("startIndex")
+    var startIndex: Int = 0
+    
+    private enum CodingKeys: String, CodingKey {
+        case startIndex
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        if let startIndex = try values.decodeIfPresent(Int.self, forKey: .startIndex) {
+            self.startIndex = startIndex
+        }
     }
 
 }

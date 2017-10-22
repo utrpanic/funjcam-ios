@@ -32,6 +32,7 @@
 		078387ED1E26F4EA007D298A /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E81E26F4EA007D298A /* ImageViewerViewController.swift */; };
 		078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E91E26F4EA007D298A /* RecentViewController.swift */; };
 		078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387EA1E26F4EA007D298A /* SearchViewController.swift */; };
+		07881FC61F9CBA290081EB85 /* Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07881FC51F9CBA290081EB85 /* Code.swift */; };
 		1D910E0B6849500AE219D39A /* Pods_FunJCamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */; };
 		7F96CA141E3D9F9EF3C038DF /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */; };
 		8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D69890B1E27186C002F0BAE /* Main.storyboard */; };
@@ -89,6 +90,7 @@
 		078387E81E26F4EA007D298A /* ImageViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerViewController.swift; sourceTree = "<group>"; };
 		078387E91E26F4EA007D298A /* RecentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
 		078387EA1E26F4EA007D298A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		07881FC51F9CBA290081EB85 /* Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code.swift; sourceTree = "<group>"; };
 		2387BC0DA03A80C1EA67BFF5 /* Pods-FunJCamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 			children = (
 				078387D41E26F449007D298A /* ApiManager.swift */,
 				078387D51E26F449007D298A /* ResponseSearchImage.swift */,
+				07881FC51F9CBA290081EB85 /* Code.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -355,17 +358,20 @@
 					0783878F1E26E6DF007D298A = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = L94QTT73WH;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					078387A31E26E6E0007D298A = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = L94QTT73WH;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0783878F1E26E6DF007D298A;
 					};
 					078387AE1E26E6E0007D298A = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = L94QTT73WH;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0783878F1E26E6DF007D298A;
 					};
@@ -522,6 +528,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BoxJeonExtension/BoxJeonExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/ModelMapper/Mapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -530,6 +537,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoxJeonExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -600,6 +608,7 @@
 			files = (
 				078387E21E26F4C4007D298A /* LoadMoreGridCell.swift in Sources */,
 				078387D91E26F47D007D298A /* AlbumManager.swift in Sources */,
+				07881FC61F9CBA290081EB85 /* Code.swift in Sources */,
 				078387E41E26F4C4007D298A /* SearchedImageGridCell.swift in Sources */,
 				078387D11E26F40F007D298A /* SearchedImage.swift in Sources */,
 				078387EB1E26F4EA007D298A /* BookmarkViewController.swift in Sources */,
@@ -708,7 +717,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -758,7 +767,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -786,7 +795,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = FunJCam/BridgingHeader.h;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -809,7 +819,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = FunJCam/BridgingHeader.h;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -824,7 +835,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
 			};
 			name = Debug;
@@ -840,7 +852,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
 			};
 			name = Release;
@@ -855,7 +868,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = FunJCam;
 			};
 			name = Debug;
@@ -870,7 +884,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = FunJCam;
 			};
 			name = Release;

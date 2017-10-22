@@ -9,22 +9,32 @@
 import RealmSwift
 import Mapper
 
-class SearchedImage: Mappable {
-    var thumbnailLink: String?
-    var link: String?
+class SearchedImage: Decodable {
+    var thumbnailLink: String = ""
+    var link: String = ""
     var width: Int?
     var height: Int?
     var byteSize: Int?
     
     var contextLink: String?
     
-    required init(map: Mapper) throws {
-        thumbnailLink = map.optionalFrom("image.thumbnailLink")
-        link = map.optionalFrom("link")
-        width = map.optionalFrom("image.width")
-        height = map.optionalFrom("image.height")
-        byteSize = map.optionalFrom("image.byteSize")
-        contextLink = map.optionalFrom("image.contextLink")
+    private enum CodingKeys: String, CodingKey {
+        case thumbnailLink = "image.thumbnailLink"
+        case link = "link"
+        case width = "image.width"
+        case height = "image.height"
+        case byteSize = "image.byteSize"
+        case contextLink = "image.contextLink"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.thumbnailLink = try values.decodeIfPresent(String.self, forKey: .thumbnailLink) ?? ""
+        self.link = try values.decodeIfPresent(String.self, forKey: .link) ?? ""
+        self.width = try values.decodeIfPresent(Int.self, forKey: .width)
+        self.height = try values.decodeIfPresent(Int.self, forKey: .height)
+        self.byteSize = try values.decodeIfPresent(Int.self, forKey: .byteSize)
+        self.contextLink = try values.decodeIfPresent(String.self, forKey: .contextLink)
     }
     
 }

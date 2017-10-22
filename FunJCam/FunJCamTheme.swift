@@ -17,11 +17,12 @@ class FJTheme {
 
 struct FJColor {
     
-    static let primary = UIColor(hex: "#3F51B5")
-    static let primaryDark = UIColor(hex: "#303F9F")
-    static let accent = UIColor(hex: "#FF4081")
+    static var primary: UIColor { return UIColor(hex: "#3f51b5")! }
+    static var primaryDark: UIColor { return UIColor(hex: "#303f9f")! }
+    static var accent: UIColor { return UIColor(hex: "#ff4081")! }
     
-    static let normalText = UIColor.black
+    static var titleText: UIColor { return UIColor(hex: "#333333")! }
+    static var subtitleText: UIColor { return UIColor(hex: "#959595")! }
     
 }
 
