@@ -223,12 +223,12 @@
 		078387C51E26EA42007D298A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				078387DA1E26F4C4007D298A /* EmptySearchGridCell.swift */,
 				078387DB1E26F4C4007D298A /* EmptySearchGridCell.xib */,
-				078387DC1E26F4C4007D298A /* LoadMoreGridCell.swift */,
+				078387DA1E26F4C4007D298A /* EmptySearchGridCell.swift */,
 				078387DD1E26F4C4007D298A /* LoadMoreGridCell.xib */,
-				078387DE1E26F4C4007D298A /* SearchedImageGridCell.swift */,
+				078387DC1E26F4C4007D298A /* LoadMoreGridCell.swift */,
 				078387DF1E26F4C4007D298A /* SearchedImageGridCell.xib */,
+				078387DE1E26F4C4007D298A /* SearchedImageGridCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -795,7 +795,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = FunJCam/BridgingHeader.h;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -819,7 +819,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = FunJCam/BridgingHeader.h;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

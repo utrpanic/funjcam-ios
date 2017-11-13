@@ -25,7 +25,7 @@ class SearchedImageGridCell: UICollectionViewCell {
         self.imageView.image = nil
     }
     
-    func configureCell(_ searchedImage: SearchedImage?) {
+    func configure(searchedImage: SearchedImage?) {
         self.imageView.setImage(url: searchedImage?.thumbnailLink, placeholder: nil, completion: nil)
     }
 }

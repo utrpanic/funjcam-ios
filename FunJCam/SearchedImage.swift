@@ -6,9 +6,6 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-import RealmSwift
-import Mapper
-
 class SearchedImage: Decodable {
     var thumbnailLink: String = ""
     var link: String = ""

@@ -10,7 +10,7 @@ target 'FunJCam' do
     pod 'RealmSwift'
     pod 'SDWebImage'
     
-    pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v0.4'
+    pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v0.6'
 end
 
 target 'FunJCamTests' do

@@ -70,16 +70,22 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
     
     func requestData() {
-        ApiManager.shared.searchImage(keyword: self.searchKeyword, startIndex: self.nextPageStartIndex) { [weak self] (searchedImages, nextPageStartIndex) in
-            if self?.searchedImages?.count ?? 0 == 0 {
-                self?.searchedImages = searchedImages
-            } else {
-                if let searchedImages = searchedImages {
-                    self?.searchedImages?.append(contentsOf: searchedImages)
+        ApiManager.shared.searchImage(keyword: self.searchKeyword, startIndex: self.nextPageStartIndex) { [weak self] (code, response) in
+            if let response = response {
+                if self?.searchedImages?.count ?? 0 == 0 {
+                    self?.searchedImages = response.searchedImages
+                } else {
+                    if let searchedImages = response.searchedImages {
+                        self?.searchedImages?.append(contentsOf: searchedImages)
+                    }
                 }
+                if let nextPageStartIndex = response.nextPageStartIndex {
+                    self?.nextPageStartIndex = nextPageStartIndex
+                }
+                self?.collectionView.reloadData()
+            } else {
+                // TODO: 에러처리
             }
-            self?.nextPageStartIndex = nextPageStartIndex
-            self?.collectionView.reloadData()
         }
     }
     
@@ -108,10 +114,10 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch Section(rawValue: (indexPath as NSIndexPath).section)! {
+        switch Section(rawValue: indexPath.section)! {
         case .image:
             let cell = collectionView.dequeueReusableCell(SearchedImageGridCell.self, for: indexPath)
-            cell.configureCell(self.searchedImages?[(indexPath as NSIndexPath).item])
+            cell.configure(searchedImage: self.searchedImages?[indexPath.item])
             return cell
         case .loadMore:
             let cell = collectionView.dequeueReusableCell(LoadMoreGridCell.self, for: indexPath)
@@ -123,7 +129,7 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        switch Section(rawValue: (indexPath as NSIndexPath).section)! {
+        switch Section(rawValue: indexPath.section)! {
         case .loadMore:
             if let _ = self.nextPageStartIndex {
                 self.requestData()
@@ -134,7 +140,7 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        switch Section(rawValue: (indexPath as NSIndexPath).section)! {
+        switch Section(rawValue: indexPath.section)! {
         case .image:
             return CGSize(width: (collectionView.frame.width - 8 - 8 - 8) / 2, height: SearchedImageGridCell.defaultHeight)
         case .loadMore:
@@ -172,10 +178,10 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch Section(rawValue: (indexPath as NSIndexPath).section)! {
+        switch Section(rawValue: indexPath.section)! {
         case .image:
             if let image = (collectionView.cellForItem(at: indexPath) as? SearchedImageGridCell)?.imageView.image {
-                let viewController = ImageViewerViewController.create(image: image, searchedImage: self.searchedImages?[(indexPath as NSIndexPath).item])
+                let viewController = ImageViewerViewController.create(image: image, searchedImage: self.searchedImages?[indexPath.item])
                 self.present(viewController, animated: true, completion: nil)
             }
         default:

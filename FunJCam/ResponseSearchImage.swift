@@ -7,13 +7,10 @@
 //
 
 class ResponseSearchImage: Decodable {
+    
     var searchedImages: Array<SearchedImage>?
     var nextPages: Array<NextPage>?
     var nextPageStartIndex: Int? { return self.nextPages?.first?.startIndex }
-    
-//    class func create(json: Dictionary<String, Any>) -> ResponseSearchImage? {
-//        return ResponseSearchImage.from(json as NSDictionary)
-//    }
     
     private enum CodingKeys: String, CodingKey {
         case items
@@ -44,3 +41,4 @@ class NextPage: Decodable {
     }
 
 }
+

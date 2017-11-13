@@ -8,8 +8,8 @@
 
 class BookmarkViewController: BaseViewController {
     
-    class func create() -> BookmarkViewController {
-        let viewController = self.create(storyboardName: "Main") as! BookmarkViewController
+    static func create() -> Self {
+        let viewController = self.create(storyboardName: "Main")!
         return viewController
     }
     
