@@ -28,7 +28,7 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
             return ""
         }
     }
-    var searchedImages: Array<SearchedImage>? {
+    var searchedImages: Array<GoogleSearchedImage>? {
         willSet {
             if newValue == nil {
                 self.nextPageStartIndex = nil
@@ -121,6 +121,7 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
             return cell
         case .loadMore:
             let cell = collectionView.dequeueReusableCell(LoadMoreGridCell.self, for: indexPath)
+            cell.startLoadingAnimation()
             return cell
         case .empty:
             let cell = collectionView.dequeueReusableCell(EmptySearchGridCell.self, for: indexPath)
@@ -131,7 +132,7 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         switch Section(rawValue: indexPath.section)! {
         case .loadMore:
-            if let _ = self.nextPageStartIndex {
+            if self.nextPageStartIndex != nil {
                 self.requestData()
             }
         default:

@@ -18,8 +18,8 @@ class ImageViewerViewController: BaseViewController {
     var image: UIImage?
     var searchedImage: SearchedImage?
     
-    class func create(image: UIImage?, searchedImage: SearchedImage?) -> ImageViewerViewController {
-        let viewController = self.create(storyboardName: "Main") as! ImageViewerViewController
+    class func create(image: UIImage?, searchedImage: SearchedImage?) -> Self {
+        let viewController = self.create(storyboardName: "Main")!
         viewController.image = image
         viewController.searchedImage = searchedImage
         return viewController
@@ -34,8 +34,8 @@ class ImageViewerViewController: BaseViewController {
     }
     
     func setupImageViewer() {
-        self.imageView.setImage(url: self.searchedImage?.link, placeholder: self.image, completion: { [weak self] (image) -> Void in
-            if let url = self?.searchedImage?.link, image == nil {
+        self.imageView.setImage(url: self.searchedImage?.originalUrl, placeholder: self.image, completion: { [weak self] (image) -> Void in
+            if let url = self?.searchedImage?.originalUrl, image == nil {
                 Answers.logCustomEvent(withName: "Image Download Failure", customAttributes: ["host": URL(string: url)?.host ?? "unknown"])
             }
         })
@@ -53,9 +53,9 @@ class ImageViewerViewController: BaseViewController {
     }
     
     @IBAction func onShareToKakaoTalkTapped(_ sender: UIButton) {
-        if let link = self.searchedImage?.link {
+        if let link = self.searchedImage?.originalUrl {
             let linkObject: KakaoTalkLinkObject
-            if let width = self.searchedImage?.width, let height = self.searchedImage?.height {
+            if let width = self.searchedImage?.originalWidth, let height = self.searchedImage?.originalHeight {
                 linkObject = KakaoTalkLinkObject.createImage(link, width: Int32(width), height: Int32(height))
             } else {
                 linkObject = KakaoTalkLinkObject.createImage(link, width: 80, height: 80)

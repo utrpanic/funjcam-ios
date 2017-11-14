@@ -26,6 +26,9 @@
                 <constraint firstItem="aOe-dj-lcw" firstAttribute="centerX" secondItem="oBX-QA-jma" secondAttribute="centerX" id="5dc-97-7Oj"/>
                 <constraint firstItem="aOe-dj-lcw" firstAttribute="centerY" secondItem="oBX-QA-jma" secondAttribute="centerY" id="6q4-9m-EZ9"/>
             </constraints>
+            <connections>
+                <outlet property="activityIndicatorView" destination="aOe-dj-lcw" id="Y7o-51-744"/>
+            </connections>
             <point key="canvasLocation" x="249" y="398"/>
         </collectionViewCell>
     </objects>

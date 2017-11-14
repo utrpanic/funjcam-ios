@@ -10,8 +10,8 @@
 
 ## Requirements
 * iOS 11
-* xcode 9
-* Swift 3
+* xcode 9.1
+* Swift 4
 * CocoaPods 1.3.1
 
 ## Installation

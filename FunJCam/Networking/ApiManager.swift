@@ -33,6 +33,7 @@ class ApiManager {
                         return
                     } catch {
                         Log.d("[\(method.rawValue) failure(\(code))] \(url)")
+                        Log.d("Json error message: \(error.localizedDescription)")
                         completion(code, nil)
                     }
                 case .failure(_):
@@ -115,7 +116,7 @@ extension ApiManager {
     //imgDominantColor={imgDominantColor?}&
     //alt=json";
     
-    func searchImage(keyword: String, startIndex: Int?, completion: @escaping ApiCompletion<ResponseSearchImage>) {
+    func searchImage(keyword: String, startIndex: Int?, completion: @escaping ApiCompletion<ResponseGoogleImageSearch>) {
         let url = "https://www.googleapis.com/customsearch/v1"
         var parameters: Dictionary<String, Any> = [
             "key": "AIzaSyCTdQn7PY1xP5d_Otz8O8aTvbCSslU7lBQ",

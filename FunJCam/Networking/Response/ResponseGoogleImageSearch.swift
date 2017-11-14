@@ -6,21 +6,26 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-class ResponseSearchImage: Decodable {
+class ResponseGoogleImageSearch: Decodable {
     
-    var searchedImages: Array<SearchedImage>?
+    var searchedImages: Array<GoogleSearchedImage>?
     var nextPages: Array<NextPage>?
     var nextPageStartIndex: Int? { return self.nextPages?.first?.startIndex }
     
     private enum CodingKeys: String, CodingKey {
         case items
-        case nextPage = "queries.nextPage"
+        case queries
+        
+        enum Queries: String, CodingKey {
+            case nextPage
+        }
     }
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.searchedImages = try values.decodeIfPresent(Array<SearchedImage>.self, forKey: .items)
-        self.nextPages = try values.decodeIfPresent(Array<NextPage>.self, forKey: .nextPage)
+        self.searchedImages = try values.decodeIfPresent(Array<GoogleSearchedImage>.self, forKey: .items)
+        let queriesContainer = try values.nestedContainer(keyedBy: CodingKeys.Queries.self, forKey: .queries)
+        self.nextPages = try queriesContainer.decodeIfPresent(Array<NextPage>.self, forKey: .nextPage)
     }
 
 }
