@@ -6,7 +6,6 @@ target 'FunJCam' do
     pod 'Alamofire'
     pod 'Crashlytics'
     pod 'Fabric'
-    pod 'ModelMapper'
     pod 'RealmSwift'
     pod 'SDWebImage'
     

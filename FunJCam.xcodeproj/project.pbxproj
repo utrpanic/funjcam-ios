@@ -158,12 +158,11 @@
 		078387921E26E6DF007D298A /* FunJCam */ = {
 			isa = PBXGroup;
 			children = (
-				078387C21E26EA29007D298A /* Common */,
-				078387C31E26EA2F007D298A /* Model */,
-				078387D31E26F423007D298A /* Networking */,
-				078387C41E26EA39007D298A /* Manager */,
-				078387C51E26EA42007D298A /* View */,
-				078387C61E26EA5B007D298A /* ViewController */,
+				8D1931551FBAC49E00C30758 /* Networking */,
+				8D1931531FBAC47B00C30758 /* Common */,
+				8D1931541FBAC48A00C30758 /* Model */,
+				8D1931571FBAC4C700C30758 /* Manager */,
+				8D1931581FBAC4DA00C30758 /* ViewController */,
 				078387C11E26E9EC007D298A /* BridgingHeader.h */,
 				078387931E26E6DF007D298A /* AppDelegate.swift */,
 				0783879C1E26E6E0007D298A /* LaunchScreen.storyboard */,
@@ -192,69 +191,6 @@
 			path = FunJCamUITests;
 			sourceTree = "<group>";
 		};
-		078387C21E26EA29007D298A /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				078387C71E26EB0C007D298A /* FunJCamExtension.swift */,
-				078387CD1E26EB9A007D298A /* FunJCamTheme.swift */,
-				078387C91E26EB2A007D298A /* BaseViewController.swift */,
-				078387CB1E26EB44007D298A /* LogManager.swift */,
-			);
-			name = Common;
-			sourceTree = "<group>";
-		};
-		078387C31E26EA2F007D298A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				078387CF1E26F40F007D298A /* SearchedImage.swift */,
-				078387D01E26F40F007D298A /* SearchKeyword.swift */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		078387C41E26EA39007D298A /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				078387D81E26F47D007D298A /* AlbumManager.swift */,
-			);
-			name = Manager;
-			sourceTree = "<group>";
-		};
-		078387C51E26EA42007D298A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				078387DB1E26F4C4007D298A /* EmptySearchGridCell.xib */,
-				078387DA1E26F4C4007D298A /* EmptySearchGridCell.swift */,
-				078387DD1E26F4C4007D298A /* LoadMoreGridCell.xib */,
-				078387DC1E26F4C4007D298A /* LoadMoreGridCell.swift */,
-				078387DF1E26F4C4007D298A /* SearchedImageGridCell.xib */,
-				078387DE1E26F4C4007D298A /* SearchedImageGridCell.swift */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		078387C61E26EA5B007D298A /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				8D69890B1E27186C002F0BAE /* Main.storyboard */,
-				078387EA1E26F4EA007D298A /* SearchViewController.swift */,
-				078387E91E26F4EA007D298A /* RecentViewController.swift */,
-				078387E61E26F4EA007D298A /* BookmarkViewController.swift */,
-				078387E81E26F4EA007D298A /* ImageViewerViewController.swift */,
-			);
-			name = ViewController;
-			sourceTree = "<group>";
-		};
-		078387D31E26F423007D298A /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				078387D41E26F449007D298A /* ApiManager.swift */,
-				078387D51E26F449007D298A /* ResponseSearchImage.swift */,
-				07881FC51F9CBA290081EB85 /* Code.swift */,
-			);
-			name = Networking;
-			sourceTree = "<group>";
-		};
 		833125CE2FF1EE9A2A5FA1BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +200,78 @@
 				D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D1931531FBAC47B00C30758 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				078387C71E26EB0C007D298A /* FunJCamExtension.swift */,
+				078387CD1E26EB9A007D298A /* FunJCamTheme.swift */,
+				078387C91E26EB2A007D298A /* BaseViewController.swift */,
+				078387CB1E26EB44007D298A /* LogManager.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		8D1931541FBAC48A00C30758 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				078387CF1E26F40F007D298A /* SearchedImage.swift */,
+				078387D01E26F40F007D298A /* SearchKeyword.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8D1931551FBAC49E00C30758 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				8D1931561FBAC4B500C30758 /* Response */,
+				07881FC51F9CBA290081EB85 /* Code.swift */,
+				078387D41E26F449007D298A /* ApiManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		8D1931561FBAC4B500C30758 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				078387D51E26F449007D298A /* ResponseSearchImage.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		8D1931571FBAC4C700C30758 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				078387D81E26F47D007D298A /* AlbumManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		8D1931581FBAC4DA00C30758 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8D1931591FBAC4ED00C30758 /* View */,
+				8D69890B1E27186C002F0BAE /* Main.storyboard */,
+				078387EA1E26F4EA007D298A /* SearchViewController.swift */,
+				078387E91E26F4EA007D298A /* RecentViewController.swift */,
+				078387E61E26F4EA007D298A /* BookmarkViewController.swift */,
+				078387E81E26F4EA007D298A /* ImageViewerViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8D1931591FBAC4ED00C30758 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				078387DF1E26F4C4007D298A /* SearchedImageGridCell.xib */,
+				078387DE1E26F4C4007D298A /* SearchedImageGridCell.swift */,
+				078387DB1E26F4C4007D298A /* EmptySearchGridCell.xib */,
+				078387DA1E26F4C4007D298A /* EmptySearchGridCell.swift */,
+				078387DD1E26F4C4007D298A /* LoadMoreGridCell.xib */,
+				078387DC1E26F4C4007D298A /* LoadMoreGridCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B25CAE28AE499EDB19F7ADD1 /* Pods */ = {
@@ -529,7 +537,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BoxJeonExtension/BoxJeonExtension.framework",
-				"${BUILT_PRODUCTS_DIR}/ModelMapper/Mapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -538,7 +545,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoxJeonExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
