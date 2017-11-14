@@ -6,7 +6,7 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-class SearchViewController: BaseViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class SearchViewController: FJViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     enum Section: Int {
         case image
@@ -52,7 +52,7 @@ class SearchViewController: BaseViewController, UICollectionViewDataSource, UICo
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.updateNavigationBarAsTransparent()
     }
     
     func setupTextField() {

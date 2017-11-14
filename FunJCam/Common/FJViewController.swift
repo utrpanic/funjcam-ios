@@ -6,11 +6,15 @@
 //  Copyright © 2017년 the42apps. All rights reserved.
 //
 
-class BaseViewController: UIViewController {
+class FJViewController: UIViewController {
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return FJConstant.device.hasNotch ? .lightContent : .default
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.updateNavigationBarAsTransparent()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -6,7 +6,7 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-class BookmarkViewController: BaseViewController {
+class BookmarkViewController: FJViewController {
     
     static func create() -> Self {
         let viewController = self.create(storyboardName: "Main")!
@@ -20,7 +20,7 @@ class BookmarkViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+        
     }
     
 }
