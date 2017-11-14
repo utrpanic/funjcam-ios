@@ -1,4 +1,4 @@
-platform :ios, '10.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target 'FunJCam' do
@@ -6,8 +6,10 @@ target 'FunJCam' do
     pod 'Alamofire'
     pod 'Crashlytics'
     pod 'Fabric'
-    pod 'ModelMapper'
+    pod 'RealmSwift'
     pod 'SDWebImage'
+    
+    pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v0.6'
 end
 
 target 'FunJCamTests' do

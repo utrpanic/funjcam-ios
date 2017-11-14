@@ -9,18 +9,16 @@
 * Try App Extension - Today
 
 ## Requirements
-* iOS 10
-* xcode 8
-* Swift 3
-* CocoaPods 1.2.0
-* Carthage 0.18.1
+* iOS 11
+* xcode 9.1
+* Swift 4
+* CocoaPods 1.3.1
 
 ## Installation
 ``` 
 git clone https://github.com/BoxJeon/funjcam-ios
 cd funjcam-ios
 pod install
-carthage bootstrap --platform iOS
 ```
 
 * open FunJCam.xcworkspace

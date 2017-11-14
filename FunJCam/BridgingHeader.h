@@ -12,6 +12,8 @@
 @import Foundation;
 @import UIKit;
 
+@import BoxJeonExtension;
+
 #import <KakaoOpenSDK/KakaoOpenSDK.h>
 
 #endif /* BridgingHeader_h */
