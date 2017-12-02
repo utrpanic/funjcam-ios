@@ -6,7 +6,7 @@
 //  Copyright © 2017년 the42apps. All rights reserved.
 //
 
-class FJViewController: UIViewController {
+class FJViewController: UIViewController, NibLoadable {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return FJConstant.device.hasNotch ? .lightContent : .default
