@@ -58,9 +58,4 @@ extension UIImageView {
 
 extension UINavigationController {
     
-    func updateNavigationBarAsTransparent() {
-        self.navigationBar.setBackgroundImage(FJImage.transparent, for: .default)
-        self.navigationBar.backgroundColor = .white
-    }
-    
 }

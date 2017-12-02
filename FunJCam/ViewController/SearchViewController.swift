@@ -52,7 +52,6 @@ class SearchViewController: FJViewController, UICollectionViewDataSource, UIColl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.updateNavigationBarAsTransparent()
     }
     
     func setupTextField() {

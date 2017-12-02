@@ -8,13 +8,8 @@
 
 class FJViewController: UIViewController, NibLoadable {
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return FJConstant.device.hasNotch ? .lightContent : .default
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.updateNavigationBarAsTransparent()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

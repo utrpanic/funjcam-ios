@@ -19,7 +19,5 @@ class FJNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = FJConstant.device.hasNotch ? .black : .white
     }
-    
 }
