@@ -6,7 +6,7 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-class LoadMoreGridCell: UICollectionViewCell {
+class LoadMoreGridCell: UICollectionViewCell, NibLoadable {
     
     class var defaultHeight: CGFloat { return 44 }
     

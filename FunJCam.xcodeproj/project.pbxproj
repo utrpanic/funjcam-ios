@@ -14,7 +14,7 @@
 		078387A91E26E6E0007D298A /* FunJCamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387A81E26E6E0007D298A /* FunJCamTests.swift */; };
 		078387B41E26E6E0007D298A /* FunJCamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387B31E26E6E0007D298A /* FunJCamUITests.swift */; };
 		078387C81E26EB0C007D298A /* FunJCamExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387C71E26EB0C007D298A /* FunJCamExtension.swift */; };
-		078387CA1E26EB2A007D298A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387C91E26EB2A007D298A /* BaseViewController.swift */; };
+		078387CA1E26EB2A007D298A /* FJViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387C91E26EB2A007D298A /* FJViewController.swift */; };
 		078387CC1E26EB44007D298A /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CB1E26EB44007D298A /* LogManager.swift */; };
 		078387CE1E26EB9A007D298A /* FunJCamTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CD1E26EB9A007D298A /* FunJCamTheme.swift */; };
 		078387D11E26F40F007D298A /* GoogleSearchedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CF1E26F40F007D298A /* GoogleSearchedImage.swift */; };
@@ -36,6 +36,8 @@
 		1D910E0B6849500AE219D39A /* Pods_FunJCamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */; };
 		7F96CA141E3D9F9EF3C038DF /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */; };
 		8D5B2F481FBACBD4004C735A /* SearchedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F471FBACBD4004C735A /* SearchedImage.swift */; };
+		8D5B2F4A1FBAE25F004C735A /* FJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */; };
+		8D5B2F4C1FBAE56A004C735A /* FunJCamConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F4B1FBAE56A004C735A /* FunJCamConstant.swift */; };
 		8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D69890B1E27186C002F0BAE /* Main.storyboard */; };
 		8D6BE6F51ED068DC002AFDB1 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D6BE6F41ED068DC002AFDB1 /* KakaoOpenSDK.framework */; };
 		C7C978AD2E8C7504C2C3E94C /* Pods_FunJCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */; };
@@ -73,7 +75,7 @@
 		078387B51E26E6E0007D298A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		078387C11E26E9EC007D298A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		078387C71E26EB0C007D298A /* FunJCamExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunJCamExtension.swift; sourceTree = "<group>"; };
-		078387C91E26EB2A007D298A /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		078387C91E26EB2A007D298A /* FJViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FJViewController.swift; sourceTree = "<group>"; };
 		078387CB1E26EB44007D298A /* LogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogManager.swift; sourceTree = "<group>"; };
 		078387CD1E26EB9A007D298A /* FunJCamTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunJCamTheme.swift; sourceTree = "<group>"; };
 		078387CF1E26F40F007D298A /* GoogleSearchedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleSearchedImage.swift; sourceTree = "<group>"; };
@@ -97,6 +99,8 @@
 		80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.release.xcconfig"; sourceTree = "<group>"; };
 		86D67C45D8745692BC8CFB26 /* Pods-FunJCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam.debug.xcconfig"; sourceTree = "<group>"; };
 		8D5B2F471FBACBD4004C735A /* SearchedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedImage.swift; sourceTree = "<group>"; };
+		8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FJNavigationController.swift; sourceTree = "<group>"; };
+		8D5B2F4B1FBAE56A004C735A /* FunJCamConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunJCamConstant.swift; sourceTree = "<group>"; };
 		8D69890B1E27186C002F0BAE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8D6BE6F41ED068DC002AFDB1 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		98E4E7D60FE00EADD0F5A9B5 /* Pods-FunJCamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -209,8 +213,9 @@
 			children = (
 				078387C71E26EB0C007D298A /* FunJCamExtension.swift */,
 				078387CD1E26EB9A007D298A /* FunJCamTheme.swift */,
-				078387C91E26EB2A007D298A /* BaseViewController.swift */,
-				078387CB1E26EB44007D298A /* LogManager.swift */,
+				8D5B2F4B1FBAE56A004C735A /* FunJCamConstant.swift */,
+				078387C91E26EB2A007D298A /* FJViewController.swift */,
+				8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				078387D81E26F47D007D298A /* AlbumManager.swift */,
+				078387CB1E26EB44007D298A /* LogManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -621,6 +627,7 @@
 				078387E41E26F4C4007D298A /* SearchedImageGridCell.swift in Sources */,
 				8D5B2F481FBACBD4004C735A /* SearchedImage.swift in Sources */,
 				078387D11E26F40F007D298A /* GoogleSearchedImage.swift in Sources */,
+				8D5B2F4C1FBAE56A004C735A /* FunJCamConstant.swift in Sources */,
 				078387EB1E26F4EA007D298A /* BookmarkViewController.swift in Sources */,
 				078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */,
 				078387D61E26F449007D298A /* ApiManager.swift in Sources */,
@@ -631,9 +638,10 @@
 				078387E01E26F4C4007D298A /* EmptySearchGridCell.swift in Sources */,
 				078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */,
 				078387CE1E26EB9A007D298A /* FunJCamTheme.swift in Sources */,
-				078387CA1E26EB2A007D298A /* BaseViewController.swift in Sources */,
+				078387CA1E26EB2A007D298A /* FJViewController.swift in Sources */,
 				078387C81E26EB0C007D298A /* FunJCamExtension.swift in Sources */,
 				078387ED1E26F4EA007D298A /* ImageViewerViewController.swift in Sources */,
+				8D5B2F4A1FBAE25F004C735A /* FJNavigationController.swift in Sources */,
 				078387941E26E6DF007D298A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

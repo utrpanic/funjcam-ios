@@ -6,10 +6,10 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-class RecentViewController: BaseViewController {
+class RecentViewController: FJViewController {
     
-    class func create() -> RecentViewController {
-        let viewController = self.create(storyboardName: "Main") as! RecentViewController
+    static func create() -> Self {
+        let viewController = self.create(storyboardName: "Main")!
         return viewController
     }
 

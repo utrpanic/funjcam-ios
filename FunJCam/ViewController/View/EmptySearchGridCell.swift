@@ -6,7 +6,7 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-class EmptySearchGridCell: UICollectionViewCell {
+class EmptySearchGridCell: UICollectionViewCell, NibLoadable {
     
     @IBOutlet weak var emptyLabel: UILabel!
     

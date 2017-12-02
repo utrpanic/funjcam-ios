@@ -28,5 +28,7 @@ struct FJColor {
 
 struct FJImage {
     
+    static let transparent = UIImage.getImage(color: .clear)
+    
 }
 

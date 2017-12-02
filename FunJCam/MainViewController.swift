@@ -24,7 +24,7 @@ enum MainTab: Int {
         case .bookmark:
             viewController = BookmarkViewController.create()
         }
-        let navigationController = UINavigationController(rootViewController: viewController)
+        let navigationController = FJNavigationController(rootViewController: viewController)
         let tabBarItem = self.tabBarItem
         navigationController.tabBarItem = tabBarItem
         viewController.navigationItem.title = tabBarItem.title
@@ -51,13 +51,20 @@ class MainViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setupChildViewControllers()
+        
+        self.setupTabBar()
     }
     
     func setupChildViewControllers() {
         self.viewControllers = MainTab.allValues.map({ $0.viewController })
         self.delegate = self
         self.selectedIndex = MainTab.default.rawValue
+    }
+    
+    func setupTabBar() {
+        self.tabBar.backgroundColor = .white
     }
     
 }

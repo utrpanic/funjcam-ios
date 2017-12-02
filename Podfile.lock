@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.5.1)
-  - BoxJeonExtension (0.6)
+  - BoxJeonExtension (0.7)
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - Fabric (1.7.2)
@@ -15,7 +15,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - BoxJeonExtension (from `https://github.com/utrpanic/boxjeon-extension.git`, tag `v0.6`)
+  - BoxJeonExtension (from `https://github.com/utrpanic/boxjeon-extension.git`, tag `0.7`)
   - Crashlytics
   - Fabric
   - RealmSwift
@@ -24,22 +24,22 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   BoxJeonExtension:
     :git: https://github.com/utrpanic/boxjeon-extension.git
-    :tag: v0.6
+    :tag: 0.7
 
 CHECKOUT OPTIONS:
   BoxJeonExtension:
     :git: https://github.com/utrpanic/boxjeon-extension.git
-    :tag: v0.6
+    :tag: 0.7
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  BoxJeonExtension: a28584764f28268542d2a6bb732647cd9ac81c7d
+  BoxJeonExtension: 99a64bf08ae9abe087468bdd7641652f07380f6b
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
   Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
   RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
 
-PODFILE CHECKSUM: 73d5dc7f2b8d2091308df972ffb7e356eafc3bed
+PODFILE CHECKSUM: 633b9b3f607988f13ad795fa48a42cf3d24e8688
 
 COCOAPODS: 1.3.1
