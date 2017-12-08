@@ -21,7 +21,6 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return image
     }
-    
 }
 
 extension UIImageView {
@@ -53,9 +52,12 @@ extension UIImageView {
             }
         })
     }
-    
 }
 
 extension UINavigationController {
     
+    func updateNavigationBarAsTransparent() {
+        self.navigationBar.setBackgroundImage(FJImage.transparent, for: .default)
+        self.navigationBar.shadowImage = FJImage.transparent
+    }
 }

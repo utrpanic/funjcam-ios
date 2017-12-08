@@ -6,7 +6,7 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-class SearchViewController: FJViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     enum Section: Int {
         case image
@@ -63,9 +63,9 @@ class SearchViewController: FJViewController, UICollectionViewDataSource, UIColl
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
-        self.collectionView.registerNib(SearchedImageGridCell.self)
-        self.collectionView.registerNib(LoadMoreGridCell.self)
-        self.collectionView.registerNib(EmptySearchGridCell.self)
+        self.collectionView.registerFromNib(SearchedImageGridCell.self)
+        self.collectionView.registerFromNib(LoadMoreGridCell.self)
+        self.collectionView.registerFromNib(EmptySearchGridCell.self)
     }
     
     func requestData() {

@@ -6,7 +6,7 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-class RecentViewController: FJViewController {
+class RecentViewController: FJViewController, NibLoadable {
     
     static func create() -> Self {
         let viewController = self.create(storyboardName: "Main")!
@@ -20,7 +20,7 @@ class RecentViewController: FJViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.isNavigationBarHidden = true
+
     }
 
 }

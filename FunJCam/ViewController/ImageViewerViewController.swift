@@ -8,7 +8,7 @@
 
 import Crashlytics
 
-class ImageViewerViewController: FJViewController {
+class ImageViewerViewController: FJViewController, NibLoadable {
     
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!

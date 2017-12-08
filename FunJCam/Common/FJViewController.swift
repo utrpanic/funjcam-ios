@@ -6,10 +6,11 @@
 //  Copyright © 2017년 the42apps. All rights reserved.
 //
 
-class FJViewController: UIViewController, NibLoadable {
+class FJViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.updateNavigationBarAsTransparent()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

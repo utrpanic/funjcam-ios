@@ -6,7 +6,7 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-class BookmarkViewController: FJViewController {
+class BookmarkViewController: FJViewController, NibLoadable {
     
     static func create() -> Self {
         let viewController = self.create(storyboardName: "Main")!
