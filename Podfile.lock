@@ -1,45 +1,73 @@
 PODS:
-  - Alamofire (4.5.1)
-  - BoxJeonExtension (0.7)
-  - Crashlytics (3.9.3):
-    - Fabric (~> 1.7.2)
-  - Fabric (1.7.2)
-  - Realm (3.0.2):
-    - Realm/Headers (= 3.0.2)
-  - Realm/Headers (3.0.2)
-  - RealmSwift (3.0.2):
-    - Realm (= 3.0.2)
-  - SDWebImage (4.2.2):
-    - SDWebImage/Core (= 4.2.2)
-  - SDWebImage/Core (4.2.2)
+  - Alamofire (4.6.0)
+  - BoxJeonExtension (0.9)
+  - Crashlytics (3.10.0):
+    - Fabric (~> 1.7.3)
+  - Fabric (1.7.3)
+  - Firebase/Core (4.8.2):
+    - FirebaseAnalytics (= 4.0.9)
+    - FirebaseCore (= 4.0.14)
+  - FirebaseAnalytics (4.0.9):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
+  - FirebaseCore (4.0.14):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (2.0.8):
+    - FirebaseCore (~> 4.0)
+  - GoogleToolboxForMac/Defines (2.1.3)
+  - GoogleToolboxForMac/NSData+zlib (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - Kingfisher (4.6.1)
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - Realm (3.1.1):
+    - Realm/Headers (= 3.1.1)
+  - Realm/Headers (3.1.1)
+  - RealmSwift (3.1.1):
+    - Realm (= 3.1.1)
+  - RxSwift (4.1.2)
 
 DEPENDENCIES:
   - Alamofire
-  - BoxJeonExtension (from `https://github.com/utrpanic/boxjeon-extension.git`, tag `0.7`)
+  - BoxJeonExtension (from `https://github.com/utrpanic/boxjeon-extension.git`, tag `v0.9`)
   - Crashlytics
   - Fabric
+  - Firebase/Core
+  - Kingfisher
   - RealmSwift
-  - SDWebImage
+  - RxSwift
 
 EXTERNAL SOURCES:
   BoxJeonExtension:
     :git: https://github.com/utrpanic/boxjeon-extension.git
-    :tag: 0.7
+    :tag: v0.9
 
 CHECKOUT OPTIONS:
   BoxJeonExtension:
     :git: https://github.com/utrpanic/boxjeon-extension.git
-    :tag: 0.7
+    :tag: v0.9
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  BoxJeonExtension: 99a64bf08ae9abe087468bdd7641652f07380f6b
-  Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
-  Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
-  Realm: 6f23fd1f178a09342eac21bfa7c2bf4312a7a180
-  RealmSwift: 695393add1b8f9d5fa75dd16e6355cf3935f71e2
-  SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  BoxJeonExtension: c38e274b0bf5758888b3aca310ccb317b395507b
+  Crashlytics: a989ef242b66605577a425733797f810bd2725eb
+  Fabric: bb495bb9a7a7677c6d03a1f8b83d95bc49b47e41
+  Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
+  FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
+  FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
+  FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
+  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  Kingfisher: 1f9157d9c02b380cbd0b7cc890161195164eb634
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
+  RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
 
-PODFILE CHECKSUM: 633b9b3f607988f13ad795fa48a42cf3d24e8688
+PODFILE CHECKSUM: fb462db074b9984c16ce9511de3d05831ede1cd1
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.4.0

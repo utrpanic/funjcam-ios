@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,10 +13,6 @@
         <scene sceneID="la5-k6-vZQ">
             <objects>
                 <viewController storyboardIdentifier="SearchViewController" automaticallyAdjustsScrollViewInsets="NO" id="5ru-tX-aNT" customClass="SearchViewController" customModule="FunJCam" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TyI-v7-ddG"/>
-                        <viewControllerLayoutGuide type="bottom" id="hwD-1x-66d"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="LmT-aZ-pAR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +26,7 @@
                                             <constraint firstAttribute="height" constant="44" id="qpv-c4-VO5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
                                         <connections>
                                             <action selector="didSearchTap:" destination="5ru-tX-aNT" eventType="primaryActionTriggered" id="uxp-9V-ruw"/>
                                         </connections>
@@ -67,15 +64,17 @@
                                 <cells/>
                             </collectionView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="hwD-1x-66d" firstAttribute="top" secondItem="jtG-Xi-Pk6" secondAttribute="bottom" id="B4z-bL-nkD"/>
-                            <constraint firstItem="jtG-Xi-Pk6" firstAttribute="leading" secondItem="LmT-aZ-pAR" secondAttribute="leading" id="BdC-Yu-i3P"/>
+                            <constraint firstItem="Waw-0t-DxC" firstAttribute="bottom" secondItem="jtG-Xi-Pk6" secondAttribute="bottom" id="B4z-bL-nkD"/>
+                            <constraint firstItem="jtG-Xi-Pk6" firstAttribute="leading" secondItem="Waw-0t-DxC" secondAttribute="leading" id="BdC-Yu-i3P"/>
                             <constraint firstItem="jtG-Xi-Pk6" firstAttribute="top" secondItem="wKu-g4-Ss0" secondAttribute="bottom" id="WGf-QV-owP"/>
-                            <constraint firstItem="wKu-g4-Ss0" firstAttribute="leading" secondItem="LmT-aZ-pAR" secondAttribute="leading" id="Xp1-h5-Kom"/>
-                            <constraint firstAttribute="trailing" secondItem="jtG-Xi-Pk6" secondAttribute="trailing" id="cHZ-tW-YuD"/>
-                            <constraint firstItem="wKu-g4-Ss0" firstAttribute="top" secondItem="TyI-v7-ddG" secondAttribute="bottom" id="oGe-4y-h8D"/>
-                            <constraint firstAttribute="trailing" secondItem="wKu-g4-Ss0" secondAttribute="trailing" id="vEI-X9-jyD"/>
+                            <constraint firstItem="wKu-g4-Ss0" firstAttribute="leading" secondItem="Waw-0t-DxC" secondAttribute="leading" id="Xp1-h5-Kom"/>
+                            <constraint firstItem="Waw-0t-DxC" firstAttribute="trailing" secondItem="jtG-Xi-Pk6" secondAttribute="trailing" id="cHZ-tW-YuD"/>
+                            <constraint firstItem="wKu-g4-Ss0" firstAttribute="top" secondItem="Waw-0t-DxC" secondAttribute="top" id="oGe-4y-h8D"/>
+                            <constraint firstItem="Waw-0t-DxC" firstAttribute="trailing" secondItem="wKu-g4-Ss0" secondAttribute="trailing" id="vEI-X9-jyD"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Waw-0t-DxC"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="WHz-fl-gFL"/>
                     <connections>
@@ -92,14 +91,11 @@
         <scene sceneID="8Fh-WH-u9z">
             <objects>
                 <viewController storyboardIdentifier="RecentViewController" id="Ouh-U5-Ye3" customClass="RecentViewController" customModule="FunJCam" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="a59-8M-UBe"/>
-                        <viewControllerLayoutGuide type="bottom" id="QwR-YI-t53"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="grA-J1-IkR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="ilY-MK-xcW"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZp-SB-CAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -110,10 +106,6 @@
         <scene sceneID="TKt-FW-LbT">
             <objects>
                 <viewController storyboardIdentifier="ImageViewerViewController" id="14h-ou-GFr" customClass="ImageViewerViewController" customModule="FunJCam" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6JT-wt-f1n"/>
-                        <viewControllerLayoutGuide type="bottom" id="k6u-mM-v4k"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TJJ-DY-qcB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,17 +155,18 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="yC0-tb-hT5" firstAttribute="top" secondItem="6JT-wt-f1n" secondAttribute="bottom" id="BUj-n5-pRI"/>
-                            <constraint firstAttribute="trailing" secondItem="BlR-DP-Tmk" secondAttribute="trailing" id="BlV-WJ-t3G"/>
-                            <constraint firstItem="k6u-mM-v4k" firstAttribute="top" secondItem="m32-Y4-fQE" secondAttribute="bottom" id="Cqk-DV-Lmf"/>
-                            <constraint firstItem="k6u-mM-v4k" firstAttribute="top" secondItem="hcK-aL-Gsf" secondAttribute="bottom" id="JPK-JU-MQR"/>
+                            <constraint firstItem="yC0-tb-hT5" firstAttribute="top" secondItem="Ghw-VT-oV6" secondAttribute="top" id="BUj-n5-pRI"/>
+                            <constraint firstItem="Ghw-VT-oV6" firstAttribute="trailing" secondItem="BlR-DP-Tmk" secondAttribute="trailing" id="BlV-WJ-t3G"/>
+                            <constraint firstItem="Ghw-VT-oV6" firstAttribute="bottom" secondItem="m32-Y4-fQE" secondAttribute="bottom" id="Cqk-DV-Lmf"/>
+                            <constraint firstItem="Ghw-VT-oV6" firstAttribute="bottom" secondItem="hcK-aL-Gsf" secondAttribute="bottom" id="JPK-JU-MQR"/>
                             <constraint firstItem="hcK-aL-Gsf" firstAttribute="leading" secondItem="m32-Y4-fQE" secondAttribute="trailing" constant="4" id="Wjd-sa-RSQ"/>
-                            <constraint firstItem="yC0-tb-hT5" firstAttribute="leading" secondItem="TJJ-DY-qcB" secondAttribute="leading" id="ckc-VE-42T"/>
-                            <constraint firstItem="k6u-mM-v4k" firstAttribute="top" secondItem="BlR-DP-Tmk" secondAttribute="bottom" id="fWk-hG-dUi"/>
-                            <constraint firstItem="BlR-DP-Tmk" firstAttribute="top" secondItem="6JT-wt-f1n" secondAttribute="bottom" id="lvK-z1-db4"/>
-                            <constraint firstAttribute="trailing" secondItem="hcK-aL-Gsf" secondAttribute="trailing" id="lxh-QA-yiH"/>
-                            <constraint firstItem="BlR-DP-Tmk" firstAttribute="leading" secondItem="TJJ-DY-qcB" secondAttribute="leading" id="oeq-rs-Kbh"/>
+                            <constraint firstItem="yC0-tb-hT5" firstAttribute="leading" secondItem="Ghw-VT-oV6" secondAttribute="leading" id="ckc-VE-42T"/>
+                            <constraint firstItem="Ghw-VT-oV6" firstAttribute="bottom" secondItem="BlR-DP-Tmk" secondAttribute="bottom" id="fWk-hG-dUi"/>
+                            <constraint firstItem="BlR-DP-Tmk" firstAttribute="top" secondItem="Ghw-VT-oV6" secondAttribute="top" id="lvK-z1-db4"/>
+                            <constraint firstItem="Ghw-VT-oV6" firstAttribute="trailing" secondItem="hcK-aL-Gsf" secondAttribute="trailing" id="lxh-QA-yiH"/>
+                            <constraint firstItem="BlR-DP-Tmk" firstAttribute="leading" secondItem="Ghw-VT-oV6" secondAttribute="leading" id="oeq-rs-Kbh"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ghw-VT-oV6"/>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="yC0-tb-hT5" id="GEZ-nf-2Mg"/>
@@ -190,14 +183,11 @@
         <scene sceneID="Pzl-WR-oMn">
             <objects>
                 <viewController storyboardIdentifier="BookmarkViewController" id="fcM-k7-rdx" customClass="BookmarkViewController" customModule="FunJCam" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="5p8-Zd-N7n"/>
-                        <viewControllerLayoutGuide type="bottom" id="3MU-s9-3gm"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ciK-Fs-WHl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="hJG-pi-LQm"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8an-Wk-Bc7" userLabel="First Responder" sceneMemberID="firstResponder"/>

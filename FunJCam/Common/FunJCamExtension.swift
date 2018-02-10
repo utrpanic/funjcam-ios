@@ -6,7 +6,7 @@
 //  Copyright © 2017년 the42apps. All rights reserved.
 //
 
-import SDWebImage
+import Kingfisher
 
 extension UIImage {
 
@@ -21,41 +21,21 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return image
     }
-    
 }
 
 extension UIImageView {
     
-    func clearImage() {
-        self.sd_cancelCurrentImageLoad()
-        self.image = nil
-    }
-    
     func setImage(url: String?, placeholder: UIImage?, completion: ((UIImage?) -> Void)?) {
-        self.clearImage()
-        self.image = placeholder
-        guard let url = URL(string: url ?? "") else {
-            completion?(nil)
-            return
-        }
-        self.sd_setImage(with: url, placeholderImage: placeholder, options: [], completed: { (image, error, cacheType, url) in
-            if let image = image {
-                completion?(image)
-            } else {
-                Log.d("Load image fail. [\((error as NSError?)?.code ?? -1)] \(url?.absoluteString ?? "")")
-                completion?(nil)
-            }
-            if cacheType == .none {
-                self.alpha = 0
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.alpha = 1
-                })
-            }
+        self.kf.setImage(with: URL(string: url ?? ""), placeholder: placeholder, options: [.transition(.fade(0.2))], progressBlock: nil, completionHandler: { (image, error, cacheType, url) in
+            completion?(image)
         })
     }
-    
 }
 
 extension UINavigationController {
     
+    func updateNavigationBarAsTransparent() {
+        self.navigationBar.setBackgroundImage(FJImage.transparent, for: .default)
+        self.navigationBar.shadowImage = FJImage.transparent
+    }
 }

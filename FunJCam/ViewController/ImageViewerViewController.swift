@@ -8,7 +8,7 @@
 
 import Crashlytics
 
-class ImageViewerViewController: FJViewController {
+class ImageViewerViewController: FJViewController, NibLoadable {
     
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
@@ -53,19 +53,19 @@ class ImageViewerViewController: FJViewController {
     }
     
     @IBAction func onShareToKakaoTalkTapped(_ sender: UIButton) {
-        if let link = self.searchedImage?.originalUrl {
-            let linkObject: KakaoTalkLinkObject
-            if let width = self.searchedImage?.originalWidth, let height = self.searchedImage?.originalHeight {
-                linkObject = KakaoTalkLinkObject.createImage(link, width: Int32(width), height: Int32(height))
-            } else {
-                linkObject = KakaoTalkLinkObject.createImage(link, width: 80, height: 80)
-            }
-            KOAppCall.openKakaoTalkAppLink([linkObject])
-        }
+//        if let link = self.searchedImage?.originalUrl {
+//            let linkObject: KakaoTalkLinkObject
+//            if let width = self.searchedImage?.originalWidth, let height = self.searchedImage?.originalHeight {
+//                linkObject = KakaoTalkLinkObject.createImage(link, width: Int32(width), height: Int32(height))
+//            } else {
+//                linkObject = KakaoTalkLinkObject.createImage(link, width: 80, height: 80)
+//            }
+//            KOAppCall.openKakaoTalkAppLink([linkObject])
+//        }
     }
     
     @IBAction func onShareTapped(_ sender: UIButton) {
-        if let image = self.image {
+        if let image = self.imageView.image {
             let viewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
             self.present(viewController, animated: true, completion: nil)
         }

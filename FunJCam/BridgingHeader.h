@@ -14,6 +14,4 @@
 
 @import BoxJeonExtension;
 
-#import <KakaoOpenSDK/KakaoOpenSDK.h>
-
 #endif /* BridgingHeader_h */
