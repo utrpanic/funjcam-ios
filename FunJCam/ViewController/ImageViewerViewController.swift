@@ -6,8 +6,6 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-import Crashlytics
-
 class ImageViewerViewController: FJViewController, NibLoadable {
     
     @IBOutlet weak var closeButton: UIButton!
@@ -36,7 +34,7 @@ class ImageViewerViewController: FJViewController, NibLoadable {
     func setupImageViewer() {
         self.imageView.setImage(url: self.searchedImage?.originalUrl, placeholder: self.image, completion: { [weak self] (image) -> Void in
             if let url = self?.searchedImage?.originalUrl, image == nil {
-                Answers.logCustomEvent(withName: "Image Download Failure", customAttributes: ["host": URL(string: url)?.host ?? "unknown"])
+//                Answers.logCustomEvent(withName: "Image Download Failure", customAttributes: ["host": URL(string: url)?.host ?? "unknown"])
             }
         })
     }
@@ -53,15 +51,15 @@ class ImageViewerViewController: FJViewController, NibLoadable {
     }
     
     @IBAction func onShareToKakaoTalkTapped(_ sender: UIButton) {
-        if let link = self.searchedImage?.originalUrl {
-            let linkObject: KakaoTalkLinkObject
-            if let width = self.searchedImage?.originalWidth, let height = self.searchedImage?.originalHeight {
-                linkObject = KakaoTalkLinkObject.createImage(link, width: Int32(width), height: Int32(height))
-            } else {
-                linkObject = KakaoTalkLinkObject.createImage(link, width: 80, height: 80)
-            }
-            KOAppCall.openKakaoTalkAppLink([linkObject])
-        }
+//        if let link = self.searchedImage?.originalUrl {
+//            let linkObject: KakaoTalkLinkObject
+//            if let width = self.searchedImage?.originalWidth, let height = self.searchedImage?.originalHeight {
+//                linkObject = KakaoTalkLinkObject.createImage(link, width: Int32(width), height: Int32(height))
+//            } else {
+//                linkObject = KakaoTalkLinkObject.createImage(link, width: 80, height: 80)
+//            }
+//            KOAppCall.openKakaoTalkAppLink([linkObject])
+//        }
     }
     
     @IBAction func onShareTapped(_ sender: UIButton) {

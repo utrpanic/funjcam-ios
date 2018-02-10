@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07016489202F01E1001207BF /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07016487202F01E1001207BF /* KakaoOpenSDK.framework */; };
-		0701648A202F01E1001207BF /* KakaoLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07016488202F01E1001207BF /* KakaoLink.framework */; };
 		078387941E26E6DF007D298A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387931E26E6DF007D298A /* AppDelegate.swift */; };
 		078387961E26E6DF007D298A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387951E26E6DF007D298A /* MainViewController.swift */; };
 		0783879B1E26E6E0007D298A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0783879A1E26E6E0007D298A /* Assets.xcassets */; };
@@ -62,8 +60,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07016487202F01E1001207BF /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = Frameworks/KakaoOpenSDK.framework; sourceTree = "<group>"; };
-		07016488202F01E1001207BF /* KakaoLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoLink.framework; path = Frameworks/KakaoLink.framework; sourceTree = "<group>"; };
 		078387901E26E6DF007D298A /* FunJCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunJCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		078387931E26E6DF007D298A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		078387951E26E6DF007D298A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -118,8 +114,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7C978AD2E8C7504C2C3E94C /* Pods_FunJCam.framework in Frameworks */,
-				07016489202F01E1001207BF /* KakaoOpenSDK.framework in Frameworks */,
-				0701648A202F01E1001207BF /* KakaoLink.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,8 +197,6 @@
 		833125CE2FF1EE9A2A5FA1BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				07016488202F01E1001207BF /* KakaoLink.framework */,
-				07016487202F01E1001207BF /* KakaoOpenSDK.framework */,
 				4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */,
 				FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */,
 				D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */,
@@ -313,7 +305,6 @@
 				0783878E1E26E6DF007D298A /* Resources */,
 				5E2B80A86725B25E78801204 /* [CP] Embed Pods Frameworks */,
 				FAA7B09CE87413B1B689DC54 /* [CP] Copy Pods Resources */,
-				078387F01E26F547007D298A /* Run Script - Fabric */,
 			);
 			buildRules = (
 			);
@@ -449,20 +440,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		078387F01E26F547007D298A /* Run Script - Fabric */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script - Fabric";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" d73917378fef2ba00af0129f92f114727173791c a4c91f2089c7b3495d46e3937a08c77a6e073f84cf97cb72d057dab8448aad3a";
-		};
 		0A9DA5CEEE1E3ACBD1F46F62 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -833,12 +810,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L94QTT73WH;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = FunJCam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -858,12 +830,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = L94QTT73WH;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Frameworks",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = FunJCam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -887,7 +854,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
 			};
@@ -904,7 +871,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
 			};
@@ -920,7 +887,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = FunJCam;
 			};
@@ -936,7 +903,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = FunJCam;
 			};

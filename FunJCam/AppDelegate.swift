@@ -6,9 +6,6 @@
 //  Copyright © 2017년 the42apps. All rights reserved.
 //
 
-import Fabric
-import Crashlytics
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -22,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupApplication() {
-        Fabric.with([Crashlytics.self])
         FJTheme.setup()
     }
     
