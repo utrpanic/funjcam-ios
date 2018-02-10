@@ -6,6 +6,8 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
+import Crashlytics
+
 class ImageViewerViewController: FJViewController, NibLoadable {
     
     @IBOutlet weak var closeButton: UIButton!
@@ -34,7 +36,7 @@ class ImageViewerViewController: FJViewController, NibLoadable {
     func setupImageViewer() {
         self.imageView.setImage(url: self.searchedImage?.originalUrl, placeholder: self.image, completion: { [weak self] (image) -> Void in
             if let url = self?.searchedImage?.originalUrl, image == nil {
-//                Answers.logCustomEvent(withName: "Image Download Failure", customAttributes: ["host": URL(string: url)?.host ?? "unknown"])
+                Answers.logCustomEvent(withName: "Image Download Failure", customAttributes: ["host": URL(string: url)?.host ?? "unknown"])
             }
         })
     }

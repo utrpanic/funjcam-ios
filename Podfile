@@ -4,6 +4,9 @@ use_frameworks!
 def pods
     source 'https://github.com/CocoaPods/Specs.git'
     pod 'Alamofire'
+    pod 'Crashlytics'
+    pod 'Fabric'
+    pod 'Firebase/Core'
     pod 'Kingfisher'
     pod 'RealmSwift'
     pod 'RxSwift'

@@ -6,6 +6,8 @@
 //  Copyright © 2017년 the42apps. All rights reserved.
 //
 
+import Firebase
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupApplication() {
+        FirebaseApp.configure()
         FJTheme.setup()
     }
     
@@ -49,7 +52,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
