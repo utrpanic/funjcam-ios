@@ -17,5 +17,4 @@ class LogManager {
     func e<T>(_ value: T, file: NSString = #file, line: Int = #line) {
         print("\(file.lastPathComponent)[\(line)]: Error - \(value)", terminator: "\n")
     }
-    
 }

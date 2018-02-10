@@ -17,6 +17,8 @@ class ApiManager {
     
     static let shared = ApiManager()
     
+    var provider: Provider = .naver
+    
     private func getObject<T: Decodable>(url: String, headers: HTTPHeaders? = nil, parameters: Dictionary<String, Any>?, completion: @escaping ApiCompletion<T>, printBody: Bool) {
         let method: HTTPMethod = .get
         let request = Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding.default)

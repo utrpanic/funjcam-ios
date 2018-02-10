@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0701648C202F1CDF001207BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0701648B202F1CDE001207BF /* GoogleService-Info.plist */; };
+		0701648F202F31A0001207BF /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0701648E202F31A0001207BF /* SearchManager.swift */; };
 		078387941E26E6DF007D298A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387931E26E6DF007D298A /* AppDelegate.swift */; };
 		078387961E26E6DF007D298A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387951E26E6DF007D298A /* MainViewController.swift */; };
 		0783879B1E26E6E0007D298A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0783879A1E26E6E0007D298A /* Assets.xcassets */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		0701648B202F1CDE001207BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0701648E202F31A0001207BF /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		078387901E26E6DF007D298A /* FunJCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunJCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		078387931E26E6DF007D298A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		078387951E26E6DF007D298A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			children = (
 				078387D81E26F47D007D298A /* AlbumManager.swift */,
 				078387CB1E26EB44007D298A /* LogManager.swift */,
+				0701648E202F31A0001207BF /* SearchManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				078387E21E26F4C4007D298A /* LoadMoreGridCell.swift in Sources */,
+				0701648F202F31A0001207BF /* SearchManager.swift in Sources */,
 				078387D91E26F47D007D298A /* AlbumManager.swift in Sources */,
 				07881FC61F9CBA290081EB85 /* Code.swift in Sources */,
 				078387E41E26F4C4007D298A /* SearchedImageGridCell.swift in Sources */,

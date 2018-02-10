@@ -68,7 +68,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
         self.collectionView.registerFromNib(EmptySearchGridCell.self)
     }
     
-    func requestData() {
+    func requestImages() {
         ApiManager.shared.searchImage(keyword: self.searchKeyword, startIndex: self.nextPageStartIndex) { [weak self] (code, response) in
             if let response = response {
                 if self?.searchedImages?.count ?? 0 == 0 {
@@ -90,7 +90,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     
     @IBAction func didSearchTap(_ sender: UITextField) {
         self.searchedImages = nil
-        self.requestData()
+        self.requestImages()
         self.view.endEditing(true)
     }
     
@@ -132,7 +132,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
         switch Section(rawValue: indexPath.section)! {
         case .loadMore:
             if self.nextPageStartIndex != nil {
-                self.requestData()
+                self.requestImages()
             }
         default:
             break
