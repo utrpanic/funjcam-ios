@@ -1,0 +1,15 @@
+disabled_rules: # rule identifiers to exclude from running
+  - empty_enum_arguments
+  - force_cast
+  - identifier_name
+  - line_length
+  - nesting
+  - trailing_whitespace
+  - unused_closure_parameter
+
+included: # paths to include during linting. `--path` is ignored if present.
+  - FunJCam
+  - FunJCamTests
+  - FunJCamUITests
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Pods
