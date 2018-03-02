@@ -65,10 +65,9 @@ class ImageViewerViewController: FJViewController, NibLoadable {
     }
     
     @IBAction func onShareTapped(_ sender: UIButton) {
-        if let image = self.imageView.image {
-            let viewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        if let url = URL(string: self.searchedImage?.originalUrl ?? "") {
+            let viewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
             self.present(viewController, animated: true, completion: nil)
         }
     }
-    
 }
