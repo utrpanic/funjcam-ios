@@ -12,7 +12,6 @@ class ImageViewerViewController: FJViewController, NibLoadable {
     
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var shareToKakaoTalkButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
     
     var image: UIImage?
@@ -44,7 +43,6 @@ class ImageViewerViewController: FJViewController, NibLoadable {
     func setupButtons() {
         // TODO: Language
         self.closeButton.setTitle("Close", for: .normal)
-        self.shareToKakaoTalkButton.setTitle("KakaoTalk", for: .normal)
         self.shareButton.setTitle("Share", for: .normal)
     }
     
@@ -52,23 +50,23 @@ class ImageViewerViewController: FJViewController, NibLoadable {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func onShareToKakaoTalkTapped(_ sender: UIButton) {
-//        if let link = self.searchedImage?.originalUrl {
-//            let linkObject: KakaoTalkLinkObject
-//            if let width = self.searchedImage?.originalWidth, let height = self.searchedImage?.originalHeight {
-//                linkObject = KakaoTalkLinkObject.createImage(link, width: Int32(width), height: Int32(height))
-//            } else {
-//                linkObject = KakaoTalkLinkObject.createImage(link, width: 80, height: 80)
-//            }
-//            KOAppCall.openKakaoTalkAppLink([linkObject])
-//        }
-    }
-    
     @IBAction func onShareTapped(_ sender: UIButton) {
-        if let image = self.imageView.image {
-            let viewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        let errorHandler: () -> Void = {
+            let viewController = UIAlertController(title: "이미지를 가져오지 못했습니다.", message: nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            viewController.addAction(okAction)
             self.present(viewController, animated: true, completion: nil)
         }
+        if let url = URL(string: self.searchedImage?.originalUrl ?? "") {
+            do {
+                let data = try Data(contentsOf: url)
+                let viewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+                self.present(viewController, animated: true, completion: nil)
+            } catch {
+                errorHandler()
+            }
+        } else {
+            errorHandler()
+        }
     }
-    
 }

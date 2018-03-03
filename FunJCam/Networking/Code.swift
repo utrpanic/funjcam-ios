@@ -9,26 +9,25 @@
 enum Code {
     
     case none
-    case unknown(code: Int)
+    case undefined(code: Int)
     case jsonError(message: String)
     
     case ok
     
+    case forbidden
     case notFound
     
+    private static let map: [Int: Code] = [
+        200: .ok,
+        403: .forbidden,
+        404: .notFound,
+    ]
+    
     init(value: Int?) {
-        if let code = value {
-            switch code {
-            case 200:
-                self = .ok
-            case 404:
-                self = .notFound
-            default:
-                self = .unknown(code: code)
-            }
+        if let value = value {
+            self = Code.map[value] ?? .undefined(code: value)
         } else {
             self = .none
         }
     }
-    
 }

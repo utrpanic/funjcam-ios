@@ -13,6 +13,8 @@ extension GoogleSearchedImage: SearchedImage {
     var originalHeight: Double? { return self.imageInfo?.height }
     var thumbnailUrl: String? { return self.imageInfo?.thumbnailUrl }
     
+    var isAnimatedGif: Bool { return false }
+    
 }
 
 class GoogleSearchedImage: Decodable {

@@ -8,8 +8,8 @@
 
 class ResponseGoogleImageSearch: Decodable {
     
-    var searchedImages: Array<GoogleSearchedImage>?
-    var nextPages: Array<NextPage>?
+    var searchedImages: [GoogleSearchedImage]?
+    var nextPages: [NextPage]?
     var nextPageStartIndex: Int? { return self.nextPages?.first?.startIndex }
     
     private enum CodingKeys: String, CodingKey {
@@ -46,4 +46,3 @@ class NextPage: Decodable {
     }
 
 }
-

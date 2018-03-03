@@ -12,7 +12,7 @@ enum MainTab: Int {
     case bookmark
     
     static let `default`: MainTab = .search
-    static let allValues: Array<MainTab> = [.search, .recent, .bookmark]
+    static let allValues: [MainTab] = [.search, .recent, .bookmark]
     
     var viewController: UIViewController {
         let viewController: UIViewController

@@ -8,7 +8,7 @@
 
 import Alamofire
 
-typealias RawJSON = Dictionary<String, Any>
+typealias RawJSON = [String: Any]
 typealias ApiCompletion<T> = (Code, T?) -> Void
 typealias ApiSuccess<T> = (T) -> Void
 typealias ApiFailure = (Code) -> Void
@@ -19,7 +19,7 @@ class ApiManager {
     
     var provider: Provider = .naver
     
-    private func getObject<T: Decodable>(url: String, headers: HTTPHeaders? = nil, parameters: Dictionary<String, Any>?, completion: @escaping ApiCompletion<T>, printBody: Bool) {
+    private func getObject<T: Decodable>(url: String, headers: HTTPHeaders? = nil, parameters: [String: Any]?, completion: @escaping ApiCompletion<T>, printBody: Bool) {
         let method: HTTPMethod = .get
         let request = Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding.default)
         request.validate().log(printBody)
@@ -68,7 +68,7 @@ extension DataResponse {
                 debugPrint(self)
                 if let data = self.result.value as? Data {
                     do {
-                        if let dictionary = try JSONSerialization.jsonObject(with: data) as? Dictionary<String, Any> {
+                        if let dictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                             debugPrint(dictionary)
                         }
                     } catch {
@@ -120,11 +120,11 @@ extension ApiManager {
     
     func searchImage(keyword: String, startIndex: Int?, completion: @escaping ApiCompletion<ResponseGoogleImageSearch>) {
         let url = "https://www.googleapis.com/customsearch/v1"
-        var parameters: Dictionary<String, Any> = [
+        var parameters: [String: Any] = [
             "key": "AIzaSyCTdQn7PY1xP5d_Otz8O8aTvbCSslU7lBQ",
             "cx": "015032654831495313052:qzljc0expde",
             "searchType": "image",
-            "num": 10, // 1~10만 허용.
+            "num": 10 // 1~10만 허용.
         ]
         parameters["q"] = keyword
         if let startIndex = startIndex {

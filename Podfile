@@ -9,7 +9,8 @@ def pods
     pod 'Firebase/Core'
     pod 'Kingfisher'
     pod 'RealmSwift'
-    pod 'RxSwift'
+    pod 'RxCocoa'
+    pod 'SwiftLint'
     
     pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v0.9'
 end

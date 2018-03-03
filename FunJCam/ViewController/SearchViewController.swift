@@ -28,7 +28,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
             return ""
         }
     }
-    var searchedImages: Array<GoogleSearchedImage>? {
+    var searchedImages: [GoogleSearchedImage]? {
         willSet {
             if newValue == nil {
                 self.nextPageStartIndex = nil
@@ -97,7 +97,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     @IBAction func didGifTap(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
     }
-    // Mark: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return Section.count
     }
@@ -153,7 +153,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch Section(rawValue: section)! {
         case .image:
-            return self.searchedImages?.count ?? 0 > 0 ? UIEdgeInsetsMake(8, 8, 8, 8) : UIEdgeInsets.zero
+            return self.searchedImages?.count ?? 0 > 0 ? UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) : UIEdgeInsets.zero
         default:
             return UIEdgeInsets.zero
         }
@@ -191,4 +191,3 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     }
 
 }
-

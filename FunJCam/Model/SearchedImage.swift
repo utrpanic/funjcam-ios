@@ -13,4 +13,5 @@ protocol SearchedImage {
     var originalHeight: Double? { get }
     var thumbnailUrl: String? { get }
     
+    var isAnimatedGif: Bool { get }
 }

@@ -124,20 +124,6 @@
                                     <action selector="onCloseTapped:" destination="14h-ou-GFr" eventType="touchUpInside" id="8Ne-wa-Gqq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m32-Y4-fQE">
-                                <rect key="frame" x="235" y="623" width="68" height="44"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Nvk-Ro-EOV"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                <state key="normal" title="카카오톡">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="onShareToKakaoTalkTapped:" destination="14h-ou-GFr" eventType="touchUpInside" id="y4L-vS-htO"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcK-aL-Gsf">
                                 <rect key="frame" x="307" y="623" width="68" height="44"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
@@ -157,9 +143,7 @@
                         <constraints>
                             <constraint firstItem="yC0-tb-hT5" firstAttribute="top" secondItem="Ghw-VT-oV6" secondAttribute="top" id="BUj-n5-pRI"/>
                             <constraint firstItem="Ghw-VT-oV6" firstAttribute="trailing" secondItem="BlR-DP-Tmk" secondAttribute="trailing" id="BlV-WJ-t3G"/>
-                            <constraint firstItem="Ghw-VT-oV6" firstAttribute="bottom" secondItem="m32-Y4-fQE" secondAttribute="bottom" id="Cqk-DV-Lmf"/>
                             <constraint firstItem="Ghw-VT-oV6" firstAttribute="bottom" secondItem="hcK-aL-Gsf" secondAttribute="bottom" id="JPK-JU-MQR"/>
-                            <constraint firstItem="hcK-aL-Gsf" firstAttribute="leading" secondItem="m32-Y4-fQE" secondAttribute="trailing" constant="4" id="Wjd-sa-RSQ"/>
                             <constraint firstItem="yC0-tb-hT5" firstAttribute="leading" secondItem="Ghw-VT-oV6" secondAttribute="leading" id="ckc-VE-42T"/>
                             <constraint firstItem="Ghw-VT-oV6" firstAttribute="bottom" secondItem="BlR-DP-Tmk" secondAttribute="bottom" id="fWk-hG-dUi"/>
                             <constraint firstItem="BlR-DP-Tmk" firstAttribute="top" secondItem="Ghw-VT-oV6" secondAttribute="top" id="lvK-z1-db4"/>
@@ -172,7 +156,6 @@
                         <outlet property="closeButton" destination="yC0-tb-hT5" id="GEZ-nf-2Mg"/>
                         <outlet property="imageView" destination="BlR-DP-Tmk" id="IeU-Iz-vdx"/>
                         <outlet property="shareButton" destination="hcK-aL-Gsf" id="P4i-Vp-dmO"/>
-                        <outlet property="shareToKakaoTalkButton" destination="m32-Y4-fQE" id="X6B-iX-FQj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SJs-DR-Ibm" userLabel="First Responder" sceneMemberID="firstResponder"/>
