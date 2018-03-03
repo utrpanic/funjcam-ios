@@ -39,3 +39,15 @@ extension UINavigationController {
         self.navigationBar.shadowImage = FJImage.transparent
     }
 }
+
+extension UIViewController {
+    
+    func showOkAlert(title: String?, message: String?, okText: String = "Ok", onOk: (() -> Void)?) {
+        let viewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: okText, style: .default, handler: { (action) in
+            onOk?()
+        })
+        viewController.addAction(okAction)
+        self.present(viewController, animated: true, completion: nil)
+    }
+}

@@ -1,9 +1,13 @@
 platform :ios, '11.0'
 use_frameworks!
 
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
 def pods
     source 'https://github.com/CocoaPods/Specs.git'
     pod 'Alamofire'
+    pod 'CHTCollectionViewWaterfallLayout/Swift'
     pod 'Crashlytics'
     pod 'Fabric'
     pod 'Firebase/Core'
@@ -12,7 +16,7 @@ def pods
     pod 'RxCocoa'
     pod 'SwiftLint'
     
-    pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v0.9'
+    pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v0.9', :inhibit_warnings => false
 end
 
 target 'FunJCam' do

@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.6.0)
   - BoxJeonExtension (0.9)
+  - CHTCollectionViewWaterfallLayout/Swift (0.9.7)
   - Crashlytics (3.10.1):
     - Fabric (~> 1.7.5)
   - Fabric (1.7.5)
@@ -38,6 +39,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - BoxJeonExtension (from `https://github.com/utrpanic/boxjeon-extension.git`, tag `v0.9`)
+  - CHTCollectionViewWaterfallLayout/Swift
   - Crashlytics
   - Fabric
   - Firebase/Core
@@ -59,6 +61,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   BoxJeonExtension: c38e274b0bf5758888b3aca310ccb317b395507b
+  CHTCollectionViewWaterfallLayout: 9d11068fafecac106695bb5a5d6d0f738483b598
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Fabric: ae7146a5f505ea370a1e44820b4b1dc8890e2890
   Firebase: 632216af3ed7f31e3be34776947fdc7546cfb572
@@ -74,6 +77,6 @@ SPEC CHECKSUMS:
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
 
-PODFILE CHECKSUM: aa95b95d1f22edf579b168a73e53e9424981ef85
+PODFILE CHECKSUM: c191b73e6108d377588d5f09901f2f0e74a06926
 
 COCOAPODS: 1.4.0

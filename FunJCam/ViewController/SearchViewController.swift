@@ -6,6 +6,8 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
+import CHTCollectionViewWaterfallLayout
+
 class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     enum Section: Int {
@@ -62,6 +64,11 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     func setupCollectionView() {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        let layout = CHTCollectionViewWaterfallLayout()
+        layout.columnCount = 2
+        layout.minimumColumnSpacing = 8
+        layout.minimumInteritemSpacing = 8
+        self.collectionView.collectionViewLayout = layout
         
         self.collectionView.registerFromNib(SearchedImageGridCell.self)
         self.collectionView.registerFromNib(LoadMoreGridCell.self)
