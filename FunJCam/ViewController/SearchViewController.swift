@@ -8,7 +8,7 @@
 
 import CHTCollectionViewWaterfallLayout
 
-class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
     
     enum Section: Int {
         case image
@@ -64,11 +64,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     func setupCollectionView() {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        let layout = CHTCollectionViewWaterfallLayout()
-        layout.columnCount = 2
-        layout.minimumColumnSpacing = 8
-        layout.minimumInteritemSpacing = 8
-        self.collectionView.collectionViewLayout = layout
+        self.collectionView.collectionViewLayout = CHTCollectionViewWaterfallLayout()
         
         self.collectionView.registerFromNib(SearchedImageGridCell.self)
         self.collectionView.registerFromNib(LoadMoreGridCell.self)
@@ -146,10 +142,28 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, columnCountForSection section: Int) -> Int {
+        switch Section(rawValue: section)! {
+        case .image:
+            return 2
+        case .loadMore, .empty:
+            return 1
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         switch Section(rawValue: indexPath.section)! {
         case .image:
-            return CGSize(width: (collectionView.frame.width - 8 - 8 - 8) / 2, height: SearchedImageGridCell.defaultHeight)
+            let width: CGFloat = (collectionView.frame.width - 8 - 8 - 8) / 2
+            let height: CGFloat = {
+                if let originalWidth = self.searchedImages?[indexPath.item].originalWidth,
+                    let originalHeight = self.searchedImages?[indexPath.item].originalHeight {
+                    return width * CGFloat(originalHeight / originalWidth)
+                } else {
+                    return SearchedImageGridCell.defaultHeight
+                }
+            }()
+            return CGSize(width: width, height: height)
         case .loadMore:
             return CGSize(width: collectionView.frame.width, height: LoadMoreGridCell.defaultHeight)
         case .empty:
@@ -157,7 +171,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         switch Section(rawValue: section)! {
         case .image:
             return self.searchedImages?.count ?? 0 > 0 ? UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) : UIEdgeInsets.zero
@@ -166,7 +180,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         switch Section(rawValue: section)! {
         case .image:
             return 8
