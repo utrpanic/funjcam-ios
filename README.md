@@ -11,7 +11,7 @@
 * iOS 11
 * xcode 9
 * Swift 4
-* CocoaPods 1.4.0
+* CocoaPods 1.5
 
 ## Installation
 ``` 
