@@ -30,7 +30,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
             return ""
         }
     }
-    var searchedImages: [GoogleSearchedImage]? {
+    var searchedImages: [SearchedImageByGoogle]? {
         willSet {
             if newValue == nil {
                 self.nextPageStartIndex = nil
@@ -156,9 +156,9 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
         case .image:
             let width: CGFloat = (collectionView.frame.width - 8 - 8 - 8) / 2
             let height: CGFloat = {
-                if let originalWidth = self.searchedImages?[indexPath.item].originalWidth,
-                    let originalHeight = self.searchedImages?[indexPath.item].originalHeight {
-                    return width * CGFloat(originalHeight / originalWidth)
+                if let pixelWidth = self.searchedImages?[indexPath.item].pixelWidth,
+                    let pixelHeight = self.searchedImages?[indexPath.item].pixelHeight {
+                    return width * CGFloat(pixelHeight / pixelWidth)
                 } else {
                     return SearchedImageGridCell.defaultHeight
                 }

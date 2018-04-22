@@ -33,8 +33,8 @@ class ImageViewerViewController: FJViewController, NibLoadable {
     }
     
     func setupImageViewer() {
-        self.imageView.setImage(url: self.searchedImage?.originalUrl, placeholder: self.image, completion: { [weak self] (image) -> Void in
-            if let url = self?.searchedImage?.originalUrl, image == nil {
+        self.imageView.setImage(url: self.searchedImage?.url, placeholder: self.image, completion: { [weak self] (image) -> Void in
+            if let url = self?.searchedImage?.url, image == nil {
                 Answers.logCustomEvent(withName: "Image Download Failure", customAttributes: ["host": URL(string: url)?.host ?? "unknown"])
             }
         })
@@ -51,7 +51,7 @@ class ImageViewerViewController: FJViewController, NibLoadable {
     }
     
     @IBAction func onShareTapped(_ sender: UIButton) {
-        if let url = URL(string: self.searchedImage?.originalUrl ?? "") {
+        if let url = URL(string: self.searchedImage?.url ?? "") {
             do {
                 let data = try Data(contentsOf: url)
                 let viewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
