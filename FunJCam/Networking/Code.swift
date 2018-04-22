@@ -1,10 +1,3 @@
-//
-//  Code.swift
-//  FunJCam
-//
-//  Created by boxjeon on 2017. 10. 22..
-//  Copyright © 2017년 the42apps. All rights reserved.
-//
 
 enum Code {
     

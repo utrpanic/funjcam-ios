@@ -35,13 +35,13 @@
 		078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E91E26F4EA007D298A /* RecentViewController.swift */; };
 		078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387EA1E26F4EA007D298A /* SearchViewController.swift */; };
 		07881FC61F9CBA290081EB85 /* Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07881FC51F9CBA290081EB85 /* Code.swift */; };
-		1D910E0B6849500AE219D39A /* Pods_FunJCamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */; };
-		7F96CA141E3D9F9EF3C038DF /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */; };
+		11D35360359D52370B83EC7B /* Pods_FunJCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6449B3F9A24421138F1ABCC /* Pods_FunJCam.framework */; };
+		53F423A2DECF1C3B486D0B39 /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020FA390724A9893201461B9 /* Pods_FunJCamUITests.framework */; };
 		8D5B2F481FBACBD4004C735A /* SearchedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F471FBACBD4004C735A /* SearchedImage.swift */; };
 		8D5B2F4A1FBAE25F004C735A /* FJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */; };
 		8D5B2F4C1FBAE56A004C735A /* FunJCamConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F4B1FBAE56A004C735A /* FunJCamConstant.swift */; };
 		8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D69890B1E27186C002F0BAE /* Main.storyboard */; };
-		C7C978AD2E8C7504C2C3E94C /* Pods_FunJCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */; };
+		C128004D6EAA5676CCCE0A24 /* Pods_FunJCamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949A8DE4A037E73DF96908F6 /* Pods_FunJCamTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		020FA390724A9893201461B9 /* Pods_FunJCamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0701648B202F1CDE001207BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0701648E202F31A0001207BF /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		078387901E26E6DF007D298A /* FunJCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunJCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,18 +99,17 @@
 		078387EA1E26F4EA007D298A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		07881FC51F9CBA290081EB85 /* Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code.swift; sourceTree = "<group>"; };
 		2387BC0DA03A80C1EA67BFF5 /* Pods-FunJCamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.release.xcconfig"; sourceTree = "<group>"; };
 		86D67C45D8745692BC8CFB26 /* Pods-FunJCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam.debug.xcconfig"; sourceTree = "<group>"; };
 		8D5B2F471FBACBD4004C735A /* SearchedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedImage.swift; sourceTree = "<group>"; };
 		8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FJNavigationController.swift; sourceTree = "<group>"; };
 		8D5B2F4B1FBAE56A004C735A /* FunJCamConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunJCamConstant.swift; sourceTree = "<group>"; };
 		8D69890B1E27186C002F0BAE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		949A8DE4A037E73DF96908F6 /* Pods_FunJCamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E4E7D60FE00EADD0F5A9B5 /* Pods-FunJCamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AB46ACB3618E367ADCAE21C6 /* Pods-FunJCamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.debug.xcconfig"; sourceTree = "<group>"; };
-		D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10D95822DB514A0797EB79A /* Pods-FunJCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCam.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam.release.xcconfig"; sourceTree = "<group>"; };
-		FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6449B3F9A24421138F1ABCC /* Pods_FunJCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7C978AD2E8C7504C2C3E94C /* Pods_FunJCam.framework in Frameworks */,
+				11D35360359D52370B83EC7B /* Pods_FunJCam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D910E0B6849500AE219D39A /* Pods_FunJCamTests.framework in Frameworks */,
+				C128004D6EAA5676CCCE0A24 /* Pods_FunJCamTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F96CA141E3D9F9EF3C038DF /* Pods_FunJCamUITests.framework in Frameworks */,
+				53F423A2DECF1C3B486D0B39 /* Pods_FunJCamUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,9 +202,9 @@
 		833125CE2FF1EE9A2A5FA1BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4AA029899062BFFCC2436EA1 /* Pods_FunJCam.framework */,
-				FFBFEDC4A90BD618E07A2950 /* Pods_FunJCamTests.framework */,
-				D27C9106B78D300F50B76566 /* Pods_FunJCamUITests.framework */,
+				E6449B3F9A24421138F1ABCC /* Pods_FunJCam.framework */,
+				949A8DE4A037E73DF96908F6 /* Pods_FunJCamTests.framework */,
+				020FA390724A9893201461B9 /* Pods_FunJCamUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -309,10 +309,9 @@
 				0783878C1E26E6DF007D298A /* Sources */,
 				0783878D1E26E6DF007D298A /* Frameworks */,
 				0783878E1E26E6DF007D298A /* Resources */,
-				5E2B80A86725B25E78801204 /* [CP] Embed Pods Frameworks */,
-				FAA7B09CE87413B1B689DC54 /* [CP] Copy Pods Resources */,
 				0701648D202F1EF6001207BF /* Run Script - Fabric */,
 				079CCD0A2049C78F006DFB08 /* Run Script - SwiftLint */,
+				92DD8EC2B0A3BE94A009EEAB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -331,8 +330,7 @@
 				078387A01E26E6E0007D298A /* Sources */,
 				078387A11E26E6E0007D298A /* Frameworks */,
 				078387A21E26E6E0007D298A /* Resources */,
-				2FB0378163BBB8E9ADA75FF0 /* [CP] Embed Pods Frameworks */,
-				18C012605FC1DB70B9276DC9 /* [CP] Copy Pods Resources */,
+				9E855FB8A519954DE42E34B4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -352,8 +350,7 @@
 				078387AB1E26E6E0007D298A /* Sources */,
 				078387AC1E26E6E0007D298A /* Frameworks */,
 				078387AD1E26E6E0007D298A /* Resources */,
-				0A9DA5CEEE1E3ACBD1F46F62 /* [CP] Embed Pods Frameworks */,
-				1B0D254B3D54539798F2AC4A /* [CP] Copy Pods Resources */,
+				5AF05CA2BC311BC9D464F256 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -372,7 +369,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = the42apps;
 				TargetAttributes = {
 					0783878F1E26E6DF007D298A = {
@@ -477,7 +474,25 @@
 			shellPath = /bin/sh;
 			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint";
 		};
-		0A9DA5CEEE1E3ACBD1F46F62 /* [CP] Embed Pods Frameworks */ = {
+		2F2C547CBED9E4652F2BA845 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FunJCamUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5AF05CA2BC311BC9D464F256 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -513,37 +528,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		18C012605FC1DB70B9276DC9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1B0D254B3D54539798F2AC4A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2F2C547CBED9E4652F2BA845 /* [CP] Check Pods Manifest.lock */ = {
+		85AFBEA1D118B9A05AFCB960 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -554,50 +539,14 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FunJCamUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-FunJCam-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2FB0378163BBB8E9ADA75FF0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BoxJeonExtension/BoxJeonExtension.framework",
-				"${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoxJeonExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CHTCollectionViewWaterfallLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5E2B80A86725B25E78801204 /* [CP] Embed Pods Frameworks */ = {
+		92DD8EC2B0A3BE94A009EEAB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -633,37 +582,40 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		85AFBEA1D118B9A05AFCB960 /* [CP] Check Pods Manifest.lock */ = {
+		9E855FB8A519954DE42E34B4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${SRCROOT}/Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BoxJeonExtension/BoxJeonExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FunJCam-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoxJeonExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CHTCollectionViewWaterfallLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FAA7B09CE87413B1B689DC54 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FDDDA595D869A24FD389B9C4 /* [CP] Check Pods Manifest.lock */ = {
@@ -773,6 +725,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -780,6 +733,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -829,6 +783,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -836,6 +791,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
