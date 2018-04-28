@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0701648C202F1CDF001207BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0701648B202F1CDE001207BF /* GoogleService-Info.plist */; };
 		0701648F202F31A0001207BF /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0701648E202F31A0001207BF /* SearchManager.swift */; };
+		0752ADD82094CEE800F0EC42 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752ADD72094CEE800F0EC42 /* SettingsViewController.swift */; };
+		0752ADDB2094D10500F0EC42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0752ADDA2094D10500F0EC42 /* Localizable.strings */; };
 		078387941E26E6DF007D298A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387931E26E6DF007D298A /* AppDelegate.swift */; };
 		078387961E26E6DF007D298A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387951E26E6DF007D298A /* MainViewController.swift */; };
 		0783879B1E26E6E0007D298A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0783879A1E26E6E0007D298A /* Assets.xcassets */; };
@@ -65,6 +67,8 @@
 		020FA390724A9893201461B9 /* Pods_FunJCamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0701648B202F1CDE001207BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0701648E202F31A0001207BF /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		0752ADD72094CEE800F0EC42 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		0752ADDA2094D10500F0EC42 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		078387901E26E6DF007D298A /* FunJCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FunJCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		078387931E26E6DF007D298A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		078387951E26E6DF007D298A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				0783879A1E26E6E0007D298A /* Assets.xcassets */,
 				0783879F1E26E6E0007D298A /* Info.plist */,
 				0701648B202F1CDE001207BF /* GoogleService-Info.plist */,
+				0752ADDA2094D10500F0EC42 /* Localizable.strings */,
 			);
 			path = FunJCam;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 				078387EA1E26F4EA007D298A /* SearchViewController.swift */,
 				078387E91E26F4EA007D298A /* RecentViewController.swift */,
 				078387E61E26F4EA007D298A /* BookmarkViewController.swift */,
+				0752ADD72094CEE800F0EC42 /* SettingsViewController.swift */,
 				078387E81E26F4EA007D298A /* ImageViewerViewController.swift */,
 			);
 			path = ViewController;
@@ -420,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				078387E11E26F4C4007D298A /* EmptySearchGridCell.xib in Resources */,
+				0752ADDB2094D10500F0EC42 /* Localizable.strings in Resources */,
 				078387E51E26F4C4007D298A /* SearchedImageGridCell.xib in Resources */,
 				0783879E1E26E6E0007D298A /* LaunchScreen.storyboard in Resources */,
 				8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */,
@@ -666,6 +673,7 @@
 				078387ED1E26F4EA007D298A /* ImageViewerViewController.swift in Sources */,
 				8D5B2F4A1FBAE25F004C735A /* FJNavigationController.swift in Sources */,
 				078387941E26E6DF007D298A /* AppDelegate.swift in Sources */,
+				0752ADD82094CEE800F0EC42 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

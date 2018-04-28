@@ -41,9 +41,8 @@ class ImageViewerViewController: FJViewController, NibLoadable {
     }
     
     func setupButtons() {
-        // TODO: Language
-        self.closeButton.setTitle("Close", for: .normal)
-        self.shareButton.setTitle("Share", for: .normal)
+        self.closeButton.setTitle("common:close".localized(), for: .normal)
+        self.shareButton.setTitle("imageviewer:share".localized(), for: .normal)
     }
     
     @IBAction func onCloseTapped(_ sender: UIButton) {

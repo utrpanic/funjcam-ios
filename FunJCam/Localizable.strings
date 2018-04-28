@@ -1,0 +1,10 @@
+
+// MARK: - Common
+"common:back" = "Back";
+"common:close" = "Close";
+"common:recent" = "Recent";
+"common:search" = "Search";
+"common:settings" = "Settings";
+
+// MARK: - ImageViewer
+"imageviewer:share" = "Share";

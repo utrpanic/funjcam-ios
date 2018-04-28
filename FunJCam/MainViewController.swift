@@ -9,10 +9,10 @@
 enum MainTab: Int {
     case search
     case recent
-    case bookmark
+    case settings
     
     static let `default`: MainTab = .search
-    static let allValues: [MainTab] = [.search, .recent, .bookmark]
+    static let allValues: [MainTab] = [.search, .recent, .settings]
     
     var viewController: UIViewController {
         let viewController: UIViewController
@@ -21,8 +21,8 @@ enum MainTab: Int {
             viewController = SearchViewController.create()
         case .recent:
             viewController = RecentViewController.create()
-        case .bookmark:
-            viewController = BookmarkViewController.create()
+        case .settings:
+            viewController = SettingsViewController.create()
         }
         let navigationController = FJNavigationController(rootViewController: viewController)
         let tabBarItem = self.tabBarItem
@@ -32,15 +32,14 @@ enum MainTab: Int {
     }
     
     var tabBarItem: UITabBarItem {
-        // TODO: Language
         let tabBarItem: UITabBarItem
         switch self {
         case .search:
-            tabBarItem = UITabBarItem(title: "Search", image: nil, selectedImage: nil)
+            tabBarItem = UITabBarItem(title: "common:search".localized(), image: nil, selectedImage: nil)
         case .recent:
-            tabBarItem = UITabBarItem(title: "Recent", image: nil, selectedImage: nil)
-        case .bookmark:
-            tabBarItem = UITabBarItem(title: "Bookmark", image: nil, selectedImage: nil)
+            tabBarItem = UITabBarItem(title: "common:recent".localized(), image: nil, selectedImage: nil)
+        case .settings:
+            tabBarItem = UITabBarItem(title: "common:settings".localized(), image: nil, selectedImage: nil)
         }
         tabBarItem.tag = self.rawValue
         return tabBarItem
