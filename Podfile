@@ -16,7 +16,7 @@ def pods
     pod 'RxCocoa'
     pod 'SwiftLint'
     
-    pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v0.9', :inhibit_warnings => false
+    pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v1.1', :inhibit_warnings => false
 end
 
 target 'FunJCam' do

@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupApplication() {
         FirebaseApp.configure()
-        FJTheme.setup()
+        FunJCamTheme.setup()
     }
     
     func startApplication() {

@@ -6,7 +6,7 @@
 //  Copyright © 2017년 the42apps. All rights reserved.
 //
 
-class FJTheme {
+class FunJCamTheme {
     
     class func setup() {
         UIView.appearance().tintColor = FJColor.primary
