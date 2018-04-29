@@ -1,7 +1,7 @@
 
 class ResponseGoogleImageSearch: Decodable {
     
-    var searchedImages: [SearchedImageByGoogle]?
+    var searchedImages: [SearchedImageByGoogle]
     var nextPages: [NextPage]?
     var nextPageStartIndex: Int? { return self.nextPages?.first?.startIndex }
     
@@ -16,7 +16,7 @@ class ResponseGoogleImageSearch: Decodable {
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.searchedImages = try values.decodeIfPresent([SearchedImageByGoogle].self, forKey: .items)
+        self.searchedImages = try values.decodeIfPresent([SearchedImageByGoogle].self, forKey: .items) ?? []
         let queriesContainer = try values.nestedContainer(keyedBy: CodingKeys.Queries.self, forKey: .queries)
         self.nextPages = try queriesContainer.decodeIfPresent([NextPage].self, forKey: .nextPage)
     }

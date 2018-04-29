@@ -37,6 +37,9 @@
 		078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E91E26F4EA007D298A /* RecentViewController.swift */; };
 		078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387EA1E26F4EA007D298A /* SearchViewController.swift */; };
 		07881FC61F9CBA290081EB85 /* Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07881FC51F9CBA290081EB85 /* Code.swift */; };
+		07C475272095EC0A004450A9 /* SettingsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C475262095EC09004450A9 /* SettingsCenter.swift */; };
+		07C4752920960DFE004450A9 /* ResponseDaumImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752820960DFE004450A9 /* ResponseDaumImageSearch.swift */; };
+		07C4752B20961261004450A9 /* SearchedImageByDaum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752A20961261004450A9 /* SearchedImageByDaum.swift */; };
 		11D35360359D52370B83EC7B /* Pods_FunJCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6449B3F9A24421138F1ABCC /* Pods_FunJCam.framework */; };
 		53F423A2DECF1C3B486D0B39 /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020FA390724A9893201461B9 /* Pods_FunJCamUITests.framework */; };
 		8D5B2F481FBACBD4004C735A /* SearchedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F471FBACBD4004C735A /* SearchedImage.swift */; };
@@ -102,6 +105,9 @@
 		078387E91E26F4EA007D298A /* RecentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
 		078387EA1E26F4EA007D298A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		07881FC51F9CBA290081EB85 /* Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code.swift; sourceTree = "<group>"; };
+		07C475262095EC09004450A9 /* SettingsCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCenter.swift; sourceTree = "<group>"; };
+		07C4752820960DFE004450A9 /* ResponseDaumImageSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDaumImageSearch.swift; sourceTree = "<group>"; };
+		07C4752A20961261004450A9 /* SearchedImageByDaum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedImageByDaum.swift; sourceTree = "<group>"; };
 		2387BC0DA03A80C1EA67BFF5 /* Pods-FunJCamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.release.xcconfig"; sourceTree = "<group>"; };
 		86D67C45D8745692BC8CFB26 /* Pods-FunJCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam.debug.xcconfig"; sourceTree = "<group>"; };
@@ -230,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				8D5B2F471FBACBD4004C735A /* SearchedImage.swift */,
+				07C4752A20961261004450A9 /* SearchedImageByDaum.swift */,
 				078387CF1E26F40F007D298A /* SearchedImageByGoogle.swift */,
 				078387D01E26F40F007D298A /* SearchKeyword.swift */,
 			);
@@ -250,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				078387D51E26F449007D298A /* ResponseGoogleImageSearch.swift */,
+				07C4752820960DFE004450A9 /* ResponseDaumImageSearch.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -260,6 +268,7 @@
 				078387D81E26F47D007D298A /* AlbumManager.swift */,
 				078387CB1E26EB44007D298A /* LogManager.swift */,
 				0701648E202F31A0001207BF /* SearchManager.swift */,
+				07C475262095EC09004450A9 /* SettingsCenter.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -651,12 +660,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				078387E21E26F4C4007D298A /* LoadMoreGridCell.swift in Sources */,
+				07C4752920960DFE004450A9 /* ResponseDaumImageSearch.swift in Sources */,
 				0701648F202F31A0001207BF /* SearchManager.swift in Sources */,
 				078387D91E26F47D007D298A /* AlbumManager.swift in Sources */,
 				07881FC61F9CBA290081EB85 /* Code.swift in Sources */,
 				078387E41E26F4C4007D298A /* SearchedImageGridCell.swift in Sources */,
 				8D5B2F481FBACBD4004C735A /* SearchedImage.swift in Sources */,
 				078387D11E26F40F007D298A /* SearchedImageByGoogle.swift in Sources */,
+				07C4752B20961261004450A9 /* SearchedImageByDaum.swift in Sources */,
 				8D5B2F4C1FBAE56A004C735A /* FunJCamConstant.swift in Sources */,
 				078387EB1E26F4EA007D298A /* BookmarkViewController.swift in Sources */,
 				078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */,
@@ -666,6 +677,7 @@
 				078387961E26E6DF007D298A /* MainViewController.swift in Sources */,
 				078387CC1E26EB44007D298A /* LogManager.swift in Sources */,
 				078387E01E26F4C4007D298A /* EmptySearchGridCell.swift in Sources */,
+				07C475272095EC0A004450A9 /* SettingsCenter.swift in Sources */,
 				078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */,
 				078387CE1E26EB9A007D298A /* FunJCamTheme.swift in Sources */,
 				078387CA1E26EB2A007D298A /* FJViewController.swift in Sources */,

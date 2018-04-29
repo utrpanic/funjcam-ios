@@ -7,7 +7,8 @@ enum Code {
     
     case ok
     case created
-    
+
+    case unauthorized
     case badRequest
     case forbidden
     case notFound
@@ -16,6 +17,7 @@ enum Code {
         200: .ok,
         201: .created,
         400: .badRequest,
+        401: .unauthorized,
         403: .forbidden,
         404: .notFound,
     ]

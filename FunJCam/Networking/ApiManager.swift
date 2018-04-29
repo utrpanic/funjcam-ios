@@ -17,11 +17,9 @@ class ApiManager {
     
     static let shared = ApiManager()
     
-    var provider: Provider = .naver
-    
     private func getObject<T: Decodable>(url: String, headers: HTTPHeaders? = nil, parameters: [String: Any]?, completion: @escaping ApiCompletion<T>, printBody: Bool) {
         let method: HTTPMethod = .get
-        let request = Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding.default)
+        let request = Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers)
         request.validate().log(printBody)
         request.responseData(completionHandler: { (response) in
                 response.log(printBody)
@@ -82,6 +80,35 @@ extension DataResponse {
 
 extension ApiManager {
     
+    func searchDaumImage(keyword: String, next: Int?, completion: @escaping ApiCompletion<ResponseDaumImageSearch>) {
+        let url = "https://dapi.kakao.com/v2/search/image"
+        let headers: HTTPHeaders = [
+            "Authorization": "KakaoAK 3aa0ae0423487ecc4eda2664cc7bc936"
+        ]
+        let parameters: [String: Any] = [
+            "query": keyword,
+            "sort": "recency", // accuracy or recency
+            "page": next ?? 1, // 1 ~ 50
+            "size": "20", // 1 ~ 80
+        ]
+        self.getObject(url: url, headers: headers, parameters: parameters, completion: completion, printBody: true)
+    }
+    
+    func searchNaverImage(keyword: String, next: Int?, completion: @escaping ApiCompletion<ResponseGoogleImageSearch>) {
+        let url = "https://openapi.naver.com/v1/search/image"
+        var parameters: [String: Any] = [
+            "q": keyword,
+            "key": "AIzaSyCTdQn7PY1xP5d_Otz8O8aTvbCSslU7lBQ",
+            "cx": "015032654831495313052:qzljc0expde",
+            "searchType": "image",
+            "num": 10 // 1~10만 허용.
+        ]
+        if let startIndex = next {
+            parameters["start"] = startIndex
+        }
+        self.getObject(url: url, parameters: parameters, completion: completion, printBody: false)
+    }
+    
     //https://developers.google.com/custom-search/json-api/v1/reference/cse/list
     //template = "https://www.googleapis.com/customsearch/v1?
     //q={searchTerms}&
@@ -118,16 +145,16 @@ extension ApiManager {
     //imgDominantColor={imgDominantColor?}&
     //alt=json";
     
-    func searchImage(keyword: String, startIndex: Int?, completion: @escaping ApiCompletion<ResponseGoogleImageSearch>) {
+    func searchGoogleImage(keyword: String, next: Int?, completion: @escaping ApiCompletion<ResponseGoogleImageSearch>) {
         let url = "https://www.googleapis.com/customsearch/v1"
         var parameters: [String: Any] = [
+            "q": keyword,
             "key": "AIzaSyCTdQn7PY1xP5d_Otz8O8aTvbCSslU7lBQ",
             "cx": "015032654831495313052:qzljc0expde",
             "searchType": "image",
             "num": 10 // 1~10만 허용.
         ]
-        parameters["q"] = keyword
-        if let startIndex = startIndex {
+        if let startIndex = next {
             parameters["start"] = startIndex
         }
         self.getObject(url: url, parameters: parameters, completion: completion, printBody: false)

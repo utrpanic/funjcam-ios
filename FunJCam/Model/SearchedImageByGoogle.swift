@@ -1,17 +1,10 @@
 
-class SearchedImageByGoogle: SearchedImage, Decodable {
+class SearchedImageByGoogle: Decodable, SearchedImage {
 
-    var url: String?
-    var pixelWidth: Double? { return self.metadata?.pixelWidth }
-    var pixelHeight: Double? { return self.metadata?.pixelHeight }
-    var thumbnailUrl: String? { return self.metadata?.thumbnailUrl }
-    
-    var isAnimatedGif: Bool { return self.mimeType?.contains("gif") == true }
-    
-    private var metadata: Metadata?
-    private var mimeType: String?
-    private var displayLink: String?
-    private var contextLink: String?
+    var url: String
+    var pixelWidth: Double
+    var pixelHeight: Double
+    var thumbnailUrl: String
     
     private enum CodingKeys: String, CodingKey {
         case link
@@ -23,39 +16,17 @@ class SearchedImageByGoogle: SearchedImage, Decodable {
     
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.url = try values.decodeIfPresent(String.self, forKey: .link)
-        self.metadata = try values.decodeIfPresent(Metadata.self, forKey: .image)
-        self.mimeType = try values.decodeIfPresent(String.self, forKey: .mime)
-        self.displayLink = try values.decodeIfPresent(String.self, forKey: .displayLink)
-        self.contextLink = try values.decodeIfPresent(String.self, forKey: .contextLink)
+        self.url = try values.decodeIfPresent(String.self, forKey: .link) ?? ""
+        let metadata = try values.decodeIfPresent(Metadata.self, forKey: .image) ?? Metadata()
+        self.pixelWidth = metadata.width
+        self.pixelHeight = metadata.height
+        self.thumbnailUrl = metadata.thumbnailLink
     }
 }
 
 private class Metadata: Decodable {
     
-    var pixelWidth: Double?
-    var pixelHeight: Double?
-    var byteSize: Double?
-    var thumbnailUrl: String?
-    var thumbnailWidth: Double?
-    var thumbnailHeight: Double?
-    
-    private enum CodingKeys: String, CodingKey {
-        case width
-        case height
-        case byteSize
-        case thumbnailLink
-        case thumbnailWidth
-        case thumbnailHeight
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.pixelWidth = try values.decodeIfPresent(Double.self, forKey: .width)
-        self.pixelHeight = try values.decodeIfPresent(Double.self, forKey: .height)
-        self.byteSize = try values.decodeIfPresent(Double.self, forKey: .byteSize)
-        self.thumbnailUrl = try values.decodeIfPresent(String.self, forKey: .thumbnailLink)
-        self.thumbnailWidth = try values.decodeIfPresent(Double.self, forKey: .thumbnailWidth)
-        self.thumbnailHeight = try values.decodeIfPresent(Double.self, forKey: .thumbnailHeight)
-    }
+    var width: Double = 0
+    var height: Double = 0
+    var thumbnailLink: String = ""
 }
