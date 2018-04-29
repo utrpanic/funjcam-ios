@@ -87,26 +87,27 @@ extension ApiManager {
         ]
         let parameters: [String: Any] = [
             "query": keyword,
-            "sort": "recency", // accuracy or recency
+            "sort": "accuracy", // accuracy or recency
             "page": next ?? 1, // 1 ~ 50
             "size": "20", // 1 ~ 80
         ]
-        self.getObject(url: url, headers: headers, parameters: parameters, completion: completion, printBody: true)
+        self.getObject(url: url, headers: headers, parameters: parameters, completion: completion, printBody: false)
     }
     
     func searchNaverImage(keyword: String, next: Int?, completion: @escaping ApiCompletion<ResponseGoogleImageSearch>) {
         let url = "https://openapi.naver.com/v1/search/image"
-        var parameters: [String: Any] = [
-            "q": keyword,
-            "key": "AIzaSyCTdQn7PY1xP5d_Otz8O8aTvbCSslU7lBQ",
-            "cx": "015032654831495313052:qzljc0expde",
-            "searchType": "image",
-            "num": 10 // 1~10만 허용.
+        let headers: HTTPHeaders = [
+            "Client ID": "93Aki4p3ckUPf2L7Lyac",
+            "Client Secret": "wD6dHhbcSs"
         ]
-        if let startIndex = next {
-            parameters["start"] = startIndex
-        }
-        self.getObject(url: url, parameters: parameters, completion: completion, printBody: false)
+        let parameters: [String: Any] = [
+            "query": keyword,
+            "sort": "sim", // sim or date
+            "start": next ?? 1, // 1 ~ 1000
+            "display": "20", // 10 ~ 100
+            "filter": "all", // all, large, medium, small
+        ]
+        self.getObject(url: url, headers: headers, parameters: parameters, completion: completion, printBody: true)
     }
     
     //https://developers.google.com/custom-search/json-api/v1/reference/cse/list

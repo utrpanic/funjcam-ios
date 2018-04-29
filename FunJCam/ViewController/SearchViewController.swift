@@ -51,7 +51,6 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     
     func setupTextField() {
         self.textField.placeholder = "우리핵"
-        self.textField.becomeFirstResponder()
     }
     
     func setupCollectionView() {

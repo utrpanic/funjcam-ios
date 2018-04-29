@@ -12,7 +12,7 @@ enum SearchProvider: String {
     case naver
     case google
     
-    static let `default`: SearchProvider = .daum
+    static let `default`: SearchProvider = .naver
     
     init(string: String?) {
         switch string {
