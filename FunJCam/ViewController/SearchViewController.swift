@@ -30,14 +30,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
             return ""
         }
     }
-    var searchedImages: [SearchedImageByGoogle]? {
-        willSet {
-            if newValue == nil {
-                self.nextPageStartIndex = nil
-            }
-        }
-    }
-    var nextPageStartIndex: Int?
+    var manager: SearchManager = SearchManager()
     
     static func create() -> Self {
         let viewController = self.create(storyboardName: "Main")!
@@ -57,8 +50,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     }
     
     func setupTextField() {
-        self.textField.placeholder = "평창 인면조"
-        self.textField.becomeFirstResponder()
+        self.textField.placeholder = "우리핵"
     }
     
     func setupCollectionView() {
@@ -72,27 +64,18 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     }
     
     func requestImages() {
-        ApiManager.shared.searchImage(keyword: self.searchKeyword, startIndex: self.nextPageStartIndex) { [weak self] (code, response) in
-            if let response = response {
-                if self?.searchedImages?.count ?? 0 == 0 {
-                    self?.searchedImages = response.searchedImages
-                } else {
-                    if let searchedImages = response.searchedImages {
-                        self?.searchedImages?.append(contentsOf: searchedImages)
-                    }
-                }
-                if let nextPageStartIndex = response.nextPageStartIndex {
-                    self?.nextPageStartIndex = nextPageStartIndex
-                }
-                self?.collectionView.reloadData()
-            } else {
-                // TODO: 에러처리
-            }
+        self.manager.search(keyword: self.searchKeyword) { [weak self] (code) in
+            self?.collectionView.reloadData()
+        }
+    }
+    
+    func requestMoreImages() {
+        self.manager.searchMore { [weak self] in
+            self?.collectionView.reloadData()
         }
     }
     
     @IBAction func didSearchTap(_ sender: UITextField) {
-        self.searchedImages = nil
         self.requestImages()
         self.view.endEditing(true)
     }
@@ -107,11 +90,11 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
         case .image:
-            return self.searchedImages?.count ?? 0
+            return self.manager.images.count
         case .loadMore:
-            return self.nextPageStartIndex != nil ? 1 : 0
+            return self.manager.next != nil ? 1 : 0
         case .empty:
-            return self.searchedImages?.count ?? 0 == 0 ? 1 : 0
+            return self.manager.images.count == 0 ? 1 : 0
         }
     }
     
@@ -119,7 +102,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
         switch Section(rawValue: indexPath.section)! {
         case .image:
             let cell = collectionView.dequeueReusableCell(SearchedImageGridCell.self, for: indexPath)
-            cell.configure(searchedImage: self.searchedImages?[indexPath.item])
+            cell.configure(searchedImage: self.manager.images[indexPath.item])
             return cell
         case .loadMore:
             let cell = collectionView.dequeueReusableCell(LoadMoreGridCell.self, for: indexPath)
@@ -134,9 +117,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         switch Section(rawValue: indexPath.section)! {
         case .loadMore:
-            if self.nextPageStartIndex != nil {
-                self.requestImages()
-            }
+            self.requestMoreImages()
         default:
             break
         }
@@ -156,12 +137,9 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
         case .image:
             let width: CGFloat = (collectionView.frame.width - 8 - 8 - 8) / 2
             let height: CGFloat = {
-                if let pixelWidth = self.searchedImages?[indexPath.item].pixelWidth,
-                    let pixelHeight = self.searchedImages?[indexPath.item].pixelHeight {
-                    return width * CGFloat(pixelHeight / pixelWidth)
-                } else {
-                    return SearchedImageGridCell.defaultHeight
-                }
+                let pixelWidth = CGFloat(self.manager.images[indexPath.item].pixelWidth)
+                let pixelHeight = CGFloat(self.manager.images[indexPath.item].pixelHeight)
+                return width * (pixelHeight / pixelWidth)
             }()
             return CGSize(width: width, height: height)
         case .loadMore:
@@ -174,7 +152,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         switch Section(rawValue: section)! {
         case .image:
-            return self.searchedImages?.count ?? 0 > 0 ? UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) : UIEdgeInsets.zero
+            return self.manager.images.count > 0 ? UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) : UIEdgeInsets.zero
         default:
             return UIEdgeInsets.zero
         }
@@ -202,7 +180,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
         switch Section(rawValue: indexPath.section)! {
         case .image:
             if let image = (collectionView.cellForItem(at: indexPath) as? SearchedImageGridCell)?.imageView.image {
-                let viewController = ImageViewerViewController.create(image: image, searchedImage: self.searchedImages?[indexPath.item])
+                let viewController = ImageViewerViewController.create(image: image, searchedImage: self.manager.images[indexPath.item])
                 self.present(viewController, animated: true, completion: nil)
             }
         default:
