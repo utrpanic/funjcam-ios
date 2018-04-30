@@ -137,9 +137,9 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
         case .image:
             let width: CGFloat = (collectionView.frame.width - 8 - 8 - 8) / 2
             let height: CGFloat = {
-                let pixelWidth = self.manager.images[indexPath.item].pixelWidth
-                let pixelHeight = self.manager.images[indexPath.item].pixelHeight
-                return width * CGFloat(pixelHeight / pixelWidth)
+                let pixelWidth = CGFloat(self.manager.images[indexPath.item].pixelWidth)
+                let pixelHeight = CGFloat(self.manager.images[indexPath.item].pixelHeight)
+                return width * (pixelHeight / pixelWidth)
             }()
             return CGSize(width: width, height: height)
         case .loadMore:

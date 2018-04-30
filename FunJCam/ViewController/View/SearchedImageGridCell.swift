@@ -14,7 +14,7 @@ class SearchedImageGridCell: UICollectionViewCell, NibLoadable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.imageView.layer.borderColor = UIColor.gray.cgColor
+        self.imageView.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
         self.imageView.layer.borderWidth = 0.5
         self.imageView.clipsToBounds = true
         self.prepareForReuse()

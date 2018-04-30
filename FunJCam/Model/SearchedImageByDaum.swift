@@ -9,8 +9,8 @@
 class SearchedImageByDaum: Decodable, SearchedImage {
     
     var url: String
-    var pixelWidth: Double
-    var pixelHeight: Double
+    var pixelWidth: Int
+    var pixelHeight: Int
     var thumbnailUrl: String
     
     private enum CodingKeys: String, CodingKey {
@@ -27,8 +27,8 @@ class SearchedImageByDaum: Decodable, SearchedImage {
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.url = try values.decodeIfPresent(String.self, forKey: .image_url) ?? ""
-        self.pixelWidth = try values.decodeIfPresent(Double.self, forKey: .width) ?? 0
-        self.pixelHeight = try values.decodeIfPresent(Double.self, forKey: .height) ?? 0
+        self.pixelWidth = try values.decodeIfPresent(Int.self, forKey: .width) ?? 0
+        self.pixelHeight = try values.decodeIfPresent(Int.self, forKey: .height) ?? 0
         self.thumbnailUrl = try values.decodeIfPresent(String.self, forKey: .thumbnail_url) ?? ""
     }
 }

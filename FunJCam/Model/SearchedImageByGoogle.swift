@@ -2,8 +2,8 @@
 class SearchedImageByGoogle: Decodable, SearchedImage {
 
     var url: String
-    var pixelWidth: Double
-    var pixelHeight: Double
+    var pixelWidth: Int
+    var pixelHeight: Int
     var thumbnailUrl: String
     
     private enum CodingKeys: String, CodingKey {
@@ -26,7 +26,7 @@ class SearchedImageByGoogle: Decodable, SearchedImage {
 
 private class Metadata: Decodable {
     
-    var width: Double = 0
-    var height: Double = 0
+    var width: Int = 0
+    var height: Int = 0
     var thumbnailLink: String = ""
 }

@@ -12,24 +12,15 @@ enum SearchProvider: String {
     case naver
     case google
     
-    static let `default`: SearchProvider = .naver
+    static let `default`: SearchProvider = .daum
     
     init(string: String?) {
-        switch string {
-        case "daum": self = .daum
-        case "naver": self = .naver
-        case "google": self = .google
-        default: self = .default
+        if let provider = SearchProvider(rawValue: string ?? "") {
+            self = provider
+        } else {
+            self = .default
         }
     }
-    
-//    var manager: SearchManager {
-//        switch self {
-//        case .daum: return DaumSearchManager()
-//        case .naver: return NaverSearchManager()
-//        case .google: return GoogleSearchManager()
-//        }
-//    }
 }
 
 class SearchManager {
@@ -55,7 +46,7 @@ class SearchManager {
             ApiManager.shared.searchNaverImage(keyword: keyword, next: nil) { (code, response) in
                 if let response = response {
                     self.images = response.searchedImages
-                    self.next = response.nextPageStartIndex
+                    self.next = response.nextStartIndex
                 }
                 completion(code)
             }
@@ -90,7 +81,7 @@ class SearchManager {
             ApiManager.shared.searchNaverImage(keyword: keyword, next: next) { (code, response) in
                 if let response = response {
                     self.images.append(contentsOf: response.searchedImages)
-                    self.next = response.nextPageStartIndex
+                    self.next = response.nextStartIndex
                 }
                 completion()
             }
@@ -106,47 +97,3 @@ class SearchManager {
         }
     }
 }
-
-//protocol SearchManager: class {
-//
-//    var searchUrl: String { get }
-//
-//    func parameters(keyword: String, next: Int?) -> [String: Any]
-//}
-//
-//class DaumSearchManager: SearchManager {
-//
-//    var searchUrl: String { return "https://dapi.kakao.com/v2/search/image" }
-//
-//    func parameters(keyword: String, next: Int?) -> [String: Any] {
-//        return [String: Any]()
-//    }
-//}
-//
-//class NaverSearchManager: SearchManager {
-//
-//    var searchUrl: String { return "https://openapi.naver.com/v1/search/image" }
-//
-//    func parameters(keyword: String, next: Int?) -> [String: Any] {
-//        return [String: Any]()
-//    }
-//}
-//
-//class GoogleSearchManager: SearchManager {
-//
-//    var searchUrl: String { return "https://www.googleapis.com/customsearch/v1" }
-//
-//    func parameters(keyword: String, next: Int?) -> [String: Any] {
-//        var parameters: [String: Any] = [
-//            "key": "AIzaSyCTdQn7PY1xP5d_Otz8O8aTvbCSslU7lBQ",
-//            "cx": "015032654831495313052:qzljc0expde",
-//            "searchType": "image",
-//            "num": 10 // 1~10만 허용.
-//        ]
-//        parameters["q"] = keyword
-//        if let startIndex = next {
-//            parameters["start"] = startIndex
-//        }
-//        return parameters
-//    }
-//}

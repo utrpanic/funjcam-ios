@@ -2,7 +2,7 @@
 protocol SearchedImage {
     
     var url: String { get }
-    var pixelWidth: Double { get }
-    var pixelHeight: Double { get }
+    var pixelWidth: Int { get }
+    var pixelHeight: Int { get }
     var thumbnailUrl: String { get }
 }

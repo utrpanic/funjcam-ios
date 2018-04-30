@@ -94,11 +94,11 @@ extension ApiManager {
         self.getObject(url: url, headers: headers, parameters: parameters, completion: completion, printBody: false)
     }
     
-    func searchNaverImage(keyword: String, next: Int?, completion: @escaping ApiCompletion<ResponseGoogleImageSearch>) {
+    func searchNaverImage(keyword: String, next: Int?, completion: @escaping ApiCompletion<ResponseNaverImageSearch>) {
         let url = "https://openapi.naver.com/v1/search/image"
         let headers: HTTPHeaders = [
-            "Client ID": "93Aki4p3ckUPf2L7Lyac",
-            "Client Secret": "wD6dHhbcSs"
+            "X-Naver-Client-Id": "93Aki4p3ckUPf2L7Lyac",
+            "X-Naver-Client-Secret": "wD6dHhbcSs"
         ]
         let parameters: [String: Any] = [
             "query": keyword,
@@ -107,7 +107,7 @@ extension ApiManager {
             "display": "20", // 10 ~ 100
             "filter": "all", // all, large, medium, small
         ]
-        self.getObject(url: url, headers: headers, parameters: parameters, completion: completion, printBody: true)
+        self.getObject(url: url, headers: headers, parameters: parameters, completion: completion, printBody: false)
     }
     
     //https://developers.google.com/custom-search/json-api/v1/reference/cse/list
