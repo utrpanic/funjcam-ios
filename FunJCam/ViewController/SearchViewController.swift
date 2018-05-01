@@ -89,6 +89,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return Section.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
         case .image:
