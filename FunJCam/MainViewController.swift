@@ -66,4 +66,15 @@ class MainViewController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.backgroundColor = .white
     }
     
+    // MARK: - UITabBarControllerDelegate
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if viewController == self.selectedViewController {
+            let navigationController = viewController as? UINavigationController
+            if navigationController?.viewControllers.count == 1 {
+            (navigationController?.topViewController as? HasScrollView)?.scrollToTop(animated: true)
+            }
+        }
+        return true
+    }
+    
 }

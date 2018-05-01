@@ -38,6 +38,7 @@
 		078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E91E26F4EA007D298A /* RecentViewController.swift */; };
 		078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387EA1E26F4EA007D298A /* SearchViewController.swift */; };
 		07881FC61F9CBA290081EB85 /* Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07881FC51F9CBA290081EB85 /* Code.swift */; };
+		079264B02098C5A5001AF1A7 /* HasScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079264AF2098C5A5001AF1A7 /* HasScrollView.swift */; };
 		07C475272095EC0A004450A9 /* SettingsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C475262095EC09004450A9 /* SettingsCenter.swift */; };
 		07C4752920960DFE004450A9 /* ResponseDaumImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752820960DFE004450A9 /* ResponseDaumImageSearch.swift */; };
 		07C4752B20961261004450A9 /* SearchedImageByDaum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752A20961261004450A9 /* SearchedImageByDaum.swift */; };
@@ -108,6 +109,7 @@
 		078387E91E26F4EA007D298A /* RecentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
 		078387EA1E26F4EA007D298A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		07881FC51F9CBA290081EB85 /* Code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Code.swift; sourceTree = "<group>"; };
+		079264AF2098C5A5001AF1A7 /* HasScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasScrollView.swift; sourceTree = "<group>"; };
 		07C475262095EC09004450A9 /* SettingsCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCenter.swift; sourceTree = "<group>"; };
 		07C4752820960DFE004450A9 /* ResponseDaumImageSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDaumImageSearch.swift; sourceTree = "<group>"; };
 		07C4752A20961261004450A9 /* SearchedImageByDaum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedImageByDaum.swift; sourceTree = "<group>"; };
@@ -214,6 +216,14 @@
 			path = FunJCamUITests;
 			sourceTree = "<group>";
 		};
+		079264B12098CD13001AF1A7 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				079264AF2098C5A5001AF1A7 /* HasScrollView.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		833125CE2FF1EE9A2A5FA1BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +237,7 @@
 		8D1931531FBAC47B00C30758 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				079264B12098CD13001AF1A7 /* Protocol */,
 				078387C71E26EB0C007D298A /* FunJCamExtension.swift */,
 				078387CD1E26EB9A007D298A /* FunJCamTheme.swift */,
 				8D5B2F4B1FBAE56A004C735A /* FunJCamConstant.swift */,
@@ -667,6 +678,7 @@
 			files = (
 				078387E21E26F4C4007D298A /* LoadMoreGridCell.swift in Sources */,
 				07C4752D209621C4004450A9 /* ResponseNaverImageSearch.swift in Sources */,
+				079264B02098C5A5001AF1A7 /* HasScrollView.swift in Sources */,
 				07C4752920960DFE004450A9 /* ResponseDaumImageSearch.swift in Sources */,
 				0701648F202F31A0001207BF /* SearchManager.swift in Sources */,
 				078387D91E26F47D007D298A /* AlbumManager.swift in Sources */,

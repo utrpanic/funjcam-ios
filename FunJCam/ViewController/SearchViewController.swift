@@ -8,7 +8,7 @@
 
 import CHTCollectionViewWaterfallLayout
 
-class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
+class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, HasScrollView {
     
     enum Section: Int {
         case image
@@ -20,6 +20,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var gifButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    var scrollView: UIScrollView { return self.collectionView }
     
     var searchKeyword: String {
         if !(self.textField.text?.isEmpty ?? false) {
@@ -66,6 +67,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     func requestImages() {
         self.manager.search(keyword: self.searchKeyword) { [weak self] (code) in
             self?.collectionView.reloadData()
+            self?.collectionView.contentOffset = .zero
         }
     }
     
@@ -188,5 +190,4 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
             break
         }
     }
-
 }
