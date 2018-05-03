@@ -15,6 +15,7 @@ def pods
     pod 'RealmSwift'
     pod 'RxCocoa'
     pod 'SwiftLint'
+    pod 'Toaster'
     
     pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v1.4', :inhibit_warnings => false
 end

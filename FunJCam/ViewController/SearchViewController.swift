@@ -8,17 +8,17 @@
 
 import CHTCollectionViewWaterfallLayout
 
-class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, HasScrollView {
+class SearchViewController: FJViewController, NibLoadable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderGridCellDelegate {
     
     enum Section: Int {
+        case header
         case image
-        case loadMore
+        case more
         case empty
-        static let count = Section.empty.rawValue + 1
+        static var all: [Section] { return [.header, .image, .more, .empty]}
     }
 
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var gifButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     var scrollView: UIScrollView { return self.collectionView }
     
@@ -31,6 +31,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
             return ""
         }
     }
+    var isGifOn: Bool = false
     var manager: SearchManager = SearchManager()
     
     static func create() -> Self {
@@ -51,7 +52,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     }
     
     func setupTextField() {
-        self.textField.placeholder = "우리핵"
+        self.textField.placeholder = "효리네민박"
     }
     
     func setupCollectionView() {
@@ -65,7 +66,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     }
     
     func requestImages() {
-        self.manager.search(keyword: self.searchKeyword) { [weak self] (code) in
+        self.manager.search(keyword: self.searchKeyword, gif: self.isGifOn) { [weak self] (code) in
             self?.collectionView.reloadData()
             self?.collectionView.contentOffset = .zero
         }
@@ -82,20 +83,19 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
         self.view.endEditing(true)
     }
     
-    @IBAction func didGifTap(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-    }
     // MARK: - UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return Section.count
+        return Section.all.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch Section(rawValue: section)! {
+        case .header:
+            return 1
         case .image:
             return self.manager.images.count
-        case .loadMore:
-            return self.manager.next != nil ? 1 : 0
+        case .more:
+            return self.manager.hasMore ? 1 : 0
         case .empty:
             return self.manager.images.count == 0 ? 1 : 0
         }
@@ -103,11 +103,16 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch Section(rawValue: indexPath.section)! {
+        case .header:
+            let cell = collectionView.dequeueReusableCell(SearchHeaderGridCell.self, for: indexPath)
+            cell.configure(isGifOn: self.isGifOn)
+            cell.delegate = self
+            return cell
         case .image:
             let cell = collectionView.dequeueReusableCell(SearchedImageGridCell.self, for: indexPath)
             cell.configure(searchedImage: self.manager.images[indexPath.item])
             return cell
-        case .loadMore:
+        case .more:
             let cell = collectionView.dequeueReusableCell(LoadMoreGridCell.self, for: indexPath)
             cell.startLoadingAnimation()
             return cell
@@ -119,8 +124,10 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         switch Section(rawValue: indexPath.section)! {
-        case .loadMore:
-            self.requestMoreImages()
+        case .more:
+            if self.manager.hasMore {
+                self.requestMoreImages()
+            }
         default:
             break
         }
@@ -128,15 +135,19 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, columnCountForSection section: Int) -> Int {
         switch Section(rawValue: section)! {
+        case .header:
+            return 1
         case .image:
             return 2
-        case .loadMore, .empty:
+        case .more, .empty:
             return 1
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         switch Section(rawValue: indexPath.section)! {
+        case .header:
+            return CGSize(width: collectionView.frame.width, height: SearchHeaderGridCell.height)
         case .image:
             let width: CGFloat = (collectionView.frame.width - 8 - 8 - 8) / 2
             let height: CGFloat = {
@@ -145,7 +156,7 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
                 return width * (pixelHeight / pixelWidth)
             }()
             return CGSize(width: width, height: height)
-        case .loadMore:
+        case .more:
             return CGSize(width: collectionView.frame.width, height: LoadMoreGridCell.defaultHeight)
         case .empty:
             return collectionView.frame.size
@@ -190,5 +201,57 @@ class SearchViewController: FJViewController, NibLoadable, UICollectionViewDataS
             // do nothing.
             break
         }
+    }
+    
+    // MARK: - SearchHeaderGridCellDelegate
+    func didSearchProviderButtonTap() {
+        let alertController = UIAlertController(title: "provider:searchProvider".localized(), message: nil, preferredStyle: .actionSheet)
+        SearchProvider.all.forEach({
+            let provider = $0
+            alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { (action) in
+                SettingsCenter.shared.searchProvider = provider
+                self.requestImages()
+            }))
+        })
+        alertController.addAction(UIAlertAction(title: "common:cancel".localized(), style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func didGifSelectionChange() {
+        self.isGifOn.toggle()
+        self.requestImages()
+    }
+}
+
+protocol SearchHeaderGridCellDelegate: class {
+    func didSearchProviderButtonTap()
+    func didGifSelectionChange()
+}
+
+class SearchHeaderGridCell: UICollectionViewCell, NibLoadable {
+    
+    static var height: CGFloat { return 44 }
+    
+    @IBOutlet weak var providerButton: UIButton!
+    @IBOutlet weak var gifButton: UIButton!
+    
+    weak var delegate: SearchHeaderGridCellDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    func configure(isGifOn: Bool) {
+        let provider = SettingsCenter.shared.searchProvider
+        self.providerButton.setTitle(provider.name, for: .normal)
+        self.gifButton.isSelected = isGifOn
+    }
+    
+    @IBAction func providerButtonDidTap(_ sender: UIButton) {
+        self.delegate?.didSearchProviderButtonTap()
+    }
+    
+    @IBAction func gifButtonDidTap(_ sender: UIButton) {
+        self.delegate?.didGifSelectionChange()
     }
 }

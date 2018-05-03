@@ -5,6 +5,13 @@
 "common:recent" = "Recent";
 "common:search" = "Search";
 "common:settings" = "Settings";
+"common:cancel" = "Cancel";
 
-// MARK: - ImageViewer
+"provider:searchProvider" = "Search Provider";
+"provider:daum" = "Daum";
+"provider:naver" = "Naver";
+"provider:google" = "Google";
+
+"search:gif" = "gif";
+
 "imageviewer:share" = "Share";

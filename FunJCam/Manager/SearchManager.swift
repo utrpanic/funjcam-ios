@@ -12,7 +12,16 @@ enum SearchProvider: String {
     case naver
     case google
     
-    static let `default`: SearchProvider = .daum
+    static var `default`: SearchProvider { return .daum }
+    static var all: [SearchProvider] { return [.daum, .naver, .google] }
+    
+    var name: String {
+        switch self {
+        case .daum: return "provider:daum".localized()
+        case .naver: return "provider:naver".localized()
+        case .google: return "provider:google".localized()
+        }
+    }
     
     init(string: String?) {
         if let provider = SearchProvider(rawValue: string ?? "") {
@@ -26,15 +35,18 @@ enum SearchProvider: String {
 class SearchManager {
     
     var images: [SearchedImage] = [SearchedImage]()
-    var next: Int?
     
-    private var keyword: String?
+    private var keyword: String = ""
+    private var next: Int?
     
-    func search(keyword: String, completion: @escaping (Code) -> Void) {
-        self.keyword = keyword
+    var hasMore: Bool { return self.next != nil }
+    
+    func search(keyword: String, gif: Bool, completion: @escaping (Code) -> Void) {
+        guard !keyword.isEmpty else { return }
+        self.keyword = keyword + (gif ? " \("search:gif".localized())" : "")
         switch SettingsCenter.shared.searchProvider {
         case .daum:
-            ApiManager.shared.searchDaumImage(keyword: keyword, next: nil) { (code, response) in
+            ApiManager.shared.searchDaumImage(keyword: self.keyword, next: nil) { (code, response) in
                 if let response = response {
                     self.images = response.searchedImages
                     self.next = response.hasMore ? 2 : nil
@@ -43,7 +55,7 @@ class SearchManager {
             }
             
         case .naver:
-            ApiManager.shared.searchNaverImage(keyword: keyword, next: nil) { (code, response) in
+            ApiManager.shared.searchNaverImage(keyword: self.keyword, next: nil) { (code, response) in
                 if let response = response {
                     self.images = response.searchedImages
                     self.next = response.nextStartIndex
@@ -52,7 +64,7 @@ class SearchManager {
             }
             
         case .google:
-            ApiManager.shared.searchGoogleImage(keyword: keyword, next: nil) { (code, response) in
+            ApiManager.shared.searchGoogleImage(keyword: self.keyword, next: nil) { (code, response) in
                 if let response = response {
                     self.images = response.searchedImages
                     self.next = response.nextPageStartIndex
@@ -63,10 +75,11 @@ class SearchManager {
     }
     
     func searchMore(completion: @escaping () -> Void) {
-        guard let keyword = self.keyword, let next = self.next else {
+        guard let next = self.next else {
             completion()
             return
         }
+        self.next = nil
         switch SettingsCenter.shared.searchProvider {
         case .daum:
             ApiManager.shared.searchDaumImage(keyword: keyword, next: next) { (code, response) in
