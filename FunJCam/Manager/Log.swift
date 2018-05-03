@@ -1,5 +1,5 @@
 //
-//  LogManager.swift
+//  Log.swift
 //  FunJCam
 //
 //  Created by boxjeon on 2017. 1. 12..
