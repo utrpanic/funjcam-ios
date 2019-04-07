@@ -45,9 +45,9 @@
 		07C4752D209621C4004450A9 /* ResponseNaverImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752C209621C4004450A9 /* ResponseNaverImageSearch.swift */; };
 		11D35360359D52370B83EC7B /* Pods_FunJCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6449B3F9A24421138F1ABCC /* Pods_FunJCam.framework */; };
 		53F423A2DECF1C3B486D0B39 /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020FA390724A9893201461B9 /* Pods_FunJCamUITests.framework */; };
+		608E31A7225A3EA100776DA6 /* ViewCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608E31A6225A3EA100776DA6 /* ViewCommon.swift */; };
 		8D5B2F481FBACBD4004C735A /* SearchedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F471FBACBD4004C735A /* SearchedImage.swift */; };
 		8D5B2F4A1FBAE25F004C735A /* FJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */; };
-		8D5B2F4C1FBAE56A004C735A /* FunJCamConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F4B1FBAE56A004C735A /* FunJCamConstant.swift */; };
 		8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D69890B1E27186C002F0BAE /* Main.storyboard */; };
 		C128004D6EAA5676CCCE0A24 /* Pods_FunJCamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949A8DE4A037E73DF96908F6 /* Pods_FunJCamTests.framework */; };
 /* End PBXBuildFile section */
@@ -115,11 +115,11 @@
 		07C4752A20961261004450A9 /* SearchedImageByDaum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedImageByDaum.swift; sourceTree = "<group>"; };
 		07C4752C209621C4004450A9 /* ResponseNaverImageSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseNaverImageSearch.swift; sourceTree = "<group>"; };
 		2387BC0DA03A80C1EA67BFF5 /* Pods-FunJCamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		608E31A6225A3EA100776DA6 /* ViewCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCommon.swift; sourceTree = "<group>"; };
 		80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.release.xcconfig"; sourceTree = "<group>"; };
 		86D67C45D8745692BC8CFB26 /* Pods-FunJCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam.debug.xcconfig"; sourceTree = "<group>"; };
 		8D5B2F471FBACBD4004C735A /* SearchedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedImage.swift; sourceTree = "<group>"; };
 		8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FJNavigationController.swift; sourceTree = "<group>"; };
-		8D5B2F4B1FBAE56A004C735A /* FunJCamConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunJCamConstant.swift; sourceTree = "<group>"; };
 		8D69890B1E27186C002F0BAE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		949A8DE4A037E73DF96908F6 /* Pods_FunJCamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E4E7D60FE00EADD0F5A9B5 /* Pods-FunJCamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +183,7 @@
 			children = (
 				8D1931531FBAC47B00C30758 /* Common */,
 				8D1931541FBAC48A00C30758 /* Model */,
+				8D1931591FBAC4ED00C30758 /* View */,
 				8D1931551FBAC49E00C30758 /* Networking */,
 				8D1931571FBAC4C700C30758 /* Manager */,
 				8D1931581FBAC4DA00C30758 /* ViewController */,
@@ -240,7 +241,6 @@
 				079264B12098CD13001AF1A7 /* Protocol */,
 				078387C71E26EB0C007D298A /* FunJCamExtension.swift */,
 				078387CD1E26EB9A007D298A /* FunJCamTheme.swift */,
-				8D5B2F4B1FBAE56A004C735A /* FunJCamConstant.swift */,
 				078387C91E26EB2A007D298A /* FJViewController.swift */,
 				8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */,
 			);
@@ -293,7 +293,6 @@
 		8D1931581FBAC4DA00C30758 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8D1931591FBAC4ED00C30758 /* View */,
 				8D69890B1E27186C002F0BAE /* Main.storyboard */,
 				078387EA1E26F4EA007D298A /* SearchViewController.swift */,
 				078387E91E26F4EA007D298A /* RecentViewController.swift */,
@@ -307,6 +306,7 @@
 		8D1931591FBAC4ED00C30758 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				608E31A6225A3EA100776DA6 /* ViewCommon.swift */,
 				078387DF1E26F4C4007D298A /* SearchedImageGridCell.xib */,
 				078387DE1E26F4C4007D298A /* SearchedImageGridCell.swift */,
 				078387DD1E26F4C4007D298A /* LoadMoreGridCell.xib */,
@@ -701,7 +701,6 @@
 				8D5B2F481FBACBD4004C735A /* SearchedImage.swift in Sources */,
 				078387D11E26F40F007D298A /* SearchedImageByGoogle.swift in Sources */,
 				07C4752B20961261004450A9 /* SearchedImageByDaum.swift in Sources */,
-				8D5B2F4C1FBAE56A004C735A /* FunJCamConstant.swift in Sources */,
 				078387EB1E26F4EA007D298A /* BookmarkViewController.swift in Sources */,
 				078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */,
 				078387D61E26F449007D298A /* ApiManager.swift in Sources */,
@@ -711,6 +710,7 @@
 				078387CC1E26EB44007D298A /* Log.swift in Sources */,
 				078387E01E26F4C4007D298A /* EmptySearchGridCell.swift in Sources */,
 				07C475272095EC0A004450A9 /* SettingsCenter.swift in Sources */,
+				608E31A7225A3EA100776DA6 /* ViewCommon.swift in Sources */,
 				078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */,
 				078387CE1E26EB9A007D298A /* FunJCamTheme.swift in Sources */,
 				078387CA1E26EB2A007D298A /* FJViewController.swift in Sources */,

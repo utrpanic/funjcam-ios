@@ -17,5 +17,4 @@ class FJViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.view.endEditing(true)
     }
-    
 }

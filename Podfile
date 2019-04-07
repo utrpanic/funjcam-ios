@@ -17,7 +17,7 @@ def pods
     pod 'Texture'
     pod 'Toaster'
     
-    pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v1.7', :inhibit_warnings => false
+    pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v1.8', :inhibit_warnings => false
 end
 
 target 'FunJCam' do
