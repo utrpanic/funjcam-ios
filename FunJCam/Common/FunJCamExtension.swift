@@ -26,10 +26,15 @@ extension UIImage {
 extension UIImageView {
     
     func setImage(url: String?, placeholder: UIImage?, completion: ((UIImage?) -> Void)?) {
-        let safeUrl = URL.safeVersion(from: url)
-        self.kf.setImage(with: safeUrl, placeholder: placeholder, options: [.transition(.fade(0.2))], progressBlock: nil, completionHandler: { (image, error, cacheType, url) in
-            completion?(image)
-        })
+        let safeURL = URL.safeVersion(from: url)
+        self.kf.setImage(with: safeURL, placeholder: placeholder, options: [.transition(.fade(0.2))], progressBlock: nil) { result in
+            switch result {
+            case .success(let value):
+                completion?(value.image)
+            case .failure(_):
+                completion?(nil)
+            }
+        }
     }
 }
 
