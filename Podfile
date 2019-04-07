@@ -1,4 +1,4 @@
-platform :ios, '11.0'
+platform :ios, '12.0'
 use_frameworks!
 
 # ignore all warnings from all pods
@@ -10,11 +10,11 @@ def pods
     pod 'CHTCollectionViewWaterfallLayout/Swift'
     pod 'Crashlytics'
     pod 'Fabric'
-    pod 'Firebase/Core'
+    pod 'Firebase'
     pod 'Kingfisher'
-    pod 'RealmSwift'
-    pod 'RxCocoa'
+    pod 'RxSwift'
     pod 'SwiftLint'
+    pod 'Texture'
     pod 'Toaster'
     
     pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v1.5', :inhibit_warnings => false
