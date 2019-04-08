@@ -6,13 +6,13 @@
 //  Copyright © 2017년 the42apps. All rights reserved.
 //
 
-enum MainTab: Int {
+enum MainTab: Int, CaseIterable {
     case search
     case recent
+    case bookmark
     case settings
     
     static let `default`: MainTab = .search
-    static let allValues: [MainTab] = [.search, .recent, .settings]
     
     var viewController: UIViewController {
         let viewController: UIViewController
@@ -21,6 +21,8 @@ enum MainTab: Int {
             viewController = SearchViewController.create()
         case .recent:
             viewController = RecentViewController.create()
+        case .bookmark:
+            viewController = BookmarkViewController.create()
         case .settings:
             viewController = SettingsViewController.create()
         }
@@ -38,6 +40,8 @@ enum MainTab: Int {
             tabBarItem = UITabBarItem(title: "common:search".localized(), image: nil, selectedImage: nil)
         case .recent:
             tabBarItem = UITabBarItem(title: "common:recent".localized(), image: nil, selectedImage: nil)
+        case .bookmark:
+            tabBarItem = UITabBarItem(title: "common:bookmark".localized(), image: nil, selectedImage: nil)
         case .settings:
             tabBarItem = UITabBarItem(title: "common:settings".localized(), image: nil, selectedImage: nil)
         }
@@ -57,7 +61,7 @@ class MainViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func setupChildViewControllers() {
-        self.viewControllers = MainTab.allValues.map({ $0.viewController })
+        self.viewControllers = MainTab.allCases.map({ $0.viewController })
         self.delegate = self
         self.selectedIndex = MainTab.default.rawValue
     }

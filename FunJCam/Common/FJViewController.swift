@@ -6,6 +6,8 @@
 //  Copyright © 2017년 the42apps. All rights reserved.
 //
 
+import AsyncDisplayKit
+
 class FJViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {

@@ -6,21 +6,71 @@
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
 
-class BookmarkViewController: FJViewController, NibLoadable {
+import AsyncDisplayKit
+
+class BookmarkViewController: FJViewController, ASCollectionDataSource, ASCollectionDelegateFlowLayout, ASCollectionGalleryLayoutPropertiesProviding {
     
-    static func create() -> Self {
-        let viewController = self.create(storyboardName: "Main")!
-        return viewController
+    var collectionNode: ASCollectionNode!
+    
+    static func create() -> BookmarkViewController {
+        return BookmarkViewController()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupNavigationItem()
+        
+        self.setupCollectionNode()
+        
+        self.requestData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    private func setupNavigationItem() {
         
     }
     
+    private func setupCollectionNode() {
+        let layoutDelegate = ASCollectionGalleryLayoutDelegate(scrollableDirections: ASScrollDirectionVerticalDirections)
+        layoutDelegate.propertiesProvider = self
+        self.collectionNode = ASCollectionNode(layoutDelegate: layoutDelegate, layoutFacilitator: nil)
+        self.collectionNode.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.collectionNode.backgroundColor = .white
+        self.view.addSubnode(self.collectionNode)
+        self.collectionNode.frame = self.view.bounds
+        self.collectionNode.dataSource = self
+        self.collectionNode.delegate = self
+    }
+    
+    private func requestData() {
+        
+    }
+    
+    // MARK: - ASCollectionDataSource
+    func numberOfSections(in collectionNode: ASCollectionNode) -> Int {
+        return 1
+    }
+    
+    func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
+        return 100
+    }
+    
+    func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
+        let text = "으아아"
+        let cell = ItemNode()
+        cell.text = text
+        return cell
+    }
+    
+    // MARK: - ASCollectionDelegateFlowLayout
+    
+    // MARK: - ASCollectionGalleryLayoutPropertiesProviding
+    func galleryLayoutDelegate(_ delegate: ASCollectionGalleryLayoutDelegate, sizeForElements elements: ASElementMap) -> CGSize {
+        return CGSize(width: 180, height: 90)
+    }
+    
+}
+
+class ItemNode: ASTextCellNode {
+
 }
