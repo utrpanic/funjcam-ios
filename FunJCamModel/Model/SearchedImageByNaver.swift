@@ -6,12 +6,12 @@
 //  Copyright © 2018년 the42apps. All rights reserved.
 //
 
-class SearchedImageByNaver: Decodable, SearchedImage {
+public class SearchedImageByNaver: Decodable, SearchedImage {
     
-    var url: String
-    var pixelWidth: Int
-    var pixelHeight: Int
-    var thumbnailUrl: String
+    public var url: String
+    public var pixelWidth: Int
+    public var pixelHeight: Int
+    public var thumbnailUrl: String
     
     private enum CodingKeys: String, CodingKey {
         case link
@@ -21,7 +21,7 @@ class SearchedImageByNaver: Decodable, SearchedImage {
         case title
     }
     
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.url = try values.decodeIfPresent(String.self, forKey: .link) ?? ""
         let widthString = try values.decodeIfPresent(String.self, forKey: .sizewidth)

@@ -14,4 +14,6 @@
 
 @import BoxJeonExtension;
 
+@import FunJCamModel;
+
 #endif /* BridgingHeader_h */

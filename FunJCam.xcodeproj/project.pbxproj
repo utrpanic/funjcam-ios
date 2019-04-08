@@ -11,7 +11,6 @@
 		0701648F202F31A0001207BF /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0701648E202F31A0001207BF /* SearchManager.swift */; };
 		0752ADD82094CEE800F0EC42 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752ADD72094CEE800F0EC42 /* SettingsViewController.swift */; };
 		0752ADDB2094D10500F0EC42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0752ADDA2094D10500F0EC42 /* Localizable.strings */; };
-		0753C6AF209777340066693E /* SearchedImageByNaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0753C6AE209777340066693E /* SearchedImageByNaver.swift */; };
 		078387941E26E6DF007D298A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387931E26E6DF007D298A /* AppDelegate.swift */; };
 		078387961E26E6DF007D298A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387951E26E6DF007D298A /* MainViewController.swift */; };
 		0783879B1E26E6E0007D298A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0783879A1E26E6E0007D298A /* Assets.xcassets */; };
@@ -22,8 +21,6 @@
 		078387CA1E26EB2A007D298A /* FJViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387C91E26EB2A007D298A /* FJViewController.swift */; };
 		078387CC1E26EB44007D298A /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CB1E26EB44007D298A /* Log.swift */; };
 		078387CE1E26EB9A007D298A /* FunJCamTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CD1E26EB9A007D298A /* FunJCamTheme.swift */; };
-		078387D11E26F40F007D298A /* SearchedImageByGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CF1E26F40F007D298A /* SearchedImageByGoogle.swift */; };
-		078387D21E26F40F007D298A /* SearchKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D01E26F40F007D298A /* SearchKeyword.swift */; };
 		078387D61E26F449007D298A /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D41E26F449007D298A /* ApiManager.swift */; };
 		078387D71E26F449007D298A /* ResponseGoogleImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D51E26F449007D298A /* ResponseGoogleImageSearch.swift */; };
 		078387D91E26F47D007D298A /* AlbumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D81E26F47D007D298A /* AlbumManager.swift */; };
@@ -41,12 +38,20 @@
 		079264B02098C5A5001AF1A7 /* HasScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079264AF2098C5A5001AF1A7 /* HasScrollView.swift */; };
 		07C475272095EC0A004450A9 /* SettingsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C475262095EC09004450A9 /* SettingsCenter.swift */; };
 		07C4752920960DFE004450A9 /* ResponseDaumImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752820960DFE004450A9 /* ResponseDaumImageSearch.swift */; };
-		07C4752B20961261004450A9 /* SearchedImageByDaum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752A20961261004450A9 /* SearchedImageByDaum.swift */; };
 		07C4752D209621C4004450A9 /* ResponseNaverImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752C209621C4004450A9 /* ResponseNaverImageSearch.swift */; };
 		11D35360359D52370B83EC7B /* Pods_FunJCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6449B3F9A24421138F1ABCC /* Pods_FunJCam.framework */; };
 		53F423A2DECF1C3B486D0B39 /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020FA390724A9893201461B9 /* Pods_FunJCamUITests.framework */; };
+		60720F1D225B8C3F0003EB0D /* FunJCamModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60720F14225B8C3F0003EB0D /* FunJCamModel.framework */; };
+		60720F24225B8C3F0003EB0D /* FunJCamModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60720F23225B8C3F0003EB0D /* FunJCamModelTests.swift */; };
+		60720F26225B8C3F0003EB0D /* FunJCamModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 60720F16225B8C3F0003EB0D /* FunJCamModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60720F29225B8C3F0003EB0D /* FunJCamModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60720F14225B8C3F0003EB0D /* FunJCamModel.framework */; };
+		60720F2A225B8C3F0003EB0D /* FunJCamModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60720F14225B8C3F0003EB0D /* FunJCamModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60720F33225B8CBC0003EB0D /* SearchedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F471FBACBD4004C735A /* SearchedImage.swift */; };
+		60720F34225B8CBC0003EB0D /* SearchedImageByDaum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752A20961261004450A9 /* SearchedImageByDaum.swift */; };
+		60720F35225B8CBC0003EB0D /* SearchedImageByNaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0753C6AE209777340066693E /* SearchedImageByNaver.swift */; };
+		60720F36225B8CBC0003EB0D /* SearchedImageByGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CF1E26F40F007D298A /* SearchedImageByGoogle.swift */; };
+		60720F37225B8CBC0003EB0D /* SearchKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D01E26F40F007D298A /* SearchKeyword.swift */; };
 		608E31A7225A3EA100776DA6 /* ViewCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608E31A6225A3EA100776DA6 /* ViewCommon.swift */; };
-		8D5B2F481FBACBD4004C735A /* SearchedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F471FBACBD4004C735A /* SearchedImage.swift */; };
 		8D5B2F4A1FBAE25F004C735A /* FJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */; };
 		8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D69890B1E27186C002F0BAE /* Main.storyboard */; };
 		C128004D6EAA5676CCCE0A24 /* Pods_FunJCamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949A8DE4A037E73DF96908F6 /* Pods_FunJCamTests.framework */; };
@@ -67,7 +72,42 @@
 			remoteGlobalIDString = 0783878F1E26E6DF007D298A;
 			remoteInfo = FunJCam;
 		};
+		60720F1E225B8C3F0003EB0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 078387881E26E6DF007D298A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60720F13225B8C3F0003EB0D;
+			remoteInfo = FunJCamModel;
+		};
+		60720F20225B8C3F0003EB0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 078387881E26E6DF007D298A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0783878F1E26E6DF007D298A;
+			remoteInfo = FunJCam;
+		};
+		60720F27225B8C3F0003EB0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 078387881E26E6DF007D298A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60720F13225B8C3F0003EB0D;
+			remoteInfo = FunJCamModel;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		60720F30225B8C3F0003EB0D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				60720F2A225B8C3F0003EB0D /* FunJCamModel.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		020FA390724A9893201461B9 /* Pods_FunJCamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +155,12 @@
 		07C4752A20961261004450A9 /* SearchedImageByDaum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedImageByDaum.swift; sourceTree = "<group>"; };
 		07C4752C209621C4004450A9 /* ResponseNaverImageSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseNaverImageSearch.swift; sourceTree = "<group>"; };
 		2387BC0DA03A80C1EA67BFF5 /* Pods-FunJCamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		60720F14225B8C3F0003EB0D /* FunJCamModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FunJCamModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60720F16225B8C3F0003EB0D /* FunJCamModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunJCamModel.h; sourceTree = "<group>"; };
+		60720F17225B8C3F0003EB0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60720F1C225B8C3F0003EB0D /* FunJCamModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunJCamModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		60720F23225B8C3F0003EB0D /* FunJCamModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunJCamModelTests.swift; sourceTree = "<group>"; };
+		60720F25225B8C3F0003EB0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		608E31A6225A3EA100776DA6 /* ViewCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCommon.swift; sourceTree = "<group>"; };
 		80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.release.xcconfig"; sourceTree = "<group>"; };
 		86D67C45D8745692BC8CFB26 /* Pods-FunJCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11D35360359D52370B83EC7B /* Pods_FunJCam.framework in Frameworks */,
+				60720F29225B8C3F0003EB0D /* FunJCamModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,13 +200,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		60720F11225B8C3F0003EB0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60720F19225B8C3F0003EB0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60720F1D225B8C3F0003EB0D /* FunJCamModel.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		078387871E26E6DF007D298A = {
 			isa = PBXGroup;
 			children = (
+				60720F15225B8C3F0003EB0D /* FunJCamModel */,
 				078387921E26E6DF007D298A /* FunJCam */,
+				60720F22225B8C3F0003EB0D /* FunJCamModelTests */,
 				078387A71E26E6E0007D298A /* FunJCamTests */,
 				078387B21E26E6E0007D298A /* FunJCamUITests */,
 				078387911E26E6DF007D298A /* Products */,
@@ -174,6 +238,8 @@
 				078387901E26E6DF007D298A /* FunJCam.app */,
 				078387A41E26E6E0007D298A /* FunJCamTests.xctest */,
 				078387AF1E26E6E0007D298A /* FunJCamUITests.xctest */,
+				60720F14225B8C3F0003EB0D /* FunJCamModel.framework */,
+				60720F1C225B8C3F0003EB0D /* FunJCamModelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				8D1931531FBAC47B00C30758 /* Common */,
-				8D1931541FBAC48A00C30758 /* Model */,
 				8D1931591FBAC4ED00C30758 /* View */,
 				8D1931551FBAC49E00C30758 /* Networking */,
 				8D1931571FBAC4C700C30758 /* Manager */,
@@ -225,6 +290,37 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		60720F15225B8C3F0003EB0D /* FunJCamModel */ = {
+			isa = PBXGroup;
+			children = (
+				60720F32225B8C700003EB0D /* Model */,
+				60720F16225B8C3F0003EB0D /* FunJCamModel.h */,
+				60720F17225B8C3F0003EB0D /* Info.plist */,
+			);
+			path = FunJCamModel;
+			sourceTree = "<group>";
+		};
+		60720F22225B8C3F0003EB0D /* FunJCamModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				60720F23225B8C3F0003EB0D /* FunJCamModelTests.swift */,
+				60720F25225B8C3F0003EB0D /* Info.plist */,
+			);
+			path = FunJCamModelTests;
+			sourceTree = "<group>";
+		};
+		60720F32225B8C700003EB0D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D5B2F471FBACBD4004C735A /* SearchedImage.swift */,
+				07C4752A20961261004450A9 /* SearchedImageByDaum.swift */,
+				0753C6AE209777340066693E /* SearchedImageByNaver.swift */,
+				078387CF1E26F40F007D298A /* SearchedImageByGoogle.swift */,
+				078387D01E26F40F007D298A /* SearchKeyword.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		833125CE2FF1EE9A2A5FA1BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,18 +341,6 @@
 				8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */,
 			);
 			path = Common;
-			sourceTree = "<group>";
-		};
-		8D1931541FBAC48A00C30758 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				8D5B2F471FBACBD4004C735A /* SearchedImage.swift */,
-				07C4752A20961261004450A9 /* SearchedImageByDaum.swift */,
-				0753C6AE209777340066693E /* SearchedImageByNaver.swift */,
-				078387CF1E26F40F007D298A /* SearchedImageByGoogle.swift */,
-				078387D01E26F40F007D298A /* SearchKeyword.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		8D1931551FBAC49E00C30758 /* Networking */ = {
@@ -332,6 +416,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		60720F0F225B8C3F0003EB0D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60720F26225B8C3F0003EB0D /* FunJCamModel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		0783878F1E26E6DF007D298A /* FunJCam */ = {
 			isa = PBXNativeTarget;
@@ -344,10 +439,12 @@
 				0701648D202F1EF6001207BF /* Run Script - Fabric */,
 				079CCD0A2049C78F006DFB08 /* Run Script - SwiftLint */,
 				92DD8EC2B0A3BE94A009EEAB /* [CP] Embed Pods Frameworks */,
+				60720F30225B8C3F0003EB0D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				60720F28225B8C3F0003EB0D /* PBXTargetDependency */,
 			);
 			name = FunJCam;
 			productName = FunJCam;
@@ -394,14 +491,51 @@
 			productReference = 078387AF1E26E6E0007D298A /* FunJCamUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		60720F13225B8C3F0003EB0D /* FunJCamModel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60720F2F225B8C3F0003EB0D /* Build configuration list for PBXNativeTarget "FunJCamModel" */;
+			buildPhases = (
+				60720F0F225B8C3F0003EB0D /* Headers */,
+				60720F10225B8C3F0003EB0D /* Sources */,
+				60720F11225B8C3F0003EB0D /* Frameworks */,
+				60720F12225B8C3F0003EB0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FunJCamModel;
+			productName = FunJCamModel;
+			productReference = 60720F14225B8C3F0003EB0D /* FunJCamModel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		60720F1B225B8C3F0003EB0D /* FunJCamModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60720F31225B8C3F0003EB0D /* Build configuration list for PBXNativeTarget "FunJCamModelTests" */;
+			buildPhases = (
+				60720F18225B8C3F0003EB0D /* Sources */,
+				60720F19225B8C3F0003EB0D /* Frameworks */,
+				60720F1A225B8C3F0003EB0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				60720F1F225B8C3F0003EB0D /* PBXTargetDependency */,
+				60720F21225B8C3F0003EB0D /* PBXTargetDependency */,
+			);
+			name = FunJCamModelTests;
+			productName = FunJCamModelTests;
+			productReference = 60720F1C225B8C3F0003EB0D /* FunJCamModelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		078387881E26E6DF007D298A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0930;
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = the42apps;
 				TargetAttributes = {
 					0783878F1E26E6DF007D298A = {
@@ -424,14 +558,23 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 0783878F1E26E6DF007D298A;
 					};
+					60720F13225B8C3F0003EB0D = {
+						CreatedOnToolsVersion = 10.2;
+						DevelopmentTeam = L94QTT73WH;
+						ProvisioningStyle = Automatic;
+					};
+					60720F1B225B8C3F0003EB0D = {
+						CreatedOnToolsVersion = 10.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0783878F1E26E6DF007D298A;
+					};
 				};
 			};
 			buildConfigurationList = 0783878B1E26E6DF007D298A /* Build configuration list for PBXProject "FunJCam" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -443,6 +586,8 @@
 				0783878F1E26E6DF007D298A /* FunJCam */,
 				078387A31E26E6E0007D298A /* FunJCamTests */,
 				078387AE1E26E6E0007D298A /* FunJCamUITests */,
+				60720F13225B8C3F0003EB0D /* FunJCamModel */,
+				60720F1B225B8C3F0003EB0D /* FunJCamModelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -471,6 +616,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		078387AD1E26E6E0007D298A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60720F12225B8C3F0003EB0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60720F1A225B8C3F0003EB0D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -697,15 +856,10 @@
 				078387D91E26F47D007D298A /* AlbumManager.swift in Sources */,
 				07881FC61F9CBA290081EB85 /* Code.swift in Sources */,
 				078387E41E26F4C4007D298A /* SearchedImageGridCell.swift in Sources */,
-				0753C6AF209777340066693E /* SearchedImageByNaver.swift in Sources */,
-				8D5B2F481FBACBD4004C735A /* SearchedImage.swift in Sources */,
-				078387D11E26F40F007D298A /* SearchedImageByGoogle.swift in Sources */,
-				07C4752B20961261004450A9 /* SearchedImageByDaum.swift in Sources */,
 				078387EB1E26F4EA007D298A /* BookmarkViewController.swift in Sources */,
 				078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */,
 				078387D61E26F449007D298A /* ApiManager.swift in Sources */,
 				078387D71E26F449007D298A /* ResponseGoogleImageSearch.swift in Sources */,
-				078387D21E26F40F007D298A /* SearchKeyword.swift in Sources */,
 				078387961E26E6DF007D298A /* MainViewController.swift in Sources */,
 				078387CC1E26EB44007D298A /* Log.swift in Sources */,
 				078387E01E26F4C4007D298A /* EmptySearchGridCell.swift in Sources */,
@@ -738,6 +892,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		60720F10225B8C3F0003EB0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60720F37225B8CBC0003EB0D /* SearchKeyword.swift in Sources */,
+				60720F36225B8CBC0003EB0D /* SearchedImageByGoogle.swift in Sources */,
+				60720F34225B8CBC0003EB0D /* SearchedImageByDaum.swift in Sources */,
+				60720F35225B8CBC0003EB0D /* SearchedImageByNaver.swift in Sources */,
+				60720F33225B8CBC0003EB0D /* SearchedImage.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60720F18225B8C3F0003EB0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60720F24225B8C3F0003EB0D /* FunJCamModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -750,6 +924,21 @@
 			isa = PBXTargetDependency;
 			target = 0783878F1E26E6DF007D298A /* FunJCam */;
 			targetProxy = 078387B01E26E6E0007D298A /* PBXContainerItemProxy */;
+		};
+		60720F1F225B8C3F0003EB0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60720F13225B8C3F0003EB0D /* FunJCamModel */;
+			targetProxy = 60720F1E225B8C3F0003EB0D /* PBXContainerItemProxy */;
+		};
+		60720F21225B8C3F0003EB0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0783878F1E26E6DF007D298A /* FunJCam */;
+			targetProxy = 60720F20225B8C3F0003EB0D /* PBXContainerItemProxy */;
+		};
+		60720F28225B8C3F0003EB0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60720F13225B8C3F0003EB0D /* FunJCamModel */;
+			targetProxy = 60720F27225B8C3F0003EB0D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -880,10 +1069,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = L94QTT73WH;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = FunJCam/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam;
@@ -899,10 +1089,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = L94QTT73WH;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = FunJCam/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam;
@@ -974,6 +1165,118 @@
 			};
 			name = Release;
 		};
+		60720F2B225B8C3F0003EB0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FunJCamModel/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamModel;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		60720F2C225B8C3F0003EB0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = L94QTT73WH;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FunJCamModel/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamModel;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		60720F2D225B8C3F0003EB0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FunJCamModelTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
+			};
+			name = Debug;
+		};
+		60720F2E225B8C3F0003EB0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FunJCamModelTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamModelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1009,6 +1312,24 @@
 			buildConfigurations = (
 				078387BF1E26E6E0007D298A /* Debug */,
 				078387C01E26E6E0007D298A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60720F2F225B8C3F0003EB0D /* Build configuration list for PBXNativeTarget "FunJCamModel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60720F2B225B8C3F0003EB0D /* Debug */,
+				60720F2C225B8C3F0003EB0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60720F31225B8C3F0003EB0D /* Build configuration list for PBXNativeTarget "FunJCamModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60720F2D225B8C3F0003EB0D /* Debug */,
+				60720F2E225B8C3F0003EB0D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

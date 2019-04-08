@@ -1,5 +1,5 @@
 
-protocol SearchedImage {
+public protocol SearchedImage {
     
     var url: String { get }
     var pixelWidth: Int { get }

@@ -1,10 +1,10 @@
 
-class SearchedImageByGoogle: Decodable, SearchedImage {
+public class SearchedImageByGoogle: Decodable, SearchedImage {
 
-    var url: String
-    var pixelWidth: Int
-    var pixelHeight: Int
-    var thumbnailUrl: String
+    public var url: String
+    public var pixelWidth: Int
+    public var pixelHeight: Int
+    public var thumbnailUrl: String
     
     private enum CodingKeys: String, CodingKey {
         case link
@@ -14,7 +14,7 @@ class SearchedImageByGoogle: Decodable, SearchedImage {
         case contextLink
     }
     
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.url = try values.decodeIfPresent(String.self, forKey: .link) ?? ""
         let metadata = try values.decodeIfPresent(Metadata.self, forKey: .image) ?? Metadata()
