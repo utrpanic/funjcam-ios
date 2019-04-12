@@ -6,8 +6,6 @@
 //  Copyright © 2018년 the42apps. All rights reserved.
 //
 
-typealias Code = HttpStatusCode
-
-extension Code {
+public class Code: HttpStatusCode {
 
 }

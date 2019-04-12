@@ -1,33 +1,40 @@
 platform :ios, '12.0'
+
 use_frameworks!
 
-# ignore all warnings from all pods
 inhibit_all_warnings!
 
+source 'https://github.com/CocoaPods/Specs.git'
+
 def pods
-    source 'https://github.com/CocoaPods/Specs.git'
-    pod 'Alamofire'
-    pod 'CHTCollectionViewWaterfallLayout/Swift'
-    pod 'Crashlytics'
-    pod 'Fabric'
-    pod 'Firebase'
-    pod 'Kingfisher'
-    pod 'RxSwift'
-    pod 'SwiftLint'
-    pod 'Texture'
-    pod 'Toaster'
-    
-    pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v1.8', :inhibit_warnings => false
+  pod 'Alamofire'
+  pod 'CHTCollectionViewWaterfallLayout/Swift'
+  pod 'Crashlytics'
+  pod 'Fabric'
+  pod 'Firebase'
+  pod 'Kingfisher'
+  pod 'RxSwift'
+  pod 'SwiftLint'
+  pod 'Texture'
+  pod 'Toaster'
 end
 
 target 'FunJCam' do
-    pods
+  pods
+end
+
+target 'FunJCamModel' do
+  pods
+end
+
+target 'FunJCamViewModel' do
+  pods
 end
 
 target 'FunJCamTests' do
-    pods
+  pods
 end
 
 target 'FunJCamUITests' do
-    pods
+  pods
 end

@@ -12,6 +12,8 @@ class BookmarkViewController: FJViewController, ASCollectionDataSource, ASCollec
     
     var collectionNode: ASCollectionNode!
     
+    var manager: SearchManager = SearchManager()
+    
     static func create() -> BookmarkViewController {
         return BookmarkViewController()
     }
@@ -23,7 +25,7 @@ class BookmarkViewController: FJViewController, ASCollectionDataSource, ASCollec
         
         self.setupCollectionNode()
         
-        self.requestData()
+        self.requestImages()
     }
     
     private func setupNavigationItem() {
@@ -42,8 +44,11 @@ class BookmarkViewController: FJViewController, ASCollectionDataSource, ASCollec
         self.collectionNode.delegate = self
     }
     
-    private func requestData() {
-        
+    private func requestImages() {
+        self.manager.search(keyword: "김연아", gif: false) { [weak self] (code) in
+            self?.collectionNode.reloadData()
+            self?.collectionNode.contentOffset = .zero
+        }
     }
     
     // MARK: - ASCollectionDataSource
@@ -52,14 +57,12 @@ class BookmarkViewController: FJViewController, ASCollectionDataSource, ASCollec
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return self.manager.images.count
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
-        let text = "으아아"
-        let cell = ItemNode()
-        cell.text = text
-        return cell
+        let thumbnail = URL(string: self.manager.images[indexPath.item].thumbnailUrl)
+        return SearchedImageNode(with: thumbnail)
     }
     
     // MARK: - ASCollectionDelegateFlowLayout
@@ -71,6 +74,27 @@ class BookmarkViewController: FJViewController, ASCollectionDataSource, ASCollec
     
 }
 
-class ItemNode: ASTextCellNode {
-
+class SearchedImageNode: ASCellNode {
+    
+    let imageNode: ASNetworkImageNode = ASNetworkImageNode()
+    
+    init(with URL: URL?) {
+        super.init()
+        self.imageNode.setURL(URL, resetToDefault: true)
+        self.addSubnode(imageNode)
+    }
+    
+    override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
+        var imageRatio: CGFloat = 0.5
+        if let image = imageNode.image {
+            imageRatio = image.size.height / image.size.width
+        }
+        let imagePlace = ASRatioLayoutSpec(ratio: imageRatio, child: imageNode)
+        let stackLayout = ASStackLayoutSpec.horizontal()
+        stackLayout.justifyContent = .start
+        stackLayout.alignItems = .start
+        stackLayout.style.flexShrink = 1.0
+        stackLayout.children = [imagePlace]
+        return  ASInsetLayoutSpec(insets: UIEdgeInsets.zero, child: stackLayout)
+    }
 }

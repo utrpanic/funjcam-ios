@@ -16,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char FunJCamModelVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <FunJCamModel/PublicHeader.h>
 
-
+@import FunJCamCommon;

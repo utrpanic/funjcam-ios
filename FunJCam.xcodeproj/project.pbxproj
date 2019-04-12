@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0701648C202F1CDF001207BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0701648B202F1CDE001207BF /* GoogleService-Info.plist */; };
-		0701648F202F31A0001207BF /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0701648E202F31A0001207BF /* SearchManager.swift */; };
 		0752ADD82094CEE800F0EC42 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752ADD72094CEE800F0EC42 /* SettingsViewController.swift */; };
 		0752ADDB2094D10500F0EC42 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0752ADDA2094D10500F0EC42 /* Localizable.strings */; };
 		078387941E26E6DF007D298A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387931E26E6DF007D298A /* AppDelegate.swift */; };
@@ -21,8 +20,6 @@
 		078387CA1E26EB2A007D298A /* FJViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387C91E26EB2A007D298A /* FJViewController.swift */; };
 		078387CC1E26EB44007D298A /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CB1E26EB44007D298A /* Log.swift */; };
 		078387CE1E26EB9A007D298A /* FunJCamTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CD1E26EB9A007D298A /* FunJCamTheme.swift */; };
-		078387D61E26F449007D298A /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D41E26F449007D298A /* ApiManager.swift */; };
-		078387D71E26F449007D298A /* ResponseGoogleImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D51E26F449007D298A /* ResponseGoogleImageSearch.swift */; };
 		078387D91E26F47D007D298A /* AlbumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D81E26F47D007D298A /* AlbumManager.swift */; };
 		078387E01E26F4C4007D298A /* EmptySearchGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387DA1E26F4C4007D298A /* EmptySearchGridCell.swift */; };
 		078387E11E26F4C4007D298A /* EmptySearchGridCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 078387DB1E26F4C4007D298A /* EmptySearchGridCell.xib */; };
@@ -34,15 +31,11 @@
 		078387ED1E26F4EA007D298A /* ImageViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E81E26F4EA007D298A /* ImageViewerViewController.swift */; };
 		078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E91E26F4EA007D298A /* RecentViewController.swift */; };
 		078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387EA1E26F4EA007D298A /* SearchViewController.swift */; };
-		07881FC61F9CBA290081EB85 /* Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07881FC51F9CBA290081EB85 /* Code.swift */; };
 		079264B02098C5A5001AF1A7 /* HasScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079264AF2098C5A5001AF1A7 /* HasScrollView.swift */; };
 		07C475272095EC0A004450A9 /* SettingsCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C475262095EC09004450A9 /* SettingsCenter.swift */; };
-		07C4752920960DFE004450A9 /* ResponseDaumImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752820960DFE004450A9 /* ResponseDaumImageSearch.swift */; };
-		07C4752D209621C4004450A9 /* ResponseNaverImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752C209621C4004450A9 /* ResponseNaverImageSearch.swift */; };
 		11D35360359D52370B83EC7B /* Pods_FunJCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6449B3F9A24421138F1ABCC /* Pods_FunJCam.framework */; };
+		1678A3B7CA45C3946AACADFA /* Pods_FunJCamViewModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D999AE351B31072E683852 /* Pods_FunJCamViewModel.framework */; };
 		53F423A2DECF1C3B486D0B39 /* Pods_FunJCamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020FA390724A9893201461B9 /* Pods_FunJCamUITests.framework */; };
-		60720F1D225B8C3F0003EB0D /* FunJCamModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60720F14225B8C3F0003EB0D /* FunJCamModel.framework */; };
-		60720F24225B8C3F0003EB0D /* FunJCamModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60720F23225B8C3F0003EB0D /* FunJCamModelTests.swift */; };
 		60720F26225B8C3F0003EB0D /* FunJCamModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 60720F16225B8C3F0003EB0D /* FunJCamModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		60720F29225B8C3F0003EB0D /* FunJCamModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60720F14225B8C3F0003EB0D /* FunJCamModel.framework */; };
 		60720F2A225B8C3F0003EB0D /* FunJCamModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60720F14225B8C3F0003EB0D /* FunJCamModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -52,8 +45,31 @@
 		60720F36225B8CBC0003EB0D /* SearchedImageByGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387CF1E26F40F007D298A /* SearchedImageByGoogle.swift */; };
 		60720F37225B8CBC0003EB0D /* SearchKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D01E26F40F007D298A /* SearchKeyword.swift */; };
 		608E31A7225A3EA100776DA6 /* ViewCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608E31A6225A3EA100776DA6 /* ViewCommon.swift */; };
+		60BDF59F2260DF8E004A6AAA /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0701648E202F31A0001207BF /* SearchService.swift */; };
+		60BDF5A02260E0DE004A6AAA /* ResponseDaumImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752820960DFE004450A9 /* ResponseDaumImageSearch.swift */; };
+		60BDF5A12260E0DE004A6AAA /* ResponseNaverImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C4752C209621C4004450A9 /* ResponseNaverImageSearch.swift */; };
+		60BDF5A22260E0DE004A6AAA /* ResponseGoogleImageSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D51E26F449007D298A /* ResponseGoogleImageSearch.swift */; };
+		60BDF5A32260E0E2004A6AAA /* Code.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07881FC51F9CBA290081EB85 /* Code.swift */; };
+		60BDF5A42260E0E2004A6AAA /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387D41E26F449007D298A /* RestAPI.swift */; };
+		60BDF5B02260E38F004A6AAA /* FunJCamCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 60BDF5AE2260E38F004A6AAA /* FunJCamCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60BDF5B32260E38F004A6AAA /* FunJCamCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60BDF5AC2260E38F004A6AAA /* FunJCamCommon.framework */; };
+		60BDF5B42260E38F004A6AAA /* FunJCamCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60BDF5AC2260E38F004A6AAA /* FunJCamCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60BDF5BF2260E3D4004A6AAA /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDF5B92260E3D4004A6AAA /* HttpStatusCode.swift */; };
+		60BDF5C02260E3D4004A6AAA /* StoryboardCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDF5BA2260E3D4004A6AAA /* StoryboardCenter.swift */; };
+		60BDF5C12260E3D4004A6AAA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDF5BB2260E3D4004A6AAA /* Device.swift */; };
+		60BDF5C22260E3D4004A6AAA /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDF5BC2260E3D4004A6AAA /* Log.swift */; };
+		60BDF5C32260E3D4004A6AAA /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDF5BD2260E3D4004A6AAA /* Extension.swift */; };
+		60BDF5C42260E3D4004A6AAA /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDF5BE2260E3D4004A6AAA /* UIExtension.swift */; };
+		60BDF5C62260E4EA004A6AAA /* FunJCamCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60BDF5AC2260E38F004A6AAA /* FunJCamCommon.framework */; };
+		60BDF5D02260E96B004A6AAA /* FunJCamViewModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 60BDF5CE2260E96B004A6AAA /* FunJCamViewModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		60BDF5D32260E96B004A6AAA /* FunJCamViewModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60BDF5CC2260E96B004A6AAA /* FunJCamViewModel.framework */; };
+		60BDF5D42260E96B004A6AAA /* FunJCamViewModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 60BDF5CC2260E96B004A6AAA /* FunJCamViewModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		60BDF5DA2260E9AF004A6AAA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60BDF5D92260E9AF004A6AAA /* SearchViewModel.swift */; };
+		60BDF5DB2260EA50004A6AAA /* FunJCamCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60BDF5AC2260E38F004A6AAA /* FunJCamCommon.framework */; };
+		60BDF5DC2260EA50004A6AAA /* FunJCamModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60720F14225B8C3F0003EB0D /* FunJCamModel.framework */; };
 		8D5B2F4A1FBAE25F004C735A /* FJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */; };
 		8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D69890B1E27186C002F0BAE /* Main.storyboard */; };
+		8FFAADB0C8B13E6F46DD2310 /* Pods_FunJCamModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 469C61E329A8C1C6D0A8C362 /* Pods_FunJCamModel.framework */; };
 		C128004D6EAA5676CCCE0A24 /* Pods_FunJCamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 949A8DE4A037E73DF96908F6 /* Pods_FunJCamTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,26 +88,26 @@
 			remoteGlobalIDString = 0783878F1E26E6DF007D298A;
 			remoteInfo = FunJCam;
 		};
-		60720F1E225B8C3F0003EB0D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 078387881E26E6DF007D298A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 60720F13225B8C3F0003EB0D;
-			remoteInfo = FunJCamModel;
-		};
-		60720F20225B8C3F0003EB0D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 078387881E26E6DF007D298A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0783878F1E26E6DF007D298A;
-			remoteInfo = FunJCam;
-		};
 		60720F27225B8C3F0003EB0D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 078387881E26E6DF007D298A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 60720F13225B8C3F0003EB0D;
 			remoteInfo = FunJCamModel;
+		};
+		60BDF5B12260E38F004A6AAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 078387881E26E6DF007D298A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60BDF5AB2260E38F004A6AAA;
+			remoteInfo = FunJCamCommon;
+		};
+		60BDF5D12260E96B004A6AAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 078387881E26E6DF007D298A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60BDF5CB2260E96B004A6AAA;
+			remoteInfo = FunJCamViewModel;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -102,7 +118,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				60BDF5B42260E38F004A6AAA /* FunJCamCommon.framework in Embed Frameworks */,
 				60720F2A225B8C3F0003EB0D /* FunJCamModel.framework in Embed Frameworks */,
+				60BDF5D42260E96B004A6AAA /* FunJCamViewModel.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +130,7 @@
 /* Begin PBXFileReference section */
 		020FA390724A9893201461B9 /* Pods_FunJCamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0701648B202F1CDE001207BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		0701648E202F31A0001207BF /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		0701648E202F31A0001207BF /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		0752ADD72094CEE800F0EC42 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		0752ADDA2094D10500F0EC42 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		0753C6AE209777340066693E /* SearchedImageByNaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedImageByNaver.swift; sourceTree = "<group>"; };
@@ -135,7 +153,7 @@
 		078387CD1E26EB9A007D298A /* FunJCamTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunJCamTheme.swift; sourceTree = "<group>"; };
 		078387CF1E26F40F007D298A /* SearchedImageByGoogle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchedImageByGoogle.swift; sourceTree = "<group>"; };
 		078387D01E26F40F007D298A /* SearchKeyword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchKeyword.swift; sourceTree = "<group>"; };
-		078387D41E26F449007D298A /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		078387D41E26F449007D298A /* RestAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		078387D51E26F449007D298A /* ResponseGoogleImageSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseGoogleImageSearch.swift; sourceTree = "<group>"; };
 		078387D81E26F47D007D298A /* AlbumManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumManager.swift; sourceTree = "<group>"; };
 		078387DA1E26F4C4007D298A /* EmptySearchGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptySearchGridCell.swift; sourceTree = "<group>"; };
@@ -155,13 +173,25 @@
 		07C4752A20961261004450A9 /* SearchedImageByDaum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedImageByDaum.swift; sourceTree = "<group>"; };
 		07C4752C209621C4004450A9 /* ResponseNaverImageSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseNaverImageSearch.swift; sourceTree = "<group>"; };
 		2387BC0DA03A80C1EA67BFF5 /* Pods-FunJCamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		469C61E329A8C1C6D0A8C362 /* Pods_FunJCamModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60720F14225B8C3F0003EB0D /* FunJCamModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FunJCamModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60720F16225B8C3F0003EB0D /* FunJCamModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunJCamModel.h; sourceTree = "<group>"; };
 		60720F17225B8C3F0003EB0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60720F1C225B8C3F0003EB0D /* FunJCamModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunJCamModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		60720F23225B8C3F0003EB0D /* FunJCamModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunJCamModelTests.swift; sourceTree = "<group>"; };
-		60720F25225B8C3F0003EB0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		608E31A6225A3EA100776DA6 /* ViewCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCommon.swift; sourceTree = "<group>"; };
+		60BDF5AC2260E38F004A6AAA /* FunJCamCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FunJCamCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60BDF5AE2260E38F004A6AAA /* FunJCamCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunJCamCommon.h; sourceTree = "<group>"; };
+		60BDF5AF2260E38F004A6AAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60BDF5B92260E3D4004A6AAA /* HttpStatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
+		60BDF5BA2260E3D4004A6AAA /* StoryboardCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardCenter.swift; sourceTree = "<group>"; };
+		60BDF5BB2260E3D4004A6AAA /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		60BDF5BC2260E3D4004A6AAA /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		60BDF5BD2260E3D4004A6AAA /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		60BDF5BE2260E3D4004A6AAA /* UIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
+		60BDF5CC2260E96B004A6AAA /* FunJCamViewModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FunJCamViewModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60BDF5CE2260E96B004A6AAA /* FunJCamViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunJCamViewModel.h; sourceTree = "<group>"; };
+		60BDF5CF2260E96B004A6AAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60BDF5D92260E9AF004A6AAA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		79D2B401236D138EEEC8EB30 /* Pods-FunJCamViewModel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamViewModel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamViewModel/Pods-FunJCamViewModel.debug.xcconfig"; sourceTree = "<group>"; };
 		80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.release.xcconfig"; sourceTree = "<group>"; };
 		86D67C45D8745692BC8CFB26 /* Pods-FunJCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam.debug.xcconfig"; sourceTree = "<group>"; };
 		8D5B2F471FBACBD4004C735A /* SearchedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedImage.swift; sourceTree = "<group>"; };
@@ -169,7 +199,11 @@
 		8D69890B1E27186C002F0BAE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		949A8DE4A037E73DF96908F6 /* Pods_FunJCamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E4E7D60FE00EADD0F5A9B5 /* Pods-FunJCamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9AEC3FC03654886EAB8F8A87 /* Pods-FunJCamModel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamModel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamModel/Pods-FunJCamModel.debug.xcconfig"; sourceTree = "<group>"; };
 		AB46ACB3618E367ADCAE21C6 /* Pods-FunJCamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CFC58E9E4AB53DAF94C53437 /* Pods-FunJCamModel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamModel.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamModel/Pods-FunJCamModel.release.xcconfig"; sourceTree = "<group>"; };
+		D1C54D22D95918FFAC1EEA3C /* Pods-FunJCamViewModel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCamViewModel.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCamViewModel/Pods-FunJCamViewModel.release.xcconfig"; sourceTree = "<group>"; };
+		D5D999AE351B31072E683852 /* Pods_FunJCamViewModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCamViewModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10D95822DB514A0797EB79A /* Pods-FunJCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FunJCam.release.xcconfig"; path = "Pods/Target Support Files/Pods-FunJCam/Pods-FunJCam.release.xcconfig"; sourceTree = "<group>"; };
 		E6449B3F9A24421138F1ABCC /* Pods_FunJCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FunJCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -180,6 +214,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				11D35360359D52370B83EC7B /* Pods_FunJCam.framework in Frameworks */,
+				60BDF5B32260E38F004A6AAA /* FunJCamCommon.framework in Frameworks */,
+				60BDF5D32260E96B004A6AAA /* FunJCamViewModel.framework in Frameworks */,
 				60720F29225B8C3F0003EB0D /* FunJCamModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,14 +240,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60BDF5C62260E4EA004A6AAA /* FunJCamCommon.framework in Frameworks */,
+				8FFAADB0C8B13E6F46DD2310 /* Pods_FunJCamModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		60720F19225B8C3F0003EB0D /* Frameworks */ = {
+		60BDF5A92260E38F004A6AAA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60720F1D225B8C3F0003EB0D /* FunJCamModel.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60BDF5C92260E96B004A6AAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60BDF5DB2260EA50004A6AAA /* FunJCamCommon.framework in Frameworks */,
+				60BDF5DC2260EA50004A6AAA /* FunJCamModel.framework in Frameworks */,
+				1678A3B7CA45C3946AACADFA /* Pods_FunJCamViewModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,9 +268,10 @@
 		078387871E26E6DF007D298A = {
 			isa = PBXGroup;
 			children = (
+				60BDF5AD2260E38F004A6AAA /* FunJCamCommon */,
 				60720F15225B8C3F0003EB0D /* FunJCamModel */,
+				60BDF5CD2260E96B004A6AAA /* FunJCamViewModel */,
 				078387921E26E6DF007D298A /* FunJCam */,
-				60720F22225B8C3F0003EB0D /* FunJCamModelTests */,
 				078387A71E26E6E0007D298A /* FunJCamTests */,
 				078387B21E26E6E0007D298A /* FunJCamUITests */,
 				078387911E26E6DF007D298A /* Products */,
@@ -239,7 +287,8 @@
 				078387A41E26E6E0007D298A /* FunJCamTests.xctest */,
 				078387AF1E26E6E0007D298A /* FunJCamUITests.xctest */,
 				60720F14225B8C3F0003EB0D /* FunJCamModel.framework */,
-				60720F1C225B8C3F0003EB0D /* FunJCamModelTests.xctest */,
+				60BDF5AC2260E38F004A6AAA /* FunJCamCommon.framework */,
+				60BDF5CC2260E96B004A6AAA /* FunJCamViewModel.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -249,7 +298,6 @@
 			children = (
 				8D1931531FBAC47B00C30758 /* Common */,
 				8D1931591FBAC4ED00C30758 /* View */,
-				8D1931551FBAC49E00C30758 /* Networking */,
 				8D1931571FBAC4C700C30758 /* Manager */,
 				8D1931581FBAC4DA00C30758 /* ViewController */,
 				078387C11E26E9EC007D298A /* BridgingHeader.h */,
@@ -294,19 +342,11 @@
 			isa = PBXGroup;
 			children = (
 				60720F32225B8C700003EB0D /* Model */,
+				60BDF59E2260DEDF004A6AAA /* Service */,
 				60720F16225B8C3F0003EB0D /* FunJCamModel.h */,
 				60720F17225B8C3F0003EB0D /* Info.plist */,
 			);
 			path = FunJCamModel;
-			sourceTree = "<group>";
-		};
-		60720F22225B8C3F0003EB0D /* FunJCamModelTests */ = {
-			isa = PBXGroup;
-			children = (
-				60720F23225B8C3F0003EB0D /* FunJCamModelTests.swift */,
-				60720F25225B8C3F0003EB0D /* Info.plist */,
-			);
-			path = FunJCamModelTests;
 			sourceTree = "<group>";
 		};
 		60720F32225B8C700003EB0D /* Model */ = {
@@ -321,12 +361,72 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		60BDF59E2260DEDF004A6AAA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8D1931551FBAC49E00C30758 /* RestAPI */,
+				0701648E202F31A0001207BF /* SearchService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		60BDF5AD2260E38F004A6AAA /* FunJCamCommon */ = {
+			isa = PBXGroup;
+			children = (
+				60BDF5C52260E3E3004A6AAA /* Extension */,
+				60BDF5B82260E3A4004A6AAA /* Common */,
+				60BDF5AE2260E38F004A6AAA /* FunJCamCommon.h */,
+				60BDF5AF2260E38F004A6AAA /* Info.plist */,
+			);
+			path = FunJCamCommon;
+			sourceTree = "<group>";
+		};
+		60BDF5B82260E3A4004A6AAA /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				60BDF5BB2260E3D4004A6AAA /* Device.swift */,
+				60BDF5B92260E3D4004A6AAA /* HttpStatusCode.swift */,
+				60BDF5BA2260E3D4004A6AAA /* StoryboardCenter.swift */,
+				60BDF5BC2260E3D4004A6AAA /* Log.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		60BDF5C52260E3E3004A6AAA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				60BDF5BD2260E3D4004A6AAA /* Extension.swift */,
+				60BDF5BE2260E3D4004A6AAA /* UIExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		60BDF5CD2260E96B004A6AAA /* FunJCamViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				60BDF5D82260E99F004A6AAA /* ViewModel */,
+				60BDF5CE2260E96B004A6AAA /* FunJCamViewModel.h */,
+				60BDF5CF2260E96B004A6AAA /* Info.plist */,
+			);
+			path = FunJCamViewModel;
+			sourceTree = "<group>";
+		};
+		60BDF5D82260E99F004A6AAA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				60BDF5D92260E9AF004A6AAA /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		833125CE2FF1EE9A2A5FA1BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				E6449B3F9A24421138F1ABCC /* Pods_FunJCam.framework */,
 				949A8DE4A037E73DF96908F6 /* Pods_FunJCamTests.framework */,
 				020FA390724A9893201461B9 /* Pods_FunJCamUITests.framework */,
+				469C61E329A8C1C6D0A8C362 /* Pods_FunJCamModel.framework */,
+				D5D999AE351B31072E683852 /* Pods_FunJCamViewModel.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -343,14 +443,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		8D1931551FBAC49E00C30758 /* Networking */ = {
+		8D1931551FBAC49E00C30758 /* RestAPI */ = {
 			isa = PBXGroup;
 			children = (
 				8D1931561FBAC4B500C30758 /* Response */,
 				07881FC51F9CBA290081EB85 /* Code.swift */,
-				078387D41E26F449007D298A /* ApiManager.swift */,
+				078387D41E26F449007D298A /* RestAPI.swift */,
 			);
-			path = Networking;
+			path = RestAPI;
 			sourceTree = "<group>";
 		};
 		8D1931561FBAC4B500C30758 /* Response */ = {
@@ -368,7 +468,6 @@
 			children = (
 				078387CB1E26EB44007D298A /* Log.swift */,
 				07C475262095EC09004450A9 /* SettingsCenter.swift */,
-				0701648E202F31A0001207BF /* SearchManager.swift */,
 				078387D81E26F47D007D298A /* AlbumManager.swift */,
 			);
 			path = Manager;
@@ -410,6 +509,10 @@
 				80A479B74153EB2D98683B42 /* Pods-FunJCamTests.release.xcconfig */,
 				2387BC0DA03A80C1EA67BFF5 /* Pods-FunJCamUITests.debug.xcconfig */,
 				98E4E7D60FE00EADD0F5A9B5 /* Pods-FunJCamUITests.release.xcconfig */,
+				9AEC3FC03654886EAB8F8A87 /* Pods-FunJCamModel.debug.xcconfig */,
+				CFC58E9E4AB53DAF94C53437 /* Pods-FunJCamModel.release.xcconfig */,
+				79D2B401236D138EEEC8EB30 /* Pods-FunJCamViewModel.debug.xcconfig */,
+				D1C54D22D95918FFAC1EEA3C /* Pods-FunJCamViewModel.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -422,6 +525,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				60720F26225B8C3F0003EB0D /* FunJCamModel.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60BDF5A72260E38F004A6AAA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60BDF5B02260E38F004A6AAA /* FunJCamCommon.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60BDF5C72260E96B004A6AAA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60BDF5D02260E96B004A6AAA /* FunJCamViewModel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +564,8 @@
 			);
 			dependencies = (
 				60720F28225B8C3F0003EB0D /* PBXTargetDependency */,
+				60BDF5B22260E38F004A6AAA /* PBXTargetDependency */,
+				60BDF5D22260E96B004A6AAA /* PBXTargetDependency */,
 			);
 			name = FunJCam;
 			productName = FunJCam;
@@ -495,6 +616,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 60720F2F225B8C3F0003EB0D /* Build configuration list for PBXNativeTarget "FunJCamModel" */;
 			buildPhases = (
+				DADF887C9A10750386386F10 /* [CP] Check Pods Manifest.lock */,
 				60720F0F225B8C3F0003EB0D /* Headers */,
 				60720F10225B8C3F0003EB0D /* Sources */,
 				60720F11225B8C3F0003EB0D /* Frameworks */,
@@ -509,24 +631,42 @@
 			productReference = 60720F14225B8C3F0003EB0D /* FunJCamModel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		60720F1B225B8C3F0003EB0D /* FunJCamModelTests */ = {
+		60BDF5AB2260E38F004A6AAA /* FunJCamCommon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60720F31225B8C3F0003EB0D /* Build configuration list for PBXNativeTarget "FunJCamModelTests" */;
+			buildConfigurationList = 60BDF5B72260E38F004A6AAA /* Build configuration list for PBXNativeTarget "FunJCamCommon" */;
 			buildPhases = (
-				60720F18225B8C3F0003EB0D /* Sources */,
-				60720F19225B8C3F0003EB0D /* Frameworks */,
-				60720F1A225B8C3F0003EB0D /* Resources */,
+				60BDF5A72260E38F004A6AAA /* Headers */,
+				60BDF5A82260E38F004A6AAA /* Sources */,
+				60BDF5A92260E38F004A6AAA /* Frameworks */,
+				60BDF5AA2260E38F004A6AAA /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				60720F1F225B8C3F0003EB0D /* PBXTargetDependency */,
-				60720F21225B8C3F0003EB0D /* PBXTargetDependency */,
 			);
-			name = FunJCamModelTests;
-			productName = FunJCamModelTests;
-			productReference = 60720F1C225B8C3F0003EB0D /* FunJCamModelTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
+			name = FunJCamCommon;
+			productName = FunJCamCommon;
+			productReference = 60BDF5AC2260E38F004A6AAA /* FunJCamCommon.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		60BDF5CB2260E96B004A6AAA /* FunJCamViewModel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 60BDF5D52260E96B004A6AAA /* Build configuration list for PBXNativeTarget "FunJCamViewModel" */;
+			buildPhases = (
+				7483946CD3F6047F64D4637D /* [CP] Check Pods Manifest.lock */,
+				60BDF5C72260E96B004A6AAA /* Headers */,
+				60BDF5C82260E96B004A6AAA /* Sources */,
+				60BDF5C92260E96B004A6AAA /* Frameworks */,
+				60BDF5CA2260E96B004A6AAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FunJCamViewModel;
+			productName = FunJCamViewModel;
+			productReference = 60BDF5CC2260E96B004A6AAA /* FunJCamViewModel.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -540,9 +680,8 @@
 				TargetAttributes = {
 					0783878F1E26E6DF007D298A = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = L94QTT73WH;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					078387A31E26E6E0007D298A = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -560,13 +699,17 @@
 					};
 					60720F13225B8C3F0003EB0D = {
 						CreatedOnToolsVersion = 10.2;
-						DevelopmentTeam = L94QTT73WH;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
-					60720F1B225B8C3F0003EB0D = {
+					60BDF5AB2260E38F004A6AAA = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
+						ProvisioningStyle = Manual;
+					};
+					60BDF5CB2260E96B004A6AAA = {
+						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 0783878F1E26E6DF007D298A;
 					};
 				};
 			};
@@ -583,11 +726,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				60BDF5AB2260E38F004A6AAA /* FunJCamCommon */,
+				60720F13225B8C3F0003EB0D /* FunJCamModel */,
+				60BDF5CB2260E96B004A6AAA /* FunJCamViewModel */,
 				0783878F1E26E6DF007D298A /* FunJCam */,
 				078387A31E26E6E0007D298A /* FunJCamTests */,
 				078387AE1E26E6E0007D298A /* FunJCamUITests */,
-				60720F13225B8C3F0003EB0D /* FunJCamModel */,
-				60720F1B225B8C3F0003EB0D /* FunJCamModelTests */,
 			);
 		};
 /* End PBXProject section */
@@ -629,7 +773,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		60720F1A225B8C3F0003EB0D /* Resources */ = {
+		60BDF5AA2260E38F004A6AAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60BDF5CA2260E96B004A6AAA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -693,7 +844,6 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BoxJeonExtension/BoxJeonExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -708,7 +858,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoxJeonExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CHTCollectionViewWaterfallLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
@@ -723,6 +872,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FunJCamUITests/Pods-FunJCamUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7483946CD3F6047F64D4637D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FunJCamViewModel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		85AFBEA1D118B9A05AFCB960 /* [CP] Check Pods Manifest.lock */ = {
@@ -751,7 +922,6 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FunJCam/Pods-FunJCam-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BoxJeonExtension/BoxJeonExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -766,7 +936,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoxJeonExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CHTCollectionViewWaterfallLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
@@ -791,7 +960,6 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BoxJeonExtension/BoxJeonExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
@@ -806,7 +974,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoxJeonExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CHTCollectionViewWaterfallLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
@@ -821,6 +988,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FunJCamTests/Pods-FunJCamTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DADF887C9A10750386386F10 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FunJCamModel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FDDDA595D869A24FD389B9C4 /* [CP] Check Pods Manifest.lock */ = {
@@ -849,17 +1038,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				078387E21E26F4C4007D298A /* LoadMoreGridCell.swift in Sources */,
-				07C4752D209621C4004450A9 /* ResponseNaverImageSearch.swift in Sources */,
 				079264B02098C5A5001AF1A7 /* HasScrollView.swift in Sources */,
-				07C4752920960DFE004450A9 /* ResponseDaumImageSearch.swift in Sources */,
-				0701648F202F31A0001207BF /* SearchManager.swift in Sources */,
 				078387D91E26F47D007D298A /* AlbumManager.swift in Sources */,
-				07881FC61F9CBA290081EB85 /* Code.swift in Sources */,
 				078387E41E26F4C4007D298A /* SearchedImageGridCell.swift in Sources */,
 				078387EB1E26F4EA007D298A /* BookmarkViewController.swift in Sources */,
 				078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */,
-				078387D61E26F449007D298A /* ApiManager.swift in Sources */,
-				078387D71E26F449007D298A /* ResponseGoogleImageSearch.swift in Sources */,
 				078387961E26E6DF007D298A /* MainViewController.swift in Sources */,
 				078387CC1E26EB44007D298A /* Log.swift in Sources */,
 				078387E01E26F4C4007D298A /* EmptySearchGridCell.swift in Sources */,
@@ -898,17 +1081,36 @@
 			files = (
 				60720F37225B8CBC0003EB0D /* SearchKeyword.swift in Sources */,
 				60720F36225B8CBC0003EB0D /* SearchedImageByGoogle.swift in Sources */,
+				60BDF5A22260E0DE004A6AAA /* ResponseGoogleImageSearch.swift in Sources */,
 				60720F34225B8CBC0003EB0D /* SearchedImageByDaum.swift in Sources */,
+				60BDF5A32260E0E2004A6AAA /* Code.swift in Sources */,
+				60BDF59F2260DF8E004A6AAA /* SearchService.swift in Sources */,
 				60720F35225B8CBC0003EB0D /* SearchedImageByNaver.swift in Sources */,
+				60BDF5A12260E0DE004A6AAA /* ResponseNaverImageSearch.swift in Sources */,
+				60BDF5A42260E0E2004A6AAA /* RestAPI.swift in Sources */,
+				60BDF5A02260E0DE004A6AAA /* ResponseDaumImageSearch.swift in Sources */,
 				60720F33225B8CBC0003EB0D /* SearchedImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		60720F18225B8C3F0003EB0D /* Sources */ = {
+		60BDF5A82260E38F004A6AAA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60720F24225B8C3F0003EB0D /* FunJCamModelTests.swift in Sources */,
+				60BDF5C32260E3D4004A6AAA /* Extension.swift in Sources */,
+				60BDF5C42260E3D4004A6AAA /* UIExtension.swift in Sources */,
+				60BDF5C12260E3D4004A6AAA /* Device.swift in Sources */,
+				60BDF5BF2260E3D4004A6AAA /* HttpStatusCode.swift in Sources */,
+				60BDF5C22260E3D4004A6AAA /* Log.swift in Sources */,
+				60BDF5C02260E3D4004A6AAA /* StoryboardCenter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		60BDF5C82260E96B004A6AAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60BDF5DA2260E9AF004A6AAA /* SearchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,20 +1127,20 @@
 			target = 0783878F1E26E6DF007D298A /* FunJCam */;
 			targetProxy = 078387B01E26E6E0007D298A /* PBXContainerItemProxy */;
 		};
-		60720F1F225B8C3F0003EB0D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 60720F13225B8C3F0003EB0D /* FunJCamModel */;
-			targetProxy = 60720F1E225B8C3F0003EB0D /* PBXContainerItemProxy */;
-		};
-		60720F21225B8C3F0003EB0D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0783878F1E26E6DF007D298A /* FunJCam */;
-			targetProxy = 60720F20225B8C3F0003EB0D /* PBXContainerItemProxy */;
-		};
 		60720F28225B8C3F0003EB0D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 60720F13225B8C3F0003EB0D /* FunJCamModel */;
 			targetProxy = 60720F27225B8C3F0003EB0D /* PBXContainerItemProxy */;
+		};
+		60BDF5B22260E38F004A6AAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60BDF5AB2260E38F004A6AAA /* FunJCamCommon */;
+			targetProxy = 60BDF5B12260E38F004A6AAA /* PBXContainerItemProxy */;
+		};
+		60BDF5D22260E96B004A6AAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 60BDF5CB2260E96B004A6AAA /* FunJCamViewModel */;
+			targetProxy = 60BDF5D12260E96B004A6AAA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1070,7 +1272,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = L94QTT73WH;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = FunJCam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1078,6 +1281,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = FunJCam/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1090,7 +1294,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = L94QTT73WH;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = FunJCam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1098,6 +1303,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = FunJCam/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1167,17 +1373,18 @@
 		};
 		60720F2B225B8C3F0003EB0D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AEC3FC03654886EAB8F8A87 /* Pods-FunJCamModel.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L94QTT73WH;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1190,6 +1397,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamModel;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1200,16 +1408,17 @@
 		};
 		60720F2C225B8C3F0003EB0D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFC58E9E4AB53DAF94C53437 /* Pods-FunJCamModel.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = L94QTT73WH;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1221,6 +1430,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamModel;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1229,51 +1439,141 @@
 			};
 			name = Release;
 		};
-		60720F2D225B8C3F0003EB0D /* Debug */ = {
+		60BDF5B52260E38F004A6AAA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FunJCamCommon/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamCommon;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		60BDF5B62260E38F004A6AAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = FunJCamCommon/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamCommon;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		60BDF5D62260E96B004A6AAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79D2B401236D138EEEC8EB30 /* Pods-FunJCamViewModel.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = FunJCamModelTests/Info.plist;
+				INFOPLIST_FILE = FunJCamViewModel/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamModelTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamViewModel;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		60720F2E225B8C3F0003EB0D /* Release */ = {
+		60BDF5D72260E96B004A6AAA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1C54D22D95918FFAC1EEA3C /* Pods-FunJCamViewModel.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = FunJCamModelTests/Info.plist;
+				INFOPLIST_FILE = FunJCamViewModel/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamModelTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCam.FunJCamViewModel;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -1325,11 +1625,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60720F31225B8C3F0003EB0D /* Build configuration list for PBXNativeTarget "FunJCamModelTests" */ = {
+		60BDF5B72260E38F004A6AAA /* Build configuration list for PBXNativeTarget "FunJCamCommon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				60720F2D225B8C3F0003EB0D /* Debug */,
-				60720F2E225B8C3F0003EB0D /* Release */,
+				60BDF5B52260E38F004A6AAA /* Debug */,
+				60BDF5B62260E38F004A6AAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		60BDF5D52260E96B004A6AAA /* Build configuration list for PBXNativeTarget "FunJCamViewModel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60BDF5D62260E96B004A6AAA /* Debug */,
+				60BDF5D72260E96B004A6AAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

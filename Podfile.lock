@@ -1,6 +1,5 @@
 PODS:
   - Alamofire (4.8.2)
-  - BoxJeonExtension (1.8)
   - CHTCollectionViewWaterfallLayout/Swift (0.9.7)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
@@ -99,7 +98,6 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - BoxJeonExtension (from `https://github.com/utrpanic/boxjeon-extension.git`, tag `v1.8`)
   - CHTCollectionViewWaterfallLayout/Swift
   - Crashlytics
   - Fabric
@@ -132,19 +130,8 @@ SPEC REPOS:
     - Texture
     - Toaster
 
-EXTERNAL SOURCES:
-  BoxJeonExtension:
-    :git: https://github.com/utrpanic/boxjeon-extension.git
-    :tag: v1.8
-
-CHECKOUT OPTIONS:
-  BoxJeonExtension:
-    :git: https://github.com/utrpanic/boxjeon-extension.git
-    :tag: v1.8
-
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  BoxJeonExtension: cee2fddb7c7a319bb6d3df26d402a1dbde983f00
   CHTCollectionViewWaterfallLayout: 9d11068fafecac106695bb5a5d6d0f738483b598
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
@@ -164,6 +151,6 @@ SPEC CHECKSUMS:
   Texture: fc6e0157201f3a6e503d364c147b1872e365cef4
   Toaster: c1a81b376edcc2470157b4d1ee1e9341d3b96455
 
-PODFILE CHECKSUM: f7d9e005d7f91c5dcb7c2652f89f9d62f19aa29c
+PODFILE CHECKSUM: 71dc6dbbf9ebd250074987e222f127b2c863eec3
 
 COCOAPODS: 1.6.1
