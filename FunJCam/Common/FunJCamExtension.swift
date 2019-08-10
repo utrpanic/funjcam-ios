@@ -25,3 +25,11 @@ extension UIViewController {
         self.present(viewController, animated: true, completion: nil)
     }
 }
+
+public extension NibLoadable where Self: UIViewController {
+    
+    static func create(storyboardName: String) -> Self? {
+        let storyboard = StoryboardCenter.shared.retrieve(name: storyboardName)
+        return storyboard.instantiateViewController(withIdentifier: self.className) as? Self
+    }
+}

@@ -17,6 +17,8 @@ def pods
   pod 'SwiftLint'
   pod 'Texture'
   pod 'Toaster'
+
+  pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.1.3'
 end
 
 target 'FunJCam' do

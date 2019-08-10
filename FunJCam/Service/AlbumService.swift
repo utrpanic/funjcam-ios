@@ -1,5 +1,5 @@
 //
-//  AlbumManager.swift
+//  AlbumService.swift
 //  FunJCam
 //
 //  Created by boxjeon on 2016. 7. 24..
@@ -8,7 +8,7 @@
 
 import Photos
 
-class AlbumManager {
+class AlbumService {
     
     static let albumName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as! String
     

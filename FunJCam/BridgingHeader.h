@@ -12,8 +12,6 @@
 @import Foundation;
 @import UIKit;
 
-@import BoxJeonExtension;
-
-@import FunJCamModel;
+@import BoxKit;
 
 #endif /* BridgingHeader_h */

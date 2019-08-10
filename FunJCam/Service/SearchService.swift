@@ -13,9 +13,9 @@ public enum SearchProvider: String {
     case google
     
     static var `default`: SearchProvider { return .daum }
-    static var all: [SearchProvider] { return [.daum, .naver, .google] }
+    public static var all: [SearchProvider] { return [.daum, .naver, .google] }
     
-    var name: String {
+    public var name: String {
         switch self {
         case .daum: return "provider:daum".localized()
         case .naver: return "provider:naver".localized()
@@ -23,7 +23,7 @@ public enum SearchProvider: String {
         }
     }
     
-    init(string: String?) {
+    public init(string: String?) {
         if let provider = SearchProvider(rawValue: string ?? "") {
             self = provider
         } else {

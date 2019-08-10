@@ -19,7 +19,7 @@ class RestAPI {
     
     private func getObject<T: Decodable>(url: String, headers: HTTPHeaders? = nil, parameters: [String: Any]?, completion: @escaping APICompletion<T>, printBody: Bool) {
         let method: HTTPMethod = .get
-        let request = Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers)
+        let request = Alamofire.request(url, method: method, parameters: parameters, encoding : URLEncoding.default, headers: headers)
         request.validate().log(printBody)
         request.responseData(completionHandler: { (response) in
                 response.log(printBody)

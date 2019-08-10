@@ -32,7 +32,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         }
     }
     var isGifOn: Bool = false
-    var manager: SearchManager = SearchManager()
+    var viewModel: SearchViewModel = SearchViewModel()
     
     static func create() -> Self {
         let viewController = self.create(storyboardName: "Main")!
@@ -66,16 +66,11 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
     }
     
     func requestImages() {
-        self.manager.search(keyword: self.searchKeyword, gif: self.isGifOn) { [weak self] (code) in
-            self?.collectionView.reloadData()
-            self?.collectionView.contentOffset = .zero
-        }
+        self.viewModel.search()
     }
     
     func requestMoreImages() {
-        self.manager.searchMore { [weak self] in
-            self?.collectionView.reloadData()
-        }
+        self.viewModel.searchMore()
     }
     
     @IBAction func didSearchTap(_ sender: UITextField) {
@@ -93,11 +88,11 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         case .header:
             return 1
         case .image:
-            return self.manager.images.count
+            return self.viewModel.images.count
         case .more:
-            return self.manager.hasMore ? 1 : 0
+            return self.viewModel.hasMore ? 1 : 0
         case .empty:
-            return self.manager.images.count == 0 ? 1 : 0
+            return self.viewModel.images.isEmpty ? 1 : 0
         }
     }
     
@@ -110,7 +105,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
             return cell
         case .image:
             let cell = collectionView.dequeueReusableCell(SearchedImageGridCell.self, for: indexPath)
-            cell.configure(searchedImage: self.manager.images[indexPath.item])
+            cell.configure(searchedImage: self.viewModel.images[indexPath.item])
             return cell
         case .more:
             let cell = collectionView.dequeueReusableCell(LoadMoreGridCell.self, for: indexPath)
@@ -125,7 +120,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         switch Section(rawValue: indexPath.section)! {
         case .more:
-            if self.manager.hasMore {
+            if self.viewModel.hasMore {
                 self.requestMoreImages()
             }
         default:
@@ -151,8 +146,8 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         case .image:
             let width: CGFloat = (collectionView.frame.width - 8 - 8 - 8) / 2
             let height: CGFloat = {
-                let pixelWidth = CGFloat(self.manager.images[indexPath.item].pixelWidth)
-                let pixelHeight = CGFloat(self.manager.images[indexPath.item].pixelHeight)
+                let pixelWidth = CGFloat(self.viewModel.images[indexPath.item].pixelWidth)
+                let pixelHeight = CGFloat(self.viewModel.images[indexPath.item].pixelHeight)
                 return width * (pixelHeight / pixelWidth)
             }()
             return CGSize(width: width, height: height)
@@ -166,7 +161,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         switch Section(rawValue: section)! {
         case .image:
-            return self.manager.images.count > 0 ? UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) : UIEdgeInsets.zero
+            return self.viewModel.images.count > 0 ? UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) : UIEdgeInsets.zero
         default:
             return UIEdgeInsets.zero
         }
@@ -194,7 +189,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         switch Section(rawValue: indexPath.section)! {
         case .image:
             if let image = (collectionView.cellForItem(at: indexPath) as? SearchedImageGridCell)?.imageView.image {
-                let viewController = ImageViewerViewController.create(image: image, searchedImage: self.manager.images[indexPath.item])
+                let viewController = ImageViewerViewController.create(image: image, searchedImage: self.viewModel.images[indexPath.item])
                 self.present(viewController, animated: true, completion: nil)
             }
         default:
@@ -209,7 +204,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         SearchProvider.all.forEach({
             let provider = $0
             alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { (action) in
-                SettingsCenter.shared.searchProvider = provider
+                Settings.shared.searchProvider = provider
                 self.requestImages()
             }))
         })
@@ -242,7 +237,7 @@ class SearchHeaderGridCell: UICollectionViewCell, NibLoadable {
     }
     
     func configure(isGifOn: Bool) {
-        let provider = SettingsCenter.shared.searchProvider
+        let provider = Settings.shared.searchProvider
         self.providerButton.setTitle(provider.name, for: .normal)
         self.gifButton.isSelected = isGifOn
     }

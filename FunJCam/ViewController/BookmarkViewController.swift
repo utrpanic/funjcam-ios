@@ -12,7 +12,7 @@ class BookmarkViewController: FJViewController, ASCollectionDataSource, ASCollec
     
     var collectionNode: ASCollectionNode!
     
-    var manager: SearchManager = SearchManager()
+    var viewModel: SearchViewModel = SearchViewModel()
     
     static func create() -> BookmarkViewController {
         return BookmarkViewController()
@@ -45,10 +45,7 @@ class BookmarkViewController: FJViewController, ASCollectionDataSource, ASCollec
     }
     
     private func requestImages() {
-        self.manager.search(keyword: "김연아", gif: false) { [weak self] (code) in
-            self?.collectionNode.reloadData()
-            self?.collectionNode.contentOffset = .zero
-        }
+        self.viewModel.search()
     }
     
     // MARK: - ASCollectionDataSource
@@ -57,11 +54,11 @@ class BookmarkViewController: FJViewController, ASCollectionDataSource, ASCollec
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
-        return self.manager.images.count
+        return self.viewModel.images.count
     }
     
     func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
-        let thumbnail = URL(string: self.manager.images[indexPath.item].thumbnailUrl)
+        let thumbnail = URL(string: self.viewModel.images[indexPath.item].thumbnailUrl)
         return SearchedImageNode(with: thumbnail)
     }
     
