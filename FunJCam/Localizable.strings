@@ -1,6 +1,7 @@
 
 // MARK: - Common
 "common:back" = "Back";
+"common:bookmark" = "Bookmark";
 "common:close" = "Close";
 "common:recent" = "Recent";
 "common:search" = "Search";

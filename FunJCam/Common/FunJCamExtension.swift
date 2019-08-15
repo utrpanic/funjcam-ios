@@ -1,15 +1,7 @@
-//
-//  FunJCamExtension.swift
-//  FunJCam
-//
-//  Created by boxjeon on 2017. 1. 12..
-//  Copyright © 2017년 the42apps. All rights reserved.
-//
-
 import Kingfisher
 
 extension UIImage {
-
+    
     class func getImage(color: UIColor) -> UIImage {
         // width, height에 원래는 0.5를 줬었는데, 3x디바이스에서 다른 이미지가 나옴.
         let size = CGSize(width: 1 / UIScreen.main.scale, height: 1 / UIScreen.main.scale)
@@ -26,18 +18,23 @@ extension UIImage {
 extension UIImageView {
     
     func setImage(url: String?, placeholder: UIImage?, completion: ((UIImage?) -> Void)?) {
-        let safeUrl = URL.safeVersion(from: url)
-        self.kf.setImage(with: safeUrl, placeholder: placeholder, options: [.transition(.fade(0.2))], progressBlock: nil, completionHandler: { (image, error, cacheType, url) in
-            completion?(image)
-        })
+        let safeURL = URL.safeVersion(from: url)
+        self.kf.setImage(with: safeURL, placeholder: placeholder, options: [.transition(.fade(0.2))], progressBlock: nil) { result in
+            switch result {
+            case .success(let value):
+                completion?(value.image)
+            case .failure(_):
+                completion?(nil)
+            }
+        }
     }
 }
 
 extension UINavigationController {
     
     func updateNavigationBarAsTransparent() {
-        self.navigationBar.setBackgroundImage(FJImage.transparent, for: .default)
-        self.navigationBar.shadowImage = FJImage.transparent
+        self.navigationBar.setBackgroundImage(App.Image.transparent, for: .default)
+        self.navigationBar.shadowImage = App.Image.transparent
     }
 }
 
@@ -50,5 +47,13 @@ extension UIViewController {
         })
         viewController.addAction(okAction)
         self.present(viewController, animated: true, completion: nil)
+    }
+}
+
+extension NibLoadable where Self: UIViewController {
+    
+    static func create(storyboardName: String) -> Self? {
+        let storyboard = StoryboardCenter.shared.retrieve(name: storyboardName)
+        return storyboard.instantiateViewController(withIdentifier: self.className) as? Self
     }
 }

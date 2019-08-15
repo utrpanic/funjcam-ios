@@ -1,56 +1,52 @@
-//
-//  ApiManager.swift
-//  FunJCam
-//
-//  Created by gurren-l on 2016. 7. 19..
-//  Copyright © 2016년 boxjeon. All rights reserved.
-//
-
 import Alamofire
 
 typealias RawJSON = [String: Any]
-typealias ApiCompletion<T> = (Code, T?) -> Void
-typealias ApiSuccess<T> = (T) -> Void
-typealias ApiFailure = (Code) -> Void
+typealias APICompletion<T> = (Code, T?) -> Void
+typealias APISuccess<T> = (T) -> Void
+typealias APIFailure = (Code) -> Void
 
-class ApiManager {
+class RestAPI {
     
-    static let shared = ApiManager()
+    static let shared = RestAPI()
     
-    private func getObject<T: Decodable>(url: String, headers: HTTPHeaders? = nil, parameters: [String: Any]?, completion: @escaping ApiCompletion<T>, printBody: Bool) {
+    private func getObject<T: Decodable>(url: String, headers: HTTPHeaders? = nil, parameters: [String: Any]?, completion: @escaping APICompletion<T>, printBody: Bool) {
         let method: HTTPMethod = .get
         let request = Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers)
         request.validate().log(printBody)
         request.responseData(completionHandler: { (response) in
-                response.log(printBody)
-                let code = Code(value: response.response?.statusCode)
-                switch response.result {
-                case .success(let data):
-                    do {
-                        let result = try JSONDecoder().decode(T.self, from: data)
-                        Log.d("[\(method.rawValue) success] \(url)")
-                        completion(code, result)
-                        return
-                    } catch {
-                        Log.d("[\(method.rawValue) failure(\(code))] \(url)")
-                        Log.d("Json error message: \(error.localizedDescription)")
-                        completion(code, nil)
+            let code = Code(value: response.response?.statusCode)
+            switch response.result {
+            case .success(let data):
+                do {
+                    let result = try JSONDecoder().decode(T.self, from: data)
+                    Log.d("[\(method.rawValue)] \(url)")
+                    completion(code, result)
+                    return
+                } catch {
+                    Log.e("[\(method.rawValue) failure(\(code))] \(url)")
+                    if let error = error as? DecodingError {
+                        Log.e("[Decoding Error]: \(error.debugDescription)")
+                    } else {
+                        Log.e("[Error]: \(error.localizedDescription)")
                     }
-                case .failure(_):
-                    Log.d("[\(method.rawValue) failure(\(code))] \(url)")
                     completion(code, nil)
                 }
-            })
+            case .failure(let error):
+                Log.e("[\(method.rawValue) failure(\(code))] \(url)")
+                Log.e("[Error]: \(error.localizedDescription)")
+                completion(code, nil)
+            }
+            response.log(printBody)
+        })
     }
-    
 }
 
 extension Request {
     fileprivate func log(_ on: Bool) {
         #if DEBUG
-            if on {
-                debugPrint(self)
-            }
+        if on {
+            debugPrint(self)
+        }
         #endif
     }
 }
@@ -62,48 +58,48 @@ extension DataResponse {
     
     fileprivate func log(_ on: Bool) {
         #if DEBUG
-            if on {
-                debugPrint(self)
-                if let data = self.result.value as? Data {
-                    do {
-                        if let dictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                            debugPrint(dictionary)
-                        }
-                    } catch {
-                        // do nothing.
+        if on {
+            debugPrint(self)
+            if let data = self.result.value as? Data {
+                do {
+                    if let dictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        debugPrint(dictionary)
                     }
+                } catch {
+                    // do nothing.
                 }
             }
+        }
         #endif
     }
 }
 
-extension ApiManager {
+extension RestAPI {
     
-    func searchDaumImage(keyword: String, next: Int?, completion: @escaping ApiCompletion<ResponseDaumImageSearch>) {
+    func searchDaumImage(with query: String, pivot: Int, completion: @escaping APICompletion<ResponseDaumImageSearch>) {
         let url = "https://dapi.kakao.com/v2/search/image"
         let headers: HTTPHeaders = [
             "Authorization": "KakaoAK 3aa0ae0423487ecc4eda2664cc7bc936"
         ]
         let parameters: [String: Any] = [
-            "query": keyword,
+            "query": query,
             "sort": "accuracy", // accuracy or recency
-            "page": next ?? 1, // 1 ~ 50
+            "page": pivot, // 1 ~ 50
             "size": "20", // 1 ~ 80
         ]
         self.getObject(url: url, headers: headers, parameters: parameters, completion: completion, printBody: false)
     }
     
-    func searchNaverImage(keyword: String, next: Int?, completion: @escaping ApiCompletion<ResponseNaverImageSearch>) {
+    func searchNaverImage(with query: String, pivot: Int, completion: @escaping APICompletion<ResponseNaverImageSearch>) {
         let url = "https://openapi.naver.com/v1/search/image"
         let headers: HTTPHeaders = [
             "X-Naver-Client-Id": "93Aki4p3ckUPf2L7Lyac",
             "X-Naver-Client-Secret": "wD6dHhbcSs"
         ]
         let parameters: [String: Any] = [
-            "query": keyword,
+            "query": query,
             "sort": "sim", // sim or date
-            "start": next ?? 1, // 1 ~ 1000
+            "start": pivot, // 1 ~ 1000
             "display": "20", // 10 ~ 100
             "filter": "all", // all, large, medium, small
         ]
@@ -146,19 +142,18 @@ extension ApiManager {
     //imgDominantColor={imgDominantColor?}&
     //alt=json";
     
-    func searchGoogleImage(keyword: String, next: Int?, completion: @escaping ApiCompletion<ResponseGoogleImageSearch>) {
+    func searchGoogleImage(with query: String, pivot: Int?, completion: @escaping APICompletion<ResponseGoogleImageSearch>) {
         let url = "https://www.googleapis.com/customsearch/v1"
         var parameters: [String: Any] = [
-            "q": keyword,
+            "q": query,
             "key": "AIzaSyCTdQn7PY1xP5d_Otz8O8aTvbCSslU7lBQ",
             "cx": "015032654831495313052:qzljc0expde",
             "searchType": "image",
             "num": 10 // 1~10만 허용.
         ]
-        if let startIndex = next {
+        if let startIndex = pivot {
             parameters["start"] = startIndex
         }
         self.getObject(url: url, parameters: parameters, completion: completion, printBody: false)
     }
-    
 }
