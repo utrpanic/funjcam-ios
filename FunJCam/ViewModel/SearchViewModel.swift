@@ -1,3 +1,4 @@
+import NaturalLanguage
 import RxSwift
 
 class SearchViewModel {
@@ -29,7 +30,7 @@ class SearchViewModel {
     
     func search() {
         guard self.query.hasElement else { return }
-        let query = self.query + (self.searchingGIF ? " gif" : "")
+        let query = self.appendQueryForGifSearchingIfNeeded()
         self.service.search(query: query, pivot: nil) { (code, images, next) in
             if code.isSucceed, let images = images {
                 self.images = images
@@ -42,13 +43,24 @@ class SearchViewModel {
     func searchMore() {
         guard let next = self.next else { return }
         self.next = nil
-        let query = self.query + (self.searchingGIF ? " gif" : "")
+        let query = self.appendQueryForGifSearchingIfNeeded()
         self.service.search(query: query, pivot: next) { (code, images, next) in
             if code.isSucceed, let images = images {
                 self.images.append(contentsOf: images)
                 self.next = next
             }
             self.updateStream.onNext(code)
+        }
+    }
+    
+    private func appendQueryForGifSearchingIfNeeded() -> String {
+        guard self.searchingGIF else { return self.query }
+        let recognizer = NLLanguageRecognizer()
+        recognizer.processString(self.query)
+        if recognizer.dominantLanguage == .korean {
+            return "\(self.query) 움짤"
+        } else {
+            return "\(self.query) gif"
         }
     }
 }
