@@ -26,7 +26,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="search"/>
                                         <connections>
                                             <action selector="searchDidTap:" destination="5ru-tX-aNT" eventType="primaryActionTriggered" id="X2f-K3-jqE"/>
-                                            <action selector="searchQueryDidChange:" destination="5ru-tX-aNT" eventType="valueChanged" id="Yt8-tF-yez"/>
+                                            <action selector="searchQueryDidChange:" destination="5ru-tX-aNT" eventType="editingChanged" id="EKh-fv-67z"/>
                                         </connections>
                                     </textField>
                                 </subviews>

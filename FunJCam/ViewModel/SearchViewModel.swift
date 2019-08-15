@@ -14,7 +14,7 @@ class SearchViewModel {
     private let service: SearchServiceProtocol
     
     init(service: SearchServiceProtocol? = nil) {
-        self.service = service ?? SearchService(with: Settings.shared.searchProvider)
+        self.service = SearchService()
     }
     
     func updateQuery(_ query: String) {

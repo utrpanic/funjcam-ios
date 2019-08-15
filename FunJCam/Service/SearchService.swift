@@ -32,10 +32,8 @@ public protocol SearchServiceProtocol {
 
 public class SearchService: SearchServiceProtocol {
     
-    private let provider: SearchProvider
-    
-    public init(with provider: SearchProvider) {
-        self.provider = provider
+    private var provider: SearchProvider {
+        return Settings.shared.searchProvider
     }
     
     public func search(query: String, pivot: Int?, completion: @escaping (Code, [SearchedImage]?, Int?) -> Void) {
