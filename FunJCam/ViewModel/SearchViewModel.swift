@@ -2,14 +2,14 @@ import RxSwift
 
 class SearchViewModel {
     
-    public var images: [SearchedImage] = [SearchedImage]()
-    public var hasMore: Bool { return self.next != nil }
-    
-    private var query: String = ""
-    private var isGifOn: Bool = false
+    private(set) var query: String = "삼시세끼"
+    private(set) var searchingGIF: Bool = false
     private var next: Int?
     
-    let updatedStream: PublishSubject<Code> = PublishSubject<Code>()
+    var images: [SearchedImage] = [SearchedImage]()
+    var hasMore: Bool { return self.next != nil }
+    
+    let updateStream: PublishSubject<Code> = PublishSubject<Code>()
     
     private let service: SearchServiceProtocol
     
@@ -18,14 +18,37 @@ class SearchViewModel {
     }
     
     func updateQuery(_ query: String) {
-        
+        self.query = query
+        self.next = nil
+    }
+    
+    func toggleSearchingGIF() {
+        self.searchingGIF.toggle()
+        self.next = nil
     }
     
     func search() {
-        
+        guard self.query.hasElement else { return }
+        let query = self.query + (self.searchingGIF ? " gif" : "")
+        self.service.search(query: query, pivot: nil) { (code, images, next) in
+            if code.isSucceed, let images = images {
+                self.images = images
+                self.next = next
+            }
+            self.updateStream.onNext(code)
+        }
     }
     
     func searchMore() {
-        
+        guard let next = self.next else { return }
+        self.next = nil
+        let query = self.query + (self.searchingGIF ? " gif" : "")
+        self.service.search(query: query, pivot: next) { (code, images, next) in
+            if code.isSucceed, let images = images {
+                self.images.append(contentsOf: images)
+                self.next = next
+            }
+            self.updateStream.onNext(code)
+        }
     }
 }

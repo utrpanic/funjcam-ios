@@ -1,10 +1,3 @@
-//
-//  ResponseNaverImageSearch.swift
-//  FunJCam
-//
-//  Created by boxjeon on 2018. 4. 30..
-//  Copyright © 2018년 the42apps. All rights reserved.
-//
 
 class ResponseNaverImageSearch: Decodable {
     

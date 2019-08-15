@@ -1,10 +1,3 @@
-//
-//  StoryboardCenter.swift
-//  BoxJeonExtension
-//
-//  Created by gurren-l-macbook-pro on 2018. 8. 14..
-//  Copyright © 2018년 boxjeon. All rights reserved.
-//
 
 public class StoryboardCenter {
     

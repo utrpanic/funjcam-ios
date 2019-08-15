@@ -1,11 +1,3 @@
-//
-//  ApiManager.swift
-//  FunJCam
-//
-//  Created by gurren-l on 2016. 7. 19..
-//  Copyright © 2016년 boxjeon. All rights reserved.
-//
-
 import Alamofire
 
 typealias RawJSON = [String: Any]
@@ -19,38 +11,42 @@ class RestAPI {
     
     private func getObject<T: Decodable>(url: String, headers: HTTPHeaders? = nil, parameters: [String: Any]?, completion: @escaping APICompletion<T>, printBody: Bool) {
         let method: HTTPMethod = .get
-        let request = Alamofire.request(url, method: method, parameters: parameters, encoding : URLEncoding.default, headers: headers)
+        let request = Alamofire.request(url, method: method, parameters: parameters, encoding: URLEncoding.default, headers: headers)
         request.validate().log(printBody)
         request.responseData(completionHandler: { (response) in
-                response.log(printBody)
-                let code = Code(value: response.response?.statusCode)
-                switch response.result {
-                case .success(let data):
-                    do {
-                        let result = try JSONDecoder().decode(T.self, from: data)
-                        Log.d("[\(method.rawValue) success] \(url)")
-                        completion(code, result)
-                        return
-                    } catch {
-                        Log.d("[\(method.rawValue) failure(\(code))] \(url)")
-                        Log.d("Json error message: \(error.localizedDescription)")
-                        completion(code, nil)
+            let code = Code(value: response.response?.statusCode)
+            switch response.result {
+            case .success(let data):
+                do {
+                    let result = try JSONDecoder().decode(T.self, from: data)
+                    Log.d("[\(method.rawValue)] \(url)")
+                    completion(code, result)
+                    return
+                } catch {
+                    Log.e("[\(method.rawValue) failure(\(code))] \(url)")
+                    if let error = error as? DecodingError {
+                        Log.e("[Decoding Error]: \(error.debugDescription)")
+                    } else {
+                        Log.e("[Error]: \(error.localizedDescription)")
                     }
-                case .failure(_):
-                    Log.d("[\(method.rawValue) failure(\(code))] \(url)")
                     completion(code, nil)
                 }
-            })
+            case .failure(let error):
+                Log.e("[\(method.rawValue) failure(\(code))] \(url)")
+                Log.e("[Error]: \(error.localizedDescription)")
+                completion(code, nil)
+            }
+            response.log(printBody)
+        })
     }
-    
 }
 
 extension Request {
     fileprivate func log(_ on: Bool) {
         #if DEBUG
-            if on {
-                debugPrint(self)
-            }
+        if on {
+            debugPrint(self)
+        }
         #endif
     }
 }
@@ -62,18 +58,18 @@ extension DataResponse {
     
     fileprivate func log(_ on: Bool) {
         #if DEBUG
-            if on {
-                debugPrint(self)
-                if let data = self.result.value as? Data {
-                    do {
-                        if let dictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                            debugPrint(dictionary)
-                        }
-                    } catch {
-                        // do nothing.
+        if on {
+            debugPrint(self)
+            if let data = self.result.value as? Data {
+                do {
+                    if let dictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                        debugPrint(dictionary)
                     }
+                } catch {
+                    // do nothing.
                 }
             }
+        }
         #endif
     }
 }
@@ -160,5 +156,4 @@ extension RestAPI {
         }
         self.getObject(url: url, parameters: parameters, completion: completion, printBody: false)
     }
-    
 }

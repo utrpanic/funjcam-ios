@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  FunJCam
-//
-//  Created by boxjeon on 2017. 1. 12..
-//  Copyright © 2017년 the42apps. All rights reserved.
-//
-
 import Firebase
 
 @UIApplicationMain
@@ -20,8 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupApplication() {
+        App.setupAppearance()
         FirebaseApp.configure()
-        FunJCamTheme.setup()
     }
     
     func startApplication() {

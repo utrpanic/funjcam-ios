@@ -18,18 +18,10 @@ def pods
   pod 'Texture'
   pod 'Toaster'
 
-  pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.1.3'
+  pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.1.4'
 end
 
 target 'FunJCam' do
-  pods
-end
-
-target 'FunJCamModel' do
-  pods
-end
-
-target 'FunJCamViewModel' do
   pods
 end
 
