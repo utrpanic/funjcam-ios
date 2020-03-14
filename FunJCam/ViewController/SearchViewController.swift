@@ -1,3 +1,4 @@
+import BoxKit
 import CHTCollectionViewWaterfallLayout
 import RxSwift
 
@@ -118,7 +119,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, columnCountForSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, columnCountFor section: Int) -> Int {
         switch Section(rawValue: section)! {
         case .header:
             return 1
@@ -129,7 +130,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch Section(rawValue: indexPath.section)! {
         case .header:
             return CGSize(width: collectionView.frame.width, height: SearchHeaderGridCell.height)
@@ -148,7 +149,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch Section(rawValue: section)! {
         case .image:
             return self.viewModel.images.count > 0 ? UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) : UIEdgeInsets.zero
@@ -157,7 +158,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingFor section: Int) -> CGFloat {
         switch Section(rawValue: section)! {
         case .image:
             return 8
