@@ -1,12 +1,5 @@
-//
-//  ModelTests.swift
-//  ModelTests
-//
-//  Created by box-jeon on 2020/03/14.
-//  Copyright © 2020 utrpanic. All rights reserved.
-//
-
 import XCTest
+
 @testable import Model
 
 class ModelTests: XCTestCase {
@@ -26,9 +19,8 @@ class ModelTests: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measure {
+        measure {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

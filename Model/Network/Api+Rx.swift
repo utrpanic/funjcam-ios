@@ -1,3 +1,4 @@
+import Alamofire
 import RxSwift
 
 struct ApiError: Error {
@@ -7,9 +8,9 @@ struct ApiError: Error {
 
 extension Api {
     
-    func get<T: Decodable>(url: String, parameters: [String: Any]?, printBody: Bool) -> Single<T> {
+    func get<T: Decodable>(_ url: String, headers: HTTPHeaders? = nil, parameters: [String: Any]?, printBody: Bool) -> Single<T> {
         return Single.create { event -> Disposable in
-            self.get(url, parameters: parameters, completion: { (code: Code, response: T?) in
+            self.get(url, headers: headers, parameters: parameters, completion: { (code: Code, response: T?) in
                 if code.isSucceed, let response = response {
                     event(.success(response))
                 } else {

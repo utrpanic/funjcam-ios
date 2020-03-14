@@ -1,3 +1,4 @@
+import RxSwift
 
 public enum SearchProvider: String {
     
@@ -25,41 +26,49 @@ public enum SearchProvider: String {
     }
 }
 
-public protocol SearchServiceProtocol {
+struct SearchService {
     
-    func search(query: String, pivot: Int?, completion: @escaping (Code, [SearchedImage]?, Int?) -> Void)
-}
-
-public class SearchService: SearchServiceProtocol {
+    let api: SearchApi
     
     private var provider: SearchProvider {
         return Settings.shared.searchProvider
     }
     
-    public func search(query: String, pivot: Int?, completion: @escaping (Code, [SearchedImage]?, Int?) -> Void) {
+    init(api: SearchApi) {
+        self.api = api
+    }
+    
+    func search(query: String, pivot: Int?) -> Observable<([SearchedImage], Int?)> {
         switch self.provider {
         case .daum:
             let pivot = pivot ?? 1
-            Api.shared.searchDaumImage(with: query, pivot: pivot) { (code, response) in
-                let images = response?.searchedImages
-                let next = response?.hasMore == true ? pivot + 1 : nil
-                completion(code, images, next)
+            let observable = self.api.searchDaumImage(with: query, pivot: pivot)
+                .asObservable()
+                .flatMap { (response) -> Observable<([SearchedImage], Int?)> in
+                    let images = response.searchedImages
+                    let next = response.hasMore ? pivot + 1 : nil
+                    return Observable.just((images, next))
             }
-            
+            return observable.share()
         case .naver:
             let pivot = pivot ?? 1
-            Api.shared.searchNaverImage(with: query, pivot: pivot) { (code, response) in
-                let images = response?.searchedImages
-                let next = response?.nextStartIndex
-                completion(code, images, next)
+            let observable = self.api.searchNaverImage(with: query, pivot: pivot)
+                .asObservable()
+                .flatMap { (response) -> Observable<([SearchedImage], Int?)> in
+                    let images = response.searchedImages
+                    let next = response.nextStartIndex
+                    return Observable.just((images, next))
             }
-            
+            return observable.share()
         case .google:
-            Api.shared.searchGoogleImage(with: query, pivot: pivot) { (code, response) in
-                let images = response?.searchedImages
-                let next = response?.nextPageStartIndex
-                completion(code, images, next)
+            let observable = self.api.searchGoogleImage(with: query, pivot: pivot)
+                .asObservable()
+                .flatMap { (response) -> Observable<([SearchedImage], Int?)> in
+                    let images = response.searchedImages
+                    let next = response.nextPageStartIndex
+                    return Observable.just((images, next))
             }
+            return observable.share()
         }
     }
 }

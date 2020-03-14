@@ -17,7 +17,7 @@ def modelPods
   pod_BoxKit
 end
 
-def funcJCamPods
+def funJCamPods
   pod 'CHTCollectionViewWaterfallLayout/Swift'
   pod 'Crashlytics'
   pod 'Fabric'
@@ -28,7 +28,6 @@ def funcJCamPods
   pod 'RxSwift'
   pod 'SwiftLint'
   pod 'Toaster'
-
   pod_BoxKit
 end
 
@@ -41,13 +40,13 @@ target 'ModelTests' do
 end
 
 target 'FunJCam' do
-  funcJCamPods
+  funJCamPods
 end
 
 target 'FunJCamTests' do
-  funcJCamPods
+  funJCamPods
 end
 
 target 'FunJCamUITests' do
-  funcJCamPods
+  funJCamPods
 end
