@@ -1,11 +1,8 @@
-//
-//  Api+Search.swift
-//  FunJCam
-//
-//  Created by box-jeon on 2020/03/14.
-//  Copyright © 2020 utrpanic. All rights reserved.
-//
 import Alamofire
+
+protocol SearchApi {
+    
+}
 
 extension Api {
     
