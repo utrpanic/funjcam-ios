@@ -1,5 +1,6 @@
 import BoxKit
 import CHTCollectionViewWaterfallLayout
+import Model
 import RxSwift
 
 class SearchViewController: FJViewController, NibLoadable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderGridCellDelegate {

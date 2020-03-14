@@ -14,16 +14,17 @@ class Api {
         let request = AF.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers)
         request.validate().log(printBody)
         request.responseData(completionHandler: { (response) in
+            let decodedUrl = response.decodedUrl
             let code = Code(value: response.response?.statusCode)
             switch response.result {
             case .success(let data):
                 do {
                     let result = try JSONDecoder().decode(T.self, from: data)
-                    Log.i("[\(method.rawValue)] \(url)")
+                    Log.i("[\(method.rawValue)] \(decodedUrl)")
                     completion(code, result)
                     return
                 } catch {
-                    Log.e("[\(method.rawValue) failure(\(code))] \(url)")
+                    Log.e("[\(method.rawValue) failure(\(code))] \(decodedUrl)")
                     if let error = error as? DecodingError {
                         Log.e("[Decoding Error]: \(error.debugDescription)")
                     } else {
@@ -32,7 +33,7 @@ class Api {
                     completion(code, nil)
                 }
             case .failure(let error):
-                Log.e("[\(method.rawValue) failure(\(code))] \(url)")
+                Log.e("[\(method.rawValue) failure(\(code))] \(decodedUrl)")
                 Log.e("[Error]: \(error.localizedDescription)")
                 completion(code, nil)
             }
@@ -54,23 +55,17 @@ extension Request {
 
 extension DataResponse {
     
-    fileprivate var url: String {
-        return self.response?.url?.absoluteString ?? "nil"
+    fileprivate var decodedUrl: String {
+        return (self.response?.url?.absoluteString ?? "[EMPTY URL]").urlDecoded
     }
     
     fileprivate func log(_ on: Bool) {
         #if DEBUG
         if on {
             debugPrint(self)
-            if let data = self.data {
-                do {
-                    if let dictionary = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                        debugPrint(dictionary)
-                    }
-                } catch {
-                    // do nothing.
-                }
-            }
+            guard let data = self.data else { return }
+            guard let json = try? JSONSerialization.jsonObject(with: data) else { return }
+            debugPrint(json)
         }
         #endif
     }

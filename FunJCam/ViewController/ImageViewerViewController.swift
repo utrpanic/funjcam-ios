@@ -9,6 +9,7 @@ import UIKit
 
 import BoxKit
 import Crashlytics
+import Model
 
 class ImageViewerViewController: FJViewController, NibLoadable {
     
