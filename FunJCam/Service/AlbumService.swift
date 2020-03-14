@@ -1,4 +1,5 @@
 import Photos
+import UIKit
 
 class AlbumService {
     

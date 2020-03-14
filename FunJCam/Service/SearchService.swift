@@ -40,7 +40,7 @@ public class SearchService: SearchServiceProtocol {
         switch self.provider {
         case .daum:
             let pivot = pivot ?? 1
-            RestAPI.shared.searchDaumImage(with: query, pivot: pivot) { (code, response) in
+            Api.shared.searchDaumImage(with: query, pivot: pivot) { (code, response) in
                 let images = response?.searchedImages
                 let next = response?.hasMore == true ? pivot + 1 : nil
                 completion(code, images, next)
@@ -48,14 +48,14 @@ public class SearchService: SearchServiceProtocol {
             
         case .naver:
             let pivot = pivot ?? 1
-            RestAPI.shared.searchNaverImage(with: query, pivot: pivot) { (code, response) in
+            Api.shared.searchNaverImage(with: query, pivot: pivot) { (code, response) in
                 let images = response?.searchedImages
                 let next = response?.nextStartIndex
                 completion(code, images, next)
             }
             
         case .google:
-            RestAPI.shared.searchGoogleImage(with: query, pivot: pivot) { (code, response) in
+            Api.shared.searchGoogleImage(with: query, pivot: pivot) { (code, response) in
                 let images = response?.searchedImages
                 let next = response?.nextPageStartIndex
                 completion(code, images, next)

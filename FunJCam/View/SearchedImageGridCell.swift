@@ -1,3 +1,6 @@
+import UIKit
+
+import BoxKit
 
 class SearchedImageGridCell: UICollectionViewCell, NibLoadable {
     

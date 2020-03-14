@@ -1,4 +1,4 @@
-platform :ios, '12.0'
+platform :ios, '13.0'
 
 use_frameworks!
 
@@ -13,12 +13,13 @@ def pods
   pod 'Fabric'
   pod 'Firebase'
   pod 'Kingfisher'
+  pod 'KingfisherWebP'
+  pod 'ReactorKit'
   pod 'RxSwift'
   pod 'SwiftLint'
-  pod 'Texture'
   pod 'Toaster'
 
-  pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.1.4'
+  pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.1.7'
 end
 
 target 'FunJCam' do
