@@ -1,34 +1,34 @@
 import NaturalLanguage
 import RxSwift
 
-class SearchViewModel {
+public class SearchViewModel {
     
-    private(set) var query: String = "삼시세끼"
-    private(set) var searchingGIF: Bool = false
+    public private(set) var query: String = "삼시세끼"
+    public private(set) var searchingGIF: Bool = false
     private var next: Int?
     
-    var images: [SearchedImage] = [SearchedImage]()
-    var hasMore: Bool { return self.next != nil }
+    public var images: [SearchedImage] = [SearchedImage]()
+    public var hasMore: Bool { return self.next != nil }
     
-    let updateStream: PublishSubject<Code> = PublishSubject<Code>()
+    public let updateStream: PublishSubject<Code> = PublishSubject<Code>()
     
     private let service: SearchServiceProtocol
     
-    init(service: SearchServiceProtocol? = nil) {
+    public init(service: SearchServiceProtocol? = nil) {
         self.service = SearchService()
     }
     
-    func updateQuery(_ query: String) {
+    public func updateQuery(_ query: String) {
         self.query = query
         self.next = nil
     }
     
-    func toggleSearchingGIF() {
+    public func toggleSearchingGIF() {
         self.searchingGIF.toggle()
         self.next = nil
     }
     
-    func search() {
+    public func search() {
         guard self.query.hasElement else { return }
         let query = self.appendQueryForGifSearchingIfNeeded()
         self.service.search(query: query, pivot: nil) { (code, images, next) in
@@ -40,7 +40,7 @@ class SearchViewModel {
         }
     }
     
-    func searchMore() {
+    public func searchMore() {
         guard let next = self.next else { return }
         self.next = nil
         let query = self.appendQueryForGifSearchingIfNeeded()

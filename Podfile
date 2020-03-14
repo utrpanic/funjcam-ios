@@ -6,8 +6,18 @@ inhibit_all_warnings!
 
 source 'https://github.com/CocoaPods/Specs.git'
 
-def pods
+def pod_BoxKit
+  pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.1.7'
+end
+
+def modelPods
   pod 'Alamofire'
+  pod 'ReactorKit'
+  pod 'RxSwift'
+  pod_BoxKit
+end
+
+def funcJCamPods
   pod 'CHTCollectionViewWaterfallLayout/Swift'
   pod 'Crashlytics'
   pod 'Fabric'
@@ -19,17 +29,25 @@ def pods
   pod 'SwiftLint'
   pod 'Toaster'
 
-  pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.1.7'
+  pod_BoxKit
+end
+
+target 'Model' do
+  modelPods
+end
+
+target 'ModelTests' do
+  modelPods
 end
 
 target 'FunJCam' do
-  pods
+  funcJCamPods
 end
 
 target 'FunJCamTests' do
-  pods
+  funcJCamPods
 end
 
 target 'FunJCamUITests' do
-  pods
+  funcJCamPods
 end
