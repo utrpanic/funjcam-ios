@@ -1,14 +1,14 @@
 import Alamofire
 import RxSwift
 
-protocol SearchApi {
+protocol SearchApiProtocol {
     
     func searchDaumImage(with query: String, pivot: Int) -> Single<ResponseDaumImageSearch>
     func searchNaverImage(with query: String, pivot: Int) -> Single<ResponseNaverImageSearch>
     func searchGoogleImage(with query: String, pivot: Int?) -> Single<ResponseGoogleImageSearch>
 }
 
-extension Api: SearchApi {
+extension Api: SearchApiProtocol {
     
     func searchDaumImage(with query: String, pivot: Int) -> Single<ResponseDaumImageSearch> {
         let url = "https://dapi.kakao.com/v2/search/image"

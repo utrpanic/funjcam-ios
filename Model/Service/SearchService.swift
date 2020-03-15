@@ -28,18 +28,14 @@ public enum SearchProvider: String {
 
 struct SearchService {
     
-    let api: SearchApi
+    private let api: SearchApiProtocol
     
-    private var provider: SearchProvider {
-        return Settings.shared.searchProvider
-    }
-    
-    init(api: SearchApi) {
+    init(api: SearchApiProtocol) {
         self.api = api
     }
     
-    func search(query: String, pivot: Int?) -> Observable<([SearchedImage], Int?)> {
-        switch self.provider {
+    func search(query: String, pivot: Int?, from searchProvider: SearchProvider) -> Observable<([SearchedImage], Int?)> {
+        switch searchProvider {
         case .daum:
             let pivot = pivot ?? 1
             let observable = self.api.searchDaumImage(with: query, pivot: pivot)
