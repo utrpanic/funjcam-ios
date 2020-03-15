@@ -1,9 +1,10 @@
 import BoxKit
 import CHTCollectionViewWaterfallLayout
 import Model
+import ReactorKit
 import RxSwift
 
-class SearchViewController: FJViewController, NibLoadable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderGridCellDelegate {
+class SearchViewController: FJViewController, NibLoadable, StoryboardView, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderGridCellDelegate {
     
     enum Section: Int, CaseIterable {
         case header
@@ -16,11 +17,15 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
     @IBOutlet weak var collectionView: UICollectionView!
     var scrollView: UIScrollView { return self.collectionView }
     
-    private var viewModel: SearchViewModel = SearchViewModel()
-    private var disposeBag: DisposeBag = DisposeBag()
+    typealias Reactor = SearchReactor
+    var state: SearchReactor.State! {
+        return self.reactor!.currentState
+    }
+    var disposeBag: DisposeBag = DisposeBag()
     
     static func create() -> Self {
         let viewController = self.create(storyboardName: "Main")!
+        viewController.reactor = SearchReactor()
         return viewController
     }
     
@@ -30,8 +35,6 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         self.setupTextField()
         
         self.setupCollectionView()
-        
-        self.observeViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +42,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
     }
     
     private func setupTextField() {
-        self.textField.placeholder = self.viewModel.query
+        self.textField.placeholder = self.state.query
     }
     
     private func setupCollectionView() {
@@ -52,23 +55,42 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         self.collectionView.registerFromNib(EmptySearchGridCell.self)
     }
     
-    private func observeViewModel() {
-        self.viewModel.updateStream.subscribe(onNext: { (code) in
-            if code.isSucceed {
-                self.collectionView.reloadData()
-            } else {
+    @IBAction func searchQueryDidChange(_ sender: UITextField) {
+        let query = sender.text ?? ""
+        self.reactor?.action.onNext(.searchQueryUpdated(query))
+    }
+    
+    @IBAction func searchDidTap(_ sender: UITextField) {
+        self.reactor?.action.onNext(.search)
+        self.view.endEditing(true)
+    }
+    
+    func bind(reactor: Reactor) {
+        reactor.state.subscribe(onNext: { [weak self] (state) in
+            guard let `self` = self else { return }
+            switch state.viewAction {
+            case .none:
+                break
+            case .refresh:
+                self.refreshViews()
+            case .searchBegin:
+                break
+            case let .searchError(code):
                 self.showOkAlert(title: "이미지 검색에 실패했습니다.", message: "Code: \(code)", onOk: nil)
+            case .searchEnd:
+                break
+            case .searchMoreBegin:
+                break
+            case let .searchMoreError(code):
+                self.showOkAlert(title: "이미지 더 불러오기에 실패했습니다.", message: "Code: \(code)", onOk: nil)
+            case .searchMoreEnd:
+                break
             }
         }).disposed(by: self.disposeBag)
     }
     
-    @IBAction func searchQueryDidChange(_ sender: UITextField) {
-        self.viewModel.updateQuery(sender.text ?? "")
-    }
-    
-    @IBAction func searchDidTap(_ sender: UITextField) {
-        self.viewModel.search()
-        self.view.endEditing(true)
+    private func refreshViews() {
+        self.collectionView.reloadData()
     }
     
     // MARK: - UICollectionViewDataSource
@@ -81,11 +103,11 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         case .header:
             return 1
         case .image:
-            return self.viewModel.images.count
+            return self.state.images.count
         case .more:
-            return self.viewModel.hasMore ? 1 : 0
+            return self.state.hasMore ? 1 : 0
         case .empty:
-            return self.viewModel.images.isEmpty ? 1 : 0
+            return self.state.images.isEmpty ? 1 : 0
         }
     }
     
@@ -94,12 +116,12 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         case .header:
             let cell = collectionView.dequeueReusableCell(SearchHeaderGridCell.self, for: indexPath)
             let provider = Settings.shared.searchProvider.name
-            cell.configure(with: provider, searchingGIF: self.viewModel.searchingGIF)
+            cell.configure(with: provider, searchingGif: self.state.searchingGif)
             cell.delegate = self
             return cell
         case .image:
             let cell = collectionView.dequeueReusableCell(SearchedImageGridCell.self, for: indexPath)
-            cell.configure(searchedImage: self.viewModel.images[indexPath.item])
+            cell.configure(searchedImage: self.state.images[indexPath.item])
             return cell
         case .more:
             let cell = collectionView.dequeueReusableCell(LoadMoreGridCell.self, for: indexPath)
@@ -114,7 +136,9 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         switch Section(rawValue: indexPath.section)! {
         case .more:
-            self.viewModel.searchMore()
+            if self.state.hasMore {
+                self.reactor?.action.onNext(.searchMore)
+            }
         default:
             break
         }
@@ -138,8 +162,8 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         case .image:
             let width: CGFloat = (collectionView.frame.width - 8 - 8 - 8) / 2
             let height: CGFloat = {
-                let pixelWidth = CGFloat(self.viewModel.images[indexPath.item].pixelWidth)
-                let pixelHeight = CGFloat(self.viewModel.images[indexPath.item].pixelHeight)
+                let pixelWidth = CGFloat(self.state.images[indexPath.item].pixelWidth)
+                let pixelHeight = CGFloat(self.state.images[indexPath.item].pixelHeight)
                 return width * (pixelHeight / pixelWidth)
             }()
             return CGSize(width: width, height: height)
@@ -153,7 +177,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         switch Section(rawValue: section)! {
         case .image:
-            return self.viewModel.images.count > 0 ? UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) : UIEdgeInsets.zero
+            return self.state.images.count > 0 ? UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) : UIEdgeInsets.zero
         default:
             return UIEdgeInsets.zero
         }
@@ -181,7 +205,7 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         switch Section(rawValue: indexPath.section)! {
         case .image:
             if let image = (collectionView.cellForItem(at: indexPath) as? SearchedImageGridCell)?.imageView.image {
-                let viewController = ImageViewerViewController.create(image: image, searchedImage: self.viewModel.images[indexPath.item])
+                let viewController = ImageViewerViewController.create(image: image, searchedImage: self.state.images[indexPath.item])
                 self.present(viewController, animated: true, completion: nil)
             }
         default:
@@ -195,24 +219,24 @@ class SearchViewController: FJViewController, NibLoadable, HasScrollView, UIColl
         let alertController = UIAlertController(title: "provider:searchProvider".localized(), message: nil, preferredStyle: .actionSheet)
         SearchProvider.all.forEach({
             let provider = $0
-            alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { (action) in
-                Settings.shared.searchProvider = provider
-                self.viewModel.search()
+            alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { [weak self] (action) in
+                self?.reactor?.action.onNext(.setSearchProvider(provider))
+                self?.reactor?.action.onNext(.search)
             }))
         })
         alertController.addAction(UIAlertAction(title: "common:cancel".localized(), style: .cancel, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func searchingGIFButtonDidTap() {
-        self.viewModel.toggleSearchingGIF()
-        self.viewModel.search()
+    func searchingGifButtonDidTap() {
+        self.reactor?.action.onNext(.toggleGif)
+        self.reactor?.action.onNext(.search)
     }
 }
 
 protocol SearchHeaderGridCellDelegate: class {
     func searchProviderButtonDidTap()
-    func searchingGIFButtonDidTap()
+    func searchingGifButtonDidTap()
 }
 
 class SearchHeaderGridCell: UICollectionViewCell, NibLoadable {
@@ -228,9 +252,9 @@ class SearchHeaderGridCell: UICollectionViewCell, NibLoadable {
         super.awakeFromNib()
     }
     
-    func configure(with name: String, searchingGIF: Bool) {
+    func configure(with name: String, searchingGif: Bool) {
         self.providerButton.setTitle(name, for: .normal)
-        self.gifButton.isSelected = searchingGIF
+        self.gifButton.isSelected = searchingGif
     }
     
     @IBAction func providerButtonDidTap(_ sender: UIButton) {
@@ -238,6 +262,6 @@ class SearchHeaderGridCell: UICollectionViewCell, NibLoadable {
     }
     
     @IBAction func gifButtonDidTap(_ sender: UIButton) {
-        self.delegate?.searchingGIFButtonDidTap()
+        self.delegate?.searchingGifButtonDidTap()
     }
 }

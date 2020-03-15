@@ -11,6 +11,10 @@ class Api {
     func get<T: Decodable>(_ url: String, headers: HTTPHeaders? = nil, parameters: [String: Any]?, completion: @escaping ApiCompletion<T>, printBody: Bool) {
         let method: HTTPMethod = .get
         let encoding: ParameterEncoding = URLEncoding.queryString
+        self.request(url, method: method, headers: headers, encoding: encoding, parameters: parameters, completion: completion, printBody: printBody)
+    }
+    
+    private func request<T: Decodable>(_ url: String, method: HTTPMethod, headers: HTTPHeaders?, encoding: ParameterEncoding, parameters: [String: Any]?, completion: @escaping ApiCompletion<T>, printBody: Bool) {
         let request = AF.request(url, method: method, parameters: parameters, encoding: encoding, headers: headers)
         request.validate().log(printBody)
         request.responseData(completionHandler: { (response) in

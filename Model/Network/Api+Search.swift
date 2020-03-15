@@ -1,15 +1,16 @@
-//
-//  Api+Search.swift
-//  FunJCam
-//
-//  Created by box-jeon on 2020/03/14.
-//  Copyright © 2020 utrpanic. All rights reserved.
-//
 import Alamofire
+import RxSwift
 
-extension Api {
+protocol SearchApiProtocol {
     
-    public func searchDaumImage(with query: String, pivot: Int, completion: @escaping ApiCompletion<ResponseDaumImageSearch>) {
+    func searchDaumImage(with query: String, pivot: Int) -> Single<ResponseDaumImageSearch>
+    func searchNaverImage(with query: String, pivot: Int) -> Single<ResponseNaverImageSearch>
+    func searchGoogleImage(with query: String, pivot: Int?) -> Single<ResponseGoogleImageSearch>
+}
+
+extension Api: SearchApiProtocol {
+    
+    func searchDaumImage(with query: String, pivot: Int) -> Single<ResponseDaumImageSearch> {
         let url = "https://dapi.kakao.com/v2/search/image"
         let headers: HTTPHeaders = [
             "Authorization": "KakaoAK 3aa0ae0423487ecc4eda2664cc7bc936"
@@ -20,10 +21,10 @@ extension Api {
             "page": pivot, // 1 ~ 50
             "size": "20", // 1 ~ 80
         ]
-        self.get(url, headers: headers, parameters: parameters, completion: completion, printBody: false)
+        return self.get(url, headers: headers, parameters: parameters, printBody: false)
     }
     
-    public func searchNaverImage(with query: String, pivot: Int, completion: @escaping ApiCompletion<ResponseNaverImageSearch>) {
+    func searchNaverImage(with query: String, pivot: Int) -> Single<ResponseNaverImageSearch> {
         let url = "https://openapi.naver.com/v1/search/image"
         let headers: HTTPHeaders = [
             "X-Naver-Client-Id": "93Aki4p3ckUPf2L7Lyac",
@@ -36,7 +37,7 @@ extension Api {
             "display": "20", // 10 ~ 100
             "filter": "all", // all, large, medium, small
         ]
-        self.get(url, headers: headers, parameters: parameters, completion: completion, printBody: false)
+        return self.get(url, headers: headers, parameters: parameters, printBody: false)
     }
     
     //https://developers.google.com/custom-search/json-api/v1/reference/cse/list
@@ -74,8 +75,7 @@ extension Api {
     //imgColorType={imgColorType?}&
     //imgDominantColor={imgDominantColor?}&
     //alt=json";
-    
-    public func searchGoogleImage(with query: String, pivot: Int?, completion: @escaping ApiCompletion<ResponseGoogleImageSearch>) {
+    func searchGoogleImage(with query: String, pivot: Int?) -> Single<ResponseGoogleImageSearch> {
         let url = "https://www.googleapis.com/customsearch/v1"
         var parameters: [String: Any] = [
             "q": query,
@@ -87,7 +87,6 @@ extension Api {
         if let startIndex = pivot {
             parameters["start"] = startIndex
         }
-        self.get(url, parameters: parameters, completion: completion, printBody: false)
+        return self.get(url, parameters: parameters, printBody: false)
     }
 }
-
