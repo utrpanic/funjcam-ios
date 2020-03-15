@@ -28,9 +28,14 @@ class FunJCamUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSearch() {
+        let app = XCUIApplication()
+        let textField = app.textFields["김연아"]
+        textField.tap()
+        let collectionViewsQuery = app.collectionViews
+        collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["GIF"]/*[[".cells.buttons[\"GIF\"]",".buttons[\"GIF\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        textField.tap()
+        textField.tap()
+        collectionViewsQuery.children(matching: .cell).element(boundBy: 3).children(matching: .other).element/*@START_MENU_TOKEN@*/.swipeRight()/*[[".swipeUp()",".swipeRight()"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
     }
-    
 }
