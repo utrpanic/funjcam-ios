@@ -1,17 +1,10 @@
-//
-//  SearchedImageByDaum.swift
-//  FunJCam
-//
-//  Created by boxjeon on 2018. 4. 29..
-//  Copyright © 2018년 the42apps. All rights reserved.
-//
 
-class SearchedImageByDaum: Decodable, SearchedImage {
+public class SearchedImageByDaum: Decodable, SearchedImage {
     
-    var url: String
-    var pixelWidth: Int
-    var pixelHeight: Int
-    var thumbnailUrl: String
+    public var url: String
+    public var pixelWidth: Int
+    public var pixelHeight: Int
+    public var thumbnailUrl: String
     
     private enum CodingKeys: String, CodingKey {
         case image_url
@@ -24,7 +17,7 @@ class SearchedImageByDaum: Decodable, SearchedImage {
         case datetime
     }
     
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.url = try values.decodeIfPresent(String.self, forKey: .image_url) ?? ""
         self.pixelWidth = try values.decodeIfPresent(Int.self, forKey: .width) ?? 0

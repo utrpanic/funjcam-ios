@@ -1,14 +1,7 @@
-//
-//  AlbumManager.swift
-//  FunJCam
-//
-//  Created by boxjeon on 2016. 7. 24..
-//  Copyright © 2016년 boxjeon. All rights reserved.
-//
-
 import Photos
+import UIKit
 
-class AlbumManager {
+class AlbumService {
     
     static let albumName = Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as! String
     

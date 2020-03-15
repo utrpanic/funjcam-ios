@@ -5,6 +5,7 @@
 //  Created by boxjeon on 2018. 5. 2..
 //  Copyright © 2018년 the42apps. All rights reserved.
 //
+import UIKit
 
 protocol HasScrollView {
     

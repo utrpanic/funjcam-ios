@@ -1,33 +1,52 @@
-platform :ios, '11.0'
+platform :ios, '13.0'
+
 use_frameworks!
 
-# ignore all warnings from all pods
 inhibit_all_warnings!
 
-def pods
-    source 'https://github.com/CocoaPods/Specs.git'
-    pod 'Alamofire'
-    pod 'CHTCollectionViewWaterfallLayout/Swift'
-    pod 'Crashlytics'
-    pod 'Fabric'
-    pod 'Firebase/Core'
-    pod 'Kingfisher'
-    pod 'RealmSwift'
-    pod 'RxCocoa'
-    pod 'SwiftLint'
-    pod 'Toaster'
-    
-    pod 'BoxJeonExtension', :git => 'https://github.com/utrpanic/boxjeon-extension.git', :tag => 'v1.4', :inhibit_warnings => false
+source 'https://github.com/CocoaPods/Specs.git'
+
+def pod_BoxKit
+  pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.1.7'
+end
+
+def modelPods
+  pod 'Alamofire'
+  pod 'ReactorKit'
+  pod 'RxSwift'
+  pod_BoxKit
+end
+
+def funJCamPods
+  pod 'CHTCollectionViewWaterfallLayout/Swift'
+  pod 'Crashlytics'
+  pod 'Fabric'
+  pod 'Firebase'
+  pod 'Kingfisher'
+  pod 'KingfisherWebP'
+  pod 'ReactorKit'
+  pod 'RxSwift'
+  pod 'SwiftLint'
+  pod 'Toaster'
+  pod_BoxKit
+end
+
+target 'Model' do
+  modelPods
+end
+
+target 'ModelTests' do
+  modelPods
 end
 
 target 'FunJCam' do
-    pods
+  funJCamPods
 end
 
 target 'FunJCamTests' do
-    pods
+  funJCamPods
 end
 
 target 'FunJCamUITests' do
-    pods
+  funJCamPods
 end

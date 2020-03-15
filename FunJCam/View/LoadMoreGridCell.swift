@@ -1,10 +1,6 @@
-//
-//  LoadMoreGridCell.swift
-//  funjcam
-//
-//  Created by gurren-l on 2016. 7. 22..
-//  Copyright © 2016년 boxjeon. All rights reserved.
-//
+import UIKit
+
+import BoxKit
 
 class LoadMoreGridCell: UICollectionViewCell, NibLoadable {
     

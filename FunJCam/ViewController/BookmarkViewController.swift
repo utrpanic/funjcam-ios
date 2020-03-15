@@ -5,22 +5,29 @@
 //  Created by boxjeon on 2016. 7. 16..
 //  Copyright © 2016년 boxjeon. All rights reserved.
 //
+import Model
 
-class BookmarkViewController: FJViewController, NibLoadable {
+class BookmarkViewController: FJViewController {
     
-    static func create() -> Self {
-        let viewController = self.create(storyboardName: "Main")!
-        return viewController
+//    var viewModel: SearchViewModel = SearchViewModel()
+    
+    static func create() -> BookmarkViewController {
+        return BookmarkViewController()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupNavigationItem()
+        
+//        self.requestImages()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    private func setupNavigationItem() {
         
     }
     
+//    private func requestImages() {
+//        self.viewModel.search()
+//    }
 }

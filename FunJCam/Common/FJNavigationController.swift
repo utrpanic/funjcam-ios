@@ -1,10 +1,4 @@
-//
-//  FJNavigationController.swift
-//  FunJCam
-//
-//  Created by gurren-l on 2017. 11. 14..
-//  Copyright © 2017년 the42apps. All rights reserved.
-//
+import UIKit
 
 class FJNavigationController: UINavigationController {
     
