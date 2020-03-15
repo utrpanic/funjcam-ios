@@ -26,12 +26,12 @@ public enum SearchProvider: String {
     }
 }
 
-struct SearchService {
+class SearchService {
     
-    private let api: SearchApiProtocol
+    var api: SearchApiProtocol
     
-    init(api: SearchApiProtocol) {
-        self.api = api
+    init(api: SearchApiProtocol? = nil) {
+        self.api = api ?? Api.shared
     }
     
     func search(query: String, pivot: Int?, from searchProvider: SearchProvider) -> Observable<([SearchedImage], Int?)> {

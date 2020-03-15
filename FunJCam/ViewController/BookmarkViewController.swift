@@ -9,7 +9,7 @@ import Model
 
 class BookmarkViewController: FJViewController {
     
-    var viewModel: SearchViewModel = SearchViewModel()
+//    var viewModel: SearchViewModel = SearchViewModel()
     
     static func create() -> BookmarkViewController {
         return BookmarkViewController()
@@ -27,7 +27,7 @@ class BookmarkViewController: FJViewController {
         
     }
     
-    private func requestImages() {
-        self.viewModel.search()
-    }
+//    private func requestImages() {
+//        self.viewModel.search()
+//    }
 }

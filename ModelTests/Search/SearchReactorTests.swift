@@ -6,14 +6,16 @@ import RxSwift
 class SearchReactorTests: XCTestCase {
     
     var sut: SearchReactor!
-    var mockApi: SearchApiMock!
+    var mockApi: SearchApiMock {
+        return self.sut.service.api as! SearchApiMock
+    }
     var result: [SearchReactor.ViewAction] = []
     var disposeBag: DisposeBag = DisposeBag()
 
     override func setUp() {
         let mockApi = SearchApiMock()
-        self.sut = SearchReactor(service: SearchService(api: mockApi))
-        self.mockApi = mockApi
+        self.sut = SearchReactor()
+        self.sut.service.api = mockApi
         self.sut.state.subscribe(onNext: { [weak self] (state) in
             guard let self = self else { return }
             self.result.append(state.viewAction)

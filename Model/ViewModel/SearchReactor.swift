@@ -8,6 +8,7 @@ public class SearchReactor: Reactor {
     public enum Action {
         case searchQueryUpdated(String)
         case setSearchProvider(SearchProvider)
+        case toggleGif
         case search
         case searchMore
     }
@@ -15,6 +16,7 @@ public class SearchReactor: Reactor {
     public enum Mutation {
         case searchQueryUpdated(String)
         case setSearchProvider(SearchProvider)
+        case toggleGif
         case searchBegin
         case searchResponse([SearchedImage], Int?)
         case searchError(Code)
@@ -52,8 +54,8 @@ public class SearchReactor: Reactor {
     let service: SearchService
     public let initialState: State
     
-    init(service: SearchService) {
-        self.service = service
+    public init() {
+        self.service = SearchService()
         self.initialState = State()
     }
     
@@ -63,9 +65,8 @@ public class SearchReactor: Reactor {
             return Observable.just(.searchQueryUpdated(query))
         case let .setSearchProvider(provider):
             return Observable.just(.setSearchProvider(provider))
-                .concat(Observable.just(.searchBegin))
-                .concat(self.search())
-                .concat(Observable.just(.searchEnd))
+        case .toggleGif:
+            return Observable.just(.toggleGif)
         case .search:
             return Observable.just(.searchBegin)
                 .concat(self.search())
@@ -88,6 +89,9 @@ public class SearchReactor: Reactor {
             newState.images = []
             newState.next = nil
             newState.viewAction = .refresh
+        case .toggleGif:
+            newState.searchingGif.toggle()
+            newState.viewAction = .refresh
         case .searchBegin:
             newState.viewAction = .searchBegin
         case let .searchResponse(images, pivot):
@@ -99,6 +103,7 @@ public class SearchReactor: Reactor {
         case .searchEnd:
             newState.viewAction = .searchEnd
         case .searchMoreBegin:
+            newState.next = nil
             newState.viewAction = .searchMoreBegin
         case let .searchMoreResponse(images, pivot):
             newState.images.append(contentsOf: images)
@@ -113,7 +118,7 @@ public class SearchReactor: Reactor {
     }
     
     private func search() -> Observable<Mutation> {
-        let query = self.currentState.query
+        let query = self.appendQueryForGifSearchingIfNeeded()
         let provider = self.currentState.provider
         let pivot: Int? = nil
         return self.service.search(query: query, pivot: pivot, from: provider)
@@ -127,7 +132,7 @@ public class SearchReactor: Reactor {
     }
     
     private func searchMore() -> Observable<Mutation> {
-        let query = self.currentState.query
+        let query = self.appendQueryForGifSearchingIfNeeded()
         let provider = self.currentState.provider
         let pivot = self.currentState.next
         return self.service.search(query: query, pivot: pivot, from: provider)
