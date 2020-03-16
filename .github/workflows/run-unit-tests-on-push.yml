@@ -11,4 +11,7 @@ jobs:
     - name: Install Pods
       run: pod install
     - name: Run Unit Tests
-      run: xcodebuild test -workspace FunJCam.xworkspace -scheme Model
+      run: xcodebuild test |
+        -workspace FunJCam.xcworkspace |
+        -scheme Model |
+        -destination "platform=iOS Simulator,name=iPhone 11"
