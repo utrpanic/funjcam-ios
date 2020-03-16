@@ -10,7 +10,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Install Pods
       run: pod install
-    - name: Build
-      run: swift build -v
     - name: Run Unit Tests
-      run: swift test -v
+      run: xcodebuild test -workspace FunJCam.xworkspace -scheme Model
