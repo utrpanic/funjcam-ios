@@ -1,0 +1,14 @@
+name: Run Unit Tests on Push
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Pods
+      run: pod install
+    - name: Run Unit Tests
+      run: xcodebuild test -workspace FunJCam.xcworkspace -scheme Model -destination "platform=iOS Simulator,name=iPhone 11"
