@@ -1,14 +1,7 @@
-//
-//  ImageViewerViewController.swift
-//  funjcam
-//
-//  Created by boxjeon on 2016. 7. 23..
-//  Copyright © 2016년 boxjeon. All rights reserved.
-//
 import UIKit
 
 import BoxKit
-import Crashlytics
+import FirebaseCrashlytics
 import Model
 
 class ImageViewerViewController: FJViewController, NibLoadable {
@@ -38,7 +31,15 @@ class ImageViewerViewController: FJViewController, NibLoadable {
     func setupImageViewer() {
         self.imageView.setImage(url: self.searchedImage?.url, placeholder: self.image, completion: { [weak self] (image) -> Void in
             if let url = self?.searchedImage?.url, image == nil {
-                Answers.logCustomEvent(withName: "Image Download Failure", customAttributes: ["host": URL(string: url)?.host ?? "unknown"])
+                let domain = "Image Download Failure"
+                let error = NSError(domain: domain, code: Code.none.value, userInfo: ["host": URL(string: url)?.host ?? "unknown"])
+                // https://firebase.google.com/docs/crashlytics/customize-crash-reports?hl=ko#add-logs
+                // log()를 사용할 경우,
+                // - 크래시 리포트 내에 종속된 형태로 확인 가능.
+                // record()를 사용할 경우,
+                // - 이벤트 유형 '심각하지 않음'에서 전체 수집.
+                // - 세션당 8개 이벤트만 저장. 앱 재실행 시점에 전송.
+                Crashlytics.crashlytics().record(error: error)
             }
         })
     }

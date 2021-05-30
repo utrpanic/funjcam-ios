@@ -2,5 +2,5 @@ import BoxKit
 
 public class Code: HttpStatusCode {
 
-    static var empty: Code { return Code(value: -500) }
+    public static var none: Code { return Code(value: -500) }
 }

@@ -19,9 +19,9 @@ end
 
 def funJCamPods
   pod 'CHTCollectionViewWaterfallLayout/Swift'
-  pod 'Crashlytics'
-  pod 'Fabric'
-  pod 'Firebase'
+  pod 'Firebase/Core'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Analytics'
   pod 'Kingfisher'
   pod 'KingfisherWebP'
   pod 'ReactorKit'
