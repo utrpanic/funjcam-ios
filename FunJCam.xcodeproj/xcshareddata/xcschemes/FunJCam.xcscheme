@@ -57,26 +57,6 @@
                ReferencedContainer = "container:FunJCam.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6011F284241CED1000D85273"
-               BuildableName = "FunJCamCoreTests.xctest"
-               BlueprintName = "FunJCamCoreTests"
-               ReferencedContainer = "container:FunJCam.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6011F2A6241CED4200D85273"
-               BuildableName = "ModelTests.xctest"
-               BlueprintName = "ModelTests"
-               ReferencedContainer = "container:FunJCam.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -501,7 +501,6 @@
 				0783878C1E26E6DF007D298A /* Sources */,
 				0783878D1E26E6DF007D298A /* Frameworks */,
 				0783878E1E26E6DF007D298A /* Resources */,
-				0701648D202F1EF6001207BF /* Run Script - Fabric */,
 				079CCD0A2049C78F006DFB08 /* Run Script - SwiftLint */,
 				92DD8EC2B0A3BE94A009EEAB /* [CP] Embed Pods Frameworks */,
 				60720F30225B8C3F0003EB0D /* Embed Frameworks */,
@@ -702,20 +701,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0701648D202F1EF6001207BF /* Run Script - Fabric */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script - Fabric";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" d73917378fef2ba00af0129f92f114727173791c a4c91f2089c7b3495d46e3937a08c77a6e073f84cf97cb72d057dab8448aad3a";
-		};
 		079CCD0A2049C78F006DFB08 /* Run Script - SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

@@ -15,7 +15,7 @@ extension Api {
                     event(.success(response))
                 } else {
                     let error = ApiError(code: code)
-                    event(.error(error))
+                    event(.failure(error))
                 }
             }, printBody: printBody)
             return Disposables.create()

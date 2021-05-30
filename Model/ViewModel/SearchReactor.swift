@@ -125,8 +125,8 @@ public class SearchReactor: Reactor {
             .flatMap { (images, pivot) -> Observable<Mutation> in
                 return Observable.just(.searchResponse(images, pivot))
             }
-            .catchError { (error) -> Observable<Mutation> in
-                let code = (error as? ApiError)?.code ?? .empty
+            .catch { (error) -> Observable<Mutation> in
+                let code = (error as? ApiError)?.code ?? .none
                 return Observable.just(.searchError(code))
             }
     }
@@ -139,8 +139,8 @@ public class SearchReactor: Reactor {
             .flatMap { (images, pivot) -> Observable<Mutation> in
                 return Observable.just(.searchMoreResponse(images, pivot))
             }
-            .catchError { (error) -> Observable<Mutation> in
-                let code = (error as? ApiError)?.code ?? .empty
+            .catch { (error) -> Observable<Mutation> in
+                let code = (error as? ApiError)?.code ?? .none
                 return Observable.just(.searchMoreError(code))
             }
     }
