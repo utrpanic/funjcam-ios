@@ -7,7 +7,7 @@ inhibit_all_warnings!
 source 'https://github.com/CocoaPods/Specs.git'
 
 def pod_BoxKit
-  pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.2.0'
+  pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.2.1'
 end
 
 def modelPods

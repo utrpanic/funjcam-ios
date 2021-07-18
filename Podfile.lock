@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (5.4.3)
   - AnyCodable-FlightSchool (0.6.1)
-  - BoxKit (2.2.0):
+  - BoxKit (2.2.1):
     - AnyCodable-FlightSchool (~> 0)
   - CHTCollectionViewWaterfallLayout/Swift (0.9.8)
   - Firebase/Analytics (8.3.0):
@@ -117,7 +117,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - BoxKit (from `https://github.com/utrpanic/box-kit-ios.git`, tag `v2.2.0`)
+  - BoxKit (from `https://github.com/utrpanic/box-kit-ios.git`, tag `v2.2.1`)
   - CHTCollectionViewWaterfallLayout/Swift
   - Firebase/Analytics
   - Firebase/Core
@@ -157,17 +157,17 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   BoxKit:
     :git: https://github.com/utrpanic/box-kit-ios.git
-    :tag: v2.2.0
+    :tag: v2.2.1
 
 CHECKOUT OPTIONS:
   BoxKit:
     :git: https://github.com/utrpanic/box-kit-ios.git
-    :tag: v2.2.0
+    :tag: v2.2.1
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   AnyCodable-FlightSchool: 9d48ed579c898378e189bb0a89faebf9eb8a46a7
-  BoxKit: b8fa283e0982750d6e6bacfdad5043ddc8fdc3ee
+  BoxKit: 1853f1a33c285ec9e37a8577ea6bd1f1310d791a
   CHTCollectionViewWaterfallLayout: 5f241d2480ab4939aa0d1ad4981de9eef1fbe60d
   Firebase: 817b9171d0d51dccc458b94a5e8edff6b1dd323d
   FirebaseAnalytics: 456f2c51599870a15ded4548d1f1f7b2cabf65a7
@@ -189,6 +189,6 @@ SPEC CHECKSUMS:
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
   WeakMapTable: 05c694ce8439a7a9ebabb56187287a63c57673d6
 
-PODFILE CHECKSUM: 128bef06efc448026c74de9561932b77582db494
+PODFILE CHECKSUM: ae2839e1c166a7736edd6e29e769aa635afdb845
 
 COCOAPODS: 1.10.1
