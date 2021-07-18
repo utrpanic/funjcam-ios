@@ -8,11 +8,9 @@
 * Try App Extension - Today
 
 ## Requirements
-* iOS 11
-* xcode 9
-* Swift 4
-* CocoaPods 1.5
-
+* iOS 14
+* xcode 12
+* Swift 5
 ## Installation
 ``` 
 git clone https://github.com/BoxJeon/funjcam-ios
