@@ -234,7 +234,7 @@ class SearchViewController: FJViewController, NibLoadable, StoryboardView, HasSc
     }
 }
 
-protocol SearchHeaderGridCellDelegate: class {
+protocol SearchHeaderGridCellDelegate: AnyObject {
     func searchProviderButtonDidTap()
     func searchingGifButtonDidTap()
 }

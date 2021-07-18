@@ -68,3 +68,7 @@ fastlane/test_output
 
 # vi
 *.swp
+
+# macOS
+.DS_Store
+

@@ -1,4 +1,5 @@
 import Alamofire
+import AnyCodable
 import BoxKit
 
 typealias RawJSON = [String: AnyDecodable]
