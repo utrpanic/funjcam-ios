@@ -1,21 +1,15 @@
 # funjcam-ios
-
-## Goals
-* Try GoogleCustomSearch
-* Try fastlane
-* Try Realm
-* Try App Extension - Share
-* Try App Extension - Today
+Searching for images.
 
 ## Requirements
-* iOS 14
-* xcode 12
+* iOS 15
+* xcode 13
 * Swift 5
-## Installation
+
+## Getting Started
 ``` 
 git clone https://github.com/BoxJeon/funjcam-ios
 cd funjcam-ios
-pod install
+brew bundle
+open FunJCam.xcodeproj
 ```
-
-* open FunJCam.xcworkspace

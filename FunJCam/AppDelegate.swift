@@ -1,4 +1,4 @@
-import Firebase
+import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupApplication() {
         App.setupAppearance()
-        FirebaseApp.configure()
     }
     
     func startApplication() {
