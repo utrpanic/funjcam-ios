@@ -14,7 +14,6 @@
 		078387961E26E6DF007D298A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387951E26E6DF007D298A /* MainViewController.swift */; };
 		0783879B1E26E6E0007D298A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0783879A1E26E6E0007D298A /* Assets.xcassets */; };
 		0783879E1E26E6E0007D298A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0783879C1E26E6E0007D298A /* LaunchScreen.storyboard */; };
-		078387A91E26E6E0007D298A /* FunJCamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387A81E26E6E0007D298A /* FunJCamTests.swift */; };
 		078387B41E26E6E0007D298A /* FunJCamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387B31E26E6E0007D298A /* FunJCamUITests.swift */; };
 		078387C81E26EB0C007D298A /* FunJCamExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387C71E26EB0C007D298A /* FunJCamExtension.swift */; };
 		078387CA1E26EB2A007D298A /* FJViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387C91E26EB2A007D298A /* FJViewController.swift */; };
@@ -37,13 +36,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		078387A51E26E6E0007D298A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 078387881E26E6DF007D298A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0783878F1E26E6DF007D298A;
-			remoteInfo = FunJCam;
-		};
 		078387B01E26E6E0007D298A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 078387881E26E6DF007D298A /* Project object */;
@@ -76,9 +68,6 @@
 		0783879A1E26E6E0007D298A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0783879D1E26E6E0007D298A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0783879F1E26E6E0007D298A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		078387A41E26E6E0007D298A /* FunJCamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunJCamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		078387A81E26E6E0007D298A /* FunJCamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunJCamTests.swift; sourceTree = "<group>"; };
-		078387AA1E26E6E0007D298A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		078387AF1E26E6E0007D298A /* FunJCamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FunJCamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		078387B31E26E6E0007D298A /* FunJCamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunJCamUITests.swift; sourceTree = "<group>"; };
 		078387B51E26E6E0007D298A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -113,13 +102,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		078387A11E26E6E0007D298A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		078387AC1E26E6E0007D298A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -137,7 +119,6 @@
 				6082CC1A26C8E8AB00B2080E /* FunJCamLib */,
 				6082CC1926C8E73200B2080E /* Packages */,
 				078387921E26E6DF007D298A /* FunJCam */,
-				078387A71E26E6E0007D298A /* FunJCamTests */,
 				078387B21E26E6E0007D298A /* FunJCamUITests */,
 				078387911E26E6DF007D298A /* Products */,
 				833125CE2FF1EE9A2A5FA1BD /* Frameworks */,
@@ -148,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				078387901E26E6DF007D298A /* FunJCam.app */,
-				078387A41E26E6E0007D298A /* FunJCamTests.xctest */,
 				078387AF1E26E6E0007D298A /* FunJCamUITests.xctest */,
 			);
 			name = Products;
@@ -169,15 +149,6 @@
 				0752ADDA2094D10500F0EC42 /* Localizable.strings */,
 			);
 			path = FunJCam;
-			sourceTree = "<group>";
-		};
-		078387A71E26E6E0007D298A /* FunJCamTests */ = {
-			isa = PBXGroup;
-			children = (
-				078387A81E26E6E0007D298A /* FunJCamTests.swift */,
-				078387AA1E26E6E0007D298A /* Info.plist */,
-			);
-			path = FunJCamTests;
 			sourceTree = "<group>";
 		};
 		078387B21E26E6E0007D298A /* FunJCamUITests */ = {
@@ -268,24 +239,6 @@
 			productReference = 078387901E26E6DF007D298A /* FunJCam.app */;
 			productType = "com.apple.product-type.application";
 		};
-		078387A31E26E6E0007D298A /* FunJCamTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 078387BB1E26E6E0007D298A /* Build configuration list for PBXNativeTarget "FunJCamTests" */;
-			buildPhases = (
-				078387A01E26E6E0007D298A /* Sources */,
-				078387A11E26E6E0007D298A /* Frameworks */,
-				078387A21E26E6E0007D298A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				078387A61E26E6E0007D298A /* PBXTargetDependency */,
-			);
-			name = FunJCamTests;
-			productName = FunJCamTests;
-			productReference = 078387A41E26E6E0007D298A /* FunJCamTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		078387AE1E26E6E0007D298A /* FunJCamUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 078387BE1E26E6E0007D298A /* Build configuration list for PBXNativeTarget "FunJCamUITests" */;
@@ -319,13 +272,6 @@
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 					};
-					078387A31E26E6E0007D298A = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = L94QTT73WH;
-						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 0783878F1E26E6DF007D298A;
-					};
 					078387AE1E26E6E0007D298A = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = L94QTT73WH;
@@ -349,7 +295,6 @@
 			projectRoot = "";
 			targets = (
 				0783878F1E26E6DF007D298A /* FunJCam */,
-				078387A31E26E6E0007D298A /* FunJCamTests */,
 				078387AE1E26E6E0007D298A /* FunJCamUITests */,
 			);
 		};
@@ -368,13 +313,6 @@
 				078387E31E26F4C4007D298A /* LoadMoreGridCell.xib in Resources */,
 				0783879B1E26E6E0007D298A /* Assets.xcassets in Resources */,
 				0701648C202F1CDF001207BF /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		078387A21E26E6E0007D298A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,14 +365,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		078387A01E26E6E0007D298A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				078387A91E26E6E0007D298A /* FunJCamTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		078387AB1E26E6E0007D298A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -446,11 +376,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		078387A61E26E6E0007D298A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0783878F1E26E6DF007D298A /* FunJCam */;
-			targetProxy = 078387A51E26E6E0007D298A /* PBXContainerItemProxy */;
-		};
 		078387B11E26E6E0007D298A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0783878F1E26E6DF007D298A /* FunJCam */;
@@ -630,44 +555,6 @@
 			};
 			name = Release;
 		};
-		078387BC1E26E6E0007D298A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = L94QTT73WH;
-				INFOPLIST_FILE = FunJCamTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
-			};
-			name = Debug;
-		};
-		078387BD1E26E6E0007D298A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = L94QTT73WH;
-				INFOPLIST_FILE = FunJCamTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.the42apps.ios.FunJCamTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FunJCam.app/FunJCam";
-			};
-			name = Release;
-		};
 		078387BF1E26E6E0007D298A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -721,15 +608,6 @@
 			buildConfigurations = (
 				078387B91E26E6E0007D298A /* Debug */,
 				078387BA1E26E6E0007D298A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		078387BB1E26E6E0007D298A /* Build configuration list for PBXNativeTarget "FunJCamTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				078387BC1E26E6E0007D298A /* Debug */,
-				078387BD1E26E6E0007D298A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
