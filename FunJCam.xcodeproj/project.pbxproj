@@ -98,6 +98,7 @@
 		603072B123050E520089232E /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		6082CC1926C8E73200B2080E /* Packages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Packages; sourceTree = "<group>"; };
 		6082CC1A26C8E8AB00B2080E /* FunJCamLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FunJCamLib; sourceTree = "<group>"; };
+		6082CC2226C8F25B00B2080E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FJNavigationController.swift; sourceTree = "<group>"; };
 		8D69890B1E27186C002F0BAE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +133,7 @@
 		078387871E26E6DF007D298A = {
 			isa = PBXGroup;
 			children = (
+				6082CC2226C8F25B00B2080E /* README.md */,
 				6082CC1A26C8E8AB00B2080E /* FunJCamLib */,
 				6082CC1926C8E73200B2080E /* Packages */,
 				078387921E26E6DF007D298A /* FunJCam */,
