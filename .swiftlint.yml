@@ -1,11 +1,8 @@
 disabled_rules: # rule identifiers to exclude from running
-  - empty_enum_arguments
   - force_cast
   - identifier_name
-  - leading_whitespace
   - line_length
   - nesting
-  - trailing_comma
   - trailing_whitespace
   - unused_closure_parameter
 

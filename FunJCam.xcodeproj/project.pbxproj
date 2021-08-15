@@ -493,9 +493,9 @@
 				0783878C1E26E6DF007D298A /* Sources */,
 				0783878D1E26E6DF007D298A /* Frameworks */,
 				0783878E1E26E6DF007D298A /* Resources */,
-				079CCD0A2049C78F006DFB08 /* Run Script - SwiftLint */,
 				92DD8EC2B0A3BE94A009EEAB /* [CP] Embed Pods Frameworks */,
 				60720F30225B8C3F0003EB0D /* Embed Frameworks */,
+				079CCD0A2049C78F006DFB08 /* Run Script - SwiftLint */,
 			);
 			buildRules = (
 			);
