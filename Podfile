@@ -6,29 +6,27 @@ inhibit_all_warnings!
 
 source 'https://github.com/CocoaPods/Specs.git'
 
-def pod_BoxKit
+def pod_Common
   pod 'BoxKit', :git => 'https://github.com/utrpanic/box-kit-ios.git', :tag => 'v2.2.1'
+  pod 'ReactorKit'
+  pod 'RxSwift'
 end
 
 def modelPods
+  pod_Common
   pod 'Alamofire'
-  pod 'ReactorKit'
-  pod 'RxSwift'
-  pod_BoxKit
 end
 
 def funJCamPods
+  pod_Common
   pod 'CHTCollectionViewWaterfallLayout/Swift'
   pod 'Firebase/Core'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
   pod 'Kingfisher'
   pod 'KingfisherWebP'
-  pod 'ReactorKit'
-  pod 'RxSwift'
   pod 'SwiftLint'
   pod 'Toaster'
-  pod_BoxKit
 end
 
 target 'Model' do
