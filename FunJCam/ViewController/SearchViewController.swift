@@ -1,8 +1,10 @@
 import BoxKit
 import CHTCollectionViewWaterfallLayout
-import Model
+import FunJCamLib
 import ReactorKit
 import RxSwift
+
+import UIKit
 
 class SearchViewController: FJViewController, NibLoadable, StoryboardView, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderGridCellDelegate {
     
