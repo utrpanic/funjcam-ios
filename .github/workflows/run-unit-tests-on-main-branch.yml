@@ -1,0 +1,14 @@
+name: Run Tests on main branch.
+
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Unit Tests (FunJCamLib framework)
+      run: xcodebuild test -project FunJCam.xcodeproj -scheme FunJCamLib -destination "platform=iOS Simulator,name=iPhone 13"
