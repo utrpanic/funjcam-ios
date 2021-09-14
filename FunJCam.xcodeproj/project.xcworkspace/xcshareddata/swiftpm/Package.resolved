@@ -2,48 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
-        "state": {
-          "branch": null,
-          "revision": "f96b619bcb2383b43d898402283924b80e2c4bae",
-          "version": "5.4.3"
-        }
-      },
-      {
-        "package": "AnyCodable",
-        "repositoryURL": "https://github.com/Flight-School/AnyCodable",
-        "state": {
-          "branch": null,
-          "revision": "69261f239f0fffaf51495dadc4f8483fbfe97025",
-          "version": "0.6.1"
-        }
-      },
-      {
-        "package": "BoxKit",
-        "repositoryURL": "https://github.com/utrpanic/box-kit-ios.git",
-        "state": {
-          "branch": null,
-          "revision": "55b7c1e6fc8b5f498b6e2f59bac240166b6285a6",
-          "version": "2.2.1"
-        }
-      },
-      {
         "package": "CHTCollectionViewWaterfallLayout",
         "repositoryURL": "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git",
         "state": {
           "branch": null,
           "revision": "6353ec8305870da3c43b3bd2fa27d79119f4c60b",
           "version": "0.9.8"
-        }
-      },
-      {
-        "package": "Kingfisher",
-        "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
-        "state": {
-          "branch": null,
-          "revision": "d06df9adf50ed8cde5786d935836a5f445f780ba",
-          "version": "6.3.1"
         }
       },
       {

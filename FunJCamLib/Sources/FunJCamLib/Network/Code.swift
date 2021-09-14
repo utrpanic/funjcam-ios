@@ -1,6 +1,6 @@
 import BoxKit
 
-public class Code: HttpStatusCode {
+public class Code: HTTPStatusCode {
 
     public static var none: Code { return Code(value: -500) }
 }

@@ -10,7 +10,7 @@ import BoxKit
 class RecentViewController: FJViewController, NibLoadable {
     
     static func create() -> Self {
-        let viewController = self.create(storyboardName: "Main")!
+        let viewController = self.create(storyboardName: "Main")
         return viewController
     }
 

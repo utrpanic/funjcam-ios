@@ -14,14 +14,14 @@ let package = Package(
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(name: "Packages", path: "../BinaryPackages")
+        .package(name: "BinaryLib", path: "../BinaryLib")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "FunJCamLib",
-            dependencies: [.product(name: "Binary", package: "Packages")]),
+            dependencies: [.product(name: "BinaryLib", package: "BinaryLib")]),
         .testTarget(
             name: "FunJCamLibTests",
             dependencies: ["FunJCamLib"])

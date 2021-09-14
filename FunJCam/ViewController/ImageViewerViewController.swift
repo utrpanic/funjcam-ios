@@ -13,7 +13,7 @@ class ImageViewerViewController: FJViewController, NibLoadable {
     var searchedImage: SearchedImage?
     
     class func create(image: UIImage?, searchedImage: SearchedImage?) -> Self {
-        let viewController = self.create(storyboardName: "Main")!
+        let viewController = self.create(storyboardName: "Main")
         viewController.image = image
         viewController.searchedImage = searchedImage
         return viewController
