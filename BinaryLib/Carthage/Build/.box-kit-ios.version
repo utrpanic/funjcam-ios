@@ -1,0 +1,19 @@
+{
+  "commitish" : "v2.2.2",
+  "iOS" : [
+    {
+      "swiftToolchainVersion" : "5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)",
+      "hash" : "c627f2bfff73df4d42941d9c3054f987e0ed285222f3e016d0a31ac5045a857c",
+      "name" : "BoxKit",
+      "container" : "BoxKit.xcframework",
+      "identifier" : "ios-arm64_x86_64-simulator"
+    },
+    {
+      "swiftToolchainVersion" : "5.4.2 (swiftlang-1205.0.28.2 clang-1205.0.19.57)",
+      "hash" : "7ece9d212aca2f0aa67d6e48b91a1a0e6fe0c10c3dd10bc9a190bce8921fb365",
+      "name" : "BoxKit",
+      "container" : "BoxKit.xcframework",
+      "identifier" : "ios-arm64"
+    }
+  ]
+}

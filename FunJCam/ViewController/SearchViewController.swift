@@ -26,7 +26,7 @@ class SearchViewController: FJViewController, NibLoadable, StoryboardView, HasSc
     var disposeBag: DisposeBag = DisposeBag()
     
     static func create() -> Self {
-        let viewController = self.create(storyboardName: "Main")!
+        let viewController = self.create(storyboardName: "Main")
         viewController.reactor = SearchReactor()
         return viewController
     }

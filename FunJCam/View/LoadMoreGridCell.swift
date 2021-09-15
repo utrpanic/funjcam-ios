@@ -1,5 +1,4 @@
 import UIKit
-
 import BoxKit
 
 class LoadMoreGridCell: UICollectionViewCell, NibLoadable {
