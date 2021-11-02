@@ -8,7 +8,7 @@ Searching for images.
 
 ## Getting Started
 ``` 
-git clone https://github.com/BoxJeon/funjcam-ios
+git clone https://github.com/utrpanic/funjcam-ios
 cd funjcam-ios
 brew bundle
 open FunJCam.xcodeproj
