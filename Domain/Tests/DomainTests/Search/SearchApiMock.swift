@@ -1,6 +1,5 @@
 import RxSwift
-
-@testable import FunJCamLib
+@testable import Domain
 
 class SearchApiMock: SearchApiProtocol {
     

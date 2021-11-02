@@ -1,7 +1,6 @@
 import UIKit
-
 import BoxKit
-import FunJCamLib
+import Domain
 
 class SearchedImageGridCell: UICollectionViewCell, NibLoadable {
     

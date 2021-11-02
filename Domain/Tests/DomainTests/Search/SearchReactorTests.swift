@@ -1,7 +1,6 @@
 import XCTest
-
-@testable import FunJCamLib
 import RxSwift
+@testable import Domain
 
 class SearchReactorTests: XCTestCase {
     

@@ -1,6 +1,6 @@
 import BoxKit
 import CHTCollectionViewWaterfallLayout
-import FunJCamLib
+import Domain
 import ReactorKit
 import RxSwift
 
