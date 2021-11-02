@@ -28,8 +28,8 @@
 		078387EE1E26F4EA007D298A /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387E91E26F4EA007D298A /* RecentViewController.swift */; };
 		078387EF1E26F4EA007D298A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387EA1E26F4EA007D298A /* SearchViewController.swift */; };
 		079264B02098C5A5001AF1A7 /* HasScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079264AF2098C5A5001AF1A7 /* HasScrollView.swift */; };
-		60251A0826F0574D0020C7C6 /* BinaryLib in Frameworks */ = {isa = PBXBuildFile; productRef = 60251A0726F0574D0020C7C6 /* BinaryLib */; };
 		603072B223050E520089232E /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603072B123050E520089232E /* Application.swift */; };
+		6046D3AA27317686002F9F9A /* Proxy in Frameworks */ = {isa = PBXBuildFile; productRef = 6046D3A927317686002F9F9A /* Proxy */; };
 		6082CC1C26C8E93F00B2080E /* FunJCamLib in Frameworks */ = {isa = PBXBuildFile; productRef = 6082CC1B26C8E93F00B2080E /* FunJCamLib */; };
 		8D5B2F4A1FBAE25F004C735A /* FJNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */; };
 		8D69890C1E27186C002F0BAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D69890B1E27186C002F0BAE /* Main.storyboard */; };
@@ -84,10 +84,10 @@
 		078387E91E26F4EA007D298A /* RecentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
 		078387EA1E26F4EA007D298A /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		079264AF2098C5A5001AF1A7 /* HasScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasScrollView.swift; sourceTree = "<group>"; };
-		60251A0626F045280020C7C6 /* BinaryLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BinaryLib; sourceTree = "<group>"; };
 		603072B123050E520089232E /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		6082CC1A26C8E8AB00B2080E /* FunJCamLib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FunJCamLib; sourceTree = "<group>"; };
 		6082CC2226C8F25B00B2080E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		60D3FE87273175E300B017E6 /* Proxy */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Proxy; sourceTree = "<group>"; };
 		8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FJNavigationController.swift; sourceTree = "<group>"; };
 		8D69890B1E27186C002F0BAE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,7 +98,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6082CC1C26C8E93F00B2080E /* FunJCamLib in Frameworks */,
-				60251A0826F0574D0020C7C6 /* BinaryLib in Frameworks */,
+				6046D3AA27317686002F9F9A /* Proxy in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +115,7 @@
 		078387871E26E6DF007D298A = {
 			isa = PBXGroup;
 			children = (
-				60251A0626F045280020C7C6 /* BinaryLib */,
+				60D3FE87273175E300B017E6 /* Proxy */,
 				6082CC2226C8F25B00B2080E /* README.md */,
 				6082CC1A26C8E8AB00B2080E /* FunJCamLib */,
 				078387921E26E6DF007D298A /* FunJCam */,
@@ -233,7 +233,7 @@
 			name = FunJCam;
 			packageProductDependencies = (
 				6082CC1B26C8E93F00B2080E /* FunJCamLib */,
-				60251A0726F0574D0020C7C6 /* BinaryLib */,
+				6046D3A927317686002F9F9A /* Proxy */,
 			);
 			productName = FunJCam;
 			productReference = 078387901E26E6DF007D298A /* FunJCam.app */;
@@ -444,7 +444,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -498,7 +498,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -623,9 +623,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		60251A0726F0574D0020C7C6 /* BinaryLib */ = {
+		6046D3A927317686002F9F9A /* Proxy */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = BinaryLib;
+			productName = Proxy;
 		};
 		6082CC1B26C8E93F00B2080E /* FunJCamLib */ = {
 			isa = XCSwiftPackageProductDependency;

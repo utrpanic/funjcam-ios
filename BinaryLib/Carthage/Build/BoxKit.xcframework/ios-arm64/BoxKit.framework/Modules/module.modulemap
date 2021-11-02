@@ -1,4 +1,0 @@
-framework module BoxKit {
-  header "BoxKit-Swift.h"
-  requires objc
-}
