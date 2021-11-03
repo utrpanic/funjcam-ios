@@ -1,7 +1,7 @@
 import UIKit
 
 import BoxKit
-import FunJCamLib
+import Domain
 
 class ImageViewerViewController: FJViewController, NibLoadable {
     
