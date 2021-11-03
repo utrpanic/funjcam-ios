@@ -1,4 +1,4 @@
-public class SearchedImageByGoogle: Decodable, SearchedImage {
+public final class SearchedImageByGoogle: Decodable, SearchedImage {
 
     public var url: String
     public var pixelWidth: Int

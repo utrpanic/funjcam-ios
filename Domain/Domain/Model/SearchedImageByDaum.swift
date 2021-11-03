@@ -1,4 +1,4 @@
-public class SearchedImageByDaum: Decodable, SearchedImage {
+public final class SearchedImageByDaum: Decodable, SearchedImage {
     
     public var url: String
     public var pixelWidth: Int

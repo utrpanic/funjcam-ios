@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,13 +10,13 @@
         <!--Search View Controller-->
         <scene sceneID="la5-k6-vZQ">
             <objects>
-                <viewController storyboardIdentifier="SearchViewController" automaticallyAdjustsScrollViewInsets="NO" id="5ru-tX-aNT" customClass="SearchViewController" customModule="FunJCam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" automaticallyAdjustsScrollViewInsets="NO" id="5ru-tX-aNT" customClass="SearchViewController" customModule="Presentation" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LmT-aZ-pAR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKu-g4-Ss0">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aj5-CZ-UOq">
                                         <rect key="frame" x="8" y="8" width="359" height="28"/>
@@ -40,7 +38,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jtG-Xi-Pk6">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="bI6-Y6-kkP">
                                     <size key="itemSize" width="50" height="50"/>
@@ -49,21 +47,21 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchHeaderGridCell" id="tyB-eJ-Gk2" customClass="SearchHeaderGridCell" customModule="FunJCam" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchHeaderGridCell" id="tyB-eJ-Gk2" customClass="SearchHeaderGridCell" customModule="Presentation">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLH-Y6-NYR">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLH-Y6-NYR">
                                                     <rect key="frame" x="8" y="7" width="41" height="30"/>
                                                     <state key="normal" title="Daum"/>
                                                     <connections>
                                                         <action selector="providerButtonDidTap:" destination="tyB-eJ-Gk2" eventType="touchUpInside" id="sbs-5g-GCY"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ov7-cB-vFa">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ov7-cB-vFa">
                                                     <rect key="frame" x="337" y="7" width="30" height="30"/>
                                                     <state key="normal" title="GIF"/>
                                                     <connections>
@@ -87,6 +85,7 @@
                                 </cells>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Waw-0t-DxC"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Waw-0t-DxC" firstAttribute="bottom" secondItem="jtG-Xi-Pk6" secondAttribute="bottom" id="B4z-bL-nkD"/>
@@ -97,7 +96,6 @@
                             <constraint firstItem="wKu-g4-Ss0" firstAttribute="top" secondItem="Waw-0t-DxC" secondAttribute="top" id="oGe-4y-h8D"/>
                             <constraint firstItem="Waw-0t-DxC" firstAttribute="trailing" secondItem="wKu-g4-Ss0" secondAttribute="trailing" id="vEI-X9-jyD"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Waw-0t-DxC"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="WHz-fl-gFL"/>
                     <connections>
@@ -112,12 +110,12 @@
         <!--Recent View Controller-->
         <scene sceneID="8Fh-WH-u9z">
             <objects>
-                <viewController storyboardIdentifier="RecentViewController" id="Ouh-U5-Ye3" customClass="RecentViewController" customModule="FunJCam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecentViewController" id="Ouh-U5-Ye3" customClass="RecentViewController" customModule="Presentation" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="grA-J1-IkR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="ilY-MK-xcW"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZp-SB-CAx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -127,16 +125,16 @@
         <!--Image Viewer View Controller-->
         <scene sceneID="TKt-FW-LbT">
             <objects>
-                <viewController storyboardIdentifier="ImageViewerViewController" id="14h-ou-GFr" customClass="ImageViewerViewController" customModule="FunJCam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageViewerViewController" id="14h-ou-GFr" customClass="ImageViewerViewController" customModule="Presentation" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TJJ-DY-qcB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BlR-DP-Tmk">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yC0-tb-hT5">
-                                <rect key="frame" x="0.0" y="20" width="42" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yC0-tb-hT5">
+                                <rect key="frame" x="0.0" y="0.0" width="42" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="phB-Yn-6UV"/>
                                 </constraints>
@@ -146,7 +144,7 @@
                                     <action selector="onCloseTapped:" destination="14h-ou-GFr" eventType="touchUpInside" id="8Ne-wa-Gqq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcK-aL-Gsf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcK-aL-Gsf">
                                 <rect key="frame" x="307" y="623" width="68" height="44"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -161,6 +159,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ghw-VT-oV6"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="yC0-tb-hT5" firstAttribute="top" secondItem="Ghw-VT-oV6" secondAttribute="top" id="BUj-n5-pRI"/>
@@ -172,7 +171,6 @@
                             <constraint firstItem="Ghw-VT-oV6" firstAttribute="trailing" secondItem="hcK-aL-Gsf" secondAttribute="trailing" id="lxh-QA-yiH"/>
                             <constraint firstItem="BlR-DP-Tmk" firstAttribute="leading" secondItem="Ghw-VT-oV6" secondAttribute="leading" id="oeq-rs-Kbh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ghw-VT-oV6"/>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="yC0-tb-hT5" id="GEZ-nf-2Mg"/>
@@ -187,16 +185,17 @@
         <!--Bookmark View Controller-->
         <scene sceneID="Pzl-WR-oMn">
             <objects>
-                <viewController storyboardIdentifier="BookmarkViewController" id="fcM-k7-rdx" customClass="BookmarkViewController" customModule="FunJCam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookmarkViewController" id="fcM-k7-rdx" customClass="BookmarkViewController" customModule="Presentation" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ciK-Fs-WHl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hGm-vf-GQZ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="hJG-pi-LQm"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="hGm-vf-GQZ" secondAttribute="bottom" id="CLG-Co-6Jn"/>
@@ -204,7 +203,6 @@
                             <constraint firstItem="hGm-vf-GQZ" firstAttribute="top" secondItem="hJG-pi-LQm" secondAttribute="top" id="OgA-f0-5me"/>
                             <constraint firstItem="hJG-pi-LQm" firstAttribute="trailing" secondItem="hGm-vf-GQZ" secondAttribute="trailing" id="wg8-zn-yaw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="hJG-pi-LQm"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8an-Wk-Bc7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,12 +212,12 @@
         <!--Settings View Controller-->
         <scene sceneID="Jtc-js-VUI">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="ZXX-1x-Pz0" customClass="SettingsViewController" customModule="FunJCam" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="ZXX-1x-Pz0" customClass="SettingsViewController" customModule="Presentation" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wSC-Pr-Yh0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="s6G-u4-Cef"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZlC-Ox-39Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
