@@ -27,7 +27,8 @@ let package = Package(
       dependencies: [
         "CHTCollectionViewWaterfallLayout",
         "ReactorKit",
-      ]),
+      ]
+    ),
     .binaryTarget(name: "Alamofire", path: "Carthage/Build/Alamofire.xcframework"),
     .binaryTarget(name: "AnyCodable", path: "Carthage/Build/AnyCodable.xcframework"),
     .binaryTarget(name: "BoxKit", path: "Carthage/Build/BoxKit.xcframework"),
