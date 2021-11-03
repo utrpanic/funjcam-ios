@@ -17,7 +17,11 @@ let package = Package(
   targets: [
     .target(
       name: "Domain",
-      dependencies: [.product(name: "Proxy", package: "Proxy")]),
+      dependencies: [
+        .product(name: "Proxy", package: "Proxy")
+      ],
+      path: "Domain"
+    ),
     .testTarget(
       name: "DomainTests",
       dependencies: ["Domain"])

@@ -88,6 +88,7 @@
 		6046D3AB27317B7E002F9F9A /* Domain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Domain; sourceTree = "<group>"; };
 		6082CC2226C8F25B00B2080E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		60D3FE87273175E300B017E6 /* Proxy */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Proxy; sourceTree = "<group>"; };
+		60FC694327320AA0006AF0F7 /* Presentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Presentation; sourceTree = "<group>"; };
 		8D5B2F491FBAE25F004C735A /* FJNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FJNavigationController.swift; sourceTree = "<group>"; };
 		8D69890B1E27186C002F0BAE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,8 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				6082CC2226C8F25B00B2080E /* README.md */,
-				6046D3AB27317B7E002F9F9A /* Domain */,
 				60D3FE87273175E300B017E6 /* Proxy */,
+				6046D3AB27317B7E002F9F9A /* Domain */,
+				60FC694327320AA0006AF0F7 /* Presentation */,
 				078387921E26E6DF007D298A /* FunJCam */,
 				078387B21E26E6E0007D298A /* FunJCamUITests */,
 				078387911E26E6DF007D298A /* Products */,
