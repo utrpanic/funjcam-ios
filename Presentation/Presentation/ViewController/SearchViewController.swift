@@ -57,9 +57,9 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
     self.collectionView.dataSource = self
     self.collectionView.delegate = self
     self.collectionView.collectionViewLayout = CHTCollectionViewWaterfallLayout()
-    self.collectionView.register(UINib(nibName: SearchedImageGridCell.typeName, bundle: .module), forCellWithReuseIdentifier: SearchedImageGridCell.typeName)
-    self.collectionView.register(UINib(nibName: LoadMoreGridCell.typeName, bundle: .module), forCellWithReuseIdentifier: LoadMoreGridCell.typeName)
-    self.collectionView.register(UINib(nibName: EmptySearchGridCell.typeName, bundle: .module), forCellWithReuseIdentifier: EmptySearchGridCell.typeName)
+    self.collectionView.registerFromClass(SearchResultCell.self)
+    self.collectionView.registerFromClass(LoadMoreCell.self)
+    self.collectionView.registerFromClass(SearchEmptyCell.self)
   }
   
   @IBAction func searchQueryDidChange(_ sender: UITextField) {
@@ -127,15 +127,15 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
       cell.delegate = self
       return cell
     case .image:
-      let cell = collectionView.dequeueReusableCell(SearchedImageGridCell.self, for: indexPath)
+      let cell = collectionView.dequeueReusableCell(SearchResultCell.self, for: indexPath)
       cell.configure(searchedImage: self.state.images[indexPath.item])
       return cell
     case .more:
-      let cell = collectionView.dequeueReusableCell(LoadMoreGridCell.self, for: indexPath)
+      let cell = collectionView.dequeueReusableCell(LoadMoreCell.self, for: indexPath)
       cell.startLoadingAnimation()
       return cell
     case .empty:
-      let cell = collectionView.dequeueReusableCell(EmptySearchGridCell.self, for: indexPath)
+      let cell = collectionView.dequeueReusableCell(SearchEmptyCell.self, for: indexPath)
       return cell
     }
   }
@@ -175,7 +175,7 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
       }()
       return CGSize(width: width, height: height)
     case .more:
-      return CGSize(width: collectionView.frame.width, height: LoadMoreGridCell.defaultHeight)
+      return CGSize(width: collectionView.frame.width, height: LoadMoreCell.defaultHeight)
     case .empty:
       return collectionView.frame.size
     }
@@ -211,7 +211,7 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
   public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch Section(rawValue: indexPath.section)! {
     case .image:
-      if let image = (collectionView.cellForItem(at: indexPath) as? SearchedImageGridCell)?.imageView.image {
+      if let image = (collectionView.cellForItem(at: indexPath) as? SearchResultCell)?.imageView?.image {
         let viewController = ImageViewerViewController.create(image: image, searchedImage: self.state.images[indexPath.item])
         self.present(viewController, animated: true, completion: nil)
       }

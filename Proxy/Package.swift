@@ -10,23 +10,25 @@ let package = Package(
       name: "Proxy",
       targets: [
         "Proxy",
-        "Alamofire",
-        "AnyCodable",
-        "BoxKit",
-        "KingFisher",
       ]
     ),
   ],
   dependencies: [
-    .package(url: "https://github.com/ReactorKit/ReactorKit.git", .upToNextMajor(from: "3.0.0")),
-    .package(url: "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git", .upToNextMajor(from: "0.0.0")),
+    .package(name: "CHTCollectionViewWaterfallLayout", url: "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git", .upToNextMajor(from: "0.0.0")),
+    .package(name: "ReactorKit", url: "https://github.com/ReactorKit/ReactorKit.git", .upToNextMajor(from: "3.0.0")),
+    .package(name: "TinyConstraints", url: "https://github.com/roberthein/TinyConstraints.git", .upToNextMajor(from: "4.0.0"))
   ],
   targets: [
     .target(
       name: "Proxy",
       dependencies: [
+        "Alamofire",
+        "AnyCodable",
+        "BoxKit",
         "CHTCollectionViewWaterfallLayout",
+        "KingFisher",
         "ReactorKit",
+        "TinyConstraints",
       ]
     ),
     .binaryTarget(name: "Alamofire", path: "Carthage/Build/Alamofire.xcframework"),

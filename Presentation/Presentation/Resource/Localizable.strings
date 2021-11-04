@@ -14,5 +14,6 @@
 "provider:google" = "Google";
 
 "search:gif" = "gif";
+"search:noResult" = "No Results";
 
 "imageviewer:share" = "Share";
