@@ -2,7 +2,7 @@ import UIKit
 
 struct Resource {
   
-  public static func color(_ name: String) -> UIColor? {
+  static func color(_ name: String) -> UIColor? {
     return UIColor(named: name, in: .module, compatibleWith: nil)
   }
   

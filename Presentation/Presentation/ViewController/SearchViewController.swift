@@ -4,7 +4,7 @@ import CHTCollectionViewWaterfallLayout
 import Domain
 import ReactorKit
 import RxSwift
-
+import TinyConstraints
 
 extension SearchProvider {
   var name: String {
@@ -16,7 +16,7 @@ extension SearchProvider {
   }
 }
 
-public final class SearchViewController: ViewController, NibLoadable, StoryboardView, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderGridCellDelegate {
+final class SearchViewController: ViewController, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderCellDelegate {
   
   enum Section: Int, CaseIterable {
     case header
@@ -25,55 +25,72 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
     case empty
   }
   
-  @IBOutlet weak var textField: UITextField!
-  @IBOutlet weak var collectionView: UICollectionView!
-  var scrollView: UIScrollView { return self.collectionView }
+  private weak var containerView: UIView?
+  private weak var textField: UITextField?
+  private weak var collectionView: UICollectionView?
+  var scrollView: UIScrollView? { self.collectionView }
   
-  public typealias Reactor = SearchReactor
-  var state: SearchReactor.State! {
-    return self.reactor!.currentState
+  private let reactor: SearchReactor
+  private var state: SearchReactor.State { self.reactor.currentState }
+  private var disposeBag: DisposeBag
+  
+  init() {
+    self.reactor = SearchReactor()
+    self.disposeBag = DisposeBag()
+    super.init(nibName: nil, bundle: nil)
+    self.view.backgroundColor = .systemBackground
   }
-  public var disposeBag: DisposeBag = DisposeBag()
   
-  public static func create() -> Self {
-    let viewController = self.createFromStoryboard(name: "Main")
-    viewController.reactor = SearchReactor()
-    return viewController
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
   
-  public override func viewDidLoad() {
+  override func viewDidLoad() {
     super.viewDidLoad()
 
     self.setupTextField()
 
     self.setupCollectionView()
+    
+    self.observeState()
   }
   
   private func setupTextField() {
-    self.textField.placeholder = self.state.query
+    let containerView = UIView()
+    self.view.addSubview(containerView)
+    containerView.topToSuperview(usingSafeArea: true)
+    containerView.leadingToSuperview()
+    containerView.trailingToSuperview()
+    containerView.height(44)
+    self.containerView = containerView
+    let textField = UITextField()
+    textField.placeholder = self.state.query
+    containerView.addSubview(textField)
+    let insets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    textField.edgesToSuperview(insets: insets)
+    textField.addTarget(self, action: #selector(searchQueryDidChange), for: .editingChanged)
+    textField.addTarget(self, action: #selector(searchDidTap), for: .primaryActionTriggered)
+    self.textField = textField
   }
   
   private func setupCollectionView() {
-    self.collectionView.dataSource = self
-    self.collectionView.delegate = self
-    self.collectionView.collectionViewLayout = CHTCollectionViewWaterfallLayout()
-    self.collectionView.registerFromClass(SearchResultCell.self)
-    self.collectionView.registerFromClass(LoadMoreCell.self)
-    self.collectionView.registerFromClass(SearchEmptyCell.self)
+    guard let containerView = self.containerView else { return }
+    let layout = CHTCollectionViewWaterfallLayout()
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.dataSource = self
+    collectionView.delegate = self
+    collectionView.registerFromClass(SearchHeaderCell.self)
+    collectionView.registerFromClass(SearchResultCell.self)
+    collectionView.registerFromClass(LoadMoreCell.self)
+    collectionView.registerFromClass(SearchEmptyCell.self)
+    self.view.addSubview(collectionView)
+    collectionView.topToBottom(of: containerView)
+    collectionView.edgesToSuperview(excluding: [.top])
+    self.collectionView = collectionView
   }
   
-  @IBAction func searchQueryDidChange(_ sender: UITextField) {
-    let query = sender.text ?? ""
-    self.reactor?.action.onNext(.searchQueryUpdated(query))
-  }
-  
-  @IBAction func searchDidTap(_ sender: UITextField) {
-    self.reactor?.action.onNext(.search)
-    self.view.endEditing(true)
-  }
-  
-  public func bind(reactor: Reactor) {
-    reactor.state.subscribe(onNext: { [weak self] (state) in
+  private func observeState() {
+    self.reactor.state.subscribe(onNext: { [weak self] (state) in
       guard let `self` = self else { return }
       switch state.viewAction {
       case .none:
@@ -96,16 +113,26 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
     }).disposed(by: self.disposeBag)
   }
   
+  @objc private func searchQueryDidChange() {
+    let query = self.textField?.text ?? ""
+    self.reactor.action.onNext(.searchQueryUpdated(query))
+  }
+  
+  @objc private func searchDidTap() {
+    self.reactor.action.onNext(.search)
+    self.view.endEditing(true)
+  }
+  
   private func refreshViews() {
-    self.collectionView.reloadData()
+    self.collectionView?.reloadData()
   }
   
   // MARK: - UICollectionViewDataSource
-  public func numberOfSections(in collectionView: UICollectionView) -> Int {
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
     return Section.allCases.count
   }
   
-  public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     switch Section(rawValue: section)! {
     case .header:
       return 1
@@ -118,10 +145,10 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
     }
   }
   
-  public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     switch Section(rawValue: indexPath.section)! {
     case .header:
-      let cell = collectionView.dequeueReusableCell(SearchHeaderGridCell.self, for: indexPath)
+      let cell = collectionView.dequeueReusableCell(SearchHeaderCell.self, for: indexPath)
       let provider = Settings.shared.searchProvider.name
       cell.configure(with: provider, searchingGif: self.state.searchingGif)
       cell.delegate = self
@@ -140,18 +167,18 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
     }
   }
   
-  public func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     switch Section(rawValue: indexPath.section)! {
     case .more:
       if self.state.hasMore {
-        self.reactor?.action.onNext(.searchMore)
+        self.reactor.action.onNext(.searchMore)
       }
     default:
       break
     }
   }
   
-  public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, columnCountFor section: Int) -> Int {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, columnCountFor section: Int) -> Int {
     switch Section(rawValue: section)! {
     case .header:
       return 1
@@ -162,10 +189,10 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
     }
   }
   
-  public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     switch Section(rawValue: indexPath.section)! {
     case .header:
-      return CGSize(width: collectionView.frame.width, height: SearchHeaderGridCell.height)
+      return CGSize(width: collectionView.frame.width, height: SearchHeaderCell.height)
     case .image:
       let width: CGFloat = (collectionView.frame.width - 8 - 8 - 8) / 2
       let height: CGFloat = {
@@ -190,7 +217,7 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
     }
   }
   
-  public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingFor section: Int) -> CGFloat {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingFor section: Int) -> CGFloat {
     switch Section(rawValue: section)! {
     case .image:
       return 8
@@ -208,12 +235,13 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
     }
   }
   
-  public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch Section(rawValue: indexPath.section)! {
     case .image:
       if let image = (collectionView.cellForItem(at: indexPath) as? SearchResultCell)?.imageView?.image {
-        let viewController = ImageViewerViewController.create(image: image, searchedImage: self.state.images[indexPath.item])
-        self.present(viewController, animated: true, completion: nil)
+        let viewController = ImageViewerViewController(thumbnail: image, searchedImage: self.state.images[indexPath.item])
+        let navigationController = NavigationController(rootViewController: viewController)
+        self.present(navigationController, animated: true, completion: nil)
       }
     default:
       // do nothing.
@@ -227,8 +255,8 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
     SearchProvider.all.forEach({
       let provider = $0
       alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { [weak self] (action) in
-        self?.reactor?.action.onNext(.setSearchProvider(provider))
-        self?.reactor?.action.onNext(.search)
+        self?.reactor.action.onNext(.setSearchProvider(provider))
+        self?.reactor.action.onNext(.search)
       }))
     })
     alertController.addAction(UIAlertAction(title: Resource.string("common:cancel"), style: .cancel, handler: nil))
@@ -236,39 +264,7 @@ public final class SearchViewController: ViewController, NibLoadable, Storyboard
   }
   
   func searchingGifButtonDidTap() {
-    self.reactor?.action.onNext(.toggleGif)
-    self.reactor?.action.onNext(.search)
-  }
-}
-
-protocol SearchHeaderGridCellDelegate: AnyObject {
-  func searchProviderButtonDidTap()
-  func searchingGifButtonDidTap()
-}
-
-class SearchHeaderGridCell: UICollectionViewCell, NibLoadable {
-  
-  static var height: CGFloat { return 44 }
-  
-  @IBOutlet weak var providerButton: UIButton!
-  @IBOutlet weak var gifButton: UIButton!
-  
-  weak var delegate: SearchHeaderGridCellDelegate?
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
-  }
-  
-  func configure(with name: String, searchingGif: Bool) {
-    self.providerButton.setTitle(name, for: .normal)
-    self.gifButton.isSelected = searchingGif
-  }
-  
-  @IBAction func providerButtonDidTap(_ sender: UIButton) {
-    self.delegate?.searchProviderButtonDidTap()
-  }
-  
-  @IBAction func gifButtonDidTap(_ sender: UIButton) {
-    self.delegate?.searchingGifButtonDidTap()
+    self.reactor.action.onNext(.toggleGif)
+    self.reactor.action.onNext(.search)
   }
 }

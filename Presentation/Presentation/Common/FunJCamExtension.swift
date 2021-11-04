@@ -19,7 +19,7 @@ extension UIImage {
 
 extension UIImageView {
   
-  func setImage(url: String?, placeholder: UIImage?, completion: ((UIImage?) -> Void)?) {
+  func setImage(url: String?, placeholder: UIImage? = nil, completion: ((UIImage?) -> Void)?) {
     let safeURL = URL.safeVersion(from: url)
     self.kf.setImage(with: safeURL, placeholder: placeholder, options: [.transition(.fade(0.2))], progressBlock: nil) { result in
       switch result {

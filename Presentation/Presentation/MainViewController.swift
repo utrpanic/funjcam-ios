@@ -12,13 +12,13 @@ enum MainTab: Int, CaseIterable {
     let viewController: UIViewController
     switch self {
     case .search:
-      viewController = SearchViewController.create()
+      viewController = SearchViewController()
     case .recent:
-      viewController = RecentViewController.create()
+      viewController = RecentViewController()
     case .bookmark:
-      viewController = BookmarkViewController.create()
+      viewController = BookmarkViewController()
     case .settings:
-      viewController = SettingsViewController.create()
+      viewController = SettingsViewController()
     }
     let navigationController = NavigationController(rootViewController: viewController)
     let tabBarItem = self.tabBarItem

@@ -1,33 +1,13 @@
-//
-//  BookmarkViewController.swift
-//  funjcam
-//
-//  Created by box-jeon on 2016. 7. 16..
-//  Copyright © 2016년 box-jeon. All rights reserved.
-//
-import Domain
+import UIKit
 
-public final class BookmarkViewController: ViewController {
+final class BookmarkViewController: ViewController {
   
-  //    var viewModel: SearchViewModel = SearchViewModel()
-  
-  public static func create() -> BookmarkViewController {
-    return BookmarkViewController()
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    self.view.backgroundColor = .systemBackground
   }
   
-  public override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    self.setupNavigationItem()
-    
-    //        self.requestImages()
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
-  
-  private func setupNavigationItem() {
-    
-  }
-  
-  //    private func requestImages() {
-  //        self.viewModel.search()
-  //    }
 }

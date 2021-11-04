@@ -1,5 +1,5 @@
 import UIKit
 
-public final class NavigationController: UINavigationController {
+final class NavigationController: UINavigationController {
 
 }

@@ -13,7 +13,8 @@
 "provider:naver" = "Naver";
 "provider:google" = "Google";
 
-"search:gif" = "gif";
+"search:gif" = "GIF";
 "search:noResult" = "No Results";
 
-"imageviewer:share" = "Share";
+"imageViweer:error" = "Receiving Image Failed";
+"imageViewer:share" = "Share";
