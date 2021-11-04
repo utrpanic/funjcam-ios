@@ -1,16 +1,13 @@
-//
-//  RecentViewController.swift
-//  funjcam
-//
-//  Created by box-jeon on 2016. 7. 16..
-//  Copyright © 2016년 box-jeon. All rights reserved.
-//
-import BoxKit
+import UIKit
 
-public final class RecentViewController: ViewController, NibLoadable {
+final class RecentViewController: ViewController {
   
-  public static func create() -> Self {
-    let viewController = self.createFromStoryboard(name: "Main")
-    return viewController
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    self.view.backgroundColor = .systemBackground
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }

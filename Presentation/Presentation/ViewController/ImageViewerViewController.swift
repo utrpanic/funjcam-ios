@@ -2,58 +2,65 @@ import UIKit
 import BoxKit
 import Domain
 
-class ImageViewerViewController: ViewController, NibLoadable {
+final class ImageViewerViewController: ViewController {
   
-  @IBOutlet weak var closeButton: UIButton!
-  @IBOutlet weak var imageView: UIImageView!
-  @IBOutlet weak var shareButton: UIButton!
+  private weak var imageView: UIImageView?
   
-  var image: UIImage?
-  var searchedImage: SearchedImage?
+  var thumbnail: UIImage?
+  var searchedImage: SearchedImage
   
-  class func create(image: UIImage?, searchedImage: SearchedImage?) -> Self {
-    let viewController = self.createFromStoryboard(name: "Main")
-    viewController.image = image
-    viewController.searchedImage = searchedImage
-    return viewController
-  }
-  
-  public override func viewDidLoad() {
-    super.viewDidLoad()
-    
+  init(thumbnail: UIImage?, searchedImage: SearchedImage) {
+    self.thumbnail = thumbnail
+    self.searchedImage = searchedImage
+    super.init(nibName: nil, bundle: nil)
+    self.view.backgroundColor = .systemBackground
+    self.setupNavigation()
     self.setupImageViewer()
-    
-    self.setupButtons()
+    self.updateImageViewer()
   }
   
-  func setupImageViewer() {
-    self.imageView.setImage(url: self.searchedImage?.url, placeholder: self.image, completion: { [weak self] (image) -> Void in
-      if let url = self?.searchedImage?.url, image == nil {
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  private func setupNavigation() {
+    let close = Resource.string("common:close")
+    let closeButton = UIBarButtonItem(title: close, style: .plain, target: self, action: #selector(closeButtonDidTap))
+    self.navigationItem.leftBarButtonItem = closeButton
+    
+    let share = Resource.string("imageViewer:share")
+    let shareButton = UIBarButtonItem(title: share, style: .plain, target: self, action: #selector(shareButtonDidTap))
+    self.navigationItem.rightBarButtonItem = shareButton
+  }
+  
+  private func setupImageViewer() {
+    let imageView = UIImageView()
+    imageView.contentMode = .scaleAspectFit
+    imageView.image = self.thumbnail
+    self.view.addSubview(imageView)
+    imageView.edgesToSuperview()
+    self.imageView = imageView
+  }
+  
+  private func updateImageViewer() {
+    self.imageView?.setImage(url: self.searchedImage.url) { [weak self] (image) -> Void in
+      if let url = self?.searchedImage.url, image == nil {
         Log.e("Image Download Failure: \(url)")
       }
-    })
+    }
   }
   
-  func setupButtons() {
-    self.closeButton.setTitle(Resource.string("common:close"), for: .normal)
-    self.shareButton.setTitle(Resource.string("imageviewer:share"), for: .normal)
-  }
-  
-  @IBAction func onCloseTapped(_ sender: UIButton) {
+  @objc private func closeButtonDidTap() {
     self.dismiss(animated: true, completion: nil)
   }
   
-  @IBAction func onShareTapped(_ sender: UIButton) {
-    if let url = URL(string: self.searchedImage?.url ?? "") {
-      do {
-        let data = try Data(contentsOf: url)
-        let viewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
-        self.present(viewController, animated: true, completion: nil)
-      } catch {
-        self.showOkAlert(title: "이미지를 가져오지 못했습니다.", message: nil, onOk: nil)
-      }
-    } else {
-      self.showOkAlert(title: "이미지를 가져오지 못했습니다.", message: nil, onOk: nil)
+  @objc private func shareButtonDidTap() {
+    guard let url = URL(string: self.searchedImage.url), let data = try? Data(contentsOf: url) else {
+      let error = Resource.string("imageViewer:error")
+      self.showOkAlert(title: error, message: nil, onOk: nil)
+      return
     }
+    let viewController = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+    self.present(viewController, animated: true, completion: nil)
   }
 }
