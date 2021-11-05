@@ -4,24 +4,25 @@
 import PackageDescription
 
 let package = Package(
-  name: "Domain",
+  name: "Application",
   platforms: [.iOS(.v15)],
   products: [
-    .library(name: "Domain", targets: ["Domain"])
+    .library(name: "Application", targets: ["Application"]),
   ],
   dependencies: [
     .package(name: "Proxy", path: "../Proxy"),
-    .package(name: "Platform", path: "../Platform")
-      
+    .package(name: "Domain", path: "../Domain"),
   ],
   targets: [
     .target(
-      name: "Domain",
-      dependencies: ["Proxy", "Platform"],
-      path: "Domain"
+      name: "Application",
+      dependencies: ["Proxy", "Domain"],
+      path: "Application",
+      resources: [.process("Resource")]
     ),
     .testTarget(
-      name: "DomainTests",
-      dependencies: ["Domain"])
+      name: "ApplicationTests",
+      dependencies: ["Application"]
+    ),
   ]
 )

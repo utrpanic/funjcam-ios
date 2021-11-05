@@ -10,9 +10,11 @@
 		0701648C202F1CDF001207BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0701648B202F1CDE001207BF /* GoogleService-Info.plist */; };
 		078387941E26E6DF007D298A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387931E26E6DF007D298A /* AppDelegate.swift */; };
 		078387B41E26E6E0007D298A /* FunJCamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078387B31E26E6E0007D298A /* FunJCamUITests.swift */; };
-		6046A06E27329D6A002BA815 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 6046A06D27329D6A002BA815 /* Presentation */; };
+		6003D27F27354F7300205112 /* Platform in Frameworks */ = {isa = PBXBuildFile; productRef = 6003D27E27354F7300205112 /* Platform */; };
+		6003D28127354FEC00205112 /* PlatformImp in Frameworks */ = {isa = PBXBuildFile; productRef = 6003D28027354FEC00205112 /* PlatformImp */; };
 		6046D3AA27317686002F9F9A /* Proxy in Frameworks */ = {isa = PBXBuildFile; productRef = 6046D3A927317686002F9F9A /* Proxy */; };
 		607B9E7927317D5E003CEC36 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 607B9E7827317D5E003CEC36 /* Domain */; };
+		60AE8ACD2735463300B3325E /* Application in Frameworks */ = {isa = PBXBuildFile; productRef = 60AE8ACC2735463300B3325E /* Application */; };
 		60CF1C042732D41D00BE28BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60CF1C032732D41D00BE28BC /* Assets.xcassets */; };
 		60CF1C062732DB1600BE28BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60CF1C052732DB1600BE28BC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -50,10 +52,11 @@
 		078387B51E26E6E0007D298A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6046D3AB27317B7E002F9F9A /* Domain */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Domain; sourceTree = "<group>"; };
 		6082CC2226C8F25B00B2080E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		609A59262735458E00BD9D88 /* Platform */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Platform; sourceTree = "<group>"; };
+		609A59272735459F00BD9D88 /* Application */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Application; sourceTree = "<group>"; };
 		60CF1C032732D41D00BE28BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60CF1C052732DB1600BE28BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60D3FE87273175E300B017E6 /* Proxy */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Proxy; sourceTree = "<group>"; };
-		60FC694327320AA0006AF0F7 /* Presentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Presentation; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +64,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60AE8ACD2735463300B3325E /* Application in Frameworks */,
+				6003D27F27354F7300205112 /* Platform in Frameworks */,
+				6003D28127354FEC00205112 /* PlatformImp in Frameworks */,
 				607B9E7927317D5E003CEC36 /* Domain in Frameworks */,
-				6046A06E27329D6A002BA815 /* Presentation in Frameworks */,
 				6046D3AA27317686002F9F9A /* Proxy in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,8 +87,9 @@
 			children = (
 				6082CC2226C8F25B00B2080E /* README.md */,
 				60D3FE87273175E300B017E6 /* Proxy */,
+				609A59262735458E00BD9D88 /* Platform */,
 				6046D3AB27317B7E002F9F9A /* Domain */,
-				60FC694327320AA0006AF0F7 /* Presentation */,
+				609A59272735459F00BD9D88 /* Application */,
 				078387921E26E6DF007D298A /* FunJCam */,
 				078387B21E26E6E0007D298A /* FunJCamUITests */,
 				078387911E26E6DF007D298A /* Products */,
@@ -149,7 +155,9 @@
 			packageProductDependencies = (
 				6046D3A927317686002F9F9A /* Proxy */,
 				607B9E7827317D5E003CEC36 /* Domain */,
-				6046A06D27329D6A002BA815 /* Presentation */,
+				60AE8ACC2735463300B3325E /* Application */,
+				6003D27E27354F7300205112 /* Platform */,
+				6003D28027354FEC00205112 /* PlatformImp */,
 			);
 			productName = FunJCam;
 			productReference = 078387901E26E6DF007D298A /* FunJCam.app */;
@@ -511,9 +519,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6046A06D27329D6A002BA815 /* Presentation */ = {
+		6003D27E27354F7300205112 /* Platform */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = Presentation;
+			productName = Platform;
+		};
+		6003D28027354FEC00205112 /* PlatformImp */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PlatformImp;
 		};
 		6046D3A927317686002F9F9A /* Proxy */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -522,6 +534,10 @@
 		607B9E7827317D5E003CEC36 /* Domain */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Domain;
+		};
+		60AE8ACC2735463300B3325E /* Application */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Application;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
