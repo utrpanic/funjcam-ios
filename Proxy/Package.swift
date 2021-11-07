@@ -6,12 +6,7 @@ import PackageDescription
 let package = Package(
   name: "Proxy",
   products: [
-    .library(
-      name: "Proxy",
-      targets: [
-        "Proxy",
-      ]
-    ),
+    .library(name: "Proxy", targets: ["Proxy",]),
   ],
   dependencies: [
     .package(name: "CHTCollectionViewWaterfallLayout", url: "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git", .upToNextMajor(from: "0.0.0")),

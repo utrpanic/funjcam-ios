@@ -1,3 +1,5 @@
+import Entity
+
 class ResponseDaumImageSearch: Decodable {
     
     var searchedImages: [SearchedImageByDaum]

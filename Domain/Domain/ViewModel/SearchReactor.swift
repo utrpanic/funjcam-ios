@@ -1,5 +1,5 @@
 import NaturalLanguage
-
+import Entity
 import ReactorKit
 import RxSwift
 
