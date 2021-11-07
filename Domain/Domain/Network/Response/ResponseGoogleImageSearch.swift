@@ -1,3 +1,5 @@
+import Entity
+
 class ResponseGoogleImageSearch: Decodable {
     
     var searchedImages: [SearchedImageByGoogle]

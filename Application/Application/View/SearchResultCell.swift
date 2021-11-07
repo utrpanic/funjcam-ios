@@ -1,5 +1,6 @@
 import UIKit
 import Domain
+import Entity
 import TinyConstraints
 
 final class SearchResultCell: UICollectionViewCell {

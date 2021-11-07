@@ -1,3 +1,5 @@
+import Entity
+
 class ResponseNaverImageSearch: Decodable {
     
     var searchedImages: [SearchedImageByNaver]

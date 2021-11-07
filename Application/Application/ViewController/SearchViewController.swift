@@ -64,6 +64,8 @@ final class SearchViewController: ViewController, HasScrollView, UICollectionVie
     containerView.height(44)
     self.containerView = containerView
     let textField = UITextField()
+    textField.autocapitalizationType = .none
+    textField.autocorrectionType = .no
     textField.placeholder = self.state.query
     containerView.addSubview(textField)
     let insets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
