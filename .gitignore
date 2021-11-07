@@ -25,7 +25,7 @@ xcuserdata/
 *.hmap
 *.ipa
 *.dSYM.zip
-*.dSYM
+# *.dSYM # Exclude for BinaryTarget xcframework.
 *.bcsymbolmap
 
 ## Playgrounds

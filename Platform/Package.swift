@@ -21,13 +21,13 @@ let package = Package(
     ])
   ],
   dependencies: [
-    
+    .package(name: "Proxy", path: "../Proxy"),
   ],
   targets: [
     
     .target(name: "Network", dependencies: [], path: "Network/Protocol"),
     .target(name: "NetworkImp",dependencies: ["Network"], path: "Network/Implementation"),
-    .testTarget(name: "NetworkTests", dependencies: ["NetworkImp"], path: "Network/Tests"),
+    .testTarget(name: "NetworkTests", dependencies: ["Proxy", "NetworkImp"], path: "Network/Tests"),
     .target(name: "NetworkTestSupprt", dependencies: ["Network"], path: "Network/TestSupport"),
     
     .target(name: "UserDefaults", dependencies: [], path: "UserDefaults/Protocol"),
