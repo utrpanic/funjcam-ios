@@ -5,26 +5,33 @@ import PackageDescription
 
 let package = Package(
   name: "Platform",
+  platforms: [.iOS(.v15)],
   products: [
     .library(name: "Platform", targets: [
-      "Network"
+      "Network",
+      "UserDefaults"
     ]),
     .library(name: "PlatformImp", targets: [
-      "NetworkImp"
+      "NetworkImp",
+      "UserDefaultsImp"
     ]),
+    .library(name: "PlatformTestSupport", targets: [
+      "NetworkTestSupprt",
+      "UserDefautsTestSupprt"
+    ])
   ],
   dependencies: [
-    .package(name: "Proxy", path: "../Proxy"),
+    
   ],
   targets: [
-    .target(name: "Network",
-            dependencies: [],
-            path: "Network/Protocol"),
-    .target(name: "NetworkImp",
-            dependencies: ["Proxy", "Network"],
-            path: "Network/Implementation"),
-    .testTarget(name: "NetworkTests",
-                dependencies: ["NetworkImp"],
-                path: "Network/Test"),
+    
+    .target(name: "Network", dependencies: [], path: "Network/Protocol"),
+    .target(name: "NetworkImp",dependencies: ["Network"], path: "Network/Implementation"),
+    .testTarget(name: "NetworkTests", dependencies: ["NetworkImp"], path: "Network/Tests"),
+    .target(name: "NetworkTestSupprt", dependencies: ["Network"], path: "Network/TestSupport"),
+    
+    .target(name: "UserDefaults", dependencies: [], path: "UserDefaults/Protocol"),
+    .target(name: "UserDefaultsImp",dependencies: ["UserDefaults"], path: "UserDefaults/Implementation"),
+    .target(name: "UserDefautsTestSupprt", dependencies: ["UserDefaults"], path: "UserDefaults/TestSupport"),
   ]
 )
