@@ -25,7 +25,7 @@ let package = Package(
   ],
   targets: [
     
-    .target(name: "Network", dependencies: [], path: "Network/Protocol"),
+    .target(name: "Network", dependencies: [], path: "Network/Interface"),
     .target(name: "NetworkImp",dependencies: ["Network"], path: "Network/Implementation"),
     .testTarget(name: "NetworkTests", dependencies: ["Proxy", "NetworkImp"], path: "Network/Tests"),
     .target(name: "NetworkTestSupprt", dependencies: ["Network"], path: "Network/TestSupport"),

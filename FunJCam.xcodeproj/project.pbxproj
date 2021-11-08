@@ -15,6 +15,7 @@
 		6046D3AA27317686002F9F9A /* Proxy in Frameworks */ = {isa = PBXBuildFile; productRef = 6046D3A927317686002F9F9A /* Proxy */; };
 		607B9E7927317D5E003CEC36 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 607B9E7827317D5E003CEC36 /* Domain */; };
 		60AE8ACD2735463300B3325E /* Application in Frameworks */ = {isa = PBXBuildFile; productRef = 60AE8ACC2735463300B3325E /* Application */; };
+		60AF8ADC2737CC5F0041C1F9 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AF8ADB2737CC5F0041C1F9 /* AppComponent.swift */; };
 		60CF1C042732D41D00BE28BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60CF1C032732D41D00BE28BC /* Assets.xcassets */; };
 		60CF1C062732DB1600BE28BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60CF1C052732DB1600BE28BC /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		6082CC2226C8F25B00B2080E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		609A59262735458E00BD9D88 /* Platform */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Platform; sourceTree = "<group>"; };
 		609A59272735459F00BD9D88 /* Application */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Application; sourceTree = "<group>"; };
+		60AF8ADB2737CC5F0041C1F9 /* AppComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
 		60CF1C032732D41D00BE28BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60CF1C052732DB1600BE28BC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60D3FE87273175E300B017E6 /* Proxy */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Proxy; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				60CF1C052732DB1600BE28BC /* LaunchScreen.storyboard */,
 				078387931E26E6DF007D298A /* AppDelegate.swift */,
+				60AF8ADB2737CC5F0041C1F9 /* AppComponent.swift */,
 				60CF1C032732D41D00BE28BC /* Assets.xcassets */,
 				0783879F1E26E6E0007D298A /* Info.plist */,
 				0701648B202F1CDE001207BF /* GoogleService-Info.plist */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				078387941E26E6DF007D298A /* AppDelegate.swift in Sources */,
+				60AF8ADC2737CC5F0041C1F9 /* AppComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

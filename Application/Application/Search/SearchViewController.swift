@@ -6,6 +6,11 @@ import ReactorKit
 import RxSwift
 import TinyConstraints
 
+public protocol SearchControllable {
+  func createViewController() -> ViewControllable
+  func activate(with viewController: SearchViewControllable)
+}
+
 extension SearchProvider {
   var name: String {
     switch self {
@@ -16,7 +21,7 @@ extension SearchProvider {
   }
 }
 
-final class SearchViewController: ViewController, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderCellDelegate {
+final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderCellDelegate {
   
   enum Section: Int, CaseIterable {
     case header
@@ -34,11 +39,15 @@ final class SearchViewController: ViewController, HasScrollView, UICollectionVie
   private var state: SearchReactor.State { self.reactor.currentState }
   private var disposeBag: DisposeBag
   
-  init() {
+  private let controller: SearchControllable
+  
+  init(controller: SearchControllable) {
+    self.controller = controller
     self.reactor = SearchReactor()
     self.disposeBag = DisposeBag()
     super.init(nibName: nil, bundle: nil)
     self.view.backgroundColor = .systemBackground
+    self.controller.activate(with: self)
   }
   
   required init?(coder: NSCoder) {
