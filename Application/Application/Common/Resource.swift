@@ -15,6 +15,18 @@ public struct Resource {
     return UIImage(systemName: name, withConfiguration: configuration)
   }
   
+  public static func image(color: UIColor?) -> UIImage? {
+    guard let color = color else { return nil }
+    let size = CGSize(width: 1 / UIScreen.main.scale, height: 1 / UIScreen.main.scale)
+    let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+    UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+    color.setFill()
+    UIRectFill(rect)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return image
+  }
+  
   public static func string(_ key: String, _ args: CVarArg...) -> String {
     let bundle = Bundle.module
     let format = bundle.localizedString(forKey: key, value: nil, table: nil)

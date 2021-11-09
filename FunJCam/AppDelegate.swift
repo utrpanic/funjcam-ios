@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func setupApplication() {
-    App.setupAppearance()
+    Application.setupAppearance()
   }
   
   func startApplication() {
