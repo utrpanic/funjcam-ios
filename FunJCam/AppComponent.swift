@@ -1,5 +1,10 @@
 import UIKit
+import Domain
 import Application
+import UserDefaults
+import UserDefaultsImp
+import Usecase
+import UsecaseImp
 
 typealias Dependencies =
 MainDependency &
@@ -9,6 +14,14 @@ BookmarkDependency &
 SettingsDependency
 
 final class AppComponent: Dependencies {
+  
+  let searchProviderUsecase: SearchProviderUsecase
+  
+  init(
+    searchProviderUsecase: SearchProviderUsecase
+  ) {
+    self.searchProviderUsecase = searchProviderUsecase
+  }
   
   func searchController() -> SearchControllable {
     return SearchController(dependency: self)
@@ -24,5 +37,14 @@ final class AppComponent: Dependencies {
   
   func settingsController() -> SettingsControllable {
     return SettingsController(dependency: self)
+  }
+}
+
+extension AppComponent {
+  static var app: AppComponent {
+    let userDefaults = UserDefaults.standard
+    return AppComponent(
+      searchProviderUsecase: SearchProviderUsecaseImp(userDefaults: userDefaults)
+    )
   }
 }

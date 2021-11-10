@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func startApplication() {
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    let controller = MainController(dependency: AppComponent())
+    let controller = MainController(dependency: AppComponent.app)
     self.window?.rootViewController = controller.createViewController().ui
     self.window?.makeKeyAndVisible()
   }

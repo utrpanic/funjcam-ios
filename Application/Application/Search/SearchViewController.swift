@@ -2,13 +2,13 @@ import UIKit
 import BoxKit
 import CHTCollectionViewWaterfallLayout
 import Domain
+import Entity
 import ReactorKit
 import RxSwift
 import TinyConstraints
 
 public protocol SearchControllable {
   func createViewController() -> ViewControllable
-  func activate(with viewController: SearchViewControllable)
 }
 
 extension SearchProvider {
@@ -47,7 +47,6 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.disposeBag = DisposeBag()
     super.init(nibName: nil, bundle: nil)
     self.view.backgroundColor = .systemBackground
-    self.controller.activate(with: self)
   }
   
   required init?(coder: NSCoder) {
@@ -263,7 +262,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   // MARK: - SearchHeaderGridCellDelegate
   func searchProviderButtonDidTap() {
     let alertController = UIAlertController(title: Resource.string("provider:searchProvider"), message: nil, preferredStyle: .actionSheet)
-    SearchProvider.all.forEach({
+    SearchProvider.allCases.forEach({
       let provider = $0
       alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { [weak self] (action) in
         self?.reactor.action.onNext(.setSearchProvider(provider))
