@@ -1,3 +1,4 @@
+import Combine
 import UIKit
 import BoxKit
 import CHTCollectionViewWaterfallLayout
@@ -8,17 +9,7 @@ import RxSwift
 import TinyConstraints
 
 public protocol SearchControllable {
-  func createViewController() -> ViewControllable
-}
-
-extension SearchProvider {
-  var name: String {
-    switch self {
-    case .daum: return Resource.string("provider:daum")
-    case .naver: return Resource.string("provider:naver")
-    case .google: return Resource.string("provider:google")
-    }
-  }
+  var observableState: AnyPublisher<SearchState, Never> { get } 
 }
 
 final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderCellDelegate {
@@ -40,11 +31,13 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   private var disposeBag: DisposeBag
   
   private let controller: SearchControllable
+  private var cancellables: Set<AnyCancellable>
   
   init(controller: SearchControllable) {
     self.controller = controller
     self.reactor = SearchReactor()
     self.disposeBag = DisposeBag()
+    self.cancellables = Set<AnyCancellable>()
     super.init(nibName: nil, bundle: nil)
     self.view.backgroundColor = .systemBackground
   }
@@ -55,12 +48,9 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
     self.setupTextField()
-
     self.setupCollectionView()
-    
-    self.observeState()
+    self.observeViewState()
   }
   
   private func setupTextField() {
@@ -99,7 +89,10 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.collectionView = collectionView
   }
   
-  private func observeState() {
+  private func observeViewState() {
+    self.controller.observableState.sink { [weak self] state in
+      self?.refreshViews()
+    }.store(in: &self.cancellables)
     self.reactor.state.subscribe(onNext: { [weak self] (state) in
       guard let `self` = self else { return }
       switch state.viewAction {
@@ -276,5 +269,15 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   func searchingGifButtonDidTap() {
     self.reactor.action.onNext(.toggleGif)
     self.reactor.action.onNext(.search)
+  }
+}
+
+extension SearchProvider {
+  var name: String {
+    switch self {
+    case .daum: return Resource.string("provider:daum")
+    case .naver: return Resource.string("provider:naver")
+    case .google: return Resource.string("provider:google")
+    }
   }
 }

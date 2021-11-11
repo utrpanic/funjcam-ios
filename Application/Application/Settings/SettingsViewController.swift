@@ -1,8 +1,7 @@
 import UIKit
 
 public protocol SettingsControllable {
-  func createViewController() -> ViewControllable
-  func activate(with viewController: SettingsViewControllable)
+  
 }
 
 final class SettingsViewController: ViewController, SettingsViewControllable {
@@ -13,7 +12,6 @@ final class SettingsViewController: ViewController, SettingsViewControllable {
     self.controller = controller
     super.init(nibName: nil, bundle: nil)
     self.view.backgroundColor = .systemBackground
-    self.controller.activate(with: self)
   }
   
   required init?(coder: NSCoder) {

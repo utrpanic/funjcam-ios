@@ -1,4 +1,6 @@
 import Usecase
+import Combine
+import SwiftUI
 
 public protocol SearchDependency {
   var searchProviderUsecase: SearchProviderUsecase { get }
@@ -12,18 +14,21 @@ public protocol SearchViewControllable: ViewControllable {
   
 }
 
-public final class SearchController: SearchControllable {
+public final class SearchController: SearchControllable, Buildable {
   
   private let searchProviderUsecase: SearchProviderUsecase
   
-  private var state: SearchState
+  private let state: CurrentValueSubject<SearchState, Never>
+  public let observableState: AnyPublisher<SearchState, Never>
   
   private weak var viewController: SearchViewControllable?
   weak var listener: SearchListener?
   
   public init(dependency: SearchDependency) {
     self.searchProviderUsecase = dependency.searchProviderUsecase
-    self.state = SearchState(provider: self.searchProviderUsecase.query())
+    let initialState = SearchState(provider: self.searchProviderUsecase.query())
+    self.state = CurrentValueSubject(initialState)
+    self.observableState = self.state.eraseToAnyPublisher()
   }
   
   public func createViewController() -> ViewControllable {
@@ -31,4 +36,9 @@ public final class SearchController: SearchControllable {
     self.viewController = viewController
     return viewController
   }
+}
+
+public enum SearchError {
+  case searchFailed
+  case searchMoreFailed
 }

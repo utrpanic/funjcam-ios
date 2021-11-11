@@ -1,8 +1,7 @@
 import UIKit
 
 public protocol BookmarkControllable {
-  func createViewController() -> ViewControllable
-  func activate(with viewController: BookmarkViewControllable)
+  
 }
 
 final class BookmarkViewController: ViewController, BookmarkViewControllable {
@@ -13,7 +12,6 @@ final class BookmarkViewController: ViewController, BookmarkViewControllable {
     self.controller = controller
     super.init(nibName: nil, bundle: nil)
     self.view.backgroundColor = .systemBackground
-    self.controller.activate(with: self)
   }
   
   required init?(coder: NSCoder) {
