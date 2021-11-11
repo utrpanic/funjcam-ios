@@ -1,24 +1,6 @@
 import Entity
 import RxSwift
 
-public enum SearchProvider: String {
-    
-    case daum
-    case naver
-    case google
-    
-    static var `default`: SearchProvider { return .daum }
-    public static var all: [SearchProvider] { return [.daum, .naver, .google] }
-    
-    public init(string: String?) {
-        if let provider = SearchProvider(rawValue: string ?? "") {
-            self = provider
-        } else {
-            self = .default
-        }
-    }
-}
-
 class SearchService {
     
     var api: SearchApiProtocol

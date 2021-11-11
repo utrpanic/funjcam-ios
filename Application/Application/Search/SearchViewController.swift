@@ -1,22 +1,18 @@
+import Combine
 import UIKit
 import BoxKit
 import CHTCollectionViewWaterfallLayout
 import Domain
+import Entity
 import ReactorKit
 import RxSwift
 import TinyConstraints
 
-extension SearchProvider {
-  var name: String {
-    switch self {
-    case .daum: return Resource.string("provider:daum")
-    case .naver: return Resource.string("provider:naver")
-    case .google: return Resource.string("provider:google")
-    }
-  }
+public protocol SearchControllable {
+  func activate(with viewController: SearchViewControllable) -> Observable<SearchState>
 }
 
-final class SearchViewController: ViewController, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderCellDelegate {
+final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderCellDelegate {
   
   enum Section: Int, CaseIterable {
     case header
@@ -34,11 +30,15 @@ final class SearchViewController: ViewController, HasScrollView, UICollectionVie
   private var state: SearchReactor.State { self.reactor.currentState }
   private var disposeBag: DisposeBag
   
-  init() {
+  private let controller: SearchControllable
+  private var cancellables: Set<AnyCancellable>
+  
+  init(controller: SearchControllable) {
+    self.controller = controller
     self.reactor = SearchReactor()
     self.disposeBag = DisposeBag()
+    self.cancellables = Set<AnyCancellable>()
     super.init(nibName: nil, bundle: nil)
-    self.view.backgroundColor = .systemBackground
   }
   
   required init?(coder: NSCoder) {
@@ -47,12 +47,10 @@ final class SearchViewController: ViewController, HasScrollView, UICollectionVie
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    self.view.backgroundColor = .systemBackground
     self.setupTextField()
-
     self.setupCollectionView()
-    
-    self.observeState()
+    self.observeController()
   }
   
   private func setupTextField() {
@@ -91,7 +89,10 @@ final class SearchViewController: ViewController, HasScrollView, UICollectionVie
     self.collectionView = collectionView
   }
   
-  private func observeState() {
+  private func observeController() {
+    self.controller.activate(with: self).sink { [weak self] state in
+      self?.refreshViews()
+    }.store(in: &self.cancellables)
     self.reactor.state.subscribe(onNext: { [weak self] (state) in
       guard let `self` = self else { return }
       switch state.viewAction {
@@ -254,7 +255,7 @@ final class SearchViewController: ViewController, HasScrollView, UICollectionVie
   // MARK: - SearchHeaderGridCellDelegate
   func searchProviderButtonDidTap() {
     let alertController = UIAlertController(title: Resource.string("provider:searchProvider"), message: nil, preferredStyle: .actionSheet)
-    SearchProvider.all.forEach({
+    SearchProvider.allCases.forEach({
       let provider = $0
       alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { [weak self] (action) in
         self?.reactor.action.onNext(.setSearchProvider(provider))
@@ -268,5 +269,15 @@ final class SearchViewController: ViewController, HasScrollView, UICollectionVie
   func searchingGifButtonDidTap() {
     self.reactor.action.onNext(.toggleGif)
     self.reactor.action.onNext(.search)
+  }
+}
+
+extension SearchProvider {
+  var name: String {
+    switch self {
+    case .daum: return Resource.string("provider:daum")
+    case .naver: return Resource.string("provider:naver")
+    case .google: return Resource.string("provider:google")
+    }
   }
 }

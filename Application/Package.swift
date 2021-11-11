@@ -16,7 +16,11 @@ let package = Package(
   targets: [
     .target(
       name: "Application",
-      dependencies: ["Proxy", "Domain"],
+      dependencies: [
+        .product(name: "Proxy", package: "Proxy"),
+        .product(name: "Domain", package: "Domain"),
+        .product(name: "DomainImp", package: "Domain")
+      ],
       path: "Application",
       resources: [.process("Resource")]
     ),

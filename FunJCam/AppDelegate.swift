@@ -13,12 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func setupApplication() {
-    App.setupAppearance()
+    Application.setupAppearance()
   }
   
   func startApplication() {
     self.window = UIWindow(frame: UIScreen.main.bounds)
-    self.window?.rootViewController = MainViewController()
+    let controller = MainController(dependency: AppComponent.live)
+    self.window?.rootViewController = controller.buildViewController().ui
     self.window?.makeKeyAndVisible()
   }
 }
