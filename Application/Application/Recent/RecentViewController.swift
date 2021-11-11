@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol RecentControllable {
-  
+  func activate(with viewController: RecentViewControllable)
 }
 
 final class RecentViewController: ViewController, RecentViewControllable {
@@ -15,5 +15,11 @@ final class RecentViewController: ViewController, RecentViewControllable {
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.view.backgroundColor = .systemBackground
+    self.controller.activate(with: self)
   }
 }

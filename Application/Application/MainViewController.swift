@@ -1,7 +1,7 @@
 import UIKit
 
 protocol MainControllable {
-  func activate()
+  func activate(with viewController: MainViewControllable)
 }
 
 final class MainViewController: UITabBarController, MainViewControllable, UITabBarControllerDelegate {
@@ -11,7 +11,6 @@ final class MainViewController: UITabBarController, MainViewControllable, UITabB
   init(controller: MainControllable) {
     self.controller = controller
     super.init(nibName: nil, bundle: nil)
-    self.setupTabBar()
   }
   
   required init?(coder: NSCoder) {
@@ -20,7 +19,8 @@ final class MainViewController: UITabBarController, MainViewControllable, UITabB
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.controller.activate()
+    self.setupTabBar()
+    self.controller.activate(with: self)
   }
   
   private func setupTabBar() {

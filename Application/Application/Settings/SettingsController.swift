@@ -16,13 +16,16 @@ public final class SettingsController: SettingsControllable, ViewControllerBuild
   private weak var viewController: SettingsViewControllable?
   weak var listener: SettingsListener?
   
-  public init(dependency: SettingsDependency) {
+  public init(dependency: SettingsDependency, listener: SettingsListener?) {
     self.dependency = dependency
+    self.listener = listener
   }
   
   public func buildViewController() -> ViewControllable {
-    let viewController = SettingsViewController(controller: self)
+    return SettingsViewController(controller: self)
+  }
+  
+  public func activate(with viewController: SettingsViewControllable) {
     self.viewController = viewController
-    return viewController
   }
 }

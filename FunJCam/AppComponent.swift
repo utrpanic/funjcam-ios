@@ -23,25 +23,25 @@ final class AppComponent: Dependencies {
     self.searchProviderUsecase = searchProviderUsecase
   }
   
-  func searchBuilder() -> ViewControllerBuildable {
-    return SearchController(dependency: self)
+  func searchBuilder(listener: SearchListener?) -> ViewControllerBuildable {
+    return SearchController(dependency: self, listener: listener)
   }
   
-  func recentBuilder() -> ViewControllerBuildable {
-    return RecentController(dependency: self)
+  func recentBuilder(listener: RecentListener?) -> ViewControllerBuildable {
+    return RecentController(dependency: self, listener: listener)
   }
   
-  func bookmarkBuilder() -> ViewControllerBuildable {
-    return BookmarkController(dependency: self)
+  func bookmarkBuilder(listener: BookmarkListener?) -> ViewControllerBuildable {
+    return BookmarkController(dependency: self, listener: listener)
   }
   
-  func settingsBuilder() -> ViewControllerBuildable {
-    return SettingsController(dependency: self)
+  func settingsBuilder(listener: SettingsListener?) -> ViewControllerBuildable {
+    return SettingsController(dependency: self, listener: listener)
   }
 }
 
 extension AppComponent {
-  static var app: AppComponent {
+  static var live: AppComponent {
     let userDefaults = UserDefaults.standard
     return AppComponent(
       searchProviderUsecase: SearchProviderUsecaseImp(userDefaults: userDefaults)

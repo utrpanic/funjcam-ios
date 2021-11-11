@@ -16,13 +16,16 @@ public final class BookmarkController: BookmarkControllable, ViewControllerBuild
   private weak var viewController: BookmarkViewControllable?
   weak var listener: BookmarkListener?
   
-  public init(dependency: BookmarkDependency) {
+  public init(dependency: BookmarkDependency, listener: BookmarkListener?) {
     self.dependency = dependency
+    self.listener = listener
   }
   
   public func buildViewController() -> ViewControllable {
-    let viewController = BookmarkViewController(controller: self)
+    return BookmarkViewController(controller: self)
+  }
+  
+  public func activate(with viewController: BookmarkViewControllable) {
     self.viewController = viewController
-    return viewController
   }
 }

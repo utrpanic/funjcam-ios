@@ -9,7 +9,7 @@ import RxSwift
 import TinyConstraints
 
 public protocol SearchControllable {
-  var observableState: AnyPublisher<SearchState, Never> { get } 
+  func activate(with viewController: SearchViewControllable) -> Observable<SearchState>
 }
 
 final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderCellDelegate {
@@ -39,7 +39,6 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.disposeBag = DisposeBag()
     self.cancellables = Set<AnyCancellable>()
     super.init(nibName: nil, bundle: nil)
-    self.view.backgroundColor = .systemBackground
   }
   
   required init?(coder: NSCoder) {
@@ -48,9 +47,10 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.backgroundColor = .systemBackground
     self.setupTextField()
     self.setupCollectionView()
-    self.observeViewState()
+    self.observeController()
   }
   
   private func setupTextField() {
@@ -89,8 +89,8 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.collectionView = collectionView
   }
   
-  private func observeViewState() {
-    self.controller.observableState.sink { [weak self] state in
+  private func observeController() {
+    self.controller.activate(with: self).sink { [weak self] state in
       self?.refreshViews()
     }.store(in: &self.cancellables)
     self.reactor.state.subscribe(onNext: { [weak self] (state) in

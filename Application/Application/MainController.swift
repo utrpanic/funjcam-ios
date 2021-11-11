@@ -1,8 +1,8 @@
 public protocol MainDependency {
-  func searchBuilder() -> ViewControllerBuildable
-  func recentBuilder() -> ViewControllerBuildable
-  func bookmarkBuilder() -> ViewControllerBuildable
-  func settingsBuilder() -> ViewControllerBuildable
+  func searchBuilder(listener: SearchListener?) -> ViewControllerBuildable
+  func recentBuilder(listener: RecentListener?) -> ViewControllerBuildable
+  func bookmarkBuilder(listener: BookmarkListener?) -> ViewControllerBuildable
+  func settingsBuilder(listener: SettingsListener?) -> ViewControllerBuildable
 }
 
 public protocol MainViewControllable: ViewControllable {
@@ -19,17 +19,16 @@ public final class MainController: MainControllable, ViewControllerBuildable, Se
   }
   
   public func buildViewController() -> ViewControllable {
-    let viewController = MainViewController(controller: self)
-    self.viewController = viewController
-    return viewController
+    return MainViewController(controller: self)
   }
   
-  public func activate() {
+  public func activate(with viewController: MainViewControllable) {
+    self.viewController = viewController
     self.viewController?.setTabs(
-      search: self.dependency.searchBuilder().buildViewController(),
-      recent: self.dependency.recentBuilder().buildViewController(),
-      bookmark: self.dependency.bookmarkBuilder().buildViewController(),
-      settings: self.dependency.settingsBuilder().buildViewController()
+      search: self.dependency.searchBuilder(listener: nil).buildViewController(),
+      recent: self.dependency.recentBuilder(listener: nil).buildViewController(),
+      bookmark: self.dependency.bookmarkBuilder(listener: nil).buildViewController(),
+      settings: self.dependency.settingsBuilder(listener: nil).buildViewController()
     )
   }
 }

@@ -16,19 +16,17 @@ public protocol SearchViewControllable: ViewControllable {
 
 public final class SearchController: SearchControllable, ViewControllerBuildable {
   
-  private let searchProviderUsecase: SearchProviderUsecase
-  
+  private let dependency: SearchDependency
   private let state: CurrentValueSubject<SearchState, Never>
-  public let observableState: AnyPublisher<SearchState, Never>
   
   private weak var viewController: SearchViewControllable?
   weak var listener: SearchListener?
   
-  public init(dependency: SearchDependency) {
-    self.searchProviderUsecase = dependency.searchProviderUsecase
-    let initialState = SearchState(provider: self.searchProviderUsecase.query())
+  public init(dependency: SearchDependency, listener: SearchListener?) {
+    self.dependency = dependency
+    let initialState = SearchState(provider: self.dependency.searchProviderUsecase.query())
     self.state = CurrentValueSubject(initialState)
-    self.observableState = self.state.eraseToAnyPublisher()
+    self.listener = listener
   }
   
   public func buildViewController() -> ViewControllable {
@@ -36,9 +34,14 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     self.viewController = viewController
     return viewController
   }
+  
+  public func activate(with viewController: SearchViewControllable) -> Observable<SearchState> {
+    self.viewController = viewController
+    return self.state.eraseToAnyPublisher()
+  }
 }
 
-public enum SearchError {
+enum SearchError {
   case searchFailed
   case searchMoreFailed
 }

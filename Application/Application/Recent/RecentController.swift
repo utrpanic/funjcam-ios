@@ -16,13 +16,16 @@ public final class RecentController: RecentControllable, ViewControllerBuildable
   private weak var viewController: RecentViewControllable?
   weak var listener: RecentListener?
   
-  public init(dependency: RecentDependency) {
+  public init(dependency: RecentDependency, listener: RecentListener?) {
     self.dependency = dependency
+    self.listener = listener
   }
   
   public func buildViewController() -> ViewControllable {
-    let viewController = RecentViewController(controller: self)
+    return RecentViewController(controller: self)
+  }
+  
+  public func activate(with viewController: RecentViewControllable) {
     self.viewController = viewController
-    return viewController
   }
 }
