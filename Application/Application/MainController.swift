@@ -1,16 +1,16 @@
 public protocol MainDependency {
-  func searchBuilder() -> Buildable
-  func recentBuilder() -> Buildable
-  func bookmarkBuilder() -> Buildable
-  func settingsBuilder() -> Buildable
+  func searchBuilder() -> ViewControllerBuildable
+  func recentBuilder() -> ViewControllerBuildable
+  func bookmarkBuilder() -> ViewControllerBuildable
+  func settingsBuilder() -> ViewControllerBuildable
 }
 
 public protocol MainViewControllable: ViewControllable {
   func setTabs(search: ViewControllable, recent: ViewControllable, bookmark: ViewControllable, settings: ViewControllable)
 }
 
-public final class MainController: MainControllable, SettingsListener {
-  
+public final class MainController: MainControllable, ViewControllerBuildable, SettingsListener {
+
   private let dependency: MainDependency
   weak var viewController: MainViewControllable?
   
@@ -18,17 +18,18 @@ public final class MainController: MainControllable, SettingsListener {
     self.dependency = dependency
   }
   
-  public func createViewController() -> ViewControllable {
-    return MainViewController(controller: self)
+  public func buildViewController() -> ViewControllable {
+    let viewController = MainViewController(controller: self)
+    self.viewController = viewController
+    return viewController
   }
   
-  public func activate(with viewController: MainViewControllable) {
-    self.viewController = viewController
+  public func activate() {
     self.viewController?.setTabs(
-      search: self.dependency.searchBuilder().createViewController(),
-      recent: self.dependency.recentBuilder().createViewController(),
-      bookmark: self.dependency.bookmarkBuilder().createViewController(),
-      settings: self.dependency.settingsBuilder().createViewController()
+      search: self.dependency.searchBuilder().buildViewController(),
+      recent: self.dependency.recentBuilder().buildViewController(),
+      bookmark: self.dependency.bookmarkBuilder().buildViewController(),
+      settings: self.dependency.settingsBuilder().buildViewController()
     )
   }
 }

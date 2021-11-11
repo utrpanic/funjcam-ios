@@ -14,7 +14,7 @@ public protocol SearchViewControllable: ViewControllable {
   
 }
 
-public final class SearchController: SearchControllable, Buildable {
+public final class SearchController: SearchControllable, ViewControllerBuildable {
   
   private let searchProviderUsecase: SearchProviderUsecase
   
@@ -31,7 +31,7 @@ public final class SearchController: SearchControllable, Buildable {
     self.observableState = self.state.eraseToAnyPublisher()
   }
   
-  public func createViewController() -> ViewControllable {
+  public func buildViewController() -> ViewControllable {
     let viewController = SearchViewController(controller: self)
     self.viewController = viewController
     return viewController

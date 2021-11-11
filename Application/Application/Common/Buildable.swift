@@ -1,3 +1,3 @@
-public protocol Buildable {
-  func createViewController() -> ViewControllable
+public protocol ViewControllerBuildable {
+  func buildViewController() -> ViewControllable
 }

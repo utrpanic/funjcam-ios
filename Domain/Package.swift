@@ -29,10 +29,10 @@ let package = Package(
     
     .target(name: "Entity", dependencies: [], path: "Entity"),
     
-    .target(name: "Domain", dependencies: ["Proxy", "Platform", "Entity"], path: "Domain"),
+    .target(name: "Domain", dependencies: [.product(name: "Proxy", package: "Proxy"), .product(name: "Platform", package: "Platform"), "Entity"], path: "Domain"),
     .testTarget(name: "DomainTests", dependencies: ["Domain"]),
     
-    .target(name: "Usecase", dependencies: ["Platform", "Entity"], path: "Usecase/Interface"),
+    .target(name: "Usecase", dependencies: [.product(name: "Platform", package: "Platform"), "Entity"], path: "Usecase/Interface"),
     .target(name: "UsecaseImp", dependencies: ["Usecase"], path: "Usecase/Implementation"),
     .target(name: "UsecaseTestSupport", dependencies: ["Usecase"], path: "Usecase/TestSupport"),
   ]

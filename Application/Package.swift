@@ -17,7 +17,7 @@ let package = Package(
     .target(
       name: "Application",
       dependencies: [
-        "Proxy",
+        .product(name: "Proxy", package: "Proxy"),
         .product(name: "Domain", package: "Domain"),
         .product(name: "DomainImp", package: "Domain")
       ],

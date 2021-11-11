@@ -10,16 +10,17 @@ public protocol SettingsViewControllable: ViewControllable {
   
 }
 
-public final class SettingsController: SettingsControllable, Buildable {
+public final class SettingsController: SettingsControllable, ViewControllerBuildable {
   
+  private let dependency: SettingsDependency
   private weak var viewController: SettingsViewControllable?
   weak var listener: SettingsListener?
   
   public init(dependency: SettingsDependency) {
-    
+    self.dependency = dependency
   }
   
-  public func createViewController() -> ViewControllable {
+  public func buildViewController() -> ViewControllable {
     let viewController = SettingsViewController(controller: self)
     self.viewController = viewController
     return viewController

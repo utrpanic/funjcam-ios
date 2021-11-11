@@ -23,19 +23,19 @@ final class AppComponent: Dependencies {
     self.searchProviderUsecase = searchProviderUsecase
   }
   
-  func searchBuilder() -> Buildable {
+  func searchBuilder() -> ViewControllerBuildable {
     return SearchController(dependency: self)
   }
   
-  func recentBuilder() -> Buildable {
+  func recentBuilder() -> ViewControllerBuildable {
     return RecentController(dependency: self)
   }
   
-  func bookmarkBuilder() -> Buildable {
+  func bookmarkBuilder() -> ViewControllerBuildable {
     return BookmarkController(dependency: self)
   }
   
-  func settingsBuilder() -> Buildable {
+  func settingsBuilder() -> ViewControllerBuildable {
     return SettingsController(dependency: self)
   }
 }
