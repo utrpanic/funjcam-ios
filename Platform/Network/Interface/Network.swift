@@ -15,7 +15,7 @@ public struct NetworkGetParams {
   public let headers: [String: String]?
   public let queries: [String: Any]?
   
-  public init(url: URL?, headers: [String: String]? = nil, queries :[String: Any]? = nil) {
+  public init(url: URL?, headers: [String: String]?, queries :[String: Any]?) {
     self.url = url
     self.headers = headers
     self.queries = queries

@@ -1,4 +1,4 @@
-public enum SearchProvider: String, CaseIterable {  
+public enum SearchProvider: String, CaseIterable {
   case daum
   case naver
   case google
