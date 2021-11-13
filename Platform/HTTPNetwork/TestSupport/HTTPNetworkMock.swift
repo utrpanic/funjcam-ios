@@ -1,16 +1,16 @@
 import Foundation
-import Network
+import HTTPNetwork
 
-public final class NetworkMock: Network {
+public final class HTTPNetworkMock: HTTPNetwork {
   
   public enum Response {
-    case response(NetworkResponse)
+    case response(HTTPNetworkResponse)
     case error(Error)
   }
 
   public var response: Response = .error(NSError())
   
-  public func get(with params: NetworkGetParams) async throws -> NetworkResponse {
+  public func get(with params: HTTPGetParams) async throws -> HTTPNetworkResponse {
     switch self.response {
     case let .response(response):
       return response

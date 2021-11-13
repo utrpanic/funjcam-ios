@@ -8,15 +8,15 @@ let package = Package(
   platforms: [.iOS(.v15)],
   products: [
     .library(name: "Platform", targets: [
-      "Network",
+      "HTTPNetwork",
       "UserDefaults"
     ]),
     .library(name: "PlatformImp", targets: [
-      "NetworkImp",
+      "HTTPNetworkImp",
       "UserDefaultsImp"
     ]),
     .library(name: "PlatformTestSupport", targets: [
-      "NetworkTestSupprt",
+      "HTTPNetworkTestSupprt",
       "UserDefautsTestSupprt"
     ])
   ],
@@ -24,10 +24,10 @@ let package = Package(
     
   ],
   targets: [
-    .target(name: "Network", dependencies: [], path: "Network/Interface"),
-    .target(name: "NetworkImp",dependencies: ["Network"], path: "Network/Implementation"),
-    .testTarget(name: "NetworkTests", dependencies: ["NetworkImp"], path: "Network/Tests"),
-    .target(name: "NetworkTestSupprt", dependencies: ["Network"], path: "Network/TestSupport"),
+    .target(name: "HTTPNetwork", dependencies: [], path: "HTTPNetwork/Interface"),
+    .target(name: "HTTPNetworkImp",dependencies: ["HTTPNetwork"], path: "HTTPNetwork/Implementation"),
+    .testTarget(name: "HTTPNetworkImpTests", dependencies: ["HTTPNetworkImp"], path: "HTTPNetwork/Tests"),
+    .target(name: "HTTPNetworkTestSupprt", dependencies: ["HTTPNetwork"], path: "HTTPNetwork/TestSupport"),
     
     .target(name: "UserDefaults", dependencies: [], path: "UserDefaults/Protocol"),
     .target(name: "UserDefaultsImp",dependencies: ["UserDefaults"], path: "UserDefaults/Implementation"),

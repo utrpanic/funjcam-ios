@@ -1,18 +1,18 @@
 import Foundation
 import Entity
-import Network
+import HTTPNetwork
 import Usecase
 
-public final class SearchGoogleImageUsecase {
+public final class GoogleImageUsecaseImp: GoogleImageUsecase {
   
-  private let network: Network
+  private let network: HTTPNetwork
   
-  public init(network: Network) {
+  public init(network: HTTPNetwork) {
     self.network = network
   }
   
-  public func execute(query: String, pivot: Int) async throws -> SearchGoogleImageResult {
-    let params = NetworkGetParams(
+  public func search(query: String, page: Int?) async throws -> GoogleImageSearchResult {
+    let params = HTTPGetParams(
       url: URL(string: "https://www.googleapis.com/customsearch/v1"),
       headers: nil,
       queries: [
@@ -20,16 +20,16 @@ public final class SearchGoogleImageUsecase {
         "key": "AIzaSyCTdQn7PY1xP5d_Otz8O8aTvbCSslU7lBQ",
         "cx": "015032654831495313052:qzljc0expde",
         "searchType": "image",
-        "start": pivot,
+        "start": page,
         "num": 10 // 1~10만 허용.
       ]
     )
     let responseBody = try await self.network.get(with: params).body
-    return try JSONDecoder().decode(SearchGoogleImageResultImp.self, from: responseBody)
+    return try JSONDecoder().decode(GoogleImageSearchResultImp.self, from: responseBody)
   }
 }
 
-private struct SearchGoogleImageResultImp: SearchGoogleImageResult, Decodable {
+private struct GoogleImageSearchResultImp: GoogleImageSearchResult, Decodable {
   
   var searchedImages: [SearchedImageByGoogle]
   var nextPages: [NextPage]?

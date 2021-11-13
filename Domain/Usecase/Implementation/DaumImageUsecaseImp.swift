@@ -1,18 +1,18 @@
 import Foundation
 import Entity
 import Usecase
-import Network
+import HTTPNetwork
 
-public final class SearchDaumImageUsecaseImp: SearchDaumImageUsecase {
+public final class DaumImageUsecaseImp: DaumImageUsecase {
   
-  private let network: Network
+  private let network: HTTPNetwork
   
-  public init(network: Network) {
+  public init(network: HTTPNetwork) {
     self.network = network
   }
   
-  public func execute(query: String, pivot: Int) async throws -> SearchDaumImageResult {
-    let params = NetworkGetParams(
+  public func search(query: String, page: Int?) async throws -> DaumImageSearchResult {
+    let params = HTTPGetParams(
         url: URL(string: "https://dapi.kakao.com/v2/search/image"),
         headers: [
           "Authorization": "KakaoAK 3aa0ae0423487ecc4eda2664cc7bc936"
@@ -20,16 +20,16 @@ public final class SearchDaumImageUsecaseImp: SearchDaumImageUsecase {
         queries: [
           "query": query,
           "sort": "accuracy", // accuracy or recency
-          "page": pivot, // 1 ~ 50
+          "page": page, // 1 ~ 50
           "size": "20" // 1 ~ 80
         ]
     )
     let responseBody = try await self.network.get(with: params).body
-    return try JSONDecoder().decode(SearchDaumImageResultImp.self, from: responseBody)
+    return try JSONDecoder().decode(DaumImageSearchResultImp.self, from: responseBody)
   }
 }
 
-private struct SearchDaumImageResultImp: SearchDaumImageResult, Decodable {
+private struct DaumImageSearchResultImp: DaumImageSearchResult, Decodable {
   
   let searchedImages: [SearchedImageByDaum]
   let hasMore: Bool

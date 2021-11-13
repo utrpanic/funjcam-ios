@@ -1,18 +1,18 @@
 import Foundation
 import Entity
-import Network
+import HTTPNetwork
 import Usecase
 
-public final class SearchNaverImageUsecase {
+public final class NaverImageUsecaseImp: NaverImageUsecase {
   
-  private let network: Network
+  private let network: HTTPNetwork
   
-  public init(network: Network) {
+  public init(network: HTTPNetwork) {
     self.network = network
   }
   
-  public func execute(query: String, pivot: Int) async throws -> SearchNaverImageResult {
-    let params = NetworkGetParams(
+  public func search(query: String, page: Int?) async throws -> NaverImageSearchResult {
+    let params = HTTPGetParams(
       url: URL(string: "https://openapi.naver.com/v1/search/image"),
       headers: [
         "X-Naver-Client-Id": "93Aki4p3ckUPf2L7Lyac",
@@ -21,17 +21,17 @@ public final class SearchNaverImageUsecase {
       queries: [
         "query": query,
         "sort": "sim", // sim or date
-        "start": pivot, // 1 ~ 1000
+        "start": page, // 1 ~ 1000
         "display": "20", // 10 ~ 100
         "filter": "all" // all, large, medium, small
       ]
     )
     let responseBody = try await self.network.get(with: params).body
-    return try JSONDecoder().decode(SearchNaverImageResultImp.self, from: responseBody)
+    return try JSONDecoder().decode(NaverImageSearchResultImp.self, from: responseBody)
   }
 }
 
-private struct SearchNaverImageResultImp: SearchNaverImageResult, Decodable {
+private struct NaverImageSearchResultImp: NaverImageSearchResult, Decodable {
   
   let searchedImages: [SearchedImageByNaver]
   let nextStartIndex: Int?
