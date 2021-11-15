@@ -10,6 +10,7 @@ import TinyConstraints
 
 public protocol SearchControllable {
   func activate(with viewController: SearchViewControllable) -> Observable<SearchState>
+  func searchTapped()
 }
 
 final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderCellDelegate {
@@ -32,12 +33,14 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   
   private let controller: SearchControllable
   private var cancellables: Set<AnyCancellable>
+  private var images: [SearchedImage]
   
   init(controller: SearchControllable) {
     self.controller = controller
     self.reactor = SearchReactor()
     self.disposeBag = DisposeBag()
     self.cancellables = Set<AnyCancellable>()
+    self.images = []
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -68,8 +71,8 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     containerView.addSubview(textField)
     let insets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     textField.edgesToSuperview(insets: insets)
-    textField.addTarget(self, action: #selector(searchQueryDidChange), for: .editingChanged)
-    textField.addTarget(self, action: #selector(searchDidTap), for: .primaryActionTriggered)
+    textField.addTarget(self, action: #selector(searchQueryChanged), for: .editingChanged)
+    textField.addTarget(self, action: #selector(searchButtonTapped), for: .primaryActionTriggered)
     self.textField = textField
   }
   
@@ -90,9 +93,12 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   }
   
   private func observeController() {
-    self.controller.activate(with: self).sink { [weak self] state in
-      self?.refreshViews()
-    }.store(in: &self.cancellables)
+    self.controller.activate(with: self)
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] state in
+        self?.images = state.images
+        self?.refreshViews()
+      }.store(in: &self.cancellables)
     self.reactor.state.subscribe(onNext: { [weak self] (state) in
       guard let `self` = self else { return }
       switch state.viewAction {
@@ -116,18 +122,18 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     }).disposed(by: self.disposeBag)
   }
   
-  @objc private func searchQueryDidChange() {
+  private func refreshViews() {
+    self.collectionView?.reloadData()
+  }
+  
+  @objc private func searchQueryChanged() {
     let query = self.textField?.text ?? ""
     self.reactor.action.onNext(.searchQueryUpdated(query))
   }
   
-  @objc private func searchDidTap() {
-    self.reactor.action.onNext(.search)
+  @objc private func searchButtonTapped() {
     self.view.endEditing(true)
-  }
-  
-  private func refreshViews() {
-    self.collectionView?.reloadData()
+    self.controller.searchTapped()
   }
   
   // MARK: - UICollectionViewDataSource
@@ -158,7 +164,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
       return cell
     case .image:
       let cell = collectionView.dequeueReusableCell(SearchResultCell.self, for: indexPath)
-      cell.configure(searchedImage: self.state.images[indexPath.item])
+      cell.configure(searchedImage: self.images[indexPath.item])
       return cell
     case .more:
       let cell = collectionView.dequeueReusableCell(LoadMoreCell.self, for: indexPath)

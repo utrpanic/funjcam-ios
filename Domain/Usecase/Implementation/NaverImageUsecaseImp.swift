@@ -11,7 +11,7 @@ public final class NaverImageUsecaseImp: NaverImageUsecase {
     self.network = network
   }
   
-  public func search(query: String, page: Int?) async throws -> NaverImageSearchResult {
+  public func search(query: String, next: Int?) async throws -> NaverImageSearchResult {
     let params = HTTPGetParams(
       url: URL(string: "https://openapi.naver.com/v1/search/image"),
       headers: [
@@ -21,7 +21,7 @@ public final class NaverImageUsecaseImp: NaverImageUsecase {
       queries: [
         "query": query,
         "sort": "sim", // sim or date
-        "start": page, // 1 ~ 1000
+        "start": next, // 1 ~ 1000
         "display": "20", // 10 ~ 100
         "filter": "all" // all, large, medium, small
       ]
@@ -34,7 +34,7 @@ public final class NaverImageUsecaseImp: NaverImageUsecase {
 private struct NaverImageSearchResultImp: NaverImageSearchResult, Decodable {
   
   let searchedImages: [SearchedImageByNaver]
-  let nextStartIndex: Int?
+  let next: Int?
   
   enum CodingKeys: String, CodingKey {
     case items
@@ -49,6 +49,6 @@ private struct NaverImageSearchResultImp: NaverImageSearchResult, Decodable {
     let images = try values.decodeIfPresent([SearchedImageByNaver].self, forKey: .items) ?? []
     self.searchedImages = images
     let startIndex = try values.decodeIfPresent(Int.self, forKey: .start)
-    self.nextStartIndex = startIndex.map { $0 + images.count }
+    self.next = startIndex.map { $0 + images.count }
   }
 }

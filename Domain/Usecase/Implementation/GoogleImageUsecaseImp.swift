@@ -11,7 +11,7 @@ public final class GoogleImageUsecaseImp: GoogleImageUsecase {
     self.network = network
   }
   
-  public func search(query: String, page: Int?) async throws -> GoogleImageSearchResult {
+  public func search(query: String, next: Int?) async throws -> GoogleImageSearchResult {
     let params = HTTPGetParams(
       url: URL(string: "https://www.googleapis.com/customsearch/v1"),
       headers: nil,
@@ -20,7 +20,7 @@ public final class GoogleImageUsecaseImp: GoogleImageUsecase {
         "key": "AIzaSyCTdQn7PY1xP5d_Otz8O8aTvbCSslU7lBQ",
         "cx": "015032654831495313052:qzljc0expde",
         "searchType": "image",
-        "start": page,
+        "start": next,
         "num": 10 // 1~10만 허용.
       ]
     )
@@ -33,7 +33,7 @@ private struct GoogleImageSearchResultImp: GoogleImageSearchResult, Decodable {
   
   var searchedImages: [SearchedImageByGoogle]
   var nextPages: [NextPage]?
-  var nextPageStartIndex: Int? { return self.nextPages?.first?.startIndex }
+  var next: Int? { return self.nextPages?.first?.startIndex }
   
   enum CodingKeys: String, CodingKey {
     case items
