@@ -8,9 +8,10 @@ import ReactorKit
 import RxSwift
 import TinyConstraints
 
-public protocol SearchControllable {
+protocol SearchControllable {
   func activate(with viewController: SearchViewControllable) -> Observable<SearchState>
   func searchTapped()
+  func searchProviderChanged(to newValue: SearchProvider)
 }
 
 final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderCellDelegate {
@@ -261,13 +262,11 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   // MARK: - SearchHeaderGridCellDelegate
   func searchProviderButtonDidTap() {
     let alertController = UIAlertController(title: Resource.string("provider:searchProvider"), message: nil, preferredStyle: .actionSheet)
-    SearchProvider.allCases.forEach({
-      let provider = $0
+    SearchProvider.allCases.forEach { provider in
       alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { [weak self] (action) in
-        self?.reactor.action.onNext(.setSearchProvider(provider))
-        self?.reactor.action.onNext(.search)
+        self?.controller.searchProviderChanged(to: provider)
       }))
-    })
+    }
     alertController.addAction(UIAlertAction(title: Resource.string("common:cancel"), style: .cancel, handler: nil))
     self.present(alertController, animated: true, completion: nil)
   }

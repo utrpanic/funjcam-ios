@@ -17,20 +17,14 @@ SettingsDependency
 final class AppComponent: Dependencies {
   
   let searchProviderUsecase: SearchProviderUsecase
-  let daumImageUsecase: DaumImageUsecase
-  let googleImageUsecase: GoogleImageUsecase
-  let naverImageUsecase: NaverImageUsecase
+  let searchImageUsecase: SearchImageUsecase
   
   init(
     searchProviderUsecase: SearchProviderUsecase,
-    daumImageUsecase: DaumImageUsecase,
-    googleImageUsecase: GoogleImageUsecase,
-    naverImageUsecase: NaverImageUsecase
+    searchImageUsecase: SearchImageUsecase
   ) {
     self.searchProviderUsecase = searchProviderUsecase
-    self.daumImageUsecase = daumImageUsecase
-    self.googleImageUsecase = googleImageUsecase
-    self.naverImageUsecase = naverImageUsecase
+    self.searchImageUsecase = searchImageUsecase
   }
   
   func searchBuilder(listener: SearchListener?) -> ViewControllerBuildable {
@@ -56,9 +50,7 @@ extension AppComponent {
     let network = HTTPNetworkImp(session: URLSession.shared)
     return AppComponent(
       searchProviderUsecase: SearchProviderUsecaseImp(userDefaults: userDefaults),
-      daumImageUsecase: DaumImageUsecaseImp(network: network),
-      googleImageUsecase: GoogleImageUsecaseImp(network: network),
-      naverImageUsecase: NaverImageUsecaseImp(network: network)
+      searchImageUsecase: SearchImageUsecaseImp(network: network)
     )
   }
 }

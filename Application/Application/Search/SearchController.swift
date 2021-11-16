@@ -1,12 +1,11 @@
 import Usecase
 import Combine
+import Entity
 import SwiftUI
 
 public protocol SearchDependency {
   var searchProviderUsecase: SearchProviderUsecase { get }
-  var daumImageUsecase: DaumImageUsecase { get }
-  var googleImageUsecase: GoogleImageUsecase { get }
-  var naverImageUsecase: NaverImageUsecase { get }
+  var searchImageUsecase: SearchImageUsecase { get }
 }
 
 public protocol SearchListener: AnyObject {
@@ -20,9 +19,7 @@ public protocol SearchViewControllable: ViewControllable {
 public final class SearchController: SearchControllable, ViewControllerBuildable {
   
   private let searchProviderUsecase: SearchProviderUsecase
-  private let daumImageUsecase: DaumImageUsecase
-  private let googleImageUsecase: GoogleImageUsecase
-  private let naverImageUsecase: NaverImageUsecase
+  private let searchImageUsecase: SearchImageUsecase
   private let stateSubject: CurrentValueSubject<SearchState, Never>
   private var state: SearchState {
     get { self.stateSubject.value }
@@ -34,9 +31,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   
   public init(dependency: SearchDependency, listener: SearchListener?) {
     self.searchProviderUsecase = dependency.searchProviderUsecase
-    self.daumImageUsecase = dependency.daumImageUsecase
-    self.googleImageUsecase = dependency.googleImageUsecase
-    self.naverImageUsecase = dependency.naverImageUsecase
+    self.searchImageUsecase = dependency.searchImageUsecase
     let initialState = SearchState(provider: dependency.searchProviderUsecase.query())
     self.stateSubject = CurrentValueSubject(initialState)
     self.listener = listener
@@ -50,33 +45,29 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   
   // MARK: - SearchControllable
   
-  public func activate(with viewController: SearchViewControllable) -> Observable<SearchState> {
+  func activate(with viewController: SearchViewControllable) -> Observable<SearchState> {
     self.viewController = viewController
     return self.stateSubject.eraseToAnyPublisher()
   }
   
-  public func searchTapped() {
+  func searchTapped() {
     Task { [weak self] in
       guard let self = self else { return }
       do {
-        switch self.state.provider {
-        case .daum:
-          let result = try await self.daumImageUsecase.search(query: self.state.query, next: nil)
-          self.state.images = result.searchedImages
-          self.state.next = result.next
-        case .google:
-          let result = try await self.googleImageUsecase.search(query: self.state.query, next: nil)
-          self.state.images = result.searchedImages
-          self.state.next = result.next
-        case .naver:
-          let result = try await self.naverImageUsecase.search(query: self.state.query, next: nil)
-          self.state.images = result.searchedImages
-          self.state.next = result.next
-        }
+        let result = try await self.searchImageUsecase.execute(
+          query: self.state.query, next: nil, provider: self.state.provider
+        )
+        self.state.images = result.images
+        self.state.next = result.next
       } catch {
         
       }
     }
+  }
+  
+  func searchProviderChanged(to newValue: SearchProvider) {
+    self.state.provider = newValue
+    self.searchTapped()
   }
 }
 
