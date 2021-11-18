@@ -9,9 +9,9 @@ import RxSwift
 import TinyConstraints
 
 protocol SearchControllable {
-  func activate(with viewController: SearchViewControllable) -> Observable<SearchState>
-  func searchTapped()
-  func searchProviderChanged(to newValue: SearchProvider)
+  func activate(with viewController: SearchViewControllable) -> Observable<SearchViewState>
+  func requestSearch()
+  func requestChangeSearchProvider(to newValue: SearchProvider)
 }
 
 final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderCellDelegate {
@@ -27,6 +27,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   private weak var textField: UITextField?
   private weak var collectionView: UICollectionView?
   var scrollView: UIScrollView? { self.collectionView }
+  private weak var loadingView: UIActivityIndicatorView?
   
   private let reactor: SearchReactor
   private var state: SearchReactor.State { self.reactor.currentState }
@@ -54,6 +55,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.view.backgroundColor = .systemBackground
     self.setupTextField()
     self.setupCollectionView()
+    self.setupLoadingView()
     self.observeController()
   }
   
@@ -93,38 +95,60 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.collectionView = collectionView
   }
   
+  private func setupLoadingView() {
+    let loadingView = UIActivityIndicatorView(style: .medium)
+    loadingView.alpha = 0
+    loadingView.isHidden = true
+    self.view.addSubview(loadingView)
+    loadingView.edgesToSuperview(excluding: [.top])
+    loadingView.topToSuperview(usingSafeArea: true)
+    self.loadingView = loadingView
+  }
+  
+  private func updateLoadingView(loading: Bool) {
+    if loading {
+      self.loadingView?.isHidden = false
+      self.loadingView?.startAnimating()
+      UIView.animate(withDuration: 0.2) { [weak self] in
+        self?.loadingView?.alpha = 1
+      }
+    } else {
+      UIView.animate(withDuration: 0.2) { [weak self] in
+        self?.loadingView?.alpha = 0
+      } completion: { [weak self] _ in
+        self?.loadingView?.stopAnimating()
+        self?.loadingView?.isHidden = true
+      }
+    }
+  }
+  
   private func observeController() {
     self.controller.activate(with: self)
       .receive(on: DispatchQueue.main)
-      .sink { [weak self] state in
-        self?.images = state.images
-        self?.refreshViews()
+      .sink { [weak self] viewState in
+        switch viewState {
+        case let .loading(loading):
+          self?.updateLoadingView(loading: loading)
+        case let .stateArrived(state):
+          self?.images = state.images
+          self?.refreshViews()
+        case let .errorArrived(error):
+          self?.handleError(error)
+        }
       }.store(in: &self.cancellables)
-    self.reactor.state.subscribe(onNext: { [weak self] (state) in
-      guard let `self` = self else { return }
-      switch state.viewAction {
-      case .none:
-        break
-      case .refresh:
-        self.refreshViews()
-      case .searchBegin:
-        break
-      case let .searchError(code):
-        self.showOkAlert(title: "이미지 검색에 실패했습니다.", message: "Code: \(code)", onOk: nil)
-      case .searchEnd:
-        break
-      case .searchMoreBegin:
-        break
-      case let .searchMoreError(code):
-        self.showOkAlert(title: "이미지 더 불러오기에 실패했습니다.", message: "Code: \(code)", onOk: nil)
-      case .searchMoreEnd:
-        break
-      }
-    }).disposed(by: self.disposeBag)
   }
   
   private func refreshViews() {
     self.collectionView?.reloadData()
+  }
+  
+  private func handleError(_ error: SearchError) {
+    switch error {
+    case .search:
+      self.showOkAlert(title: "이미지 검색에 실패했습니다.", message: nil, onOk: nil)
+    case .searchMore:
+      self.showOkAlert(title: "이미지 더 불러오기에 실패했습니다.", message: nil, onOk: nil)
+    }
   }
   
   @objc private func searchQueryChanged() {
@@ -134,7 +158,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   
   @objc private func searchButtonTapped() {
     self.view.endEditing(true)
-    self.controller.searchTapped()
+    self.controller.requestSearch()
   }
   
   // MARK: - UICollectionViewDataSource
@@ -264,7 +288,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     let alertController = UIAlertController(title: Resource.string("provider:searchProvider"), message: nil, preferredStyle: .actionSheet)
     SearchProvider.allCases.forEach { provider in
       alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { [weak self] (action) in
-        self?.controller.searchProviderChanged(to: provider)
+        self?.controller.requestChangeSearchProvider(to: provider)
       }))
     }
     alertController.addAction(UIAlertAction(title: Resource.string("common:cancel"), style: .cancel, handler: nil))

@@ -1,6 +1,6 @@
 import Entity
 
-public struct SearchState {
+struct SearchState {
   
   var provider: SearchProvider
   var query: String = "김연아"
@@ -12,4 +12,15 @@ public struct SearchState {
   init(provider: SearchProvider) {
     self.provider = provider
   }
+}
+
+enum SearchError: Error {
+  case search(Error)
+  case searchMore(Error)
+}
+
+enum SearchViewState {
+  case loading(Bool)
+  case stateArrived(SearchState)
+  case errorArrived(SearchError)
 }

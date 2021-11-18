@@ -20,11 +20,11 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   
   private let searchProviderUsecase: SearchProviderUsecase
   private let searchImageUsecase: SearchImageUsecase
-  private let stateSubject: CurrentValueSubject<SearchState, Never>
+  
   private var state: SearchState {
-    get { self.stateSubject.value }
-    set { self.stateSubject.send(newValue) }
+    didSet { self.viewState.send(.stateArrived(self.state)) }
   }
+  private let viewState: PassthroughSubject<SearchViewState, Never>
   
   private weak var viewController: SearchViewControllable?
   weak var listener: SearchListener?
@@ -32,8 +32,8 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   public init(dependency: SearchDependency, listener: SearchListener?) {
     self.searchProviderUsecase = dependency.searchProviderUsecase
     self.searchImageUsecase = dependency.searchImageUsecase
-    let initialState = SearchState(provider: dependency.searchProviderUsecase.query())
-    self.stateSubject = CurrentValueSubject(initialState)
+    self.state = SearchState(provider: dependency.searchProviderUsecase.query())
+    self.viewState = PassthroughSubject()
     self.listener = listener
   }
   
@@ -45,33 +45,41 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   
   // MARK: - SearchControllable
   
-  func activate(with viewController: SearchViewControllable) -> Observable<SearchState> {
+  func activate(with viewController: SearchViewControllable) -> Observable<SearchViewState> {
     self.viewController = viewController
-    return self.stateSubject.eraseToAnyPublisher()
+    return self.viewState.eraseToAnyPublisher()
   }
   
-  func searchTapped() {
+  func requestSearch() {
     Task { [weak self] in
-      guard let self = self else { return }
+      self?.viewState.send(.loading(true))
       do {
-        let result = try await self.searchImageUsecase.execute(
-          query: self.state.query, next: nil, provider: self.state.provider
-        )
-        self.state.images = result.images
-        self.state.next = result.next
+        try await self?.search()
       } catch {
-        
+        self?.viewState.send(.errorArrived(.search(error)))
       }
+      self?.viewState.send(.loading(false))
     }
   }
   
-  func searchProviderChanged(to newValue: SearchProvider) {
+  func requestChangeSearchProvider(to newValue: SearchProvider) {
     self.state.provider = newValue
-    self.searchTapped()
+    Task { [weak self] in
+      self?.viewState.send(.loading(true))
+      do {
+        try await self?.search()
+      } catch {
+        self?.viewState.send(.errorArrived(.search(error)))
+      }
+      self?.viewState.send(.loading(false))
+    }
   }
-}
-
-enum SearchError {
-  case searchFailed
-  case searchMoreFailed
+  
+  private func search() async throws {
+    let result = try await self.searchImageUsecase.execute(
+      query: self.state.query, next: nil, provider: self.state.provider
+    )
+    self.state.images = result.images
+    self.state.next = result.next
+  }
 }
