@@ -10,7 +10,9 @@ import TinyConstraints
 
 protocol SearchControllable {
   func activate(with viewController: SearchViewControllable) -> Observable<SearchViewState>
-  func requestSearch()
+  func requestSearch(query: String?)
+  func requestSearchMore()
+  func requestToggleGIF()
   func requestChangeSearchProvider(to newValue: SearchProvider)
 }
 
@@ -29,20 +31,14 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   var scrollView: UIScrollView? { self.collectionView }
   private weak var loadingView: UIActivityIndicatorView?
   
-  private let reactor: SearchReactor
-  private var state: SearchReactor.State { self.reactor.currentState }
-  private var disposeBag: DisposeBag
-  
+  private var state: SearchState
   private let controller: SearchControllable
   private var cancellables: Set<AnyCancellable>
-  private var images: [SearchedImage]
   
-  init(controller: SearchControllable) {
+  init(initialState: SearchState, controller: SearchControllable) {
+    self.state = initialState
     self.controller = controller
-    self.reactor = SearchReactor()
-    self.disposeBag = DisposeBag()
     self.cancellables = Set<AnyCancellable>()
-    self.images = []
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -130,7 +126,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
         case let .loading(loading):
           self?.updateLoadingView(loading: loading)
         case let .stateArrived(state):
-          self?.images = state.images
+          self?.state = state
           self?.refreshViews()
         case let .errorArrived(error):
           self?.handleError(error)
@@ -152,13 +148,14 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   }
   
   @objc private func searchQueryChanged() {
-    let query = self.textField?.text ?? ""
-    self.reactor.action.onNext(.searchQueryUpdated(query))
+    let query = self.textField?.text
+    self.controller.requestSearch(query: query)
   }
   
   @objc private func searchButtonTapped() {
     self.view.endEditing(true)
-    self.controller.requestSearch()
+    let query = self.textField?.text
+    self.controller.requestSearch(query: query)
   }
   
   // MARK: - UICollectionViewDataSource
@@ -183,13 +180,13 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     switch Section(rawValue: indexPath.section)! {
     case .header:
       let cell = collectionView.dequeueReusableCell(SearchHeaderCell.self, for: indexPath)
-      let provider = Settings.shared.searchProvider.name
-      cell.configure(with: provider, searchingGif: self.state.searchingGif)
+      let provider = self.state.provider.name
+      cell.configure(with: provider, searchingGif: self.state.searchAnimatedGIF)
       cell.delegate = self
       return cell
     case .image:
       let cell = collectionView.dequeueReusableCell(SearchResultCell.self, for: indexPath)
-      cell.configure(searchedImage: self.images[indexPath.item])
+      cell.configure(searchedImage: self.state.images[indexPath.item])
       return cell
     case .more:
       let cell = collectionView.dequeueReusableCell(LoadMoreCell.self, for: indexPath)
@@ -204,9 +201,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     switch Section(rawValue: indexPath.section)! {
     case .more:
-      if self.state.hasMore {
-        self.reactor.action.onNext(.searchMore)
-      }
+      self.controller.requestSearchMore()
     default:
       break
     }
@@ -296,8 +291,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   }
   
   func searchingGifButtonDidTap() {
-    self.reactor.action.onNext(.toggleGif)
-    self.reactor.action.onNext(.search)
+    self.controller.requestToggleGIF()
   }
 }
 

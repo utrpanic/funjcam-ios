@@ -38,7 +38,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   }
   
   public func buildViewController() -> ViewControllable {
-    let viewController = SearchViewController(controller: self)
+    let viewController = SearchViewController(initialState: self.state, controller: self)
     self.viewController = viewController
     return viewController
   }
@@ -50,7 +50,32 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     return self.viewState.eraseToAnyPublisher()
   }
   
-  func requestSearch() {
+  func requestSearch(query: String?) {
+    guard let query = query, query.hasElement else { return }
+    self.state.query = query
+    Task { [weak self] in
+      self?.viewState.send(.loading(true))
+      do {
+        try await self?.search()
+      } catch {
+        self?.viewState.send(.errorArrived(.search(error)))
+      }
+      self?.viewState.send(.loading(false))
+    }
+  }
+  
+  func requestSearchMore() {
+    Task { [weak self] in
+      do {
+        try await self?.searchMore()
+      } catch {
+        self?.viewState.send(.errorArrived(.searchMore(error)))
+      }
+    }
+  }
+  
+  func requestToggleGIF() {
+    self.state.searchAnimatedGIF.toggle()
     Task { [weak self] in
       self?.viewState.send(.loading(true))
       do {
@@ -78,6 +103,15 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   private func search() async throws {
     let result = try await self.searchImageUsecase.execute(
       query: self.state.query, next: nil, provider: self.state.provider
+    )
+    self.state.images = result.images
+    self.state.next = result.next
+  }
+  
+  private func searchMore() async throws {
+    guard let next = self.state.next else { return }
+    let result = try await self.searchImageUsecase.execute(
+      query: self.state.query, next: next, provider: self.state.provider
     )
     self.state.images = result.images
     self.state.next = result.next
