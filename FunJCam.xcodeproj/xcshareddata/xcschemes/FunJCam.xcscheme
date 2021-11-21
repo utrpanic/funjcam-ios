@@ -94,20 +94,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "NetworkTests"
-               BuildableName = "NetworkTests"
-               BlueprintName = "NetworkTests"
+               BlueprintIdentifier = "HTTPNetworkImpTests"
+               BuildableName = "HTTPNetworkImpTests"
+               BlueprintName = "HTTPNetworkImpTests"
                ReferencedContainer = "container:Platform">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DomainTests"
-               BuildableName = "DomainTests"
-               BlueprintName = "DomainTests"
-               ReferencedContainer = "container:Domain">
             </BuildableReference>
          </TestableReference>
       </Testables>

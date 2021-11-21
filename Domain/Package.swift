@@ -11,7 +11,6 @@ let package = Package(
       "Entity"
     ]),
     .library(name: "Domain", targets: [
-      "Domain",
       "Usecase"
     ]),
     .library(name: "DomainImp", targets: [
@@ -26,11 +25,7 @@ let package = Package(
     .package(name: "Platform", path: "../Platform")
   ],
   targets: [
-    
     .target(name: "Entity", dependencies: [], path: "Entity"),
-    
-    .target(name: "Domain", dependencies: [.product(name: "Proxy", package: "Proxy"), .product(name: "Platform", package: "Platform"), "Entity"], path: "Domain"),
-    .testTarget(name: "DomainTests", dependencies: ["Domain"]),
     
     .target(name: "Usecase", dependencies: [.product(name: "Platform", package: "Platform"), "Entity"], path: "Usecase/Interface"),
     .target(name: "UsecaseImp", dependencies: ["Usecase"], path: "Usecase/Implementation"),

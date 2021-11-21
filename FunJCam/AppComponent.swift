@@ -1,5 +1,4 @@
 import UIKit
-import Domain
 import Application
 import UserDefaults
 import UserDefaultsImp

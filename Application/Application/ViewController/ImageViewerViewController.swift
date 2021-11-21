@@ -1,6 +1,5 @@
 import UIKit
 import BoxKit
-import Domain
 import Entity
 
 final class ImageViewerViewController: ViewController {
