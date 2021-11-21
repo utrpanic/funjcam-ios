@@ -102,7 +102,9 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   
   private func search() async throws {
     let result = try await self.searchImageUsecase.execute(
-      query: self.state.query, next: nil, provider: self.state.provider
+      query: self.adjustedSearchQuery(),
+      next: nil,
+      provider: self.state.provider
     )
     self.state.images = result.images
     self.state.next = result.next
@@ -111,9 +113,19 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   private func searchMore() async throws {
     guard let next = self.state.next else { return }
     let result = try await self.searchImageUsecase.execute(
-      query: self.state.query, next: next, provider: self.state.provider
+      query: self.adjustedSearchQuery(),
+      next: next,
+      provider: self.state.provider
     )
     self.state.images.append(contentsOf: result.images)
     self.state.next = result.next
+  }
+  
+  private func adjustedSearchQuery() -> String {
+    var query = self.state.query
+    if self.state.searchAnimatedGIF {
+      query.append(contentsOf: " \(Resource.string("search:gif"))")
+    }
+    return query
   }
 }
