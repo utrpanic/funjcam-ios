@@ -10,16 +10,16 @@ import TinyConstraints
 
 protocol SearchControllable {
   func activate(with viewController: SearchViewControllable) -> Observable<SearchViewState>
+  func requestUpdateQuery(_ query: String?)
   func requestSearch(query: String?)
   func requestSearchMore()
   func requestToggleGIF()
   func requestChangeSearchProvider(to newValue: SearchProvider)
 }
 
-final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout, SearchHeaderCellDelegate {
+final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
   
   enum Section: Int, CaseIterable {
-    case header
     case image
     case more
     case empty
@@ -27,6 +27,9 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   
   private weak var containerView: UIView?
   private weak var textField: UITextField?
+  private weak var headerView: UIView?
+  private weak var providerButton: UIButton?
+  private weak var searchAnimatedGIFButton: UIButton?
   private weak var collectionView: UICollectionView?
   var scrollView: UIScrollView? { self.collectionView }
   private weak var loadingView: UIActivityIndicatorView?
@@ -50,6 +53,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     super.viewDidLoad()
     self.view.backgroundColor = .systemBackground
     self.setupTextField()
+    self.setupHeaderView()
     self.setupCollectionView()
     self.setupLoadingView()
     self.observeController()
@@ -75,29 +79,61 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.textField = textField
   }
   
+  private func setupHeaderView() {
+    guard let upperView = self.containerView else { return }
+    let headerView = UIView()
+    self.view.addSubview(headerView)
+    headerView.topToBottom(of: upperView)
+    headerView.leadingToSuperview()
+    headerView.trailingToSuperview()
+    headerView.height(44)
+    self.headerView = headerView
+    let providerButton = UIButton(type: .system)
+    providerButton.addTarget(self, action: #selector(searchProviderButtonTapped), for: .touchUpInside)
+    headerView.addSubview(providerButton)
+    providerButton.leadingToSuperview(offset: 8)
+    providerButton.centerYToSuperview()
+    self.providerButton = providerButton
+    let searchAnimatedGIFButton = UIButton(type: .system)
+    let gif = Resource.string("search:gif")
+    searchAnimatedGIFButton.setTitle(gif, for: .normal)
+    searchAnimatedGIFButton.addTarget(self, action: #selector(searchAnimatedGIFButtonTapped), for: .touchUpInside)
+    headerView.addSubview(searchAnimatedGIFButton)
+    searchAnimatedGIFButton.trailingToSuperview(offset: 8)
+    searchAnimatedGIFButton.centerYToSuperview()
+    self.searchAnimatedGIFButton = searchAnimatedGIFButton
+    self.updateHeaderView()
+  }
+  
+  private func updateHeaderView() {
+    self.providerButton?.setTitle(self.state.provider.name, for: .normal)
+    self.searchAnimatedGIFButton?.isSelected = self.state.searchAnimatedGIF
+  }
+  
   private func setupCollectionView() {
-    guard let containerView = self.containerView else { return }
+    guard let upperView = self.headerView else { return }
     let layout = CHTCollectionViewWaterfallLayout()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = self
     collectionView.delegate = self
-    collectionView.registerFromClass(SearchHeaderCell.self)
     collectionView.registerFromClass(SearchResultCell.self)
     collectionView.registerFromClass(LoadMoreCell.self)
     collectionView.registerFromClass(SearchEmptyCell.self)
     self.view.addSubview(collectionView)
-    collectionView.topToBottom(of: containerView)
+    collectionView.topToBottom(of: upperView)
     collectionView.edgesToSuperview(excluding: [.top])
     self.collectionView = collectionView
   }
   
   private func setupLoadingView() {
+    guard let upperView = self.headerView else { return }
     let loadingView = UIActivityIndicatorView(style: .medium)
+    loadingView.backgroundColor = .systemBackground
     loadingView.alpha = 0
     loadingView.isHidden = true
     self.view.addSubview(loadingView)
     loadingView.edgesToSuperview(excluding: [.top])
-    loadingView.topToSuperview(usingSafeArea: true)
+    loadingView.topToBottom(of: upperView)
     self.loadingView = loadingView
   }
   
@@ -127,14 +163,15 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
           self?.updateLoadingView(loading: loading)
         case let .stateArrived(state):
           self?.state = state
-          self?.refreshViews()
+          self?.updateViews()
         case let .errorArrived(error):
           self?.handleError(error)
         }
       }.store(in: &self.cancellables)
   }
   
-  private func refreshViews() {
+  private func updateViews() {
+    self.updateHeaderView()
     self.collectionView?.reloadData()
   }
   
@@ -149,7 +186,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   
   @objc private func searchQueryChanged() {
     let query = self.textField?.text
-    self.controller.requestSearch(query: query)
+    self.controller.requestUpdateQuery(query)
   }
   
   @objc private func searchButtonTapped() {
@@ -158,15 +195,28 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.controller.requestSearch(query: query)
   }
   
+  @objc private func searchProviderButtonTapped() {
+    let alertController = UIAlertController(title: Resource.string("provider:searchProvider"), message: nil, preferredStyle: .actionSheet)
+    SearchProvider.allCases.forEach { provider in
+      alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { [weak self] (action) in
+        self?.controller.requestChangeSearchProvider(to: provider)
+      }))
+    }
+    alertController.addAction(UIAlertAction(title: Resource.string("common:cancel"), style: .cancel, handler: nil))
+    self.present(alertController, animated: true, completion: nil)
+  }
+  
+  @objc private func searchAnimatedGIFButtonTapped() {
+    self.controller.requestToggleGIF()
+  }
+  
   // MARK: - UICollectionViewDataSource
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return Section.allCases.count
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    switch Section(rawValue: section)! {
-    case .header:
-      return 1
+    switch Section.allCases[section] {
     case .image:
       return self.state.images.count
     case .more:
@@ -177,13 +227,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    switch Section(rawValue: indexPath.section)! {
-    case .header:
-      let cell = collectionView.dequeueReusableCell(SearchHeaderCell.self, for: indexPath)
-      let provider = self.state.provider.name
-      cell.configure(with: provider, searchingGif: self.state.searchAnimatedGIF)
-      cell.delegate = self
-      return cell
+    switch Section.allCases[indexPath.section] {
     case .image:
       let cell = collectionView.dequeueReusableCell(SearchResultCell.self, for: indexPath)
       cell.configure(searchedImage: self.state.images[indexPath.item])
@@ -199,7 +243,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   }
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    switch Section(rawValue: indexPath.section)! {
+    switch Section.allCases[indexPath.section] {
     case .more:
       self.controller.requestSearchMore()
     default:
@@ -209,8 +253,6 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, columnCountFor section: Int) -> Int {
     switch Section(rawValue: section)! {
-    case .header:
-      return 1
     case .image:
       return 2
     case .more, .empty:
@@ -220,8 +262,6 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     switch Section(rawValue: indexPath.section)! {
-    case .header:
-      return CGSize(width: collectionView.frame.width, height: SearchHeaderCell.height)
     case .image:
       let width: CGFloat = (collectionView.frame.width - 8 - 8 - 8) / 2
       let height: CGFloat = {
@@ -276,22 +316,6 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
       // do nothing.
       break
     }
-  }
-  
-  // MARK: - SearchHeaderGridCellDelegate
-  func searchProviderButtonDidTap() {
-    let alertController = UIAlertController(title: Resource.string("provider:searchProvider"), message: nil, preferredStyle: .actionSheet)
-    SearchProvider.allCases.forEach { provider in
-      alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { [weak self] (action) in
-        self?.controller.requestChangeSearchProvider(to: provider)
-      }))
-    }
-    alertController.addAction(UIAlertAction(title: Resource.string("common:cancel"), style: .cancel, handler: nil))
-    self.present(alertController, animated: true, completion: nil)
-  }
-  
-  func searchingGifButtonDidTap() {
-    self.controller.requestToggleGIF()
   }
 }
 

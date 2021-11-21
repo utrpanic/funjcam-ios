@@ -11,6 +11,7 @@ final class LoadMoreCell: UICollectionViewCell {
     super.init(frame: frame)
     let activityIndicatorView = UIActivityIndicatorView(style: .medium)
     self.contentView.addSubview(activityIndicatorView)
+    activityIndicatorView.centerInSuperview()
     self.activityIndicatorView = activityIndicatorView
   }
   

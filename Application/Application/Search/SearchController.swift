@@ -50,6 +50,11 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     return self.viewState.eraseToAnyPublisher()
   }
   
+  func requestUpdateQuery(_ query: String?) {
+    guard let query = query else { return }
+    self.state.query = query
+  }
+  
   func requestSearch(query: String?) {
     guard let query = query, query.hasElement else { return }
     self.state.query = query
