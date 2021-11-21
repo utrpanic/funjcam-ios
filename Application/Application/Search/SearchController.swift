@@ -113,7 +113,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     let result = try await self.searchImageUsecase.execute(
       query: self.state.query, next: next, provider: self.state.provider
     )
-    self.state.images = result.images
+    self.state.images.append(contentsOf: result.images)
     self.state.next = result.next
   }
 }
