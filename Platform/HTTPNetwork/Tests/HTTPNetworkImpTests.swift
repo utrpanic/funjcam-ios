@@ -1,18 +1,18 @@
 import XCTest
-import Network
-@testable import NetworkImp
+import HTTPNetwork
+@testable import HTTPNetworkImp
 
-final class NetworkTests: XCTestCase {
+final class HTTPNetworkTests: XCTestCase {
   
-  private func sut(session: URLSessionProtocol) -> Network {
-    return NetworkImp(session: session)
+  private func sut(session: URLSessionProtocol) -> HTTPNetwork {
+    return HTTPNetworkImp(session: session)
   }
     
   func testGet() async throws {
-    let stub = NetworkResponse(body: "stub".data(using: .utf8)!)
+    let stub = HTTPNetworkResponse(body: "stub".data(using: .utf8)!)
     let session = URLSessionMock(response: stub)
     let sut = self.sut(session: session)
-    let params = NetworkGetParams(
+    let params = HTTPGetParams(
       url: URL(string: "https://test.com"),
       headers: ["Authroization": "Bearer lsdkj23j"],
       queries: ["query": "someWord", "num": 3]

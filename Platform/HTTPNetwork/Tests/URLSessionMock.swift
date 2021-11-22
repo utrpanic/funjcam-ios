@@ -1,13 +1,13 @@
 import Foundation
-import Network
-import NetworkImp
+import HTTPNetwork
+import HTTPNetworkImp
 
 final class URLSessionMock: URLSessionProtocol {
   
   private(set) var request: URLRequest?
-  private var response: NetworkResponse
+  private var response: HTTPNetworkResponse
   
-  init(response: NetworkResponse) {
+  init(response: HTTPNetworkResponse) {
     self.response = response
   }
   

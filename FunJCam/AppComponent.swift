@@ -1,10 +1,10 @@
 import UIKit
-import Domain
 import Application
 import UserDefaults
 import UserDefaultsImp
 import Usecase
 import UsecaseImp
+import HTTPNetworkImp
 
 typealias Dependencies =
 MainDependency &
@@ -16,11 +16,14 @@ SettingsDependency
 final class AppComponent: Dependencies {
   
   let searchProviderUsecase: SearchProviderUsecase
+  let searchImageUsecase: SearchImageUsecase
   
   init(
-    searchProviderUsecase: SearchProviderUsecase
+    searchProviderUsecase: SearchProviderUsecase,
+    searchImageUsecase: SearchImageUsecase
   ) {
     self.searchProviderUsecase = searchProviderUsecase
+    self.searchImageUsecase = searchImageUsecase
   }
   
   func searchBuilder(listener: SearchListener?) -> ViewControllerBuildable {
@@ -43,8 +46,10 @@ final class AppComponent: Dependencies {
 extension AppComponent {
   static var live: AppComponent {
     let userDefaults = UserDefaults.standard
+    let network = HTTPNetworkImp(session: URLSession.shared)
     return AppComponent(
-      searchProviderUsecase: SearchProviderUsecaseImp(userDefaults: userDefaults)
+      searchProviderUsecase: SearchProviderUsecaseImp(userDefaults: userDefaults),
+      searchImageUsecase: SearchImageUsecaseImp(network: network)
     )
   }
 }
