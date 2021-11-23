@@ -3,9 +3,8 @@ import Kingfisher
 
 extension UIImageView {
   
-  func setImage(url: String?, placeholder: UIImage? = nil, completion: ((UIImage?) -> Void)?) {
-    let safeURL = URL.safeVersion(from: url)
-    self.kf.setImage(with: safeURL, placeholder: placeholder, options: [.transition(.fade(0.2))], progressBlock: nil) { result in
+  func setImage(url: URL?, placeholder: UIImage? = nil, completion: ((UIImage?) -> Void)?) {
+    self.kf.setImage(with: url, placeholder: placeholder, options: [.transition(.fade(0.2))], progressBlock: nil) { result in
       switch result {
       case .success(let value):
         completion?(value.image)

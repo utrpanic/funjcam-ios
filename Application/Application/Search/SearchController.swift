@@ -1,4 +1,5 @@
 import Usecase
+import BoxKit
 import Combine
 import Entity
 import SwiftUI
@@ -106,24 +107,42 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   }
   
   private func search() async throws {
-    let result = try await self.searchImageUsecase.execute(
-      query: self.adjustedSearchQuery(),
-      next: nil,
-      provider: self.state.provider
-    )
-    self.state.images = result.images
-    self.state.next = result.next
+    do {
+      let result = try await self.searchImageUsecase.execute(
+        query: self.adjustedSearchQuery(),
+        next: nil,
+        provider: self.state.provider
+      )
+      self.state.images = result.images
+      self.state.next = result.next
+    } catch {
+      if let error = error as? DecodingError {
+        print("❌ \(error.debugDescription)")
+      } else {
+        print("❌ \(error.localizedDescription)")
+      }
+      throw error
+    }
   }
   
   private func searchMore() async throws {
     guard let next = self.state.next else { return }
-    let result = try await self.searchImageUsecase.execute(
-      query: self.adjustedSearchQuery(),
-      next: next,
-      provider: self.state.provider
-    )
-    self.state.images.append(contentsOf: result.images)
-    self.state.next = result.next
+    do {
+      let result = try await self.searchImageUsecase.execute(
+        query: self.adjustedSearchQuery(),
+        next: next,
+        provider: self.state.provider
+      )
+      self.state.images.append(contentsOf: result.images)
+      self.state.next = result.next
+    } catch {
+      if let error = error as? DecodingError {
+        print("❌ \(error.debugDescription)")
+      } else {
+        print("❌ \(error.localizedDescription)")
+      }
+      throw error
+    }
   }
   
   private func adjustedSearchQuery() -> String {

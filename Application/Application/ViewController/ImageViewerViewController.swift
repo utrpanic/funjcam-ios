@@ -55,7 +55,7 @@ final class ImageViewerViewController: ViewController {
   }
   
   @objc private func shareButtonDidTap() {
-    guard let url = URL(string: self.searchedImage.url), let data = try? Data(contentsOf: url) else {
+    guard let url = self.searchedImage.url, let data = try? Data(contentsOf: url) else {
       let error = Resource.string("imageViewer:error")
       self.showOkAlert(title: error, message: nil, onOk: nil)
       return
