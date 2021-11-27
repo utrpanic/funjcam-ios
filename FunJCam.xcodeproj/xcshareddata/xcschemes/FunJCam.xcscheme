@@ -28,34 +28,6 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "NetworkTests"
-               BuildableName = "NetworkTests"
-               BlueprintName = "NetworkTests"
-               ReferencedContainer = "container:Platform">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DomainTests"
-               BuildableName = "DomainTests"
-               BlueprintName = "DomainTests"
-               ReferencedContainer = "container:Domain">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "NO"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "ApplicationTests"
                BuildableName = "ApplicationTests"
                BlueprintName = "ApplicationTests"
@@ -98,6 +70,16 @@
                BuildableName = "HTTPNetworkImpTests"
                BlueprintName = "HTTPNetworkImpTests"
                ReferencedContainer = "container:Platform">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "ApplicationTests"
+               BuildableName = "ApplicationTests"
+               BlueprintName = "ApplicationTests"
+               ReferencedContainer = "container:Application">
             </BuildableReference>
          </TestableReference>
       </Testables>
