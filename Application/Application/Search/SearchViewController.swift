@@ -55,6 +55,11 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.observeController()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.textField?.becomeFirstResponder()
+  }
+  
   private func setupTextField() {
     let containerView = UIView()
     self.view.addSubview(containerView)
@@ -122,6 +127,41 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   }
   
   private func generateCollectionViewLayout() -> UICollectionViewLayout {
+    let configuration = UICollectionViewCompositionalLayoutConfiguration()
+    return UICollectionViewCompositionalLayout(
+      sectionProvider:  { [weak self] sectionIndex, layoutEnvironment -> NSCollectionLayoutSection? in
+        switch Section.allCases[sectionIndex] {
+        case .image:
+          return self?.generateImageLayoutSection()
+        case .more:
+          return self?.generateMoreLayoutSection()
+        case .empty:
+          return self?.generateEmptyLayoutSection()
+        }
+      },
+      configuration: configuration)
+  }
+  
+  private func generateImageLayoutSection() -> NSCollectionLayoutSection {
+    let item = NSCollectionLayoutItem(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0 / 2.0),
+        heightDimension: .fractionalHeight(1.0)
+      )
+    )
+    item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
+    let groupSize = NSCollectionLayoutSize(
+      widthDimension: .fractionalWidth(1.0),
+      heightDimension: .fractionalWidth(2.0 / 3.0)
+    )
+    let group = NSCollectionLayoutGroup.horizontal(
+      layoutSize: groupSize,
+      subitems: [item, item]
+    )
+    return NSCollectionLayoutSection(group: group)
+  }
+  
+  private func generateMoreLayoutSection() -> NSCollectionLayoutSection {
     let item = NSCollectionLayoutItem(
       layoutSize: NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(1.0),
@@ -132,13 +172,29 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     let group = NSCollectionLayoutGroup.vertical(
       layoutSize: NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(1.0),
+        heightDimension: .estimated(44.0)
+      ),
+      subitems: [item]
+    )
+    return NSCollectionLayoutSection(group: group)
+  }
+  
+  private func generateEmptyLayoutSection() -> NSCollectionLayoutSection {
+    let item = NSCollectionLayoutItem(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalHeight(1.0)
+      )
+    )
+    item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
+    let group = NSCollectionLayoutGroup.vertical(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
         heightDimension: .fractionalHeight(1.0)
       ),
-      subitem: item,
-      count: 2
+      subitems: [item]
     )
-    let section = NSCollectionLayoutSection(group: group)
-    return UICollectionViewCompositionalLayout(section: section)
+    return NSCollectionLayoutSection(group: group)
   }
   
   private func setupLoadingView() {
@@ -264,15 +320,6 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
       self.controller.requestSearchMore()
     default:
       break
-    }
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, columnCountFor section: Int) -> Int {
-    switch Section(rawValue: section)! {
-    case .image:
-      return 2
-    case .more, .empty:
-      return 1
     }
   }
   

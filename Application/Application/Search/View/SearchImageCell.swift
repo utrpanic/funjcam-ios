@@ -15,18 +15,7 @@ final class SearchImageCell: UICollectionViewCell {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-    let preferredHeight = CGFloat(100)
-    let targetSize = CGSize(width: layoutAttributes.frame.width, height: preferredHeight)
-    layoutAttributes.frame.size = self.contentView.systemLayoutSizeFitting(
-      targetSize,
-      withHorizontalFittingPriority: .required,
-      verticalFittingPriority: .fittingSizeLevel
-    )
-    return layoutAttributes
-  }
-  
+    
   private func setupImageView() {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFill
