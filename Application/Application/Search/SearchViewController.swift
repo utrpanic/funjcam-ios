@@ -143,20 +143,51 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   }
   
   private func generateImageLayoutSection() -> NSCollectionLayoutSection {
-    let item = NSCollectionLayoutItem(
-      layoutSize: NSCollectionLayoutSize(
-        widthDimension: .fractionalWidth(1.0 / 2.0),
-        heightDimension: .fractionalHeight(1.0)
+    guard self.state.images.hasElement else {
+      return self.generateEmptyLayoutSection()
+    }
+    var leadingGroupItems = [NSCollectionLayoutItem]()
+    var trailingGroupItems = [NSCollectionLayoutItem]()
+    var leadingGroupHeight: Double = 0
+    var trailingGroupHeight: Double = 0
+    self.state.images.forEach { image in
+      let isLeadingGroup = leadingGroupHeight + image.proportionalHeight <= trailingGroupHeight + image.proportionalHeight
+      let item = NSCollectionLayoutItem(
+        layoutSize: NSCollectionLayoutSize(
+          widthDimension: .fractionalWidth(1.0),
+          heightDimension: .fractionalWidth(image.proportionalHeight)
+        )
       )
+      item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
+      if isLeadingGroup {
+        leadingGroupItems.append(item)
+        leadingGroupHeight += image.proportionalHeight
+      } else {
+        trailingGroupItems.append(item)
+        trailingGroupHeight += image.proportionalHeight
+      }
+    }
+    let leadingGroup = NSCollectionLayoutGroup.vertical(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(0.5),
+        heightDimension: .fractionalWidth(0.5 * leadingGroupHeight)
+      ),
+      subitems: leadingGroupItems
     )
-    item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
+    let trailingGroup = NSCollectionLayoutGroup.vertical(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(0.5),
+        heightDimension: .fractionalWidth(0.5 * trailingGroupHeight)
+      ),
+      subitems: trailingGroupItems
+    )
     let groupSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
-      heightDimension: .fractionalWidth(2.0 / 3.0)
+      heightDimension: .fractionalWidth(0.5 * max(leadingGroupHeight, trailingGroupHeight))
     )
     let group = NSCollectionLayoutGroup.horizontal(
       layoutSize: groupSize,
-      subitems: [item, item]
+      subitems: [leadingGroup, trailingGroup]
     )
     return NSCollectionLayoutSection(group: group)
   }
@@ -332,9 +363,15 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
         self.present(navigationController, animated: true, completion: nil)
       }
     default:
-      // do nothing.
+      // Do nothing.
       break
     }
+  }
+}
+
+extension SearchedImage {
+  var proportionalHeight: CGFloat {
+    return CGFloat(self.pixelHeight) / CGFloat(self.pixelWidth)
   }
 }
 
