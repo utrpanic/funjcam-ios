@@ -2,9 +2,7 @@ import UIKit
 import Entity
 import TinyConstraints
 
-final class SearchResultCell: UICollectionViewCell {
-  
-  static var defaultHeight: CGFloat { return 100 }
+final class SearchImageCell: UICollectionViewCell {
   
   weak var imageView: UIImageView?
   
@@ -12,13 +10,12 @@ final class SearchResultCell: UICollectionViewCell {
     super.init(frame: frame)
     super.awakeFromNib()
     self.setupImageView()
-    
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
+    
   private func setupImageView() {
     let imageView = UIImageView()
     imageView.contentMode = .scaleAspectFill
@@ -30,7 +27,7 @@ final class SearchResultCell: UICollectionViewCell {
     self.imageView = imageView
   }
   
-  func configure(searchedImage: SearchedImage?) {
-    self.imageView?.setImage(url: searchedImage?.thumbnailURL, placeholder: nil, completion: nil)
+  func configure(with image: SearchedImage?) {
+    self.imageView?.setImage(url: image?.thumbnailURL, placeholder: nil, completion: nil)
   }
 }

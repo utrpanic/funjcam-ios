@@ -13,7 +13,6 @@
 		6003D27F27354F7300205112 /* Platform in Frameworks */ = {isa = PBXBuildFile; productRef = 6003D27E27354F7300205112 /* Platform */; };
 		6003D28127354FEC00205112 /* PlatformImp in Frameworks */ = {isa = PBXBuildFile; productRef = 6003D28027354FEC00205112 /* PlatformImp */; };
 		602BFBC0273B4B8E00FE7883 /* DomainImp in Frameworks */ = {isa = PBXBuildFile; productRef = 602BFBBF273B4B8E00FE7883 /* DomainImp */; };
-		6046D3AA27317686002F9F9A /* Proxy in Frameworks */ = {isa = PBXBuildFile; productRef = 6046D3A927317686002F9F9A /* Proxy */; };
 		607B9E7927317D5E003CEC36 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 607B9E7827317D5E003CEC36 /* Domain */; };
 		60AE8ACD2735463300B3325E /* Application in Frameworks */ = {isa = PBXBuildFile; productRef = 60AE8ACC2735463300B3325E /* Application */; };
 		60AF8ADC2737CC5F0041C1F9 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AF8ADB2737CC5F0041C1F9 /* AppComponent.swift */; };
@@ -71,7 +70,6 @@
 				6003D27F27354F7300205112 /* Platform in Frameworks */,
 				6003D28127354FEC00205112 /* PlatformImp in Frameworks */,
 				607B9E7927317D5E003CEC36 /* Domain in Frameworks */,
-				6046D3AA27317686002F9F9A /* Proxy in Frameworks */,
 				602BFBC0273B4B8E00FE7883 /* DomainImp in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,7 +156,6 @@
 			);
 			name = FunJCam;
 			packageProductDependencies = (
-				6046D3A927317686002F9F9A /* Proxy */,
 				607B9E7827317D5E003CEC36 /* Domain */,
 				60AE8ACC2735463300B3325E /* Application */,
 				6003D27E27354F7300205112 /* Platform */,
@@ -537,10 +534,6 @@
 		602BFBBF273B4B8E00FE7883 /* DomainImp */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DomainImp;
-		};
-		6046D3A927317686002F9F9A /* Proxy */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Proxy;
 		};
 		607B9E7827317D5E003CEC36 /* Domain */ = {
 			isa = XCSwiftPackageProductDependency;

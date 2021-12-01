@@ -1,11 +1,9 @@
 import Combine
 import UIKit
 import BoxKit
-import CHTCollectionViewWaterfallLayout
 import Entity
-import ReactorKit
-import RxSwift
 import TinyConstraints
+import SwiftUI
 
 protocol SearchControllable {
   func activate(with viewController: SearchViewControllable) -> Observable<SearchViewState>
@@ -16,7 +14,7 @@ protocol SearchControllable {
   func requestChangeSearchProvider(to newValue: SearchProvider)
 }
 
-final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, CHTCollectionViewDelegateWaterfallLayout {
+final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, UICollectionViewDelegate {
   
   enum Section: Int, CaseIterable {
     case image
@@ -56,6 +54,11 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.setupCollectionView()
     self.setupLoadingView()
     self.observeController()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.textField?.becomeFirstResponder()
   }
   
   private func setupTextField() {
@@ -111,17 +114,87 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   
   private func setupCollectionView() {
     guard let upperView = self.headerView else { return }
-    let layout = CHTCollectionViewWaterfallLayout()
+    let layout = self.generateCollectionViewLayout()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = self
     collectionView.delegate = self
-    collectionView.registerFromClass(SearchResultCell.self)
-    collectionView.registerFromClass(LoadMoreCell.self)
+    collectionView.registerFromClass(SearchImageCell.self)
+    collectionView.registerFromClass(SearchMoreCell.self)
     collectionView.registerFromClass(SearchEmptyCell.self)
     self.view.addSubview(collectionView)
     collectionView.topToBottom(of: upperView)
     collectionView.edgesToSuperview(excluding: [.top])
     self.collectionView = collectionView
+  }
+  
+  private func generateCollectionViewLayout() -> UICollectionViewLayout {
+    let configuration = UICollectionViewCompositionalLayoutConfiguration()
+    return UICollectionViewCompositionalLayout(
+      sectionProvider:  { [weak self] sectionIndex, layoutEnvironment -> NSCollectionLayoutSection? in
+        switch Section.allCases[sectionIndex] {
+        case .image:
+          return self?.generateImageLayoutSection()
+        case .more:
+          return self?.generateMoreLayoutSection()
+        case .empty:
+          return self?.generateEmptyLayoutSection()
+        }
+      },
+      configuration: configuration)
+  }
+  
+  private func generateImageLayoutSection() -> NSCollectionLayoutSection {
+    let item = NSCollectionLayoutItem(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0 / 3.0),
+        heightDimension: .fractionalHeight(1)
+      )
+    )
+    item.contentInsets = NSDirectionalEdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5)
+    let groupSize = NSCollectionLayoutSize(
+      widthDimension: .fractionalWidth(1.0),
+      heightDimension: .fractionalWidth(0.5)
+    )
+    let group = NSCollectionLayoutGroup.horizontal(
+      layoutSize: groupSize,
+      subitem: item,
+      count: 3
+    )
+    return NSCollectionLayoutSection(group: group)
+  }
+  
+  private func generateMoreLayoutSection() -> NSCollectionLayoutSection {
+    let item = NSCollectionLayoutItem(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalHeight(1.0)
+      )
+    )
+    let group = NSCollectionLayoutGroup.vertical(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .estimated(88.0)
+      ),
+      subitems: [item]
+    )
+    return NSCollectionLayoutSection(group: group)
+  }
+  
+  private func generateEmptyLayoutSection() -> NSCollectionLayoutSection {
+    let item = NSCollectionLayoutItem(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalHeight(1.0)
+      )
+    )
+    let group = NSCollectionLayoutGroup.vertical(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalHeight(1.0)
+      ),
+      subitems: [item]
+    )
+    return NSCollectionLayoutSection(group: group)
   }
   
   private func setupLoadingView() {
@@ -228,11 +301,11 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     switch Section.allCases[indexPath.section] {
     case .image:
-      let cell = collectionView.dequeueReusableCell(SearchResultCell.self, for: indexPath)
-      cell.configure(searchedImage: self.state.images[indexPath.item])
+      let cell = collectionView.dequeueReusableCell(SearchImageCell.self, for: indexPath)
+      cell.configure(with: self.state.images[indexPath.item])
       return cell
     case .more:
-      let cell = collectionView.dequeueReusableCell(LoadMoreCell.self, for: indexPath)
+      let cell = collectionView.dequeueReusableCell(SearchMoreCell.self, for: indexPath)
       cell.startLoadingAnimation()
       return cell
     case .empty:
@@ -250,71 +323,24 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     }
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, columnCountFor section: Int) -> Int {
-    switch Section(rawValue: section)! {
-    case .image:
-      return 2
-    case .more, .empty:
-      return 1
-    }
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    switch Section(rawValue: indexPath.section)! {
-    case .image:
-      let width: CGFloat = (collectionView.frame.width - 8 - 8 - 8) / 2
-      let height: CGFloat = {
-        let pixelWidth = CGFloat(self.state.images[indexPath.item].pixelWidth)
-        let pixelHeight = CGFloat(self.state.images[indexPath.item].pixelHeight)
-        return width * (pixelHeight / pixelWidth)
-      }()
-      return CGSize(width: width, height: height)
-    case .more:
-      return CGSize(width: collectionView.frame.width, height: LoadMoreCell.defaultHeight)
-    case .empty:
-      return collectionView.frame.size
-    }
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    switch Section(rawValue: section)! {
-    case .image:
-      return self.state.images.count > 0 ? UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8) : UIEdgeInsets.zero
-    default:
-      return UIEdgeInsets.zero
-    }
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingFor section: Int) -> CGFloat {
-    switch Section(rawValue: section)! {
-    case .image:
-      return 8
-    default:
-      return 0
-    }
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    switch Section(rawValue: section)! {
-    case .image:
-      return 8
-    default:
-      return 0
-    }
-  }
-  
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch Section(rawValue: indexPath.section)! {
     case .image:
-      if let image = (collectionView.cellForItem(at: indexPath) as? SearchResultCell)?.imageView?.image {
+      if let image = (collectionView.cellForItem(at: indexPath) as? SearchImageCell)?.imageView?.image {
         let viewController = ImageViewerViewController(thumbnail: image, searchedImage: self.state.images[indexPath.item])
         let navigationController = NavigationController(rootViewController: viewController)
         self.present(navigationController, animated: true, completion: nil)
       }
     default:
-      // do nothing.
+      // Do nothing.
       break
     }
+  }
+}
+
+extension SearchedImage {
+  var proportionalHeight: CGFloat {
+    return CGFloat(self.pixelHeight) / CGFloat(self.pixelWidth)
   }
 }
 

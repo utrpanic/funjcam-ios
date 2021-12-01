@@ -21,7 +21,6 @@ let package = Package(
     ])
   ],
   dependencies: [
-    .package(name: "Proxy", path: "../Proxy"),
     .package(name: "Platform", path: "../Platform")
   ],
   targets: [

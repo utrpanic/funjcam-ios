@@ -2,48 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "CHTCollectionViewWaterfallLayout",
-        "repositoryURL": "https://github.com/chiahsien/CHTCollectionViewWaterfallLayout.git",
-        "state": {
-          "branch": null,
-          "revision": "6353ec8305870da3c43b3bd2fa27d79119f4c60b",
-          "version": "0.9.8"
-        }
-      },
-      {
-        "package": "ReactorKit",
-        "repositoryURL": "https://github.com/ReactorKit/ReactorKit.git",
-        "state": {
-          "branch": null,
-          "revision": "a16e349e93d8b4c3e6c8fd210b43660dbd7016cc",
-          "version": "3.0.0"
-        }
-      },
-      {
-        "package": "RxSwift",
-        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
-        "state": {
-          "branch": null,
-          "revision": "7c17a6ccca06b5c107cfa4284e634562ddaf5951",
-          "version": "6.2.0"
-        }
-      },
-      {
         "package": "TinyConstraints",
         "repositoryURL": "https://github.com/roberthein/TinyConstraints.git",
         "state": {
           "branch": null,
           "revision": "3262e5c591d4ab6272255df2087a01bbebd138dc",
           "version": "4.0.2"
-        }
-      },
-      {
-        "package": "WeakMapTable",
-        "repositoryURL": "https://github.com/ReactorKit/WeakMapTable.git",
-        "state": {
-          "branch": null,
-          "revision": "9580560169b4b48ba2affe7badba6a7f360495f4",
-          "version": "1.2.0"
         }
       }
     ]

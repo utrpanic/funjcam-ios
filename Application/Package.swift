@@ -18,8 +18,7 @@ let package = Package(
       name: "Application",
       dependencies: [
         .product(name: "Proxy", package: "Proxy"),
-        .product(name: "Domain", package: "Domain"),
-        .product(name: "DomainImp", package: "Domain")
+        .product(name: "Domain", package: "Domain")
       ],
       path: "Application",
       resources: [.process("Resource")]
