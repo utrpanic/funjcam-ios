@@ -3,6 +3,7 @@ import UIKit
 import BoxKit
 import Entity
 import TinyConstraints
+import SwiftUI
 
 protocol SearchControllable {
   func activate(with viewController: SearchViewControllable) -> Observable<SearchViewState>
@@ -143,51 +144,21 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   }
   
   private func generateImageLayoutSection() -> NSCollectionLayoutSection {
-    guard self.state.images.hasElement else {
-      return self.generateEmptyLayoutSection()
-    }
-    var leadingGroupItems = [NSCollectionLayoutItem]()
-    var trailingGroupItems = [NSCollectionLayoutItem]()
-    var leadingGroupHeight: Double = 0
-    var trailingGroupHeight: Double = 0
-    self.state.images.forEach { image in
-      let isLeadingGroup = leadingGroupHeight + image.proportionalHeight <= trailingGroupHeight + image.proportionalHeight
-      let item = NSCollectionLayoutItem(
-        layoutSize: NSCollectionLayoutSize(
-          widthDimension: .fractionalWidth(1.0),
-          heightDimension: .fractionalWidth(image.proportionalHeight)
-        )
+    let item = NSCollectionLayoutItem(
+      layoutSize: NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1.0 / 3.0),
+        heightDimension: .fractionalHeight(1)
       )
-      item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
-      if isLeadingGroup {
-        leadingGroupItems.append(item)
-        leadingGroupHeight += image.proportionalHeight
-      } else {
-        trailingGroupItems.append(item)
-        trailingGroupHeight += image.proportionalHeight
-      }
-    }
-    let leadingGroup = NSCollectionLayoutGroup.vertical(
-      layoutSize: NSCollectionLayoutSize(
-        widthDimension: .fractionalWidth(0.5),
-        heightDimension: .fractionalWidth(0.5 * leadingGroupHeight)
-      ),
-      subitems: leadingGroupItems
     )
-    let trailingGroup = NSCollectionLayoutGroup.vertical(
-      layoutSize: NSCollectionLayoutSize(
-        widthDimension: .fractionalWidth(0.5),
-        heightDimension: .fractionalWidth(0.5 * trailingGroupHeight)
-      ),
-      subitems: trailingGroupItems
-    )
+    item.contentInsets = NSDirectionalEdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5)
     let groupSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
-      heightDimension: .fractionalWidth(0.5 * max(leadingGroupHeight, trailingGroupHeight))
+      heightDimension: .fractionalWidth(0.5)
     )
     let group = NSCollectionLayoutGroup.horizontal(
       layoutSize: groupSize,
-      subitems: [leadingGroup, trailingGroup]
+      subitem: item,
+      count: 3
     )
     return NSCollectionLayoutSection(group: group)
   }
@@ -196,14 +167,13 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     let item = NSCollectionLayoutItem(
       layoutSize: NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(1.0),
-        heightDimension: .estimated(100)
+        heightDimension: .fractionalHeight(1.0)
       )
     )
-    item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
     let group = NSCollectionLayoutGroup.vertical(
       layoutSize: NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(1.0),
-        heightDimension: .estimated(44.0)
+        heightDimension: .estimated(88.0)
       ),
       subitems: [item]
     )
@@ -217,7 +187,6 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
         heightDimension: .fractionalHeight(1.0)
       )
     )
-    item.contentInsets = NSDirectionalEdgeInsets(top: 1, leading: 1, bottom: 1, trailing: 1)
     let group = NSCollectionLayoutGroup.vertical(
       layoutSize: NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(1.0),
