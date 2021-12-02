@@ -51,12 +51,12 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     return self.viewState.eraseToAnyPublisher()
   }
   
-  func requestUpdateQuery(_ query: String?) {
+  func handleUpdateQuery(_ query: String?) {
     guard let query = query else { return }
     self.state.query = query
   }
   
-  func requestSearch(query: String?) {
+  func handleSearch(query: String?) {
     guard let query = query, query.hasElement else { return }
     self.state.query = query
     Task { [weak self] in
@@ -70,7 +70,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     }
   }
   
-  func requestSearchMore() {
+  func handleSearchMore() {
     Task { [weak self] in
       do {
         try await self?.searchMore()
@@ -80,7 +80,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     }
   }
   
-  func requestToggleGIF() {
+  func handleToggleGIF() {
     self.state.searchAnimatedGIF.toggle()
     Task { [weak self] in
       self?.viewState.send(.loading(true))
@@ -93,7 +93,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     }
   }
   
-  func requestChangeSearchProvider(to newValue: SearchProvider) {
+  func handleChangeSearchProvider(to newValue: SearchProvider) {
     self.state.provider = newValue
     Task { [weak self] in
       self?.viewState.send(.loading(true))
