@@ -22,7 +22,7 @@ public final class RecentImageUsecaseImp: RecentImageUsecase {
   }
   
   private func createTable() throws {
-    try self.db.run(self.table.create { builder in
+    try self.db.run(self.table.create(ifNotExists: true) { builder in
       builder.column(self.idColumn, primaryKey: true)
       builder.column(self.nameColumn)
       builder.column(self.urlStringColumn)
@@ -37,5 +37,15 @@ public final class RecentImageUsecaseImp: RecentImageUsecase {
         urlString: row[self.urlStringColumn]
       )
     }
+  }
+  
+  public func insert(image: RecentImage) async throws {
+    guard let urlString = image.url?.absoluteString else {
+      throw RecentImageError.emptyURLString
+    }
+    try self.db.run(self.table.insert(
+      self.nameColumn <- image.name,
+      self.urlStringColumn <- urlString
+    ))
   }
 }

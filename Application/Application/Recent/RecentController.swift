@@ -1,5 +1,7 @@
+import Usecase
+
 public protocol RecentDependency {
-  
+  var recentImageUsecase: RecentImageUsecase { get }
 }
 
 public protocol RecentListener: AnyObject {

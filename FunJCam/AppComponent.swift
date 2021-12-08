@@ -1,10 +1,11 @@
 import UIKit
 import Application
+import HTTPNetworkImp
+import SQLite
 import UserDefaults
 import UserDefaultsImp
 import Usecase
 import UsecaseImp
-import HTTPNetworkImp
 
 typealias Dependencies =
 MainDependency &
@@ -17,13 +18,16 @@ final class AppComponent: Dependencies {
   
   let searchProviderUsecase: SearchProviderUsecase
   let searchImageUsecase: SearchImageUsecase
+  let recentImageUsecase: RecentImageUsecase
   
   init(
     searchProviderUsecase: SearchProviderUsecase,
-    searchImageUsecase: SearchImageUsecase
+    searchImageUsecase: SearchImageUsecase,
+    recentImageUsecase: RecentImageUsecase
   ) {
     self.searchProviderUsecase = searchProviderUsecase
     self.searchImageUsecase = searchImageUsecase
+    self.recentImageUsecase = recentImageUsecase
   }
   
   func searchBuilder(listener: SearchListener?) -> ViewControllerBuildable {
@@ -45,11 +49,18 @@ final class AppComponent: Dependencies {
 
 extension AppComponent {
   static var live: AppComponent {
-    let userDefaults = UserDefaults.standard
-    let network = HTTPNetworkImp(session: URLSession.shared)
-    return AppComponent(
-      searchProviderUsecase: SearchProviderUsecaseImp(userDefaults: userDefaults),
-      searchImageUsecase: SearchImageUsecaseImp(network: network)
-    )
+    do {
+      let userDefaults = UserDefaults.standard
+      let network = HTTPNetworkImp(session: URLSession.shared)
+      let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+      let db = try Connection("\(path)/db.sqlite3")
+      return AppComponent(
+        searchProviderUsecase: SearchProviderUsecaseImp(userDefaults: userDefaults),
+        searchImageUsecase: SearchImageUsecaseImp(network: network),
+        recentImageUsecase: try RecentImageUsecaseImp(db: db)
+      )
+    } catch {
+      fatalError(error.localizedDescription)
+    }
   }
 }
