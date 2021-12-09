@@ -12,7 +12,8 @@ MainDependency &
 SearchDependency &
 RecentDependency &
 BookmarkDependency &
-SettingsDependency
+SettingsDependency &
+ImageViewerDependency
 
 final class AppComponent: Dependencies {
   
@@ -44,6 +45,18 @@ final class AppComponent: Dependencies {
   
   func settingsBuilder(listener: SettingsListener?) -> ViewControllerBuildable {
     return SettingsController(dependency: self, listener: listener)
+  }
+  
+  func imageViewerBuilder(listener: ImageViewerListener?) -> ImageViewerBuildable {
+    return ImageViewerBuilder(dependency: self, listener: listener)
+  }
+  
+  func shareBuilder() -> ShareBuildable {
+    return ShareBuilder()
+  }
+  
+  func alertBuilder() -> AlertBuildable {
+    return AlertBuilder()
   }
 }
 

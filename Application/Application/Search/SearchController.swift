@@ -7,6 +7,7 @@ import SwiftUI
 public protocol SearchDependency {
   var searchProviderUsecase: SearchProviderUsecase { get }
   var searchImageUsecase: SearchImageUsecase { get }
+  func imageViewerBuilder(listener: ImageViewerListener?) -> ImageViewerBuildable
 }
 
 public protocol SearchListener: AnyObject {
@@ -21,6 +22,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   
   private let searchProviderUsecase: SearchProviderUsecase
   private let searchImageUsecase: SearchImageUsecase
+  private let imageViewerBuilder: ImageViewerBuildable
   
   private var state: SearchState {
     didSet { self.viewState.send(.stateArrived(self.state)) }
@@ -33,6 +35,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   public init(dependency: SearchDependency, listener: SearchListener?) {
     self.searchProviderUsecase = dependency.searchProviderUsecase
     self.searchImageUsecase = dependency.searchImageUsecase
+    self.imageViewerBuilder = dependency.imageViewerBuilder(listener: nil)
     self.state = SearchState(provider: dependency.searchProviderUsecase.query())
     self.viewState = PassthroughSubject()
     self.listener = listener
@@ -104,6 +107,12 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
       }
       self?.viewState.send(.loading(false))
     }
+  }
+  
+  func handleSelectImage(at index: Int) {
+    let image = self.state.images[index]
+    let target = self.imageViewerBuilder.build(searchedImage: image)
+    self.viewController?.present(viewControllable: target, animated: true, completion: nil)
   }
   
   private func search() async throws {

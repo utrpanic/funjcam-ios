@@ -12,6 +12,7 @@ protocol SearchControllable {
   func handleSearchMore()
   func handleToggleGIF()
   func handleChangeSearchProvider(to newValue: SearchProvider)
+  func handleSelectImage(at index: Int)
 }
 
 final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -319,23 +320,20 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     switch Section.allCases[indexPath.section] {
+    case .image:
+      break
     case .more:
       self.controller.handleSearchMore()
-    default:
+    case .empty:
       break
     }
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    switch Section(rawValue: indexPath.section)! {
+    switch Section.allCases[indexPath.section] {
     case .image:
-      if let image = (collectionView.cellForItem(at: indexPath) as? SearchImageCell)?.imageView?.image {
-        let viewController = ImageViewerViewController(thumbnail: image, searchedImage: self.state.images[indexPath.item])
-        let navigationController = NavigationController(rootViewController: viewController)
-        self.present(navigationController, animated: true, completion: nil)
-      }
-    default:
-      // Do nothing.
+      self.controller.handleSelectImage(at: indexPath.item)
+    case .more, .empty:
       break
     }
   }

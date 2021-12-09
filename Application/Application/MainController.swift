@@ -5,7 +5,7 @@ public protocol MainDependency {
   func settingsBuilder(listener: SettingsListener?) -> ViewControllerBuildable
 }
 
-public protocol MainViewControllable: ViewControllable {
+protocol MainViewControllable: ViewControllable {
   func setTabs(search: ViewControllable, recent: ViewControllable, bookmark: ViewControllable, settings: ViewControllable)
 }
 
@@ -22,7 +22,7 @@ public final class MainController: MainControllable, ViewControllerBuildable, Se
     return MainViewController(controller: self)
   }
   
-  public func activate(with viewController: MainViewControllable) {
+  func activate(with viewController: MainViewControllable) {
     self.viewController = viewController
     self.viewController?.setTabs(
       search: self.dependency.searchBuilder(listener: nil).buildViewController(),
