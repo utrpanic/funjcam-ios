@@ -14,6 +14,7 @@ final class ImageViewerController: ImageViewerControllable {
   }
   private let viewState: CurrentValueSubject<ImageViewerViewState, Never>
   
+  private let recentImageUsecase: RecentImageUsecase
   private let shareBuilder: ShareBuildable
   private let alertBuilder: AlertBuildable
   
@@ -22,6 +23,7 @@ final class ImageViewerController: ImageViewerControllable {
   
   init(searchedImage: SearchedImage, dependency: ImageViewerDependency, listener: ImageViewerListener?) {
     self.state = ImageViewerState(searchedImage: searchedImage)
+    self.recentImageUsecase = dependency.recentImageUsecase
     self.shareBuilder = dependency.shareBuilder()
     self.alertBuilder = dependency.alertBuilder()
     self.viewState = CurrentValueSubject<ImageViewerViewState, Never>(.stateArrived(self.state))
@@ -29,8 +31,18 @@ final class ImageViewerController: ImageViewerControllable {
   }
   
   func activate(with viewController: ImageViewerViewControllable) -> Observable<ImageViewerViewState> {
+    defer {
+      self.didBecomActive()
+    }
     self.viewController = viewController
     return self.viewState.eraseToAnyPublisher()
+  }
+  
+  private func didBecomActive() {
+    try? self.recentImageUsecase.insert(
+      name: self.state.searchedImage.displayName,
+      url: self.state.searchedImage.url
+    )
   }
   
   func handleShareImage() {

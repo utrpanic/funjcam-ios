@@ -29,7 +29,7 @@ public final class RecentImageUsecaseImp: RecentImageUsecase {
     })
   }
   
-  public func query() async throws -> [RecentImage] {
+  public func query() throws -> [RecentImage] {
     return try self.db.prepare(self.table).map { row in
       RecentImage(
         id: row[self.idColumn],
@@ -39,12 +39,12 @@ public final class RecentImageUsecaseImp: RecentImageUsecase {
     }
   }
   
-  public func insert(image: RecentImage) async throws {
-    guard let urlString = image.url?.absoluteString else {
+  public func insert(name: String, url: URL?) throws {
+    guard let urlString = url?.absoluteString else {
       throw RecentImageError.emptyURLString
     }
     try self.db.run(self.table.insert(
-      self.nameColumn <- image.name,
+      self.nameColumn <- name,
       self.urlStringColumn <- urlString
     ))
   }

@@ -38,6 +38,7 @@ struct GoogleImageSearchResult: Decodable {
     let values = try decoder.container(keyedBy: CodingKeys.self)
     self.searchedImages = (try values.decodeIfPresent([Image].self, forKey: .items) ?? []).map { item in
       return SearchedImage(
+        displayName: item.displayLink,
         urlString: item.link,
         pixelWidth: item.image.width,
         pixelHeight: item.image.height,

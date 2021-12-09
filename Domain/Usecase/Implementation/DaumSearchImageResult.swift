@@ -35,6 +35,7 @@ struct DaumSearchImageResult: Decodable {
     let values = try decoder.container(keyedBy: CodingKeys.self)
     self.searchedImages = (try values.decodeIfPresent([Image].self, forKey: .documents) ?? []).map { image in
       return SearchedImage(
+        displayName: image.display_sitename,
         urlString: image.image_url,
         pixelWidth: image.width,
         pixelHeight: image.height,

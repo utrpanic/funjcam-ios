@@ -28,6 +28,7 @@ struct NaverSearchImageResult: Decodable {
     let images = try values.decodeIfPresent([Image].self, forKey: .items) ?? []
     self.searchedImages = images.map { item in
       return SearchedImage(
+        displayName: item.title,
         urlString: item.link,
         pixelWidth: Int(item.sizewidth) ?? 0,
         pixelHeight: Int(item.sizeheight) ?? 0,
