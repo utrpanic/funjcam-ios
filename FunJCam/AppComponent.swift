@@ -35,8 +35,8 @@ final class AppComponent: Dependencies {
     return SearchController(dependency: self, listener: listener)
   }
   
-  func recentBuilder(listener: RecentListener?) -> ViewControllerBuildable {
-    return RecentController(dependency: self, listener: listener)
+  func recentBuilder(listener: RecentListener?) -> RecentBuildable {
+    return RecentBuilder(dependency: self, listener: listener)
   }
   
   func bookmarkBuilder(listener: BookmarkListener?) -> ViewControllerBuildable {

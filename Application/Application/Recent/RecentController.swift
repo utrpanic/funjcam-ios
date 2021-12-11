@@ -1,33 +1,46 @@
+import Entity
 import Usecase
+import Combine
 
-public protocol RecentDependency {
-  var recentImageUsecase: RecentImageUsecase { get }
-}
-
-public protocol RecentListener: AnyObject {
+protocol RecentViewControllable: ViewControllable {
   
 }
 
-public protocol RecentViewControllable: ViewControllable {
-  
+enum RecentState {
+  case state([RecentImage])
 }
 
-public final class RecentController: RecentControllable, ViewControllerBuildable {
-
-  private let dependency: RecentDependency
+final class RecentController: RecentControllable {
+  
+  private let state: CurrentValueSubject<RecentState, Never>
+  
+  private let recentImageUsecase: RecentImageUsecase
+  
   private weak var viewController: RecentViewControllable?
-  weak var listener: RecentListener?
+  private weak var listener: RecentListener?
   
-  public init(dependency: RecentDependency, listener: RecentListener?) {
-    self.dependency = dependency
+  init(dependency: RecentDependency, listener: RecentListener?) {
+    self.state = CurrentValueSubject(.state([]))
+    self.recentImageUsecase = dependency.recentImageUsecase
     self.listener = listener
+    self.requestRecentImages()
   }
   
-  public func buildViewController() -> ViewControllable {
-    return RecentViewController(controller: self)
-  }
-  
-  public func activate(with viewController: RecentViewControllable) {
+  func activate(with viewController: RecentViewControllable) -> Observable<RecentState> {
     self.viewController = viewController
+    return self.state.eraseToAnyPublisher()
+  }
+  
+  private func requestRecentImages() {
+    do {
+      let recentImages = try self.recentImageUsecase.query()
+      self.state.send(.state(recentImages))
+    } catch {
+      
+    }
+  }
+  
+  func handleSelectImage(at index: Int) {
+    
   }
 }
