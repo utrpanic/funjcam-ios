@@ -25,7 +25,7 @@ public final class RecentImageUsecaseImp: RecentImageUsecase {
     try self.db.run(self.table.create(ifNotExists: true) { builder in
       builder.column(self.idColumn, primaryKey: true)
       builder.column(self.nameColumn)
-      builder.column(self.urlStringColumn)
+      builder.column(self.urlStringColumn, unique: true)
     })
   }
   

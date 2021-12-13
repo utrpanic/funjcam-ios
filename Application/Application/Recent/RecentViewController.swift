@@ -39,7 +39,8 @@ final class RecentViewController: ViewController, RecentViewControllable, UIColl
   }
   
   private func setupCollectionView() {
-    let configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+    var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+    configuration.separatorConfiguration.bottomSeparatorInsets = .zero
     let layout = UICollectionViewCompositionalLayout.list(using: configuration)
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = self
@@ -95,5 +96,9 @@ final class RecentViewController: ViewController, RecentViewControllable, UIColl
     case .empty:
       break
     }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+    return false
   }
 }
