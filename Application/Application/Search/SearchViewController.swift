@@ -7,11 +7,12 @@ import SwiftUI
 
 protocol SearchControllable {
   func activate(with viewController: SearchViewControllable) -> Observable<SearchViewState>
-  func requestUpdateQuery(_ query: String?)
-  func requestSearch(query: String?)
-  func requestSearchMore()
-  func requestToggleGIF()
-  func requestChangeSearchProvider(to newValue: SearchProvider)
+  func handleUpdateQuery(_ query: String?)
+  func handleSearch(query: String?)
+  func handleSearchMore()
+  func handleToggleGIF()
+  func handleChangeSearchProvider(to newValue: SearchProvider)
+  func handleSelectImage(at index: Int)
 }
 
 final class SearchViewController: ViewController, SearchViewControllable, HasScrollView, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -146,19 +147,19 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   private func generateImageLayoutSection() -> NSCollectionLayoutSection {
     let item = NSCollectionLayoutItem(
       layoutSize: NSCollectionLayoutSize(
-        widthDimension: .fractionalWidth(1.0 / 3.0),
-        heightDimension: .fractionalHeight(1)
+        widthDimension: .fractionalWidth(1.0),
+        heightDimension: .fractionalHeight(1.0)
       )
     )
     item.contentInsets = NSDirectionalEdgeInsets(top: 0.5, leading: 0.5, bottom: 0.5, trailing: 0.5)
     let groupSize = NSCollectionLayoutSize(
       widthDimension: .fractionalWidth(1.0),
-      heightDimension: .fractionalWidth(0.5)
+      heightDimension: .fractionalWidth(0.6)
     )
     let group = NSCollectionLayoutGroup.horizontal(
       layoutSize: groupSize,
       subitem: item,
-      count: 3
+      count: 2
     )
     return NSCollectionLayoutSection(group: group)
   }
@@ -173,7 +174,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     let group = NSCollectionLayoutGroup.vertical(
       layoutSize: NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(1.0),
-        heightDimension: .estimated(88.0)
+        heightDimension: .estimated(44.0)
       ),
       subitems: [item]
     )
@@ -258,20 +259,20 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   
   @objc private func searchQueryChanged() {
     let query = self.textField?.text
-    self.controller.requestUpdateQuery(query)
+    self.controller.handleUpdateQuery(query)
   }
   
   @objc private func searchButtonTapped() {
     self.view.endEditing(true)
     let query = self.textField?.text
-    self.controller.requestSearch(query: query)
+    self.controller.handleSearch(query: query)
   }
   
   @objc private func searchProviderButtonTapped() {
     let alertController = UIAlertController(title: Resource.string("provider:searchProvider"), message: nil, preferredStyle: .actionSheet)
     SearchProvider.allCases.forEach { provider in
       alertController.addAction(UIAlertAction(title: provider.name, style: .default, handler: { [weak self] (action) in
-        self?.controller.requestChangeSearchProvider(to: provider)
+        self?.controller.handleChangeSearchProvider(to: provider)
       }))
     }
     alertController.addAction(UIAlertAction(title: Resource.string("common:cancel"), style: .cancel, handler: nil))
@@ -279,10 +280,11 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   }
   
   @objc private func searchAnimatedGIFButtonTapped() {
-    self.controller.requestToggleGIF()
+    self.controller.handleToggleGIF()
   }
   
   // MARK: - UICollectionViewDataSource
+  
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return Section.allCases.count
   }
@@ -314,25 +316,24 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     }
   }
   
+  // MARK: - UICollectionViewDelegate
+  
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     switch Section.allCases[indexPath.section] {
+    case .image:
+      break
     case .more:
-      self.controller.requestSearchMore()
-    default:
+      self.controller.handleSearchMore()
+    case .empty:
       break
     }
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    switch Section(rawValue: indexPath.section)! {
+    switch Section.allCases[indexPath.section] {
     case .image:
-      if let image = (collectionView.cellForItem(at: indexPath) as? SearchImageCell)?.imageView?.image {
-        let viewController = ImageViewerViewController(thumbnail: image, searchedImage: self.state.images[indexPath.item])
-        let navigationController = NavigationController(rootViewController: viewController)
-        self.present(navigationController, animated: true, completion: nil)
-      }
-    default:
-      // Do nothing.
+      self.controller.handleSelectImage(at: indexPath.item)
+    case .more, .empty:
       break
     }
   }

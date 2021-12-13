@@ -21,13 +21,17 @@ let package = Package(
     ])
   ],
   dependencies: [
+    .package(name: "Proxy", path: "../Proxy"),
     .package(name: "Platform", path: "../Platform")
   ],
   targets: [
     .target(name: "Entity", dependencies: [], path: "Entity"),
     
     .target(name: "Usecase", dependencies: [.product(name: "Platform", package: "Platform"), "Entity"], path: "Usecase/Interface"),
-    .target(name: "UsecaseImp", dependencies: ["Usecase"], path: "Usecase/Implementation"),
+    .target(name: "UsecaseImp", dependencies: [
+      .product(name: "Proxy", package: "Proxy"),
+      "Usecase"
+    ], path: "Usecase/Implementation"),
     .target(name: "UsecaseTestSupport", dependencies: ["Usecase"], path: "Usecase/TestSupport"),
   ]
 )

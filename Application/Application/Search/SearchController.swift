@@ -7,6 +7,7 @@ import SwiftUI
 public protocol SearchDependency {
   var searchProviderUsecase: SearchProviderUsecase { get }
   var searchImageUsecase: SearchImageUsecase { get }
+  func imageViewerBuilder(listener: ImageViewerListener?) -> ImageViewerBuildable
 }
 
 public protocol SearchListener: AnyObject {
@@ -21,6 +22,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   
   private let searchProviderUsecase: SearchProviderUsecase
   private let searchImageUsecase: SearchImageUsecase
+  private let imageViewerBuilder: ImageViewerBuildable
   
   private var state: SearchState {
     didSet { self.viewState.send(.stateArrived(self.state)) }
@@ -33,6 +35,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   public init(dependency: SearchDependency, listener: SearchListener?) {
     self.searchProviderUsecase = dependency.searchProviderUsecase
     self.searchImageUsecase = dependency.searchImageUsecase
+    self.imageViewerBuilder = dependency.imageViewerBuilder(listener: nil)
     self.state = SearchState(provider: dependency.searchProviderUsecase.query())
     self.viewState = PassthroughSubject()
     self.listener = listener
@@ -51,12 +54,12 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     return self.viewState.eraseToAnyPublisher()
   }
   
-  func requestUpdateQuery(_ query: String?) {
+  func handleUpdateQuery(_ query: String?) {
     guard let query = query else { return }
     self.state.query = query
   }
   
-  func requestSearch(query: String?) {
+  func handleSearch(query: String?) {
     guard let query = query, query.hasElement else { return }
     self.state.query = query
     Task { [weak self] in
@@ -70,7 +73,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     }
   }
   
-  func requestSearchMore() {
+  func handleSearchMore() {
     Task { [weak self] in
       do {
         try await self?.searchMore()
@@ -80,7 +83,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     }
   }
   
-  func requestToggleGIF() {
+  func handleToggleGIF() {
     self.state.searchAnimatedGIF.toggle()
     Task { [weak self] in
       self?.viewState.send(.loading(true))
@@ -93,7 +96,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     }
   }
   
-  func requestChangeSearchProvider(to newValue: SearchProvider) {
+  func handleChangeSearchProvider(to newValue: SearchProvider) {
     self.state.provider = newValue
     Task { [weak self] in
       self?.viewState.send(.loading(true))
@@ -104,6 +107,12 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
       }
       self?.viewState.send(.loading(false))
     }
+  }
+  
+  func handleSelectImage(at index: Int) {
+    let image = self.state.images[index]
+    let target = self.imageViewerBuilder.build(searchedImage: image)
+    self.viewController?.present(viewControllable: target, animated: true, completion: nil)
   }
   
   private func search() async throws {
