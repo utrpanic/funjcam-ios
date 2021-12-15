@@ -1,5 +1,5 @@
 public protocol MainDependency {
-  func searchBuilder(listener: SearchListener?) -> ViewControllerBuildable
+  func searchBuilder(listener: SearchListener?) -> SearchBuildable
   func recentBuilder(listener: RecentListener?) -> RecentBuildable
   func bookmarkBuilder(listener: BookmarkListener?) -> BookmarkBuildable
   func settingsBuilder(listener: SettingsListener?) -> SettingsBuildable
@@ -11,15 +11,15 @@ protocol MainViewControllable: ViewControllable {
 
 public final class MainController: MainControllable, ViewControllerBuildable, SettingsListener {
 
-  private let dependency: MainDependency
   private weak var viewController: MainViewControllable?
   
+  private let searchBuilder: SearchBuildable
   private let recentBuilder: RecentBuildable
   private let bookmarkBuilder: BookmarkBuildable
   private let settingsBuilder: SettingsBuildable
   
   public init(dependency: MainDependency) {
-    self.dependency = dependency
+    self.searchBuilder = dependency.searchBuilder(listener: nil)
     self.recentBuilder = dependency.recentBuilder(listener: nil)
     self.bookmarkBuilder = dependency.bookmarkBuilder(listener: nil)
     self.settingsBuilder = dependency.settingsBuilder(listener: nil)
@@ -32,7 +32,7 @@ public final class MainController: MainControllable, ViewControllerBuildable, Se
   func activate(with viewController: MainViewControllable) {
     self.viewController = viewController
     self.viewController?.setTabs(
-      search: self.dependency.searchBuilder(listener: nil).buildViewController(),
+      search: self.searchBuilder.build(),
       recent: self.recentBuilder.build(),
       bookmark: self.bookmarkBuilder.build(),
       settings: self.settingsBuilder.build()

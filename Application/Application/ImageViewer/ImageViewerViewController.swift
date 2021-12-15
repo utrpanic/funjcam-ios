@@ -4,7 +4,7 @@ import BoxKit
 import Entity
 
 protocol ImageViewerControllable {
-  func activate(with viewController: ImageViewerViewControllable) -> Observable<ImageViewerViewState>
+  func activate(with viewController: ImageViewerViewControllable) -> AnyPublisher<ImageViewerViewState, Never>
   func handleShareImage()
 }
 

@@ -3,7 +3,7 @@ import UIKit
 import Entity
 
 protocol RecentControllable {
-  var observableState: Observable<RecentState> { get }
+  var observableState: ObservableState<RecentState> { get }
   func handleSelectImage(at index: Int)
 }
 

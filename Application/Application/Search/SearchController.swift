@@ -4,55 +4,40 @@ import Combine
 import Entity
 import SwiftUI
 
-public protocol SearchDependency {
-  var searchProviderUsecase: SearchProviderUsecase { get }
-  var searchImageUsecase: SearchImageUsecase { get }
-  func imageViewerBuilder(listener: ImageViewerListener?) -> ImageViewerBuildable
-}
-
-public protocol SearchListener: AnyObject {
+protocol SearchViewControllable: ViewControllable {
   
 }
 
-public protocol SearchViewControllable: ViewControllable {
-  
-}
-
-public final class SearchController: SearchControllable, ViewControllerBuildable {
+final class SearchController: SearchControllable {
   
   private let searchProviderUsecase: SearchProviderUsecase
   private let searchImageUsecase: SearchImageUsecase
   private let imageViewerBuilder: ImageViewerBuildable
   
+  private let stateSubject: CurrentValueSubject<SearchState, Never>
   private var state: SearchState {
-    didSet { self.viewState.send(.stateArrived(self.state)) }
+    get { self.stateSubject.value }
+    set { self.stateSubject.send(newValue) }
   }
-  private let viewState: PassthroughSubject<SearchViewState, Never>
-  
-  private weak var viewController: SearchViewControllable?
-  weak var listener: SearchListener?
+  let observableState: ObservableState<SearchState>
+  private let eventSubject: PassthroughSubject<SearchEvent, Never>
+  let observableEvent: ObservableEvent<SearchEvent>
+  weak var viewController: SearchViewControllable?
+  private weak var listener: SearchListener?
   
   public init(dependency: SearchDependency, listener: SearchListener?) {
     self.searchProviderUsecase = dependency.searchProviderUsecase
     self.searchImageUsecase = dependency.searchImageUsecase
     self.imageViewerBuilder = dependency.imageViewerBuilder(listener: nil)
-    self.state = SearchState(provider: dependency.searchProviderUsecase.query())
-    self.viewState = PassthroughSubject()
+    let initialState = SearchState(provider: dependency.searchProviderUsecase.query())
+    self.stateSubject = CurrentValueSubject(initialState)
+    self.observableState = ObservableState(subject: self.stateSubject)
+    self.eventSubject = PassthroughSubject()
+    self.observableEvent = ObservableEvent(subject: self.eventSubject)
     self.listener = listener
   }
   
-  public func buildViewController() -> ViewControllable {
-    let viewController = SearchViewController(initialState: self.state, controller: self)
-    self.viewController = viewController
-    return viewController
-  }
-  
   // MARK: - SearchControllable
-  
-  func activate(with viewController: SearchViewControllable) -> Observable<SearchViewState> {
-    self.viewController = viewController
-    return self.viewState.eraseToAnyPublisher()
-  }
   
   func handleUpdateQuery(_ query: String?) {
     guard let query = query else { return }
@@ -63,13 +48,13 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
     guard let query = query, query.hasElement else { return }
     self.state.query = query
     Task { [weak self] in
-      self?.viewState.send(.loading(true))
+      self?.eventSubject.send(.loading(true))
       do {
         try await self?.search()
       } catch {
-        self?.viewState.send(.errorArrived(.search(error)))
+        self?.eventSubject.send(.errorSearch(error))
       }
-      self?.viewState.send(.loading(false))
+      self?.eventSubject.send(.loading(false))
     }
   }
   
@@ -78,7 +63,7 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
       do {
         try await self?.searchMore()
       } catch {
-        self?.viewState.send(.errorArrived(.searchMore(error)))
+        self?.eventSubject.send(.errorSearchMore(error))
       }
     }
   }
@@ -86,26 +71,26 @@ public final class SearchController: SearchControllable, ViewControllerBuildable
   func handleToggleGIF() {
     self.state.searchAnimatedGIF.toggle()
     Task { [weak self] in
-      self?.viewState.send(.loading(true))
+      self?.eventSubject.send(.loading(true))
       do {
         try await self?.search()
       } catch {
-        self?.viewState.send(.errorArrived(.search(error)))
+        self?.eventSubject.send(.errorSearch(error))
       }
-      self?.viewState.send(.loading(false))
+      self?.eventSubject.send(.loading(false))
     }
   }
   
   func handleChangeSearchProvider(to newValue: SearchProvider) {
     self.state.provider = newValue
     Task { [weak self] in
-      self?.viewState.send(.loading(true))
+      self?.eventSubject.send(.loading(true))
       do {
         try await self?.search()
       } catch {
-        self?.viewState.send(.errorArrived(.search(error)))
+        self?.eventSubject.send(.errorSearch(error))
       }
-      self?.viewState.send(.loading(false))
+      self?.eventSubject.send(.loading(false))
     }
   }
   

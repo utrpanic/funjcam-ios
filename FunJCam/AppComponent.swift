@@ -22,8 +22,8 @@ struct AppComponent: Dependencies {
   let recentImageUsecase: RecentImageUsecase
   let bookmarkImageUsecase: BookmarkImageUsecase
   
-  func searchBuilder(listener: SearchListener?) -> ViewControllerBuildable {
-    return SearchController(dependency: self, listener: listener)
+  func searchBuilder(listener: SearchListener?) -> SearchBuildable {
+    return SearchBuilder(dependency: self, listener: listener)
   }
   
   func recentBuilder(listener: RecentListener?) -> RecentBuildable {

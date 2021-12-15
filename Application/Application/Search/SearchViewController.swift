@@ -6,7 +6,8 @@ import TinyConstraints
 import SwiftUI
 
 protocol SearchControllable {
-  func activate(with viewController: SearchViewControllable) -> Observable<SearchViewState>
+  var observableState: ObservableState<SearchState> { get }
+  var observableEvent: ObservableEvent<SearchEvent> { get }
   func handleUpdateQuery(_ query: String?)
   func handleSearch(query: String?)
   func handleSearchMore()
@@ -32,12 +33,11 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   var scrollView: UIScrollView? { self.collectionView }
   private weak var loadingView: UIActivityIndicatorView?
   
-  private var state: SearchState
+  private var state: SearchState { self.controller.observableState.currentValue }
   private let controller: SearchControllable
   private var cancellables: Set<AnyCancellable>
   
-  init(initialState: SearchState, controller: SearchControllable) {
-    self.state = initialState
+  init(controller: SearchControllable) {
     self.controller = controller
     self.cancellables = Set<AnyCancellable>()
     super.init(nibName: nil, bundle: nil)
@@ -228,33 +228,30 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   }
   
   private func observeController() {
-    self.controller.activate(with: self)
+    self.controller.observableState
       .receive(on: DispatchQueue.main)
-      .sink { [weak self] viewState in
-        switch viewState {
+      .sink { [weak self] _ in
+        self?.updateViews()
+      }
+      .store(in: &(self.cancellables))
+    self.controller.observableEvent
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] event in
+        switch event {
         case let .loading(loading):
           self?.updateLoadingView(loading: loading)
-        case let .stateArrived(state):
-          self?.state = state
-          self?.updateViews()
-        case let .errorArrived(error):
-          self?.handleError(error)
+        case .errorSearch:
+          self?.showOkAlert(title: "이미지 검색에 실패했습니다.", message: nil, onOk: nil)
+        case .errorSearchMore:
+          self?.showOkAlert(title: "이미지 더 불러오기에 실패했습니다.", message: nil, onOk: nil)
         }
-      }.store(in: &self.cancellables)
+      }
+      .store(in: &(self.cancellables))
   }
   
   private func updateViews() {
     self.updateHeaderView()
     self.collectionView?.reloadData()
-  }
-  
-  private func handleError(_ error: SearchError) {
-    switch error {
-    case .search:
-      self.showOkAlert(title: "이미지 검색에 실패했습니다.", message: nil, onOk: nil)
-    case .searchMore:
-      self.showOkAlert(title: "이미지 더 불러오기에 실패했습니다.", message: nil, onOk: nil)
-    }
   }
   
   @objc private func searchQueryChanged() {

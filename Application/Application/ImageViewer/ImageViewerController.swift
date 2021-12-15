@@ -30,7 +30,7 @@ final class ImageViewerController: ImageViewerControllable {
     self.listener = listener
   }
   
-  func activate(with viewController: ImageViewerViewControllable) -> Observable<ImageViewerViewState> {
+  func activate(with viewController: ImageViewerViewControllable) -> AnyPublisher<ImageViewerViewState, Never> {
     defer {
       self.didBecomActive()
     }

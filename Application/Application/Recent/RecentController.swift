@@ -13,7 +13,7 @@ enum RecentState {
 final class RecentController: RecentControllable {
 
   private let state: CurrentValueSubject<RecentState, Never>
-  var observableState: Observable<RecentState> { self.state.eraseToAnyPublisher() }
+  let observableState: ObservableState<RecentState>
   weak var viewController: RecentViewControllable?
   private weak var listener: RecentListener?
   
@@ -21,6 +21,7 @@ final class RecentController: RecentControllable {
   
   init(dependency: RecentDependency, listener: RecentListener?) {
     self.state = CurrentValueSubject(.state([]))
+    self.observableState = ObservableState(subject: self.state)
     self.recentImageUsecase = dependency.recentImageUsecase
     self.listener = listener
     self.requestRecentImages()
