@@ -1,7 +1,7 @@
 import UIKit
 
-public protocol BookmarkControllable {
-  func activate(with viewController: BookmarkViewControllable)
+protocol BookmarkControllable {
+  
 }
 
 final class BookmarkViewController: ViewController, BookmarkViewControllable {
@@ -20,6 +20,5 @@ final class BookmarkViewController: ViewController, BookmarkViewControllable {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .systemBackground
-    self.controller.activate(with: self)
   }
 }

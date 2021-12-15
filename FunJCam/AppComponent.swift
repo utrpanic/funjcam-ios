@@ -15,21 +15,12 @@ BookmarkDependency &
 SettingsDependency &
 ImageViewerDependency
 
-final class AppComponent: Dependencies {
+struct AppComponent: Dependencies {
   
   let searchProviderUsecase: SearchProviderUsecase
   let searchImageUsecase: SearchImageUsecase
   let recentImageUsecase: RecentImageUsecase
-  
-  init(
-    searchProviderUsecase: SearchProviderUsecase,
-    searchImageUsecase: SearchImageUsecase,
-    recentImageUsecase: RecentImageUsecase
-  ) {
-    self.searchProviderUsecase = searchProviderUsecase
-    self.searchImageUsecase = searchImageUsecase
-    self.recentImageUsecase = recentImageUsecase
-  }
+  let bookmarkImageUsecase: BookmarkImageUsecase
   
   func searchBuilder(listener: SearchListener?) -> ViewControllerBuildable {
     return SearchController(dependency: self, listener: listener)
@@ -39,8 +30,8 @@ final class AppComponent: Dependencies {
     return RecentBuilder(dependency: self, listener: listener)
   }
   
-  func bookmarkBuilder(listener: BookmarkListener?) -> ViewControllerBuildable {
-    return BookmarkController(dependency: self, listener: listener)
+  func bookmarkBuilder(listener: BookmarkListener?) -> BookmarkBuildable {
+    return BookmarkBuilder(dependency: self, listener: listener)
   }
   
   func settingsBuilder(listener: SettingsListener?) -> ViewControllerBuildable {
@@ -70,7 +61,8 @@ extension AppComponent {
       return AppComponent(
         searchProviderUsecase: SearchProviderUsecaseImp(userDefaults: userDefaults),
         searchImageUsecase: SearchImageUsecaseImp(network: network),
-        recentImageUsecase: try RecentImageUsecaseImp(db: db)
+        recentImageUsecase: try RecentImageUsecaseImp(db: db),
+        bookmarkImageUsecase: try BookmarkImageUsecaseImp(db: db)
       )
     } catch {
       fatalError(error.localizedDescription)

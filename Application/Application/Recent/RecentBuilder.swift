@@ -25,6 +25,7 @@ public final class RecentBuilder: RecentBuildable {
   public func build() -> ViewControllable {
     let controller = RecentController(dependency: self.dependency, listener: self.listener)
     let viewController = RecentViewController(controller: controller)
+    controller.viewController = viewController
     return viewController
   }
 }

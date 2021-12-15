@@ -3,7 +3,7 @@ import UIKit
 import Entity
 
 protocol RecentControllable {
-  func activate(with viewController: RecentViewControllable) -> Observable<RecentState>
+  var observableState: Observable<RecentState> { get }
   func handleSelectImage(at index: Int)
 }
 
@@ -53,7 +53,7 @@ final class RecentViewController: ViewController, RecentViewControllable, UIColl
   }
   
   private func observeController() {
-    self.controller.activate(with: self)
+    self.controller.observableState
       .receive(on: DispatchQueue.main)
       .sink { [weak self] state in
         switch state {

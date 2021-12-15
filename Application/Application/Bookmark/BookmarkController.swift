@@ -1,31 +1,13 @@
-public protocol BookmarkDependency {
+protocol BookmarkViewControllable: ViewControllable {
   
 }
 
-public protocol BookmarkListener: AnyObject {
+final class BookmarkController: BookmarkControllable {
   
-}
-
-public protocol BookmarkViewControllable: ViewControllable {
-  
-}
-
-public final class BookmarkController: BookmarkControllable, ViewControllerBuildable {
-  
-  private let dependency: BookmarkDependency
-  private weak var viewController: BookmarkViewControllable?
+  weak var viewController: BookmarkViewControllable?
   weak var listener: BookmarkListener?
   
-  public init(dependency: BookmarkDependency, listener: BookmarkListener?) {
-    self.dependency = dependency
+  init(dependency: BookmarkDependency, listener: BookmarkListener?) {
     self.listener = listener
-  }
-  
-  public func buildViewController() -> ViewControllable {
-    return BookmarkViewController(controller: self)
-  }
-  
-  public func activate(with viewController: BookmarkViewControllable) {
-    self.viewController = viewController
   }
 }
