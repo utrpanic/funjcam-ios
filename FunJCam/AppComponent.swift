@@ -34,8 +34,8 @@ struct AppComponent: Dependencies {
     return BookmarkBuilder(dependency: self, listener: listener)
   }
   
-  func settingsBuilder(listener: SettingsListener?) -> ViewControllerBuildable {
-    return SettingsController(dependency: self, listener: listener)
+  func settingsBuilder(listener: SettingsListener?) -> SettingsBuildable {
+    return SettingsBuilder(dependency: self, listener: listener)
   }
   
   func imageViewerBuilder(listener: ImageViewerListener?) -> ImageViewerBuildable {
