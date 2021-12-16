@@ -6,23 +6,28 @@ protocol RecentViewControllable: ViewControllable {
   
 }
 
-enum RecentState {
-  case state([RecentImage])
-}
-
 final class RecentController: RecentControllable {
+  
+  private let recentImageUsecase: RecentImageUsecase
 
-  private let state: CurrentValueSubject<RecentState, Never>
+  private let stateSubject: CurrentValueSubject<RecentState, Never>
+  private var state: RecentState {
+    get { self.stateSubject.value }
+    set { self.stateSubject.send(newValue) }
+  }
   let observableState: ObservableState<RecentState>
+  private let eventSubject: PassthroughSubject<RecentEvent, Never>
+  let observableEvent: ObservableEvent<RecentEvent>
   weak var viewController: RecentViewControllable?
   private weak var listener: RecentListener?
   
-  private let recentImageUsecase: RecentImageUsecase
-  
   init(dependency: RecentDependency, listener: RecentListener?) {
-    self.state = CurrentValueSubject(.state([]))
-    self.observableState = ObservableState(subject: self.state)
     self.recentImageUsecase = dependency.recentImageUsecase
+    let initialState = RecentState(images: [])
+    self.stateSubject = CurrentValueSubject(initialState)
+    self.observableState = ObservableState(subject: self.stateSubject)
+    self.eventSubject = PassthroughSubject()
+    self.observableEvent = ObservableEvent(subject: self.eventSubject)
     self.listener = listener
     self.requestRecentImages()
   }
@@ -30,9 +35,9 @@ final class RecentController: RecentControllable {
   private func requestRecentImages() {
     do {
       let recentImages = try self.recentImageUsecase.query()
-      self.state.send(.state(recentImages))
+      self.state.images = recentImages
     } catch {
-      
+      self.eventSubject.send(.errorRequestRecentImage(error))
     }
   }
   

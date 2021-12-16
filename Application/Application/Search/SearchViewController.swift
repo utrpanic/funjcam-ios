@@ -33,8 +33,8 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   var scrollView: UIScrollView? { self.collectionView }
   private weak var loadingView: UIActivityIndicatorView?
   
-  private var state: SearchState { self.controller.observableState.currentValue }
   private let controller: SearchControllable
+  private var state: SearchState { self.controller.observableState.currentValue }
   private var cancellables: Set<AnyCancellable>
   
   init(controller: SearchControllable) {
