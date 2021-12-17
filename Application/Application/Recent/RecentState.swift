@@ -5,5 +5,5 @@ struct RecentState {
 }
 
 enum RecentEvent {
-  case errorRequestRecentImage(Error)
+  
 }

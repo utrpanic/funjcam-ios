@@ -1,10 +1,6 @@
 import SwiftUI
 import Entity
 
-struct BookmarkState {
-  var bookmarks: [BookmarkImage]
-}
-
 struct BookmarkView: View {
   
   @State var state: BookmarkState
@@ -16,7 +12,7 @@ struct BookmarkView: View {
 
 struct BookmarkView_Previews: PreviewProvider {
   static var previews: some View {
-    let state = BookmarkState(bookmarks: [])
+    let state = BookmarkState()
     BookmarkView(state: state)
   }
 }

@@ -65,11 +65,8 @@ final class RecentViewController: ViewController, RecentViewControllable, UIColl
   private func observeEvent() {
     self.controller.observableEvent
       .receive(on: DispatchQueue.main)
-      .sink { [weak self] event in
-        switch event {
-        case let .errorRequestRecentImage(error):
-          break
-        }
+      .sink { _ in
+        
       }
       .store(in: &(self.cancellables))
   }

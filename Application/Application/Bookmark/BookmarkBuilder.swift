@@ -1,14 +1,3 @@
-import Usecase
-import SQLite
-
-public protocol BookmarkDependency {
-  var bookmarkImageUsecase: BookmarkImageUsecase { get }
-}
-
-public protocol BookmarkListener: AnyObject {
-  
-}
-
 public protocol BookmarkBuildable {
   func build() -> ViewControllable
 }
@@ -24,9 +13,10 @@ public final class BookmarkBuilder: BookmarkBuildable {
   }
   
   public func build() -> ViewControllable {
-    let controller = BookmarkController(dependency: self.dependency, listener: self.listener)
+    let controller = BookmarkController(dependency: self.dependency)
     let viewController = BookmarkViewController(controller: controller)
     controller.viewController = viewController
+    controller.listener = self.listener
     return viewController
   }
 }

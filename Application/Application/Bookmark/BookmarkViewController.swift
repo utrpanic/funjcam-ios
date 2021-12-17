@@ -1,7 +1,8 @@
 import UIKit
 
 protocol BookmarkControllable {
-  
+  var observableState: ObservableState<BookmarkState> { get }
+  var observableEvent: ObservableEvent<BookmarkEvent> { get }
 }
 
 final class BookmarkViewController: ViewController, BookmarkViewControllable {

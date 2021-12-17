@@ -4,37 +4,47 @@ import Combine
 import Entity
 import SwiftUI
 
+public protocol SearchDependency {
+  var searchProviderUsecase: SearchProviderUsecase { get }
+  var searchImageUsecase: SearchImageUsecase { get }
+  func imageViewerBuilder(listener: ImageViewerListener?) -> ImageViewerBuildable
+}
+
+public protocol SearchListener: AnyObject {
+  
+}
+
 protocol SearchViewControllable: ViewControllable {
   
 }
 
 final class SearchController: SearchControllable {
   
-  private let searchProviderUsecase: SearchProviderUsecase
-  private let searchImageUsecase: SearchImageUsecase
-  private let imageViewerBuilder: ImageViewerBuildable
-  
+  private let dependency: SearchDependency
   private let stateSubject: CurrentValueSubject<SearchState, Never>
+  private let eventSubject: PassthroughSubject<SearchEvent, Never>
   private var state: SearchState {
     get { self.stateSubject.value }
     set { self.stateSubject.send(newValue) }
   }
   let observableState: ObservableState<SearchState>
-  private let eventSubject: PassthroughSubject<SearchEvent, Never>
   let observableEvent: ObservableEvent<SearchEvent>
   weak var viewController: SearchViewControllable?
-  private weak var listener: SearchListener?
+  weak var listener: SearchListener?
   
-  public init(dependency: SearchDependency, listener: SearchListener?) {
-    self.searchProviderUsecase = dependency.searchProviderUsecase
-    self.searchImageUsecase = dependency.searchImageUsecase
-    self.imageViewerBuilder = dependency.imageViewerBuilder(listener: nil)
+  public init(dependency: SearchDependency) {
+    self.dependency = dependency
     let initialState = SearchState(provider: dependency.searchProviderUsecase.query())
     self.stateSubject = CurrentValueSubject(initialState)
-    self.observableState = ObservableState(subject: self.stateSubject)
     self.eventSubject = PassthroughSubject()
+    self.observableState = ObservableState(subject: self.stateSubject)
     self.observableEvent = ObservableEvent(subject: self.eventSubject)
-    self.listener = listener
+  }
+  
+  private func routeToImageViewer(image: SearchedImage) {
+    let builder = self.dependency.imageViewerBuilder(listener: nil)
+    let target = builder.build(searchedImage: image)
+    self.viewController?.present(viewControllable: target, animated: true, completion: nil)
   }
   
   // MARK: - SearchControllable
@@ -96,13 +106,13 @@ final class SearchController: SearchControllable {
   
   func handleSelectImage(at index: Int) {
     let image = self.state.images[index]
-    let target = self.imageViewerBuilder.build(searchedImage: image)
-    self.viewController?.present(viewControllable: target, animated: true, completion: nil)
+    self.routeToImageViewer(image: image)
   }
   
   private func search() async throws {
     do {
-      let result = try await self.searchImageUsecase.execute(
+      let usecase = self.dependency.searchImageUsecase
+      let result = try await usecase.execute(
         query: self.adjustedSearchQuery(),
         next: nil,
         provider: self.state.provider
@@ -122,7 +132,8 @@ final class SearchController: SearchControllable {
   private func searchMore() async throws {
     guard let next = self.state.next else { return }
     do {
-      let result = try await self.searchImageUsecase.execute(
+      let usecase = self.dependency.searchImageUsecase
+      let result = try await usecase.execute(
         query: self.adjustedSearchQuery(),
         next: next,
         provider: self.state.provider
