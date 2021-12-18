@@ -1,0 +1,7 @@
+struct BookmarkState {
+  
+}
+
+enum BookmarkEvent {
+  
+}

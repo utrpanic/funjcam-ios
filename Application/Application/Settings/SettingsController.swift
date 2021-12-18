@@ -1,31 +1,13 @@
-public protocol SettingsDependency {
+protocol SettingsViewControllable: ViewControllable {
   
 }
 
-public protocol SettingsListener: AnyObject {
+final class SettingsController: SettingsControllable {
   
-}
-
-public protocol SettingsViewControllable: ViewControllable {
-  
-}
-
-public final class SettingsController: SettingsControllable, ViewControllerBuildable {
-  
-  private let dependency: SettingsDependency
-  private weak var viewController: SettingsViewControllable?
+  weak var viewController: SettingsViewControllable?
   weak var listener: SettingsListener?
   
-  public init(dependency: SettingsDependency, listener: SettingsListener?) {
-    self.dependency = dependency
+  init(dependency: SettingsDependency, listener: SettingsListener?) {
     self.listener = listener
-  }
-  
-  public func buildViewController() -> ViewControllable {
-    return SettingsViewController(controller: self)
-  }
-  
-  public func activate(with viewController: SettingsViewControllable) {
-    self.viewController = viewController
   }
 }

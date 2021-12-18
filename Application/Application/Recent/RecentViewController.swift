@@ -3,7 +3,8 @@ import UIKit
 import Entity
 
 protocol RecentControllable {
-  func activate(with viewController: RecentViewControllable) -> Observable<RecentState>
+  var observableState: ObservableState<RecentState> { get }
+  var observableEvent: ObservableEvent<RecentEvent> { get }
   func handleSelectImage(at index: Int)
 }
 
@@ -17,13 +18,12 @@ final class RecentViewController: ViewController, RecentViewControllable, UIColl
   private weak var collectinView: UICollectionView?
   
   private let controller: RecentControllable
+  private var state: RecentState { self.controller.observableState.currentValue }
   private var cancellables: Set<AnyCancellable>
-  private var images: [RecentImage]
   
   init(controller: RecentControllable) {
     self.controller = controller
     self.cancellables = Set<AnyCancellable>()
-    self.images = []
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -35,7 +35,8 @@ final class RecentViewController: ViewController, RecentViewControllable, UIColl
     super.viewDidLoad()
     self.view.backgroundColor = .systemBackground
     self.setupCollectionView()
-    self.observeController()
+    self.observeState()
+    self.observeEvent()
   }
   
   private func setupCollectionView() {
@@ -52,15 +53,20 @@ final class RecentViewController: ViewController, RecentViewControllable, UIColl
     self.collectinView = collectionView
   }
   
-  private func observeController() {
-    self.controller.activate(with: self)
+  private func observeState() {
+    self.controller.observableState
       .receive(on: DispatchQueue.main)
-      .sink { [weak self] state in
-        switch state {
-        case let .state(recentImages):
-          self?.images = recentImages
-          self?.collectinView?.reloadData()
-        }
+      .sink { [weak self] _ in
+        self?.collectinView?.reloadData()
+      }
+      .store(in: &(self.cancellables))
+  }
+  
+  private func observeEvent() {
+    self.controller.observableEvent
+      .receive(on: DispatchQueue.main)
+      .sink { _ in
+        
       }
       .store(in: &(self.cancellables))
   }
@@ -72,8 +78,8 @@ final class RecentViewController: ViewController, RecentViewControllable, UIColl
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     switch Section.allCases[section] {
-    case .image: return self.images.count
-    case .empty: return self.images.isEmpty ? 1 : 0
+    case .image: return self.state.images.count
+    case .empty: return self.state.images.isEmpty ? 1 : 0
     }
   }
   
@@ -81,7 +87,7 @@ final class RecentViewController: ViewController, RecentViewControllable, UIColl
     switch Section.allCases[indexPath.section] {
     case .image:
       let cell = collectionView.dequeueReusableCell(RecentImageCell.self, for: indexPath)
-      cell.configure(with: self.images[indexPath.item])
+      cell.configure(with: self.state.images[indexPath.item])
       return cell
     case .empty:
       return collectionView.dequeueReusableCell(RecentEmptyCell.self, for: indexPath)

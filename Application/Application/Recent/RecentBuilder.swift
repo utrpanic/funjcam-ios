@@ -1,13 +1,3 @@
-import Usecase
-
-public protocol RecentDependency {
-  var recentImageUsecase: RecentImageUsecase { get }
-}
-
-public protocol RecentListener: AnyObject {
-  
-}
-
 public protocol RecentBuildable {
   func build() -> ViewControllable
 }
@@ -23,8 +13,10 @@ public final class RecentBuilder: RecentBuildable {
   }
   
   public func build() -> ViewControllable {
-    let controller = RecentController(dependency: self.dependency, listener: self.listener)
+    let controller = RecentController(dependency: self.dependency)
     let viewController = RecentViewController(controller: controller)
+    controller.viewController = viewController
+    controller.listener = self.listener
     return viewController
   }
 }

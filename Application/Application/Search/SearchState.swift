@@ -14,13 +14,8 @@ struct SearchState {
   }
 }
 
-enum SearchError: Error {
-  case search(Error)
-  case searchMore(Error)
-}
-
-enum SearchViewState {
+enum SearchEvent {
   case loading(Bool)
-  case stateArrived(SearchState)
-  case errorArrived(SearchError)
+  case errorSearch(Error)
+  case errorSearchMore(Error)
 }

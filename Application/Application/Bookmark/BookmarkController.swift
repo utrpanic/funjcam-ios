@@ -1,31 +1,38 @@
+import Combine
+import Usecase
+
 public protocol BookmarkDependency {
-  
+  var bookmarkImageUsecase: BookmarkImageUsecase { get }
 }
 
 public protocol BookmarkListener: AnyObject {
   
 }
 
-public protocol BookmarkViewControllable: ViewControllable {
+protocol BookmarkViewControllable: ViewControllable {
   
 }
 
-public final class BookmarkController: BookmarkControllable, ViewControllerBuildable {
+final class BookmarkController: BookmarkControllable {
   
   private let dependency: BookmarkDependency
-  private weak var viewController: BookmarkViewControllable?
+  private let stateSubject: CurrentValueSubject<BookmarkState, Never>
+  private let eventSubject: PassthroughSubject<BookmarkEvent, Never>
+  private var state: BookmarkState {
+    get { self.stateSubject.value }
+    set { self.stateSubject.send(newValue) }
+  }
+  let observableState: ObservableState<BookmarkState>
+  let observableEvent: ObservableEvent<BookmarkEvent>
+  weak var viewController: BookmarkViewControllable?
   weak var listener: BookmarkListener?
   
-  public init(dependency: BookmarkDependency, listener: BookmarkListener?) {
+  init(dependency: BookmarkDependency) {
     self.dependency = dependency
-    self.listener = listener
-  }
-  
-  public func buildViewController() -> ViewControllable {
-    return BookmarkViewController(controller: self)
-  }
-  
-  public func activate(with viewController: BookmarkViewControllable) {
-    self.viewController = viewController
+    let initialState = BookmarkState()
+    self.stateSubject = CurrentValueSubject(initialState)
+    self.eventSubject = PassthroughSubject()
+    self.observableState = ObservableState(subject: self.stateSubject)
+    self.observableEvent = ObservableEvent(subject: self.eventSubject)
   }
 }

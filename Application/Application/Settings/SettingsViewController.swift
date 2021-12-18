@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol SettingsControllable {
-  func activate(with viewController: SettingsViewControllable)
+
 }
 
 final class SettingsViewController: ViewController, SettingsViewControllable {
@@ -20,6 +20,5 @@ final class SettingsViewController: ViewController, SettingsViewControllable {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .systemBackground
-    self.controller.activate(with: self)
   }
 }
