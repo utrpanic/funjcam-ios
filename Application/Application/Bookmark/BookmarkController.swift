@@ -24,15 +24,20 @@ final class BookmarkController: BookmarkControllable {
   }
   let observableState: ObservableState<BookmarkState>
   let observableEvent: ObservableEvent<BookmarkEvent>
-  weak var viewController: BookmarkViewControllable?
-  weak var listener: BookmarkListener?
+  private weak var listener: BookmarkListener?
+  private weak var viewController: BookmarkViewControllable?
   
-  init(dependency: BookmarkDependency) {
+  init(dependency: BookmarkDependency, listener: BookmarkListener?) {
     self.dependency = dependency
     let initialState = BookmarkState()
     self.stateSubject = CurrentValueSubject(initialState)
     self.eventSubject = PassthroughSubject()
     self.observableState = ObservableState(subject: self.stateSubject)
     self.observableEvent = ObservableEvent(subject: self.eventSubject)
+    self.listener = listener
+  }
+  
+  func activate(with viewController: BookmarkViewControllable) {
+    self.viewController = viewController
   }
 }

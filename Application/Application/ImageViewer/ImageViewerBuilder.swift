@@ -1,15 +1,4 @@
 import Entity
-import Usecase
-
-public protocol ImageViewerDependency {
-  var recentImageUsecase: RecentImageUsecase { get }
-  func shareBuilder() -> ShareBuildable
-  func alertBuilder() -> AlertBuildable
-}
-
-public protocol ImageViewerListener: AnyObject {
-  
-}
 
 public protocol ImageViewerBuildable {
   func build(searchedImage: SearchedImage) -> ViewControllable

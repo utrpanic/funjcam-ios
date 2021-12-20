@@ -4,12 +4,7 @@ struct ImageViewerState {
   var searchedImage: SearchedImage
 }
 
-enum ImageViewerError: Error {
-  
-}
-
-enum ImageViewerViewState {
+enum ImageViewerEvent {
   case loading(Bool)
-  case stateArrived(ImageViewerState)
-  case errorArrived(ImageViewerError)
+  case error(Error)
 }

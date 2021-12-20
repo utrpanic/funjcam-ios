@@ -8,6 +8,7 @@ import SwiftUI
 protocol SearchControllable {
   var observableState: ObservableState<SearchState> { get }
   var observableEvent: ObservableEvent<SearchEvent> { get }
+  func activate(with viewController: SearchViewControllable)
   func handleUpdateQuery(_ query: String?)
   func handleSearch(query: String?)
   func handleSearchMore()
@@ -41,6 +42,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.controller = controller
     self.cancellables = Set<AnyCancellable>()
     super.init(nibName: nil, bundle: nil)
+    self.controller.activate(with: self)
   }
   
   required init?(coder: NSCoder) {
@@ -54,7 +56,8 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     self.setupHeaderView()
     self.setupCollectionView()
     self.setupLoadingView()
-    self.observeController()
+    self.observeState()
+    self.observeEvent()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -227,13 +230,16 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
     }
   }
   
-  private func observeController() {
+  private func observeState() {
     self.controller.observableState
       .receive(on: DispatchQueue.main)
       .sink { [weak self] _ in
         self?.updateViews()
       }
       .store(in: &(self.cancellables))
+  }
+  
+  private func observeEvent() {
     self.controller.observableEvent
       .receive(on: DispatchQueue.main)
       .sink { [weak self] event in
