@@ -3,6 +3,7 @@ import Usecase
 
 public protocol BookmarkDependency {
   var bookmarkImageUsecase: BookmarkImageUsecase { get }
+  func alertBuilder() -> AlertBuildable
 }
 
 public protocol BookmarkListener: AnyObject {
@@ -22,22 +23,40 @@ final class BookmarkController: BookmarkControllable {
     get { self.stateSubject.value }
     set { self.stateSubject.send(newValue) }
   }
-  let observableState: ObservableState<BookmarkState>
-  let observableEvent: ObservableEvent<BookmarkEvent>
   private weak var listener: BookmarkListener?
   private weak var viewController: BookmarkViewControllable?
   
   init(dependency: BookmarkDependency, listener: BookmarkListener?) {
     self.dependency = dependency
-    let initialState = BookmarkState()
+    let initialState = BookmarkState(images: [])
     self.stateSubject = CurrentValueSubject(initialState)
     self.eventSubject = PassthroughSubject()
-    self.observableState = ObservableState(subject: self.stateSubject)
-    self.observableEvent = ObservableEvent(subject: self.eventSubject)
     self.listener = listener
   }
   
+  // MARK: - BookmarkControllable
+  
+  lazy var observableState: ObservableState<BookmarkState> = {
+    return ObservableState(subject: self.stateSubject)
+  }()
+  
+  lazy var observableEvent: ObservableEvent<BookmarkEvent> = {
+    return ObservableEvent(subject: self.eventSubject)
+  }()
+  
   func activate(with viewController: BookmarkViewControllable) {
     self.viewController = viewController
+    self.requestBookmarks()
+  }
+  
+  private func requestBookmarks() {
+    let usecase = self.dependency.bookmarkImageUsecase
+    do {
+      self.state.images = try usecase.query()
+    } catch {
+      let builder = self.dependency.alertBuilder()
+      let viewController = builder.build(title: "", message: "")
+      self.viewController?.present(viewControllable: viewController, animated: true)
+    }
   }
 }

@@ -17,7 +17,7 @@ struct BookmarkView: View {
 
 struct BookmarkView_Previews: PreviewProvider {
   static var previews: some View {
-    let state = BookmarkState()
+    let state = BookmarkState(images: [])
     BookmarkView(state: state)
   }
 }

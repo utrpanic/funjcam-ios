@@ -24,24 +24,34 @@ final class MainViewController: UITabBarController, MainViewControllable, UITabB
   }
   
   private func setupTabBar() {
-    self.tabBar.backgroundColor = .white
+
   }
   
   // MARK: - MainViewControllable
   
   func setTabs(search: ViewControllable, recent: ViewControllable, bookmark: ViewControllable, settings: ViewControllable) {
-    search.ui.tabBarItem = UITabBarItem(title: Resource.string("common:search"),
-                                        image: nil,
-                                        selectedImage: nil)
-    recent.ui.tabBarItem = UITabBarItem(title: Resource.string("common:recent"),
-                                        image: nil,
-                                        selectedImage: nil)
-    bookmark.ui.tabBarItem = UITabBarItem(title: Resource.string("common:bookmark"),
-                                          image: nil,
-                                          selectedImage: nil)
-    settings.ui.tabBarItem = UITabBarItem(title: Resource.string("common:settings"),
-                                          image: nil,
-                                          selectedImage: nil)
+    let size: CGFloat = 16
+    let weight: UIImage.SymbolWeight = .bold
+    search.ui.tabBarItem = UITabBarItem(
+      title: Resource.string("common:search"),
+      image: Resource.image("sun.and.horizon", size: size, weight: weight),
+      selectedImage: Resource.image("sun.and.horizon.fill", size: size, weight: weight)
+    )
+    recent.ui.tabBarItem = UITabBarItem(
+      title: Resource.string("common:recent"),
+      image: Resource.image("cloud.drizzle", size: size, weight: weight),
+      selectedImage: Resource.image("cloud.drizzle.fill", size: size, weight: weight)
+    )
+    bookmark.ui.tabBarItem = UITabBarItem(
+      title: Resource.string("common:bookmark"),
+      image: Resource.image("umbrella", size: size, weight: weight),
+      selectedImage: Resource.image("umbrella.fill", size: size, weight: weight)
+    )
+    settings.ui.tabBarItem = UITabBarItem(
+      title: Resource.string("common:settings"),
+      image: Resource.image("gearshape", size: size, weight: weight),
+      selectedImage: Resource.image("gearshape.fill", size: size, weight: weight)
+    )
     self.viewControllers = [search.ui, recent.ui, bookmark.ui, settings.ui]
     self.selectedIndex = 0
   }

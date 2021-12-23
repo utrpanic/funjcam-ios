@@ -11,6 +11,9 @@ protocol BookmarkControllable {
 final class BookmarkViewController: UIHostingController<BookmarkView>, BookmarkViewControllable, BookmarkViewDelegate {
   
   private let controller: BookmarkControllable
+  private var state: BookmarkState {
+    return self.controller.observableState.currentValue
+  }
   private var cancellables: Set<AnyCancellable>
   
   init(controller: BookmarkControllable) {
