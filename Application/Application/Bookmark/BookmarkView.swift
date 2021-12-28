@@ -7,11 +7,23 @@ protocol BookmarkViewDelegate: AnyObject {
 
 struct BookmarkView: View {
   
+  var columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 2)
+  
   @State var state: BookmarkState
   weak var delegate: BookmarkViewDelegate?
   
   var body: some View {
-    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    if state.images.isEmpty {
+      Text("No Bookmarks")
+    } else {
+      ScrollView {
+        LazyVGrid(columns: columns) {
+          ForEach(state.images) {
+            Text($0.name)
+          }
+        }
+      }
+    }
   }
 }
 

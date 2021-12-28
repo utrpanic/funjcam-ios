@@ -4,7 +4,7 @@ protocol MainControllable {
   func activate(with viewController: MainViewControllable)
 }
 
-final class MainViewController: UITabBarController, MainViewControllable, UITabBarControllerDelegate {
+final class MainViewController: UITabBarController, MainViewControllable {
   
   private let controller: MainControllable
   
@@ -20,51 +20,35 @@ final class MainViewController: UITabBarController, MainViewControllable, UITabB
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.setupTabBar()
-  }
-  
-  private func setupTabBar() {
-
   }
   
   // MARK: - MainViewControllable
   
   func setTabs(search: ViewControllable, recent: ViewControllable, bookmark: ViewControllable, settings: ViewControllable) {
     let size: CGFloat = 16
-    let weight: UIImage.SymbolWeight = .bold
+    let weight: UIImage.SymbolWeight = .regular
+    let selectedWeight: UIImage.SymbolWeight = .bold
     search.ui.tabBarItem = UITabBarItem(
       title: Resource.string("common:search"),
       image: Resource.image("sun.and.horizon", size: size, weight: weight),
-      selectedImage: Resource.image("sun.and.horizon.fill", size: size, weight: weight)
+      selectedImage: Resource.image("sun.and.horizon.fill", size: size, weight: selectedWeight)
     )
     recent.ui.tabBarItem = UITabBarItem(
       title: Resource.string("common:recent"),
       image: Resource.image("cloud.drizzle", size: size, weight: weight),
-      selectedImage: Resource.image("cloud.drizzle.fill", size: size, weight: weight)
+      selectedImage: Resource.image("cloud.drizzle.fill", size: size, weight: selectedWeight)
     )
     bookmark.ui.tabBarItem = UITabBarItem(
       title: Resource.string("common:bookmark"),
       image: Resource.image("umbrella", size: size, weight: weight),
-      selectedImage: Resource.image("umbrella.fill", size: size, weight: weight)
+      selectedImage: Resource.image("umbrella.fill", size: size, weight: selectedWeight)
     )
     settings.ui.tabBarItem = UITabBarItem(
       title: Resource.string("common:settings"),
       image: Resource.image("gearshape", size: size, weight: weight),
-      selectedImage: Resource.image("gearshape.fill", size: size, weight: weight)
+      selectedImage: Resource.image("gearshape.fill", size: size, weight: selectedWeight)
     )
     self.viewControllers = [search.ui, recent.ui, bookmark.ui, settings.ui]
     self.selectedIndex = 0
-  }
-  
-  // MARK: - UITabBarControllerDelegate
-  
-  func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-    if viewController == self.selectedViewController {
-      let navigationController = viewController as? UINavigationController
-      if navigationController?.viewControllers.count == 1 {
-        (navigationController?.topViewController as? HasScrollView)?.scrollToTop(animated: true)
-      }
-    }
-    return true
   }
 }
