@@ -26,12 +26,15 @@ final class BookmarkController: BookmarkControllable {
   private weak var listener: BookmarkListener?
   private weak var viewController: BookmarkViewControllable?
   
+  private var cancellables: Set<AnyCancellable>
+  
   init(dependency: BookmarkDependency, listener: BookmarkListener?) {
     self.dependency = dependency
     let initialState = BookmarkState(images: [])
     self.stateSubject = CurrentValueSubject(initialState)
     self.eventSubject = PassthroughSubject()
     self.listener = listener
+    self.cancellables = Set()
   }
   
   // MARK: - BookmarkControllable
@@ -51,12 +54,22 @@ final class BookmarkController: BookmarkControllable {
   
   private func requestBookmarks() {
     let usecase = self.dependency.bookmarkImageUsecase
-    do {
-      self.state.images = try usecase.query()
-    } catch {
-      let builder = self.dependency.alertBuilder()
-      let viewController = builder.build(title: "", message: "")
-      self.viewController?.present(viewControllable: viewController, animated: true)
-    }
+    usecase.query()
+      .sink { [weak self] completion in
+        if case let .failure(error) = completion {
+          let title = String(describing: error)
+          let message = error.localizedDescription
+          self?.routeToAlert(title: title, message: message)
+        }
+      } receiveValue: { [weak self] images in
+        self?.state.images = images
+      }
+      .store(in: &(self.cancellables))
+  }
+  
+  private func routeToAlert(title: String, message: String) {
+    let builder = self.dependency.alertBuilder()
+    let viewController = builder.build(title: title, message: message)
+    self.viewController?.present(viewControllable: viewController, animated: true)
   }
 }

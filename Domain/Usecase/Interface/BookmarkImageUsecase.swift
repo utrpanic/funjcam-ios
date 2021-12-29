@@ -1,9 +1,9 @@
-import Foundation
+import Combine
 import Entity
 import UIKit
 
 public protocol BookmarkImageUsecase {
-  func query() throws -> [BookmarkImage]
+  func query() -> AnyPublisher<[BookmarkImage], Error>
   func insert(name: String, url: URL?, image: UIImage) throws
   func delete(id: Int) throws
 }
