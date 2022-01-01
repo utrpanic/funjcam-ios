@@ -5,6 +5,7 @@ import Entity
 protocol RecentControllable {
   var observableState: ObservableState<RecentState> { get }
   var observableEvent: ObservableEvent<RecentEvent> { get }
+  func activate(with viewController: RecentViewControllable)
   func handleSelectImage(at index: Int)
 }
 
@@ -25,6 +26,7 @@ final class RecentViewController: ViewController, RecentViewControllable, UIColl
     self.controller = controller
     self.cancellables = Set<AnyCancellable>()
     super.init(nibName: nil, bundle: nil)
+    self.controller.activate(with: self)
   }
   
   required init?(coder: NSCoder) {
@@ -47,6 +49,7 @@ final class RecentViewController: ViewController, RecentViewControllable, UIColl
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.registerFromClass(RecentImageCell.self)
+    collectionView.registerFromClass(RecentEmptyCell.self)
     self.view.addSubview(collectionView)
     collectionView.edgesToSuperview(excluding: [.top])
     collectionView.topToSuperview(usingSafeArea: true)

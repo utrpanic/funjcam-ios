@@ -4,7 +4,9 @@ import BoxKit
 import Entity
 
 protocol ImageViewerControllable {
-  func activate(with viewController: ImageViewerViewControllable) -> AnyPublisher<ImageViewerViewState, Never>
+  var observableState: ObservableState<ImageViewerState> { get }
+  var observableEvent: ObservableEvent<ImageViewerEvent> { get }
+  func activate(with viewController: ImageViewerViewControllable)
   func handleShareImage()
 }
 
@@ -19,6 +21,7 @@ final class ImageViewerViewController: ViewController, ImageViewerViewControllab
     self.controller = controller
     self.cancellables = Set<AnyCancellable>()
     super.init(nibName: nil, bundle: nil)
+    self.controller.activate(with: self)
   }
   
   required init?(coder: NSCoder) {
@@ -30,7 +33,8 @@ final class ImageViewerViewController: ViewController, ImageViewerViewControllab
     self.view.backgroundColor = .systemBackground
     self.setupNavigation()
     self.setupImageViewer()
-    self.observeController()
+    self.observeState()
+    self.observeEvent()
   }
   
   private func setupNavigation() {
@@ -51,17 +55,20 @@ final class ImageViewerViewController: ViewController, ImageViewerViewControllab
     self.imageView = imageView
   }
   
-  private func observeController() {
-    self.controller.activate(with: self)
-      .sink { [weak self] viewState in
-        switch viewState {
-        case let .stateArrived(state):
-          self?.updateImageViewer(imageURL: state.searchedImage.url)
-        case .errorArrived(_):
-          break
-        case .loading(_):
-          break
-        }
+  private func observeState() {
+    self.controller.observableState
+      .receive(on: DispatchQueue.main)
+      .sink { [weak self] state in
+        self?.updateImageViewer(imageURL: state.searchedImage.url)
+      }
+      .store(in: &(self.cancellables))
+  }
+  
+  private func observeEvent() {
+    self.controller.observableEvent
+      .receive(on: DispatchQueue.main)
+      .sink { _ in
+        
       }
       .store(in: &(self.cancellables))
   }

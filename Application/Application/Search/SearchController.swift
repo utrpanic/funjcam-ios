@@ -29,25 +29,22 @@ final class SearchController: SearchControllable {
   }
   let observableState: ObservableState<SearchState>
   let observableEvent: ObservableEvent<SearchEvent>
-  weak var viewController: SearchViewControllable?
-  weak var listener: SearchListener?
+  private weak var listener: SearchListener?
+  private weak var viewController: SearchViewControllable?
   
-  public init(dependency: SearchDependency) {
+  public init(dependency: SearchDependency, listener: SearchListener?) {
     self.dependency = dependency
     let initialState = SearchState(provider: dependency.searchProviderUsecase.query())
     self.stateSubject = CurrentValueSubject(initialState)
     self.eventSubject = PassthroughSubject()
     self.observableState = ObservableState(subject: self.stateSubject)
     self.observableEvent = ObservableEvent(subject: self.eventSubject)
+    self.listener = listener
   }
   
-  private func routeToImageViewer(image: SearchedImage) {
-    let builder = self.dependency.imageViewerBuilder(listener: nil)
-    let target = builder.build(searchedImage: image)
-    self.viewController?.present(viewControllable: target, animated: true, completion: nil)
+  func activate(with viewController: SearchViewControllable) {
+    self.viewController = viewController
   }
-  
-  // MARK: - SearchControllable
   
   func handleUpdateQuery(_ query: String?) {
     guard let query = query else { return }
@@ -106,7 +103,9 @@ final class SearchController: SearchControllable {
   
   func handleSelectImage(at index: Int) {
     let image = self.state.images[index]
-    self.routeToImageViewer(image: image)
+    let builder = self.dependency.imageViewerBuilder(listener: nil)
+    let target = builder.build(searchedImage: image)
+    self.viewController?.present(viewControllable: target, animated: true, completion: nil)
   }
   
   private func search() async throws {

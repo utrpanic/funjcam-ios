@@ -1,6 +1,6 @@
 import UIKit
 
-public struct BookmarkImage {
+public struct BookmarkImage: Identifiable {
   
   public var id: Int
   public var name: String

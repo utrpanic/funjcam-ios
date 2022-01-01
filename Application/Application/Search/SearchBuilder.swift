@@ -13,10 +13,7 @@ public final class SearchBuilder: SearchBuildable {
   }
   
   public func build() -> ViewControllable {
-    let controller = SearchController(dependency: self.dependency)
-    let viewController = SearchViewController(controller: controller)
-    controller.viewController = viewController
-    controller.listener = self.listener
-    return viewController
+    let controller = SearchController(dependency: self.dependency, listener: self.listener)
+    return SearchViewController(controller: controller)
   }
 }

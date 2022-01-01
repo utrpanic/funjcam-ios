@@ -9,33 +9,22 @@ protocol MainViewControllable: ViewControllable {
   func setTabs(search: ViewControllable, recent: ViewControllable, bookmark: ViewControllable, settings: ViewControllable)
 }
 
-public final class MainController: MainControllable, ViewControllerBuildable, SettingsListener {
+public final class MainController: MainControllable {
 
+  private let dependency: MainDependency
   private weak var viewController: MainViewControllable?
   
-  private let searchBuilder: SearchBuildable
-  private let recentBuilder: RecentBuildable
-  private let bookmarkBuilder: BookmarkBuildable
-  private let settingsBuilder: SettingsBuildable
-  
   public init(dependency: MainDependency) {
-    self.searchBuilder = dependency.searchBuilder(listener: nil)
-    self.recentBuilder = dependency.recentBuilder(listener: nil)
-    self.bookmarkBuilder = dependency.bookmarkBuilder(listener: nil)
-    self.settingsBuilder = dependency.settingsBuilder(listener: nil)
+    self.dependency = dependency
   }
   
-  public func buildViewController() -> ViewControllable {
-    return MainViewController(controller: self)
-  }
-  
-  func activate(with viewController: MainViewControllable) {
-    self.viewController = viewController
+  func activate(with viewControllable: MainViewControllable) {
+    self.viewController = viewControllable
     self.viewController?.setTabs(
-      search: self.searchBuilder.build(),
-      recent: self.recentBuilder.build(),
-      bookmark: self.bookmarkBuilder.build(),
-      settings: self.settingsBuilder.build()
+      search: self.dependency.searchBuilder(listener: nil).build(),
+      recent: self.dependency.recentBuilder(listener: nil).build(),
+      bookmark: self.dependency.bookmarkBuilder(listener: nil).build(),
+      settings: self.dependency.settingsBuilder(listener: nil).build()
     )
   }
 }

@@ -1,7 +1,9 @@
+import Combine
 import UIKit
-import Usecase
+
 import Entity
 import SQLite
+import Usecase
 
 public final class BookmarkImageUsecaseImp: BookmarkImageUsecase {
   
@@ -14,6 +16,8 @@ public final class BookmarkImageUsecaseImp: BookmarkImageUsecase {
   private let imageColumn: Expression<UIImage>
   private let createdAt: Expression<Date>
   
+  private let subject: PassthroughSubject<[BookmarkImage], Error>
+  
   public init(db: Connection) throws {
     self.db = db
     self.table = Table("BookmarkImage")
@@ -22,6 +26,7 @@ public final class BookmarkImageUsecaseImp: BookmarkImageUsecase {
     self.urlStringColumn = Expression<String>("urlString")
     self.imageColumn = Expression<UIImage>("image")
     self.createdAt = Expression<Date>("createdAt")
+    self.subject = PassthroughSubject()
     try self.createTable()
   }
   
@@ -35,15 +40,27 @@ public final class BookmarkImageUsecaseImp: BookmarkImageUsecase {
     })
   }
   
-  public func query() throws -> [BookmarkImage] {
-    return try self.db.prepare(self.table).map { row in
-      BookmarkImage(
-        id: row[self.idColumn],
-        name: row[self.nameColumn],
-        urlString: row[self.urlStringColumn],
-        image: row[self.imageColumn],
-        createdAt: row[self.createdAt]
-      )
+  public func query() -> AnyPublisher<[BookmarkImage], Error> {
+    defer {
+      self.notifyObservable()
+    }
+    return self.subject.eraseToAnyPublisher()
+  }
+  
+  private func notifyObservable() {
+    do {
+      let images = try self.db.prepare(self.table).map { row in
+        BookmarkImage(
+          id: row[self.idColumn],
+          name: row[self.nameColumn],
+          urlString: row[self.urlStringColumn],
+          image: row[self.imageColumn],
+          createdAt: row[self.createdAt]
+        )
+      }
+      self.subject.send(images)
+    } catch {
+      self.subject.send(completion: .failure(error))
     }
   }
   
@@ -57,11 +74,13 @@ public final class BookmarkImageUsecaseImp: BookmarkImageUsecase {
       self.imageColumn <- image,
       self.createdAt <- Date()
     ))
+    self.notifyObservable()
   }
   
   public func delete(id: Int) throws {
     let targetTable = self.table.filter(self.idColumn == id)
     try self.db.run(targetTable.delete())
+    self.notifyObservable()
   }
 }
 

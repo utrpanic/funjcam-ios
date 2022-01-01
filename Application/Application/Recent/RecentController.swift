@@ -26,17 +26,17 @@ final class RecentController: RecentControllable {
   }
   let observableState: ObservableState<RecentState>
   let observableEvent: ObservableEvent<RecentEvent>
-  weak var viewController: RecentViewControllable?
-  weak var listener: RecentListener?
+  private weak var listener: RecentListener?
+  private weak var viewController: RecentViewControllable?
   
-  init(dependency: RecentDependency) {
+  init(dependency: RecentDependency, listener: RecentListener?) {
     self.dependency = dependency
     let initialState = RecentState(images: [])
     self.stateSubject = CurrentValueSubject(initialState)
     self.eventSubject = PassthroughSubject()
     self.observableState = ObservableState(subject: self.stateSubject)
     self.observableEvent = ObservableEvent(subject: self.eventSubject)
-    self.requestRecentImages()
+    self.listener = listener
   }
   
   private func routeToAlert(title: String, message: String?) {
@@ -45,7 +45,10 @@ final class RecentController: RecentControllable {
     self.viewController?.present(viewControllable: alert, animated: true)
   }
   
-  // MARK: - RecentControllable
+  func activate(with viewController: RecentViewControllable) {
+    self.viewController = viewController
+    self.requestRecentImages()
+  }
   
   private func requestRecentImages() {
     do {

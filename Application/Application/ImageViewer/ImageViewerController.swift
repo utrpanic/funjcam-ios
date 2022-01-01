@@ -3,43 +3,47 @@ import Foundation
 import Entity
 import Usecase
 
+public protocol ImageViewerDependency {
+  var recentImageUsecase: RecentImageUsecase { get }
+  func shareBuilder() -> ShareBuildable
+  func alertBuilder() -> AlertBuildable
+}
+
+public protocol ImageViewerListener: AnyObject {
+  
+}
+
 protocol ImageViewerViewControllable: ViewControllable {
   
 }
 
 final class ImageViewerController: ImageViewerControllable {
 
+  private let dependency: ImageViewerDependency
+  private let stateSubject: CurrentValueSubject<ImageViewerState, Never>
+  private let eventSubject: PassthroughSubject<ImageViewerEvent, Never>
   private var state: ImageViewerState {
-    didSet { self.viewState.send(.stateArrived(self.state)) }
+    get { self.stateSubject.value }
+    set { self.stateSubject.send(newValue) }
   }
-  private let viewState: CurrentValueSubject<ImageViewerViewState, Never>
-  
-  private let recentImageUsecase: RecentImageUsecase
-  private let shareBuilder: ShareBuildable
-  private let alertBuilder: AlertBuildable
-  
-  private weak var viewController: ImageViewerViewControllable?
+  let observableState: ObservableState<ImageViewerState>
+  let observableEvent: ObservableEvent<ImageViewerEvent>
   private weak var listener: ImageViewerListener?
+  private weak var viewController: ImageViewerViewControllable?
   
   init(searchedImage: SearchedImage, dependency: ImageViewerDependency, listener: ImageViewerListener?) {
-    self.state = ImageViewerState(searchedImage: searchedImage)
-    self.recentImageUsecase = dependency.recentImageUsecase
-    self.shareBuilder = dependency.shareBuilder()
-    self.alertBuilder = dependency.alertBuilder()
-    self.viewState = CurrentValueSubject<ImageViewerViewState, Never>(.stateArrived(self.state))
+    self.dependency = dependency
+    let initialState = ImageViewerState(searchedImage: searchedImage)
+    self.stateSubject = CurrentValueSubject(initialState)
+    self.eventSubject = PassthroughSubject()
+    self.observableState = ObservableState(subject: self.stateSubject)
+    self.observableEvent = ObservableEvent(subject: self.eventSubject)
     self.listener = listener
   }
   
-  func activate(with viewController: ImageViewerViewControllable) -> AnyPublisher<ImageViewerViewState, Never> {
-    defer {
-      self.didBecomActive()
-    }
+  func activate(with viewController: ImageViewerViewControllable) {
     self.viewController = viewController
-    return self.viewState.eraseToAnyPublisher()
-  }
-  
-  private func didBecomActive() {
-    try? self.recentImageUsecase.insert(
+    try? self.dependency.recentImageUsecase.insert(
       name: self.state.searchedImage.displayName,
       url: self.state.searchedImage.url
     )
@@ -48,11 +52,13 @@ final class ImageViewerController: ImageViewerControllable {
   func handleShareImage() {
     guard let url = self.state.searchedImage.url, let data = try? Data(contentsOf: url) else {
       let title = Resource.string("imageViewer:error")
-      let target = self.alertBuilder.build(title: title, message: nil)
+      let builder = self.dependency.alertBuilder()
+      let target = builder.build(title: title, message: nil)
       self.viewController?.present(viewControllable: target, animated: true, completion: nil)
       return
     }
-    let target = self.shareBuilder.build(data: data)
+    let builder = self.dependency.shareBuilder()
+    let target = builder.build(data: data)
     self.viewController?.present(viewControllable: target, animated: true, completion: nil)
   }
 }

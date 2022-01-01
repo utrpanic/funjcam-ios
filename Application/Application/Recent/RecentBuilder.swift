@@ -13,10 +13,7 @@ public final class RecentBuilder: RecentBuildable {
   }
   
   public func build() -> ViewControllable {
-    let controller = RecentController(dependency: self.dependency)
-    let viewController = RecentViewController(controller: controller)
-    controller.viewController = viewController
-    controller.listener = self.listener
-    return viewController
+    let controller = RecentController(dependency: self.dependency, listener: self.listener)
+    return RecentViewController(controller: controller)
   }
 }

@@ -13,10 +13,7 @@ public final class BookmarkBuilder: BookmarkBuildable {
   }
   
   public func build() -> ViewControllable {
-    let controller = BookmarkController(dependency: self.dependency)
-    let viewController = BookmarkViewController(controller: controller)
-    controller.viewController = viewController
-    controller.listener = self.listener
-    return viewController
+    let controller = BookmarkController(dependency: self.dependency, listener: self.listener)
+    return BookmarkViewController(controller: controller)
   }
 }

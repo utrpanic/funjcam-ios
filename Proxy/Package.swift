@@ -10,7 +10,7 @@ let package = Package(
   ],
   dependencies: [
     .package(name: "SQLite.swift", url: "https://github.com/stephencelis/SQLite.swift.git", .upToNextMajor(from: "0.0.0")),
-    .package(name: "TinyConstraints", url: "https://github.com/roberthein/TinyConstraints.git", .upToNextMajor(from: "4.0.0"))
+    .package(name: "TinyConstraints", url: "https://github.com/roberthein/TinyConstraints.git", .upToNextMajor(from: "4.0.0")),
   ],
   targets: [
     .target(
