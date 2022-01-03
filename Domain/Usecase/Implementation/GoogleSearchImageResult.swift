@@ -4,7 +4,7 @@ import Usecase
 
 struct GoogleImageSearchResult: Decodable {
   
-  var searchedImages: [SearchedImage]
+  var searchedImages: [SearchImage]
   var nextPages: [NextPage]?
   var next: Int? { return self.nextPages?.first?.startIndex }
   
@@ -37,7 +37,7 @@ struct GoogleImageSearchResult: Decodable {
   init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: CodingKeys.self)
     self.searchedImages = (try values.decodeIfPresent([Image].self, forKey: .items) ?? []).map { item in
-      return SearchedImage(
+      return SearchImage(
         displayName: item.displayLink,
         urlString: item.link,
         pixelWidth: item.image.width,

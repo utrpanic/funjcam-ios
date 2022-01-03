@@ -27,7 +27,7 @@ final class SearchImageCell: UICollectionViewCell {
     self.imageView = imageView
   }
   
-  func configure(with image: SearchedImage?) {
-    self.imageView?.setImage(url: image?.thumbnailURL, placeholder: nil, completion: nil)
+  func configure(with image: SearchImage) {
+    self.imageView?.setImage(url: image.thumbnailURL, placeholder: nil, completion: nil)
   }
 }

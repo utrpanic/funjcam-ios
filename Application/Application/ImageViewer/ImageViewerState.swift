@@ -1,7 +1,7 @@
 import Entity
 
 struct ImageViewerState {
-  var searchedImage: SearchedImage
+  var searchImage: SearchImage
 }
 
 enum ImageViewerEvent {

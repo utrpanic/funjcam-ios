@@ -59,7 +59,7 @@ final class ImageViewerViewController: ViewController, ImageViewerViewControllab
     self.controller.observableState
       .receive(on: DispatchQueue.main)
       .sink { [weak self] state in
-        self?.updateImageViewer(imageURL: state.searchedImage.url)
+        self?.updateImageViewer(imageURL: state.searchImage.url)
       }
       .store(in: &(self.cancellables))
   }

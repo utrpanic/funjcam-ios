@@ -5,7 +5,7 @@ struct SearchState {
   var provider: SearchProvider
   var query: String = "김연아"
   var searchAnimatedGIF: Bool = false
-  var images: [SearchedImage] = []
+  var images: [SearchImage] = []
   var next: Int?
   var hasMore: Bool { return self.next != nil }
   

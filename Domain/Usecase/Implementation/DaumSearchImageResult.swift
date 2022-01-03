@@ -4,7 +4,7 @@ import Usecase
 
 struct DaumSearchImageResult: Decodable {
   
-  let searchedImages: [SearchedImage]
+  let searchedImages: [SearchImage]
   let next: Int?
   
   private enum CodingKeys: String, CodingKey {
@@ -34,7 +34,7 @@ struct DaumSearchImageResult: Decodable {
   init(from decoder: Decoder) throws {
     let values = try decoder.container(keyedBy: CodingKeys.self)
     self.searchedImages = (try values.decodeIfPresent([Image].self, forKey: .documents) ?? []).map { image in
-      return SearchedImage(
+      return SearchImage(
         displayName: image.display_sitename,
         urlString: image.image_url,
         pixelWidth: image.width,

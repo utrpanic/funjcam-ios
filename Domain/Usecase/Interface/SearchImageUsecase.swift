@@ -6,10 +6,10 @@ public protocol SearchImageUsecase {
 
 public struct SearchImageResult {
   
-  public let images: [SearchedImage]
+  public let images: [SearchImage]
   public let next: Int?
   
-  public init(images: [SearchedImage], next: Int?) {
+  public init(images: [SearchImage], next: Int?) {
     self.images = images
     self.next = next
   }

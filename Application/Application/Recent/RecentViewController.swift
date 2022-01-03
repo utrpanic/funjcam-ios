@@ -1,6 +1,5 @@
 import Combine
 import UIKit
-import Entity
 
 protocol RecentControllable {
   var observableState: ObservableState<RecentState> { get }

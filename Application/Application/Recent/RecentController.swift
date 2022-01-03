@@ -54,7 +54,7 @@ final class RecentController: RecentControllable {
     do {
       let usecase = self.dependency.recentImageUsecase
       let recentImages = try usecase.query()
-      self.state.images = recentImages
+      self.state = RecentState(images: recentImages)
     } catch {
       self.routeToAlert(
         title: "Request Recent Images",

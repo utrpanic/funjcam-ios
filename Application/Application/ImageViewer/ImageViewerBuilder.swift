@@ -1,7 +1,7 @@
 import Entity
 
 public protocol ImageViewerBuildable {
-  func build(searchedImage: SearchedImage) -> ViewControllable
+  func build(searchImage: SearchImage) -> ViewControllable
 }
 
 public final class ImageViewerBuilder: ImageViewerBuildable {
@@ -14,9 +14,9 @@ public final class ImageViewerBuilder: ImageViewerBuildable {
     self.listener = listener
   }
   
-  public func build(searchedImage: SearchedImage) -> ViewControllable {
+  public func build(searchImage: SearchImage) -> ViewControllable {
     let controller = ImageViewerController(
-      searchedImage: searchedImage,
+      searchImage: searchImage,
       dependency: self.dependency,
       listener: self.listener
     )

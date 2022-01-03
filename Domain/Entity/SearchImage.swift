@@ -1,7 +1,7 @@
 import Foundation
 import BoxKit
 
-public struct SearchedImage {
+public struct SearchImage {
   
   public var displayName: String
   public var url: URL?

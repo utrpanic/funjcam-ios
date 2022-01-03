@@ -342,7 +342,7 @@ final class SearchViewController: ViewController, SearchViewControllable, HasScr
   }
 }
 
-extension SearchedImage {
+extension SearchImage {
   var proportionalHeight: CGFloat {
     return CGFloat(self.pixelHeight) / CGFloat(self.pixelWidth)
   }

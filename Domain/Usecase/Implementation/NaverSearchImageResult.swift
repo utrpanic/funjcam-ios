@@ -4,7 +4,7 @@ import Usecase
 
 struct NaverSearchImageResult: Decodable {
   
-  let searchedImages: [SearchedImage]
+  let searchedImages: [SearchImage]
   let next: Int?
   
   private enum CodingKeys: String, CodingKey {
@@ -27,7 +27,7 @@ struct NaverSearchImageResult: Decodable {
     let values = try decoder.container(keyedBy: CodingKeys.self)
     let images = try values.decodeIfPresent([Image].self, forKey: .items) ?? []
     self.searchedImages = images.map { item in
-      return SearchedImage(
+      return SearchImage(
         displayName: item.title,
         urlString: item.link,
         pixelWidth: Int(item.sizewidth) ?? 0,

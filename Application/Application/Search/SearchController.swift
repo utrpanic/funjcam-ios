@@ -104,7 +104,7 @@ final class SearchController: SearchControllable {
   func handleSelectImage(at index: Int) {
     let image = self.state.images[index]
     let builder = self.dependency.imageViewerBuilder(listener: nil)
-    let target = builder.build(searchedImage: image)
+    let target = builder.build(searchImage: image)
     self.viewController?.present(viewControllable: target, animated: true, completion: nil)
   }
   
